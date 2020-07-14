@@ -53,5 +53,9 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.tsx', '.mjs', '.js', '.json'],
     },
-    plugins: [new StylableWebpackPlugin(), new HtmlWebpackPlugin({ title: 'Stylable App' })],
+    plugins: [
+    new StylableWebpackPlugin({
+        experimentalHMR: true
+    }),
+    new HtmlWebpackPlugin({ title: 'Stylable App' })],
 };
