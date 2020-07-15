@@ -18,7 +18,10 @@
   "private": true,
   "dependencies": {
     "@stylable/runtime": "^3.7.0",
+    "@types/uuid": "^8.0.0",
     "css-loader": "^3.6.0",
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.2.2",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -27,6 +30,7 @@
     "sass-loader": "^9.0.2",
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0",
+    "uuid": "^8.2.0",
     "wix-style-react": "8.18.0"
   },
   "devDependencies": {
