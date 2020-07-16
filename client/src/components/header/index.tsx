@@ -1,6 +1,6 @@
 import React from 'react';
-import { st, classes } from './header.st.css';
-import stylableLogo from './stylable.svg';
+import { st, classes } from './style.st.css';
+import stylableLogo from '../../assets/stylable.svg';
 
 export interface HeaderProps {
     className?: string;
