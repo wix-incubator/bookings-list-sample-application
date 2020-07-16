@@ -31,7 +31,7 @@ module.exports = {
                 include: [
                     path.join(__dirname, 'node_modules/wix-animations'),
                     path.join(__dirname, 'node_modules/wix-style-react'),
-                    path.join(__dirname, 'node_modules/bootstrap-sass')
+                    // path.join(__dirname, 'node_modules/bootstrap-sass')
                 ],
                 use: [
                     'style-loader',
