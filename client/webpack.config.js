@@ -1,8 +1,12 @@
 const path = require('path');
-const { StylableWebpackPlugin } = require('@stylable/webpack-plugin');
+const {StylableWebpackPlugin} = require('@stylable/webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 module.exports = {
-    mode: 'development',
+    // mode: 'development',
+    mode: isDevelopment ? 'development' : 'production',
     devtool: 'source-map',
     module: {
         rules: [
@@ -10,13 +14,17 @@ module.exports = {
                 test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
                 use: [
                     {
-                        loader: 'url-loader',
+                        loader: 'url-loader'
                     }
                 ]
             },
             {
                 test: /\.tsx?$/,
-                loader: 'ts-loader',
+                include: path.join(__dirname, 'src'),
+                use: [
+                    isDevelopment && {loader: 'babel-loader', options: {plugins: ['react-refresh/babel']}},
+                    'awesome-typescript-loader'
+                ].filter(Boolean)
             },
             {
                 test: /\.scss$/,
@@ -45,17 +53,17 @@ module.exports = {
                         options: {
                             sourceMap: true
                         }
-                    },
-                ],
-            },
-        ],
+                    }
+                ]
+            }
+        ]
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.mjs', '.js', '.json'],
+        extensions: ['.ts', '.tsx', '.mjs', '.js', '.json']
     },
     plugins: [
-    new StylableWebpackPlugin({
-        experimentalHMR: true
-    }),
-    new HtmlWebpackPlugin({ title: 'Stylable App' })],
+        new StylableWebpackPlugin(),
+        new HtmlWebpackPlugin({title: 'Stylable App'}),
+        isDevelopment && new ReactRefreshWebpackPlugin()
+    ].filter(Boolean)
 };
