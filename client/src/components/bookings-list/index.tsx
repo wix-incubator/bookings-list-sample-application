@@ -60,7 +60,7 @@ export default class BookingsList extends React.Component<BookingsListProps> {
     _getBookingColumns = () => {
         return [
             {title: 'Booking Time', render: row => <Highlighter>{row.name}</Highlighter>},
-            {title: 'Client Name', render: row => <Highlighter>{row.name}</Highlighter>},
+            {title: 'Client Name', render: row => <Highlighter>{row.booking.formInfo.contactDetails.firstName} {row.booking.formInfo.contactDetails.lastName}</Highlighter>},
             {title: 'Service & Session', render: row => <Highlighter>{row.name}</Highlighter>},
             {title: 'Staff', render: row => <Highlighter>{row.booking.bookedResources.map(resource => resource.name)}</Highlighter>},
             {title: 'Booking & Attendance', render: row => <Highlighter>{row.name}</Highlighter>},
