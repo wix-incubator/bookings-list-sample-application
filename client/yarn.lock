@@ -7023,6 +7023,11 @@ wix-ui-icons-common@^2.0.0, wix-ui-icons-common@^2.0.202:
   version "2.0.238"
   resolved "https://registry.yarnpkg.com/wix-ui-icons-common/-/wix-ui-icons-common-2.0.238.tgz#9a9471b7c14b431c66cecb32c200bd4f214ec5f7"
 
+wix-ui-icons-common@^2.0.241:
+  version "2.0.241"
+  resolved "https://registry.yarnpkg.com/wix-ui-icons-common/-/wix-ui-icons-common-2.0.241.tgz#f0681194c245f71ededbdec787b3f10a589862a7"
+  integrity sha512-k1FSyg14nmUTk7pSgzqkCKpCbJY7IYPsntCdLnjygQu+wul1Dxv/JzTQlwQK7pzJv9j6iG1jC7Q2MCNPhnyztQ==
+
 wix-ui-test-utils@^1.0.151, wix-ui-test-utils@^1.0.172:
   version "1.0.172"
   resolved "https://registry.yarnpkg.com/wix-ui-test-utils/-/wix-ui-test-utils-1.0.172.tgz#492ab6d5ac93a6e94e1a3b3c81cbf65566bbef61"

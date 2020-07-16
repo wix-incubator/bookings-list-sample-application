@@ -31,7 +31,8 @@
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0",
     "uuid": "^8.2.0",
-    "wix-style-react": "8.18.0"
+    "wix-style-react": "8.18.0",
+    "wix-ui-icons-common": "^2.0.241"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
