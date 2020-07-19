@@ -2,6 +2,8 @@ const path = require('path');
 const {StylableWebpackPlugin} = require('@stylable/webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
@@ -69,6 +71,7 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.mjs', '.js', '.json']
     },
     plugins: [
+        new Dotenv(),
         new StylableWebpackPlugin(),
         new HtmlWebpackPlugin({title: 'Stylable App'}),
         isDevelopment && new ReactRefreshWebpackPlugin()
