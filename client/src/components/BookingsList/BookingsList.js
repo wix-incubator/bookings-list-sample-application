@@ -1,17 +1,46 @@
 import React, {ReactElement} from 'react';
 import {st, classes} from './style.st.css';
-import {Highlighter, Page, Table, Card, TableToolbar, Dropdown, CalendarPanel, CalendarPanelFooter, Popover, PopoverMenu, Input, IconButton} from 'wix-style-react';
-import CalendarPanelDatePicker from '../calendar-panel-date-picker';
+import {Highlighter, Page, Table, Card, TableToolbar, Dropdown} from 'wix-style-react';
+import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
+import {addDays} from '../../utils';
 
 export interface BookingsListProps {
     bookingEntries: Array<Record<any, any>>;
     onFilterChanged: (value) => any;
 }
 
+function getDefaultPresets() {
+    return [
+        {
+            id: 1,
+            selectedDays: {
+                from: addDays(-30),
+                to: new Date()
+            },
+            value: 'Last 30 Days'
+        }, {
+            id: 2,
+            selectedDays: {
+                from: addDays(-7),
+                to: new Date()
+            },
+            value: 'Last 7 Days'
+        }
+    ];
+}
+
 export default class BookingsList extends React.Component<BookingsListProps> {
 
     _renderBookingsListHeader = (): string => {
         return 'Booking List';
+    };
+
+    _getCalendarPanelDatePickerProps = () => {
+        return {
+            primaryActionOnClick: (value) => console.log({value}),
+            dateFormat: 'MMM DD, YYYY',
+            presets: getDefaultPresets()
+        };
     };
 
     _renderBookingsListToolbar = (): ReactElement => {
@@ -28,23 +57,21 @@ export default class BookingsList extends React.Component<BookingsListProps> {
                         <TableToolbar.Item>
                             <TableToolbar.Label>
                                 <CalendarPanelDatePicker
-                                    primaryActionOnClick={(selectedDays) => console.error({selectedDays})}
+                                    {...this._getCalendarPanelDatePickerProps()}
                                 />
                             </TableToolbar.Label>
                         </TableToolbar.Item>
                         <TableToolbar.Item>
                             <TableToolbar.Label>
-                                        <span>
-                                        <Dropdown
-                                            placeholder={'All Booking Statuses'}
-                                            options={filterOptions}
-                                            selectedId={undefined}
-                                            onSelect={selectedOption =>
-                                                this.setState({filterId: selectedOption.id})
-                                            }
-                                            roundInput
-                                        />
-                                        </span>
+                                <Dropdown
+                                    placeholder={'All Booking Statuses'}
+                                    options={filterOptions}
+                                    selectedId={undefined}
+                                    onSelect={selectedOption =>
+                                        this.setState({filterId: selectedOption.id})
+                                    }
+                                    roundInput
+                                />
                             </TableToolbar.Label>
                         </TableToolbar.Item>
                     </TableToolbar.ItemGroup>
