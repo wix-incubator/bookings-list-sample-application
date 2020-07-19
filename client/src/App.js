@@ -1,12 +1,9 @@
 import React from 'react';
 import {st, classes} from './app.st.css';
-import Main from './views/main';
+import Main from './views/Main';
 
-export interface AppProps {
-    className?: string;
-}
 
-export const App: React.FC<AppProps> = ({className}) => {
+export const App = ({className}) => {
     return (
         <main className={st(classes.root, className)}>
             <Main/>

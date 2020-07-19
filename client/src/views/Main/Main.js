@@ -26,7 +26,6 @@ export default class Main extends React.PureComponent {
 
     render() {
         const {bookingsListStore} = this.props;
-
         return (
             <div className={classes.mainContainer}>
                 <BookingsList

@@ -11,7 +11,7 @@
     "prettier",
     "prettier/react"
   ],
-  "plugins": ["react-hooks", "jsx-a11y"],
+  "plugins": ["react-hooks", "jsx-a11y", "react"],
   "settings": {
     "react": {
       "version": "detect"
