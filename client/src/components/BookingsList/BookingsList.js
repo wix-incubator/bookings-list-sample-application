@@ -1,13 +1,9 @@
-import React, {ReactElement} from 'react';
-import {st, classes} from './style.st.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import {st, classes} from './BookingsList.st.css';
 import {Highlighter, Page, Table, Card, TableToolbar, Dropdown} from 'wix-style-react';
 import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
 import {addDays} from '../../utils';
-
-export interface BookingsListProps {
-    bookingEntries: Array<Record<any, any>>;
-    onFilterChanged: (value) => any;
-}
 
 function getDefaultPresets() {
     return [
@@ -20,6 +16,7 @@ function getDefaultPresets() {
             value: 'Last 30 Days'
         }, {
             id: 2,
+
             selectedDays: {
                 from: addDays(-7),
                 to: new Date()
@@ -29,27 +26,37 @@ function getDefaultPresets() {
     ];
 }
 
-export default class BookingsList extends React.Component<BookingsListProps> {
+const getBookingStatuses = () => [
+    {id: 'CONFIRMED', value: 'Confirmed'},
+    {id: 'PENDING', value: 'Pending'}
+];
 
-    _renderBookingsListHeader = (): string => {
+export default class BookingsList extends React.Component {
+    state = {};
+
+    _renderBookingsListHeader = () => {
         return 'Booking List';
+    };
+
+    _onBookingDateRangeChanged = (value) => {
+        this.props.onFilterChanged('dateRange', value);
     };
 
     _getCalendarPanelDatePickerProps = () => {
         return {
-            primaryActionOnClick: (value) => console.log({value}),
+            primaryActionOnClick: this._onBookingDateRangeChanged,
             dateFormat: 'MMM DD, YYYY',
             presets: getDefaultPresets()
         };
     };
 
-    _renderBookingsListToolbar = (): ReactElement => {
-        const filterOptions = [
-            {id: 0, value: 'All'},
-            {id: 1, value: 'Red'},
-            {id: 2, value: 'Cyan'}
-        ];
+    _onBookingStatusChanged = (bookingStatus) => {
+        this.setState({bookingStatusId: bookingStatus.id});
 
+        this.props.onFilterChanged('status', bookingStatus.id);
+    };
+
+    _renderBookingsListToolbar = () => {
         return (
             <Card>
                 <TableToolbar>
@@ -64,13 +71,13 @@ export default class BookingsList extends React.Component<BookingsListProps> {
                         <TableToolbar.Item>
                             <TableToolbar.Label>
                                 <Dropdown
-                                    placeholder={'All Booking Statuses'}
-                                    options={filterOptions}
-                                    selectedId={undefined}
-                                    onSelect={selectedOption =>
-                                        this.setState({filterId: selectedOption.id})
-                                    }
                                     roundInput
+                                    placeholder={'All Booking Statuses'}
+                                    options={getBookingStatuses()}
+                                    selectedId={this.state.bookingStatusId}
+                                    onSelect={this._onBookingStatusChanged}
+                                    onClear={this._onBookingStatusChanged}
+                                    closeOnSelect={false} // not sure why this is working this way... bug in the library?
                                 />
                             </TableToolbar.Label>
                         </TableToolbar.Item>
@@ -96,7 +103,7 @@ export default class BookingsList extends React.Component<BookingsListProps> {
         ];
     };
 
-    render(): ReactElement {
+    render() {
 
         return (
             <Page>
@@ -115,3 +122,7 @@ export default class BookingsList extends React.Component<BookingsListProps> {
         );
     }
 }
+
+BookingsList.propTypes = {
+    bookingEntries: PropTypes.any
+};

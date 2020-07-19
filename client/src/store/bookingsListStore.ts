@@ -6,10 +6,12 @@ export interface BookingEntry {
 }
 
 export interface InitialState {
+    filters: Record<any, any>;
     bookingEntries: Array<BookingEntry>;
 }
 
 const initialState: InitialState = {
+    filters: {},
     bookingEntries: []
 };
 
@@ -19,6 +21,14 @@ class BookingsListStore {
     @action('Set booking entries')
     setBookingEntries = (bookingEntries: Array<BookingEntry>) => {
         this.store.bookingEntries = bookingEntries;
+    };
+
+    @action('update filters')
+    updateFilters = (name, value) => {
+        this.store.filters = {
+            ...this.store.filters,
+            [name]: value
+        };
     };
 }
 
