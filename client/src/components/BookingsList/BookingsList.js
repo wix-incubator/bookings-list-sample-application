@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {st, classes} from './BookingsList.st.css';
-import {Highlighter, Page, Table, Card, TableToolbar, Dropdown} from 'wix-style-react';
+import {Page, Table, Card, TableToolbar, Dropdown} from 'wix-style-react';
 import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
 import BookingsListColumn from '../BookingsListColumn';
 import {addDays} from '../../utils';
@@ -30,7 +30,12 @@ function getDefaultPresets() {
 
 const getBookingStatuses = () => [
     {id: 'CONFIRMED', value: 'Confirmed'},
-    {id: 'PENDING', value: 'Pending'}
+    {id: 'PENDING', value: 'Pending'},
+    {id: 'CANCELED', value: 'Cancelled'},
+    {id: 'PENDING_APPROVAL', value: 'Pending Approval'},
+    {id: 'PENDING_CHECKOUT', value: 'Pending Checkout'},
+    {id: 'DECLINED', value: 'Declined'},
+    // {id: 'UNDEFINED', value: 'Undefined'}
 ];
 
 @observer

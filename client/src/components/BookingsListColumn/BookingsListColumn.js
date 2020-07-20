@@ -30,7 +30,7 @@ const PAYMENT_MAP = {
 };
 
 export default class BookingsListColumn extends React.Component {
-    static BookingTime = ({data: {booking}}) => {
+    static BookingTime = ({data: {booking = {}}}) => {
         return (
             <div className={st(classes.columnDisplayContainer)}>
                 <ColumnText>Booking Time</ColumnText>
@@ -40,24 +40,27 @@ export default class BookingsListColumn extends React.Component {
     };
 
     static ClientName = ({data: {booking}}) => {
-        const {formInfo} = booking;
-        const {contactDetails, paymentSelection} = formInfo;
+        const {formInfo = {}} = booking;
+        const {contactDetails = {}, paymentSelection = []} = formInfo;
         // TODO: extract guests from paymentSelection (if numberOfParticipants > 1)
         //  unsure how to handle it tho since paymentSelection is an array
+        const numberOfParticipants = paymentSelection.length ? paymentSelection[0].numberOfParticipants : 1;
+
         return (
             <div className={st(classes.columnDisplayContainer)}>
                 <ColumnText>{contactDetails.firstName} {contactDetails.lastName}</ColumnText>
+                {numberOfParticipants > 1 ? <ColumnText size="tiny">+ {numberOfParticipants - 1} Guests</ColumnText> : null}
             </div>
         );
     };
 
     static ServiceAndSession = ({services, data: {booking}}) => {
-        const {bookedEntity} = booking;
+        const {bookedEntity = {}} = booking;
         const service = services[bookedEntity.serviceId];
         if (!service) {
             return null;
         }
-        const {singleSession} = bookedEntity;
+        const {singleSession = {}} = bookedEntity;
 
         return (
             <div className={st(classes.columnDisplayContainer)}>
@@ -70,7 +73,7 @@ export default class BookingsListColumn extends React.Component {
     };
 
     static Staff = ({staff, data: {booking}}) => {
-        const {bookedResources} = booking;
+        const {bookedResources = []} = booking;
 
         return (
             <div className={st(classes.columnDisplayContainer)}>
@@ -94,10 +97,11 @@ export default class BookingsListColumn extends React.Component {
     };
 
     static Payment = observer(({data: {booking, focused}}) => {
-        const {paymentDetails} = booking;
+        const {paymentDetails = {}} = booking;
         const {state} = paymentDetails;
         const paymentInfo = PAYMENT_MAP[state] || {};
-        const {balance, balance: {finalPrice}} = paymentDetails;
+        const {balance = {}} = paymentDetails;
+        const {finalPrice = {}} = balance;
         const {amountReceived} = balance;
         const {amount} = finalPrice;
         return (
@@ -105,8 +109,8 @@ export default class BookingsListColumn extends React.Component {
                 <ColumnText>
                     {getSymbolFromCurrency(finalPrice.currency)} {state === 'COMPLETE' ? amount : (amount - amountReceived)} {paymentInfo.name}
                 </ColumnText>
-                {focused ? <BookingsListColumn.PaymentDetailsTooltip data={paymentDetails}/> : null}
-                {/*<BookingsListColumn.PaymentDetailsTooltip data={paymentDetails}/>*/}
+                {/*{focused ? <BookingsListColumn.PaymentDetailsTooltip data={paymentDetails}/> : null}*/}
+                <BookingsListColumn.PaymentDetailsTooltip data={paymentDetails}/>
             </div>
         );
     });
@@ -128,7 +132,7 @@ export default class BookingsListColumn extends React.Component {
         const normalTextStyle = {fontWeight: 'normal', fontSize: '12px', color: 'white'};
 
         const paymentContent = (
-            <div className={st(classes.columnDisplayContainer)}>
+            <div className={st(classes.columnDisplayContainer, classes.paymentContent)}>
                 <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
                     <ColumnText style={boldedTextStyle}>Booking Platform</ColumnText>
                     <ColumnText style={normalTextStyle}>Website</ColumnText>
@@ -145,7 +149,7 @@ export default class BookingsListColumn extends React.Component {
         );
 
         return (
-            <Tooltip onShow={setFocused} onHide={setUnfocused} content={paymentContent} size="medium">
+            <Tooltip maxWidth={-1} className={st(classes.paymentDetailsTooltip)} onShow={setFocused} onHide={setUnfocused} content={paymentContent} size="medium">
                 <StatusAlert size={18} className={st(classes.paymentDetailsTooltipIcon, isFocused ? classes.paymentDetailsTooltipIconFocused : '')}/>
             </Tooltip>
         );

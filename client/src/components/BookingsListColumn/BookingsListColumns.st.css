@@ -16,6 +16,17 @@
 
 }
 
+.paymentDetailsTooltip {
+
+}
+
+.paymentContent {
+    width: auto;
+    /*border: 3px solid yellow;*/
+    margin: 0;
+    padding: 0;
+}
+
 .paymentDetailsTooltipIcon {
     margin: 0 10px;
     border-radius: 50%;
