@@ -36,16 +36,3 @@ export default class Main extends React.PureComponent {
         );
     }
 }
-
-// export const Main = inject('bookingsListStore')(observer((props) => {
-//     const {bookingsListStore} = props;
-//     console.logx({props});
-//     return (
-//         <div className={classes.mainContainer}>
-//             <BookingsList
-//                 bookingEntries={mock.bookingsEntries}
-//                 onFilterChanged={bookingsListStore.updateFilters}
-//             />
-//         </div>
-//     );
-// }));

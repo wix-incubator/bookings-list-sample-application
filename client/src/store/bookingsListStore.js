@@ -1,16 +1,6 @@
 import {observable, action} from 'mobx';
 
-export interface BookingEntry {
-    id?: string;
-    title: string;
-}
-
-export interface InitialState {
-    filters: Record<any, any>;
-    bookingEntries: Array<BookingEntry>;
-}
-
-const initialState: InitialState = {
+const initialState = {
     filters: {},
     bookingEntries: []
 };
@@ -19,7 +9,7 @@ class BookingsListStore {
     @observable store = initialState;
 
     @action('Set booking entries')
-    setBookingEntries = (bookingEntries: Array<BookingEntry>) => {
+    setBookingEntries = (bookingEntries) => {
         this.store.bookingEntries = bookingEntries;
     };
 
