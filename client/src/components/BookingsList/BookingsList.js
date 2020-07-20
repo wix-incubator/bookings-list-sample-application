@@ -32,10 +32,20 @@ const getBookingStatuses = () => [
 ];
 
 export default class BookingsList extends React.Component {
-    state = {};
+    _renderBookingsListHeaderTitle = () => {
+        const {metadata} = this.props;
+        return (
+            <div>
+                <h4 className={st(classes.title)}>Booking List</h4>
+                {metadata ? <h4 className={st(classes.title, classes.amount)}>{metadata.totalCount}</h4> : null}
+            </div>
+        );
+    };
 
-    _renderBookingsListHeader = () => {
-        return 'Booking List';
+    _renderBookingsListHeaderSubtitle = () => {
+        return (
+            <label>Ut placet, inquam tum dicere exorsus est laborum et fortibus.</label>
+        );
     };
 
     _onBookingDateRangeChanged = (value) => {
@@ -43,20 +53,22 @@ export default class BookingsList extends React.Component {
     };
 
     _getCalendarPanelDatePickerProps = () => {
+        const {filters} = this.props;
         return {
             primaryActionOnClick: this._onBookingDateRangeChanged,
             dateFormat: 'MMM DD, YYYY',
-            presets: getDefaultPresets()
+            presets: getDefaultPresets(),
+            value: filters.dateRange
         };
     };
 
     _onBookingStatusChanged = (bookingStatus) => {
-        this.setState({bookingStatusId: bookingStatus.id});
-
         this.props.onFilterChanged('status', bookingStatus.id);
     };
 
     _renderBookingsListToolbar = () => {
+        const {filters} = this.props;
+
         return (
             <Card>
                 <TableToolbar>
@@ -74,7 +86,7 @@ export default class BookingsList extends React.Component {
                                     roundInput
                                     placeholder={'All Booking Statuses'}
                                     options={getBookingStatuses()}
-                                    selectedId={this.state.bookingStatusId}
+                                    selectedId={filters.status}
                                     onSelect={this._onBookingStatusChanged}
                                     onClear={this._onBookingStatusChanged}
                                     closeOnSelect={false} // not sure why this is working this way... bug in the library?
@@ -107,7 +119,7 @@ export default class BookingsList extends React.Component {
 
         return (
             <Page>
-                <Page.Header title={this._renderBookingsListHeader()}/>
+                <Page.Header title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
                 <Page.Content>
                     {this._renderBookingsListToolbar()}
                     <Table
@@ -124,5 +136,9 @@ export default class BookingsList extends React.Component {
 }
 
 BookingsList.propTypes = {
-    bookingEntries: PropTypes.any
+    bookingEntries: PropTypes.arrayOf(PropTypes.shape({
+        booking: PropTypes.object
+    })),
+    metadata: PropTypes.object,
+    filters: PropTypes.object
 };

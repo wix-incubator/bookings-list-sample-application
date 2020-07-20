@@ -8,7 +8,7 @@ import mock from './bookingEntriesMock.json';
 
 @inject('bookingsListStore')
 @observer
-export default class Main extends React.PureComponent {
+export default class Main extends React.Component {
 
     componentDidMount() {
         this._onFiltersChanged('dateRange', getDefaultValue());
@@ -22,15 +22,39 @@ export default class Main extends React.PureComponent {
         } else {
             bookingsListStore.updateFilters(name, value);
         }
+
+        bookingsListStore.fetchData();
+    };
+
+    _getFilters = () => {
+        const {bookingsListStore} = this.props;
+        const {filters} = bookingsListStore.store;
+
+        const dateRange = {};
+        if (filters.startTime) {
+            dateRange.from = filters.startTime;
+        }
+        if (filters.endTime) {
+            dateRange.to = filters.endTime;
+        }
+
+        return {
+            status: filters.status,
+            dateRange
+        };
     };
 
     render() {
         const {bookingsListStore} = this.props;
+        const {bookingsEntries, metadata} = bookingsListStore.store;
+
         return (
             <div className={classes.mainContainer}>
                 <BookingsList
-                    bookingEntries={mock.bookingsEntries}
+                    metadata={metadata}
+                    bookingEntries={bookingsEntries}
                     onFilterChanged={this._onFiltersChanged}
+                    filters={this._getFilters()}
                 />
             </div>
         );
