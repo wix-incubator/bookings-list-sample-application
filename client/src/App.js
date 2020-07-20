@@ -1,5 +1,5 @@
 import React from 'react';
-import {st, classes} from './app.st.css';
+import {st, classes} from './App.st.css';
 import Main from './views/Main';
 
 
