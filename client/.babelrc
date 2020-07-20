@@ -5,6 +5,8 @@
   ],
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    ["@babel/plugin-proposal-class-properties"]
+    ["@babel/plugin-proposal-class-properties"],
+    ["@babel/plugin-proposal-export-default-from"],
+    ["@babel/transform-runtime"]
   ]
 }
