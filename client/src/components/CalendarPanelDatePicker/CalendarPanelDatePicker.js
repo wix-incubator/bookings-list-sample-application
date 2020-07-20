@@ -5,7 +5,7 @@ import {CalendarPanel, CalendarPanelFooter, Input, Popover} from 'wix-style-reac
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
 import DateAndTime from 'wix-ui-icons-common/DateAndTime';
-import {addDays, noop} from '../../utils';
+import {addDays, noop, objectsAreEqual} from '../../utils';
 
 export function getDefaultValue() {
     return {
@@ -51,6 +51,20 @@ export default class CalendarPanelDatePicker extends React.PureComponent {
             previousValue: value,
             isOpen
         };
+    }
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        if (!objectsAreEqual(prevProps.value, this.props.value)) {
+            return {value: this.props.value};
+        }
+
+        return null;
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (snapshot && snapshot.value) {
+            this.setState({value: snapshot.value, previousValue: snapshot.value});
+        }
     }
 
     openCalendar = () => {
