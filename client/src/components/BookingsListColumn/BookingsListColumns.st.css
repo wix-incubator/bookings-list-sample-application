@@ -1,0 +1,33 @@
+.columnDisplayContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.rowDisplayContainer {
+    display: flex;
+    align-items: center;
+}
+
+.staffContainer {
+
+}
+
+.serviceAndSession {
+
+}
+
+.paymentDetailsTooltipIcon {
+    margin: 0 10px;
+    border-radius: 50%;
+    background: white;
+    color: #3899ec;
+}
+
+.paymentDetailsTooltipIconFocused {
+    background: #3899ec;
+    color: white;
+}
+
+.paymentContentSection {
+    margin: 5px 0;
+}

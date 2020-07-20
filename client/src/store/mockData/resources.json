@@ -1,0 +1,228 @@
+{
+  "resources": [
+    {
+      "id": "1f0c3cee-7636-40d5-b2b1-17dc41c91282",
+      "name": "asdasd",
+      "email": "aasd@asdasd.com",
+      "tags": [
+        "staff"
+      ],
+      "images": [],
+      "schedules": [
+        {
+          "id": "1b23f7be-819c-42ce-bec6-f5b383b44cb1",
+          "scheduleOwnerId": "1f0c3cee-7636-40d5-b2b1-17dc41c91282",
+          "timeZone": "Asia/Jerusalem",
+          "intervals": [],
+          "tags": [],
+          "availability": {
+            "start": "2020-06-22T21:00:00Z",
+            "linkedSchedules": [
+              {
+                "scheduleId": "dfb200b3-a0eb-4892-be86-bffc7a1bf47e",
+                "transparency": "FREE",
+                "scheduleOwnerId": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d"
+              }
+            ]
+          },
+          "totalNumberOfParticipants": 0,
+          "participants": [],
+          "status": "CREATED",
+          "created": "2020-06-22T21:01:52.531Z",
+          "updated": "2020-06-22T21:01:52.531Z",
+          "version": 0,
+          "inheritedFields": [
+            "timeZone"
+          ]
+        }
+      ],
+      "status": "CREATED"
+    },
+    {
+      "id": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d",
+      "name": "business",
+      "tags": [
+        "business"
+      ],
+      "images": [],
+      "schedules": [
+        {
+          "id": "dfb200b3-a0eb-4892-be86-bffc7a1bf47e",
+          "scheduleOwnerId": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d",
+          "firstSessionStart": "2020-04-14T08:10:17.685Z",
+          "timeZone": "Asia/Jerusalem",
+          "intervals": [
+            {
+              "id": "0adec7eb-4529-494f-9581-dde5ac1ba6cb",
+              "start": "2020-04-07T08:10:17.685Z",
+              "interval": {
+                "daysOfWeek": "MON",
+                "hourOfDay": 10,
+                "minuteOfHour": 0,
+                "duration": 480
+              },
+              "frequency": {
+                "repetition": 1
+              },
+              "affectedSchedules": [],
+              "intervalType": "UNDEFINED"
+            },
+            {
+              "id": "d51e48b5-047a-4033-81e0-7ae369bac85c",
+              "start": "2020-04-07T08:10:17.685Z",
+              "interval": {
+                "daysOfWeek": "TUE",
+                "hourOfDay": 10,
+                "minuteOfHour": 0,
+                "duration": 480
+              },
+              "frequency": {
+                "repetition": 1
+              },
+              "affectedSchedules": [],
+              "intervalType": "UNDEFINED"
+            },
+            {
+              "id": "25c96598-789f-4ea3-b4bd-1478da47d0d7",
+              "start": "2020-04-07T08:10:17.685Z",
+              "interval": {
+                "daysOfWeek": "WED",
+                "hourOfDay": 10,
+                "minuteOfHour": 0,
+                "duration": 480
+              },
+              "frequency": {
+                "repetition": 1
+              },
+              "affectedSchedules": [],
+              "intervalType": "UNDEFINED"
+            },
+            {
+              "id": "1db7e080-7004-4827-8181-b407ff9bbdd4",
+              "start": "2020-04-07T08:10:17.685Z",
+              "interval": {
+                "daysOfWeek": "THU",
+                "hourOfDay": 10,
+                "minuteOfHour": 0,
+                "duration": 480
+              },
+              "frequency": {
+                "repetition": 1
+              },
+              "affectedSchedules": [],
+              "intervalType": "UNDEFINED"
+            },
+            {
+              "id": "1b91ea3f-f4fa-454a-beb3-f48ec9530860",
+              "start": "2020-04-07T08:10:17.685Z",
+              "interval": {
+                "daysOfWeek": "FRI",
+                "hourOfDay": 10,
+                "minuteOfHour": 0,
+                "duration": 480
+              },
+              "frequency": {
+                "repetition": 1
+              },
+              "affectedSchedules": [],
+              "intervalType": "UNDEFINED"
+            }
+          ],
+          "tags": [],
+          "totalNumberOfParticipants": 0,
+          "participants": [],
+          "status": "CREATED",
+          "created": "2019-08-15T14:23:16.207Z",
+          "updated": "2020-04-07T08:10:17.689Z",
+          "version": 8,
+          "inheritedFields": [
+            "timeZone"
+          ]
+        }
+      ],
+      "status": "UPDATED"
+    },
+    {
+      "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+      "name": "Staff Member #1",
+      "email": "info@mysite.com",
+      "phone": "123-456-7890",
+      "tags": [
+        "staff",
+        "defaultStaff"
+      ],
+      "images": [],
+      "schedules": [
+        {
+          "id": "b1dd49dc-5b66-4db8-a918-84372e194f2e",
+          "scheduleOwnerId": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+          "firstSessionStart": "2020-04-15T11:00:00Z",
+          "lastSessionEnd": "2020-04-16T10:00:00Z",
+          "timeZone": "Asia/Jerusalem",
+          "intervals": [],
+          "tags": [],
+          "availability": {
+            "start": "2020-04-14T08:10:17.624Z",
+            "linkedSchedules": [
+              {
+                "scheduleId": "dfb200b3-a0eb-4892-be86-bffc7a1bf47e",
+                "transparency": "FREE",
+                "scheduleOwnerId": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d"
+              }
+            ]
+          },
+          "totalNumberOfParticipants": 0,
+          "participants": [],
+          "status": "CREATED",
+          "created": "2019-08-15T14:23:16.858Z",
+          "updated": "2020-04-15T14:20:32.265Z",
+          "version": 9,
+          "inheritedFields": [
+            "timeZone"
+          ]
+        }
+      ],
+      "status": "CREATED"
+    },
+    {
+      "id": "ec9ad76a-0a9e-4787-b534-e42eb5b6f2f8",
+      "name": "Staff Member #2",
+      "email": "aa@a.com",
+      "tags": [
+        "staff"
+      ],
+      "images": [],
+      "schedules": [
+        {
+          "id": "b897a18e-d20f-4ecc-abe3-830c0ecff2ac",
+          "scheduleOwnerId": "ec9ad76a-0a9e-4787-b534-e42eb5b6f2f8",
+          "firstSessionStart": "2020-04-15T11:00:00Z",
+          "lastSessionEnd": "2020-04-15T17:00:00Z",
+          "timeZone": "Asia/Jerusalem",
+          "intervals": [],
+          "tags": [],
+          "availability": {
+            "start": "2020-04-14T21:00:00Z",
+            "linkedSchedules": [
+              {
+                "scheduleId": "dfb200b3-a0eb-4892-be86-bffc7a1bf47e",
+                "transparency": "FREE",
+                "scheduleOwnerId": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d"
+              }
+            ]
+          },
+          "totalNumberOfParticipants": 0,
+          "participants": [],
+          "status": "CREATED",
+          "created": "2020-04-15T14:00:58.946Z",
+          "updated": "2020-04-15T14:09:45.571Z",
+          "version": 1,
+          "inheritedFields": [
+            "timeZone"
+          ]
+        }
+      ],
+      "status": "CREATED"
+    }
+  ]
+}

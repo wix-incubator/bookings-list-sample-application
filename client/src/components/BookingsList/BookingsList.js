@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import {st, classes} from './BookingsList.st.css';
 import {Highlighter, Page, Table, Card, TableToolbar, Dropdown} from 'wix-style-react';
 import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
+import BookingsListColumn from '../BookingsListColumn';
 import {addDays} from '../../utils';
+import {observer} from 'mobx-react';
 
 function getDefaultPresets() {
     return [
@@ -31,6 +33,7 @@ const getBookingStatuses = () => [
     {id: 'PENDING', value: 'Pending'}
 ];
 
+@observer
 export default class BookingsList extends React.Component {
     _renderBookingsListHeaderTitle = () => {
         const {metadata} = this.props;
@@ -104,19 +107,20 @@ export default class BookingsList extends React.Component {
     };
 
     _getBookingColumns = () => {
+        const {services, staff} = this.props;
         return [
-            {title: 'Booking Time', render: row => <Highlighter>{row.name}</Highlighter>},
-            {title: 'Client Name', render: row => <Highlighter>{row.booking.formInfo.contactDetails.firstName} {row.booking.formInfo.contactDetails.lastName}</Highlighter>},
-            {title: 'Service & Session', render: row => <Highlighter>{row.name}</Highlighter>},
-            {title: 'Staff', render: row => <Highlighter>{row.booking.bookedResources.map(resource => resource.name)}</Highlighter>},
-            {title: 'Booking & Attendance', render: row => <Highlighter>{row.name}</Highlighter>},
-            {title: 'Payment Status', render: row => <Highlighter>{row.name}</Highlighter>},
-            {title: 'Payment', render: row => <Highlighter>{row.name}</Highlighter>}
+            {title: 'Booking Time', render: row => <BookingsListColumn.BookingTime data={row}/>},
+            {title: 'Client Name', render: row => <BookingsListColumn.ClientName data={row}/>},
+            {title: 'Service & Session', render: row => <BookingsListColumn.ServiceAndSession services={services} data={row}/>},
+            {title: 'Staff', render: row => <BookingsListColumn.Staff staff={staff} data={row}/>},
+            {title: 'Booking & Attendance', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
+            {title: 'Payment Status', render: row => <BookingsListColumn.PaymentStatus data={row}/>},
+            {title: 'Payment', render: row => <BookingsListColumn.Payment data={row}/>}
         ];
     };
 
     render() {
-
+        const {setRowFocused} = this.props;
         return (
             <Page>
                 <Page.Header title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
@@ -126,6 +130,9 @@ export default class BookingsList extends React.Component {
                         data={this._getBookingEntries()}
                         columns={this._getBookingColumns()}
                         showSelection={false}
+                        onRowClick={(row) => console.logx({row})}
+                        onMouseEnterRow={row => setRowFocused(row, true)}
+                        onMouseLeaveRow={row => setRowFocused(row, false)}
                     >
                         <Table.Content/>
                     </Table>
@@ -136,9 +143,12 @@ export default class BookingsList extends React.Component {
 }
 
 BookingsList.propTypes = {
+    services: PropTypes.object,
+    staff: PropTypes.object,
     bookingEntries: PropTypes.arrayOf(PropTypes.shape({
         booking: PropTypes.object
     })),
     metadata: PropTypes.object,
-    filters: PropTypes.object
+    filters: PropTypes.object,
+    setRowFocused: PropTypes.func
 };

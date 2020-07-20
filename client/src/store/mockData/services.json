@@ -1,0 +1,239 @@
+{
+  "services": [
+    {
+      "id": "180963ce-85ec-4f04-a9ec-6741ca673020",
+      "info": {
+        "name": "Gyrotonic",
+        "description": "Describe your class, group tour or event here. Tell people why they should join and what makes it a great experience. Include a few words on who it’s good for like customer age, experience, skill level etc.",
+        "images": [
+          {
+            "id": "84770f_1993f9fec17b4c3f96e67382f820dbd5.jpg",
+            "url": "84770f_1993f9fec17b4c3f96e67382f820dbd5.jpg",
+            "height": 899,
+            "width": 1348
+          }
+        ]
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": true,
+        "wixPayInPerson": true,
+        "custom": false,
+        "wixPaidPlan": true
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "7c351505-9172-46e1-b779-fdf3b049f66c"
+      ],
+      "customProperties": {
+        "order": "1",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 1
+    },
+    {
+      "id": "3c19f139-9b29-4141-8a5f-548bd588280f",
+      "info": {
+        "name": "Mat",
+        "description": "Describe your class, group tour or event here. Tell people why they should join and what makes it a great experience. Include a few words on who it’s good for like customer age, experience, skill level etc.",
+        "images": [
+          {
+            "id": "84770f_2ff68ec115b644a5805de7aef985af95.jpg",
+            "url": "84770f_2ff68ec115b644a5805de7aef985af95.jpg",
+            "height": 818,
+            "width": 1230
+          }
+        ]
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": false,
+        "wixPayInPerson": true,
+        "custom": false,
+        "wixPaidPlan": false
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "6cb2fd56-a280-48dd-8890-d6151ac00c52"
+      ],
+      "customProperties": {
+        "order": "2",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 2
+    },
+    {
+      "id": "3d4a3762-b43b-4f17-addd-b7a010825cf6",
+      "info": {
+        "name": "Reformer",
+        "description": "Describe your class, group tour or event here. Tell people why they should join and what makes it a great experience. Include a few words on who it’s good for like customer age, experience, skill level etc.",
+        "images": [
+          {
+            "id": "84770f_6dc4c4aab655411d962d8db71b92972c.jpg",
+            "url": "84770f_6dc4c4aab655411d962d8db71b92972c.jpg",
+            "height": 968,
+            "width": 1293
+          }
+        ]
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": true,
+        "wixPayInPerson": true,
+        "custom": false,
+        "wixPaidPlan": false
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "965bb2d6-be37-4a1a-b01b-d554e8073fd2"
+      ],
+      "customProperties": {
+        "order": "3",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 3
+    },
+    {
+      "id": "6a451864-174c-417a-b607-4dc90d9cd600",
+      "info": {
+        "name": "1x1 service",
+        "images": []
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        },
+        "bookingsApprovalPolicy": {
+          "isBusinessApprovalRequired": false,
+          "requestsAffectsAvailability": true
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": true,
+        "wixPayInPerson": false,
+        "custom": false,
+        "wixPaidPlan": false
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "33ac32ac-e495-4d9f-9fea-b533a2a93e5f"
+      ],
+      "customProperties": {
+        "order": "4",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 4
+    },
+    {
+      "id": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+      "info": {
+        "name": "eXtreme Pilates",
+        "images": [],
+        "tagLine": "eXtreme pilates workout"
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        },
+        "bookingsApprovalPolicy": {
+          "isBusinessApprovalRequired": false,
+          "requestsAffectsAvailability": true
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": true
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "3a01d840-54a5-49a7-ac46-c377a76f8dc4"
+      ],
+      "customProperties": {
+        "order": "5",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 5
+    }
+  ]
+}

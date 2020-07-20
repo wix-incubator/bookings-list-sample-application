@@ -1,17 +1,18 @@
 import React from 'react';
-import {st, classes} from './style.st.css';
+import {st, classes} from './Main.st.css';
 import BookingsList from '../../components/BookingsList';
 import {getDefaultValue} from '../../components/CalendarPanelDatePicker/CalendarPanelDatePicker';
 
 import {inject, observer} from 'mobx-react';
-import mock from './bookingEntriesMock.json';
 
 @inject('bookingsListStore')
 @observer
 export default class Main extends React.Component {
 
     componentDidMount() {
+        const {bookingsListStore} = this.props;
         this._onFiltersChanged('dateRange', getDefaultValue());
+        bookingsListStore.loadConstants();
     }
 
     _onFiltersChanged = (name, value) => {
@@ -46,15 +47,18 @@ export default class Main extends React.Component {
 
     render() {
         const {bookingsListStore} = this.props;
-        const {bookingsEntries, metadata} = bookingsListStore.store;
+        const {services, staff, bookingsEntries, metadata} = bookingsListStore.store;
 
         return (
             <div className={classes.mainContainer}>
                 <BookingsList
                     metadata={metadata}
+                    services={services}
+                    staff={staff}
                     bookingEntries={bookingsEntries}
                     onFilterChanged={this._onFiltersChanged}
                     filters={this._getFilters()}
+                    setRowFocused={bookingsListStore.setRowFocused}
                 />
             </div>
         );

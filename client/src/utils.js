@@ -1,5 +1,6 @@
 import {parse, stringify} from 'flatted/esm';
 import dequal from 'dequal';
+import {differenceInMinutes} from 'date-fns';
 
 /**
  * custom console.log for outputting mobx store variables
@@ -33,4 +34,10 @@ export const noop = () => {
  */
 export const objectsAreEqual = (o1, o2) => {
     return dequal(o1, o2);
+};
+
+export const getTimeDifference = (t1, t2) => {
+    const difference = Math.abs(differenceInMinutes(new Date(t1), new Date(t2)) / 60);
+
+    return Number.isInteger(difference) ? difference : parseFloat(difference).toFixed(2);
 };
