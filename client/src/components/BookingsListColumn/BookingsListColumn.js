@@ -14,6 +14,16 @@ const ColumnText = (props) => {
         <Text style={{color: '#32536a'}} {...props}/>
     );
 };
+const BOOKING_AND_ATTENDANCE_MAP = {};
+
+const PAYMENT_STATUS_MAP = {
+    UNSPECIFIED_PAYMENT_STATUS: {name: 'Unspecified Payment Status'},
+    NOT_PAID: {name: 'Not Paid'},
+    PAID: {name: 'Paid'},
+    PARTIALLY_REFUNDED: {name: 'Partially Refunded'},
+    FULLY_REFUNDED: {name: 'Fully Refunded'},
+    PENDING: {name: 'Pending'}
+};
 
 const PAYMENT_MAP = {
     UNDEFINED: {name: ''},
