@@ -118,8 +118,8 @@ export default class BookingsList extends React.Component {
     _getBookingColumns = () => {
         const {services, staff, filters, sort} = this.props;
         return [
-            {fieldName: 'created', title: 'Booking Time', render: row => <BookingsListColumn.BookingTime data={row}/>},
-            {fieldName: '', title: 'Client Name', render: row => <BookingsListColumn.ClientName data={row}/>},
+            {fieldName: 'created', sortable: true, title: 'Booking Time', render: row => <BookingsListColumn.BookingTime data={row}/>},
+            {fieldName: 'formInfo.contactDetails.firstName', sortable: true, title: 'Client Name', render: row => <BookingsListColumn.ClientName data={row}/>},
             {fieldName: '', title: 'Service & Session', render: row => <BookingsListColumn.ServiceAndSession services={services} data={row}/>},
             {fieldName: '', title: 'Staff', render: row => <BookingsListColumn.Staff staff={staff} data={row}/>},
             {fieldName: '', title: 'Booking & Attendance', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
@@ -128,7 +128,6 @@ export default class BookingsList extends React.Component {
         ].map(column => ({
             ...column,
             fieldName: `booking.${column.fieldName}`,
-            sortable: true,
             sortDescending: sort[`booking.${column.fieldName}`] && sort[`booking.${column.fieldName}`].order === 'DESC'
         }));
     };

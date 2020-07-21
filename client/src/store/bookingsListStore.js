@@ -101,6 +101,8 @@ class BookingsListStore {
      */
     @action('Update sort')
     updateSort = (fieldName) => {
+        // TODO: enable once sorting implemented on the API
+        return;
         const fieldNameSort = this.store.sort[fieldName];
         if (!fieldNameSort) {
             // first click => order by ASC

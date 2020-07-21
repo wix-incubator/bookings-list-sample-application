@@ -164,7 +164,7 @@ export default class BookingsListColumn extends React.Component {
                 }
                 <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
                     <ColumnText style={boldedTextStyle}>Payment Method & Details</ColumnText>
-                    <ColumnText style={normalTextStyle}>Find out where this value is taken from</ColumnText>
+                    <ColumnText style={normalTextStyle}>TODO: Find out where this value is taken from</ColumnText>
                 </div>
             </div>
         );
