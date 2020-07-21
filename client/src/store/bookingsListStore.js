@@ -3,7 +3,7 @@ import axiosInstance from '../network';
 import mockData from './mockData';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = false;
+const USE_MOCK = true;
 
 const initialState = {
     filters: {},

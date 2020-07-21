@@ -34,7 +34,7 @@ const getBookingStatuses = () => [
     {id: 'CANCELED', value: 'Cancelled'},
     {id: 'PENDING_APPROVAL', value: 'Pending Approval'},
     {id: 'PENDING_CHECKOUT', value: 'Pending Checkout'},
-    {id: 'DECLINED', value: 'Declined'},
+    {id: 'DECLINED', value: 'Declined'}
     // {id: 'UNDEFINED', value: 'Undefined'}
 ];
 
@@ -61,11 +61,11 @@ export default class BookingsList extends React.Component {
     };
 
     _getCalendarPanelDatePickerProps = () => {
-        const {filters} = this.props;
+        const {filters, calendarPresets} = this.props;
         return {
             primaryActionOnClick: this._onBookingDateRangeChanged,
             dateFormat: 'MMM DD, YYYY',
-            presets: getDefaultPresets(),
+            presets: calendarPresets || getDefaultPresets(),
             value: filters.dateRange
         };
     };
@@ -148,12 +148,12 @@ export default class BookingsList extends React.Component {
 }
 
 BookingsList.propTypes = {
-    services: PropTypes.object,
-    staff: PropTypes.object,
-    bookingEntries: PropTypes.arrayOf(PropTypes.shape({
-        booking: PropTypes.object
-    })),
-    metadata: PropTypes.object,
+    bookingEntries: PropTypes.arrayOf(PropTypes.shape({booking: PropTypes.object})),
+    calendarPresets: PropTypes.array,
     filters: PropTypes.object,
-    setRowFocused: PropTypes.func
+    metadata: PropTypes.object,
+    onFilterChanged: PropTypes.func,
+    services: PropTypes.object,
+    setRowFocused: PropTypes.func,
+    staff: PropTypes.object
 };
