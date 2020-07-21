@@ -47,7 +47,7 @@ export default class Main extends React.Component {
 
     render() {
         const {bookingsListStore} = this.props;
-        const {services, staff, bookingsEntries, metadata} = bookingsListStore.store;
+        const {loadingBookings, services, staff, bookingsEntries, metadata} = bookingsListStore.store;
 
         return (
             <div className={classes.mainContainer}>
@@ -59,6 +59,7 @@ export default class Main extends React.Component {
                     onFilterChanged={this._onFiltersChanged}
                     filters={this._getFilters()}
                     setRowFocused={bookingsListStore.setRowFocused}
+                    loading={loadingBookings}
                 />
             </div>
         );

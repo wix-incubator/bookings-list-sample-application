@@ -3,7 +3,7 @@ import axiosInstance from '../network';
 import mockData from './mockData';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 const initialState = {
     filters: {},
@@ -11,7 +11,8 @@ const initialState = {
     resources: {},
     staff: {},
     bookingsEntries: [],
-    metadata: null
+    metadata: null,
+    loadingBookings: false
 };
 
 const getData = async (endpoint, config) => {
@@ -24,6 +25,11 @@ const getData = async (endpoint, config) => {
 
 class BookingsListStore {
     @observable store = initialState;
+
+    @action('Set loading bookings')
+    setLoadingBookings = (loadingBookings) => {
+        this.store.loadingBookings = loadingBookings;
+    };
 
     @action('Set booking entries')
     setBookingsEntries = (bookingsEntries) => {
@@ -69,7 +75,6 @@ class BookingsListStore {
             const resources = result[1].data.resources;
             this.setServices(services);
             this.setResources(resources);
-
         } catch (e) {
             console.log({e});
         }
@@ -109,6 +114,7 @@ class BookingsListStore {
             }
         };
 
+        this.setLoadingBookings(true);
         try {
             // const result = await axiosInstance.get('/bookings', requestConfig);
             const result = await getData('bookings', requestConfig);
@@ -118,6 +124,7 @@ class BookingsListStore {
         } catch (e) {
 
         }
+        this.setLoadingBookings(false);
     };
 
     @action('Set row focused')
