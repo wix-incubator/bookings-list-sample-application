@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "Stylable App",
+  "description": "Wix Bookings List",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist",

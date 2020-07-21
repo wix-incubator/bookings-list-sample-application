@@ -4,7 +4,7 @@ import mockData from './mockData';
 import {SORT_ORDER} from './constants';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 const initialState = {
     filters: {},
@@ -15,7 +15,7 @@ const initialState = {
     staff: {},
     bookingsEntries: [],
     metadata: null,
-    loadingBookings: false
+    loadingBookings: true
 };
 
 const getData = async (endpoint, config) => {
@@ -35,8 +35,13 @@ class BookingsListStore {
     };
 
     @action('Set booking entries')
-    setBookingsEntries = (bookingsEntries) => {
-        this.store.bookingsEntries = bookingsEntries.map(bookingsEntry => ({...bookingsEntry, focused: false}));
+    setBookingsEntries = (bookingsEntries, concatenate) => {
+        const mappedData = bookingsEntries.map(bookingsEntry => ({...bookingsEntry, focused: false}));
+        if (concatenate) {
+            this.store.bookingsEntries.push(...mappedData);
+        } else {
+            this.store.bookingsEntries = mappedData;
+        }
     };
 
     @action('Set services')
@@ -175,7 +180,7 @@ class BookingsListStore {
     };
 
     @action('fetch data')
-    fetchData = async () => {
+    fetchData = async (concatenate = false) => {
         const {filters, sort, paging} = this.store;
         const requestConfig = {
             params: {
@@ -190,7 +195,7 @@ class BookingsListStore {
             // const result = await axiosInstance.get('/bookings', requestConfig);
             const result = await getData('bookings', requestConfig);
             const {data} = result;
-            this.setBookingsEntries(data.bookingsEntries);
+            this.setBookingsEntries(data.bookingsEntries, concatenate);
             this.setMetadata(data.metadata);
         } catch (e) {
 

@@ -7,6 +7,7 @@ import BookingsListColumn from '../BookingsListColumn';
 import {addDays} from '../../utils';
 import {observer} from 'mobx-react';
 
+
 function getDefaultPresets() {
     return [
         {
@@ -70,7 +71,11 @@ export default class BookingsList extends React.Component {
         };
     };
 
-    _onBookingStatusChanged = (bookingStatus) => {
+    _onBookingStatusChanged = (bookingStatus) =>{
+        const {filters} = this.props;
+        if (filters.status === bookingStatus.id) {
+            return;
+        }
         this.props.onFilterChanged('status', bookingStatus.id);
     };
 
@@ -152,14 +157,15 @@ export default class BookingsList extends React.Component {
         }
 
         return (
-            <div className={st(classes.centered, classes.emptyState)}>
-                <Text>No Records Found...</Text>
-            </div>
+            <Table.EmptyState
+                title="No Records Found..."
+            />
         );
     };
 
     render() {
         const {setRowFocused} = this.props;
+
         return (
             <Page>
                 <Page.Header title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
@@ -167,6 +173,7 @@ export default class BookingsList extends React.Component {
                     {this._renderBookingsListToolbar()}
                     <Table
                         showHeaderWhenEmpty
+                        infiniteScroll
                         data={this._getBookingEntries()}
                         columns={this._getBookingColumns()}
                         showSelection={false}
@@ -174,6 +181,8 @@ export default class BookingsList extends React.Component {
                         onMouseEnterRow={row => setRowFocused(row, true)}
                         onMouseLeaveRow={row => setRowFocused(row, false)}
                         onSortClick={this._onBookingSortChanged}
+                        loadMore={this.props.loadMore}
+                        hasMore={this.props.hasMore}
                     >
                         <Table.Content/>
                         {this._renderLoader()}
@@ -186,13 +195,17 @@ export default class BookingsList extends React.Component {
 }
 
 BookingsList.propTypes = {
-    bookingEntries: PropTypes.arrayOf(PropTypes.shape({booking: PropTypes.object})),
+    bookingEntries: PropTypes.array,
     calendarPresets: PropTypes.array,
     filters: PropTypes.object,
+    hasMore: PropTypes.bool,
+    loadMore: PropTypes.func,
+    loading: PropTypes.bool,
     metadata: PropTypes.object,
     onFilterChanged: PropTypes.func,
     onSortChanged: PropTypes.func,
     services: PropTypes.object,
     setRowFocused: PropTypes.func,
+    sort: PropTypes.object,
     staff: PropTypes.object
 };

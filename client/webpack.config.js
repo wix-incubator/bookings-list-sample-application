@@ -73,7 +73,7 @@ module.exports = {
     plugins: [
         new Dotenv(),
         new StylableWebpackPlugin(),
-        new HtmlWebpackPlugin({title: 'Stylable App'}),
+        new HtmlWebpackPlugin({title: 'Bookings List'}),
         isDevelopment && new ReactRefreshWebpackPlugin()
     ].filter(Boolean)
 };

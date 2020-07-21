@@ -51,6 +51,25 @@ export default class Main extends React.Component {
         };
     };
 
+    _hasMoreBookings = () => {
+        const {bookingsListStore} = this.props;
+        const {metadata, bookingsEntries} = bookingsListStore.store;
+
+        if (!metadata) {
+            return true;
+        }
+
+        return metadata.totalCount > bookingsEntries.length;
+    };
+
+    _loadMoreBookings = () => {
+        const {bookingsListStore} = this.props;
+        const {loadingBookings} = bookingsListStore.store;
+        if (!loadingBookings && this._hasMoreBookings()) {
+            bookingsListStore.fetchData(true);
+        }
+    };
+
     render() {
         const {bookingsListStore} = this.props;
         const {loadingBookings, services, staff, bookingsEntries, metadata, sort} = bookingsListStore.store;
@@ -68,6 +87,8 @@ export default class Main extends React.Component {
                     sort={sort}
                     setRowFocused={bookingsListStore.setRowFocused}
                     loading={loadingBookings}
+                    loadMore={this._loadMoreBookings}
+                    hasMore={this._hasMoreBookings()}
                 />
             </div>
         );
