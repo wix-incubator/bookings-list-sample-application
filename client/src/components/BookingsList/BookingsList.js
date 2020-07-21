@@ -183,6 +183,7 @@ export default class BookingsList extends React.Component {
                         onSortClick={this._onBookingSortChanged}
                         loadMore={this.props.loadMore}
                         hasMore={this.props.hasMore}
+                        loader={null}
                     >
                         <Table.Content/>
                         {this._renderLoader()}

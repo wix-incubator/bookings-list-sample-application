@@ -1,8 +1,8 @@
 import React, {useCallback, useState} from 'react';
-import {Text, Tooltip} from 'wix-style-react';
+import {Badge, BadgeSelect, Text, Tooltip} from 'wix-style-react';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 import {st, classes} from './BookingsListColumns.st.css';
-import {dayHourFormat, getTimeDifference} from '../../utils';
+import {dateOnlyFormat, dayHourFormat, getTimeDifference, timeOnlyFormat} from '../../utils';
 import {observer} from 'mobx-react';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import StatusAlert from 'wix-ui-icons-common/StatusAlert';
@@ -39,8 +39,8 @@ export default class BookingsListColumn extends React.Component {
     static BookingTime = ({data: {booking = {}}}) => {
         return (
             <div className={st(classes.columnDisplayContainer)}>
-                <ColumnText>Booking Time</ColumnText>
-                <ColumnText size="tiny">{formatDate(new Date(booking.created), dayHourFormat)}</ColumnText>
+                <ColumnText size="small">{formatDate(new Date(booking.created), dateOnlyFormat)}</ColumnText>
+                <ColumnText size="tiny">{formatDate(new Date(booking.created), timeOnlyFormat)}</ColumnText>
             </div>
         );
     };
@@ -99,9 +99,89 @@ export default class BookingsListColumn extends React.Component {
     };
 
     static BookingAndAttendance = ({data: {booking}}) => {
+        // TODO: implement real options
+        const options = [
+            {
+                id: '0',
+                skin: 'general',
+                text: 'general'
+            },
+            {
+                id: '1',
+                skin: 'standard',
+                text: 'standard'
+            },
+            {
+                id: '2',
+                skin: 'danger',
+                text: 'danger'
+            },
+            {
+                id: '3',
+                skin: 'success',
+                text: 'success'
+            },
+            {
+                id: '4',
+                skin: 'neutral',
+                text: 'neutral'
+            },
+            {
+                id: '5',
+                skin: 'neutralLight',
+                text: 'neutralLight'
+            },
+            {
+                id: '6',
+                skin: 'warning',
+                text: 'warning'
+            },
+            {
+                id: '7',
+                skin: 'warningLight',
+                text: 'warningLight'
+            },
+            {
+                id: '8',
+                skin: 'urgent',
+                text: 'urgent'
+            },
+            {
+                id: '9',
+                skin: 'neutralStandard',
+                text: 'neutralStandard'
+            },
+            {
+                id: '10',
+                skin: 'neutralSuccess',
+                text: 'neutralSuccess'
+            },
+            {
+                id: '11',
+                skin: 'neutralDanger',
+                text: 'neutralDanger'
+            },
+            {
+                id: '12',
+                skin: 'premium',
+                text: 'premium'
+            }
+        ];
 
+        // TODO: return this for "disabled" option
+        // return (
+        //     <Badge type="outlined" skin="general">Paid</Badge>
+        // );
 
-        return null;
+        return (
+            <BadgeSelect
+                selectedId={'0'}
+                disabled={true}
+                onSelect={() => {
+                }}
+                options={options}
+            />
+        );
     };
 
     static PaymentStatus = ({data: {booking}}) => {
