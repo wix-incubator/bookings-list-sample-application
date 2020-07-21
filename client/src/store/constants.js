@@ -10,3 +10,8 @@ export const HTTP_STATUS = {
     GONE: 410
 };
 
+
+export const SORT_ORDER = {
+    ASC: 'ASC',
+    DESC: 'DESC'
+};

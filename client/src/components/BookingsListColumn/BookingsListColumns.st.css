@@ -42,3 +42,8 @@
 .paymentContentSection {
     margin: 5px 0;
 }
+
+.platformIcon {
+    margin: 0 3px 0 0;
+    color: white;
+}

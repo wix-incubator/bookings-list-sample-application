@@ -2,6 +2,12 @@
 
 }
 
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .title {
     display: inline;
 }
@@ -9,4 +15,12 @@
 .amount {
     margin: 0 10px;
     color: #bbc6d1;
+}
+
+.tableLoader {
+    padding: 10px;
+}
+
+.emptyState {
+    padding: 10px;
 }

@@ -27,6 +27,12 @@ export default class Main extends React.Component {
         bookingsListStore.fetchData();
     };
 
+    _onSortChanged = (fieldName) => {
+        const {bookingsListStore} = this.props;
+        bookingsListStore.updateSort(fieldName);
+        bookingsListStore.fetchData();
+    };
+
     _getFilters = () => {
         const {bookingsListStore} = this.props;
         const {filters} = bookingsListStore.store;
@@ -47,7 +53,7 @@ export default class Main extends React.Component {
 
     render() {
         const {bookingsListStore} = this.props;
-        const {loadingBookings, services, staff, bookingsEntries, metadata} = bookingsListStore.store;
+        const {loadingBookings, services, staff, bookingsEntries, metadata, sort} = bookingsListStore.store;
 
         return (
             <div className={classes.mainContainer}>
@@ -57,7 +63,9 @@ export default class Main extends React.Component {
                     staff={staff}
                     bookingEntries={bookingsEntries}
                     onFilterChanged={this._onFiltersChanged}
+                    onSortChanged={this._onSortChanged}
                     filters={this._getFilters()}
+                    sort={sort}
                     setRowFocused={bookingsListStore.setRowFocused}
                     loading={loadingBookings}
                 />

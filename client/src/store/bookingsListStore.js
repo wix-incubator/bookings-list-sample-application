@@ -1,12 +1,15 @@
 import {observable, action} from 'mobx';
 import axiosInstance from '../network';
 import mockData from './mockData';
+import {SORT_ORDER} from './constants';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
 const USE_MOCK = true;
 
 const initialState = {
     filters: {},
+    sort: {},
+    paging: {offset: 0, limit: 10},
     services: {},
     resources: {},
     staff: {},
@@ -80,13 +83,45 @@ class BookingsListStore {
         }
     };
 
-    @action('update filters')
+    @action('Update filters')
     updateFilters = (name, value) => {
         this.store.filters = {
             ...this.store.filters,
             [name]: value
         };
     };
+
+    /**
+     * sort object is stored as:
+     * {
+     *  fieldName1: {fieldName: fieldName1, order: ASC | DESC},
+     *  fieldName2: {fieldName: fieldName2, order: ASC | DESC}
+     * }
+     * @param fieldName
+     */
+    @action('Update sort')
+    updateSort = (fieldName) => {
+        const fieldNameSort = this.store.sort[fieldName];
+        if (!fieldNameSort) {
+            // first click => order by ASC
+            this.store.sort[fieldName] = {fieldName, order: SORT_ORDER.ASC};
+        } else if (fieldNameSort && fieldNameSort.order === SORT_ORDER.ASC) {
+            // second click => order by DESC
+            fieldNameSort.order = SORT_ORDER.DESC;
+        } else if (fieldNameSort && fieldNameSort.order === SORT_ORDER.DESC) {
+            // third click => reset sort of the field
+            delete this.store.sort[fieldName];
+        }
+    };
+
+    @action('Update paging')
+    updatePaging = (name, value) => {
+        this.store.paging = {
+            ...this.store.paging,
+            [name]: value
+        };
+    };
+
 
     prepareFilters = (filters) => {
         const dateRange = {};
@@ -105,12 +140,46 @@ class BookingsListStore {
         };
     };
 
+    /**
+     * returns a query sort array derived from the sort object
+     * @param sort
+     * @returns {{'query.sort': *[]}|{}}
+     */
+    prepareSort = (sort) => {
+        const sortParams = Object.keys(sort).reduce((acc, key) => {
+            acc.push({...sort[key]});
+
+            return acc;
+        }, []);
+
+        if (sortParams.length) {
+            // TODO: activate this once the API is implemented
+            //  should be one of the options below
+            return {
+                // 'query.sort': JSON.stringify(sortParams).replace('[', '').replace(']', '')
+                // 'query.sort': JSON.stringify(sortParams)
+                // 'query.sort': sortParams
+            };
+        }
+
+        return {};
+    };
+
+    preparePaging = (paging) => {
+        // TODO: activate this once the API is implemented
+        return {
+            // 'query.paging': paging
+        };
+    };
+
     @action('fetch data')
     fetchData = async () => {
-        const {filters} = this.store;
+        const {filters, sort, paging} = this.store;
         const requestConfig = {
             params: {
-                ...this.prepareFilters(filters)
+                ...this.prepareFilters(filters),
+                ...this.prepareSort(sort),
+                ...this.preparePaging(paging)
             }
         };
 

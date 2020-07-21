@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {st, classes} from './BookingsList.st.css';
-import {Page, Table, Card, TableToolbar, Dropdown} from 'wix-style-react';
+import {Page, Table, Card, TableToolbar, Dropdown, Loader, Text} from 'wix-style-react';
 import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
 import BookingsListColumn from '../BookingsListColumn';
 import {addDays} from '../../utils';
@@ -74,6 +74,10 @@ export default class BookingsList extends React.Component {
         this.props.onFilterChanged('status', bookingStatus.id);
     };
 
+    _onBookingSortChanged = (column) => {
+        this.props.onSortChanged(column.fieldName);
+    };
+
     _renderBookingsListToolbar = () => {
         const {filters} = this.props;
 
@@ -112,16 +116,47 @@ export default class BookingsList extends React.Component {
     };
 
     _getBookingColumns = () => {
-        const {services, staff} = this.props;
+        const {services, staff, filters, sort} = this.props;
         return [
-            {title: 'Booking Time', render: row => <BookingsListColumn.BookingTime data={row}/>},
-            {title: 'Client Name', render: row => <BookingsListColumn.ClientName data={row}/>},
-            {title: 'Service & Session', render: row => <BookingsListColumn.ServiceAndSession services={services} data={row}/>},
-            {title: 'Staff', render: row => <BookingsListColumn.Staff staff={staff} data={row}/>},
-            {title: 'Booking & Attendance', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
-            {title: 'Payment Status', render: row => <BookingsListColumn.PaymentStatus data={row}/>},
-            {title: 'Payment', render: row => <BookingsListColumn.Payment data={row}/>}
-        ];
+            {fieldName: 'created', title: 'Booking Time', render: row => <BookingsListColumn.BookingTime data={row}/>},
+            {fieldName: '', title: 'Client Name', render: row => <BookingsListColumn.ClientName data={row}/>},
+            {fieldName: '', title: 'Service & Session', render: row => <BookingsListColumn.ServiceAndSession services={services} data={row}/>},
+            {fieldName: '', title: 'Staff', render: row => <BookingsListColumn.Staff staff={staff} data={row}/>},
+            {fieldName: '', title: 'Booking & Attendance', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
+            {fieldName: '', title: 'Payment Status', render: row => <BookingsListColumn.PaymentStatus data={row}/>},
+            {fieldName: '', title: 'Payment', render: row => <BookingsListColumn.Payment data={row}/>}
+        ].map(column => ({
+            ...column,
+            fieldName: `booking.${column.fieldName}`,
+            sortable: true,
+            sortDescending: sort[`booking.${column.fieldName}`] && sort[`booking.${column.fieldName}`].order === 'DESC'
+        }));
+    };
+
+    _renderLoader = () => {
+        const {loading} = this.props;
+        if (!loading) {
+            return null;
+        }
+
+        return (
+            <div className={st(classes.centered, classes.tableLoader)}>
+                <Loader size="small"/>
+            </div>
+        );
+    };
+
+    _renderEmptyState = () => {
+        const {loading, bookingEntries} = this.props;
+        if (loading || bookingEntries.length) {
+            return null;
+        }
+
+        return (
+            <div className={st(classes.centered, classes.emptyState)}>
+                <Text>No Records Found...</Text>
+            </div>
+        );
     };
 
     render() {
@@ -132,14 +167,18 @@ export default class BookingsList extends React.Component {
                 <Page.Content>
                     {this._renderBookingsListToolbar()}
                     <Table
+                        showHeaderWhenEmpty
                         data={this._getBookingEntries()}
                         columns={this._getBookingColumns()}
                         showSelection={false}
                         onRowClick={(row) => console.logx({row})}
                         onMouseEnterRow={row => setRowFocused(row, true)}
                         onMouseLeaveRow={row => setRowFocused(row, false)}
+                        onSortClick={this._onBookingSortChanged}
                     >
                         <Table.Content/>
+                        {this._renderLoader()}
+                        {this._renderEmptyState()}
                     </Table>
                 </Page.Content>
             </Page>
@@ -153,6 +192,7 @@ BookingsList.propTypes = {
     filters: PropTypes.object,
     metadata: PropTypes.object,
     onFilterChanged: PropTypes.func,
+    onSortChanged: PropTypes.func,
     services: PropTypes.object,
     setRowFocused: PropTypes.func,
     staff: PropTypes.object

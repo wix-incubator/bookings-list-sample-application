@@ -41,3 +41,5 @@ export const getTimeDifference = (t1, t2) => {
 
     return Number.isInteger(difference) ? difference : parseFloat(difference).toFixed(2);
 };
+
+export const dayHourFormat = 'MMM DD, HH:mm a';

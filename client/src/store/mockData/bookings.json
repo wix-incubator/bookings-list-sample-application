@@ -91,7 +91,7 @@
         "status": "CONFIRMED",
         "created": "2020-07-20T11:01:40.832Z",
         "bookingSource": {
-          "platform": "UNDEFINED_PLATFORM",
+          "platform": "MOBILE_APP",
           "actor": "UNDEFINED_ACTOR",
           "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
           "appName": "Wix Bookings"
@@ -181,7 +181,10 @@
               "orderStatus": "UNDEFINED",
               "paymentVendorName": "offline"
             }
-          ]
+          ],
+          "couponDetails": {
+            "couponName": "Summer 2020"
+          }
         },
         "status": "CONFIRMED",
         "created": "2020-04-15T14:20:53.984Z",
@@ -190,7 +193,7 @@
           "numberOfAttendees": 1
         },
         "bookingSource": {
-          "platform": "UNDEFINED_PLATFORM",
+          "platform": "WEB",
           "actor": "UNDEFINED_ACTOR"
         }
       }

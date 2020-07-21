@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import {Text, Tooltip} from 'wix-style-react';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 import {st, classes} from './BookingsListColumns.st.css';
-import {getTimeDifference} from '../../utils';
+import {dayHourFormat, getTimeDifference} from '../../utils';
 import {observer} from 'mobx-react';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import StatusAlert from 'wix-ui-icons-common/StatusAlert';
@@ -29,12 +29,18 @@ const PAYMENT_MAP = {
     PENDING_BUYER: {name: 'Due'}
 };
 
+const BOOKING_PLATFORM_MAP = {
+    UNDEFINED_PLATFORM: {name: 'Unavailable', icon: null},
+    WEB: {name: 'Web', icon: <LanguagesSmall className={st(classes.platformIcon)}/>},
+    MOBILE_APP: {name: 'Mobile', icon: <MobileSmall className={st(classes.platformIcon)}/>}
+};
+
 export default class BookingsListColumn extends React.Component {
     static BookingTime = ({data: {booking = {}}}) => {
         return (
             <div className={st(classes.columnDisplayContainer)}>
                 <ColumnText>Booking Time</ColumnText>
-                <ColumnText size="tiny">{formatDate(new Date(booking.created), 'MMM DD, HH:mm a')}</ColumnText>
+                <ColumnText size="tiny">{formatDate(new Date(booking.created), dayHourFormat)}</ColumnText>
             </div>
         );
     };
@@ -60,13 +66,19 @@ export default class BookingsListColumn extends React.Component {
         if (!service) {
             return null;
         }
-        const {singleSession = {}} = bookedEntity;
+        const {singleSession, setOfSessions} = bookedEntity;
+
+        // TODO: add indication for singleSession | setOfSessions
+        const sessionInfo = singleSession ?
+            `${formatDate(new Date(singleSession.start), dayHourFormat)} - ${getTimeDifference(singleSession.start, singleSession.end)}h`
+            :
+            `${formatDate(new Date(setOfSessions.firstSessionStart), dayHourFormat)}`;
 
         return (
             <div className={st(classes.columnDisplayContainer)}>
                 <ColumnText>{service.info.name}</ColumnText>
                 <ColumnText size="tiny">
-                    {formatDate(new Date(singleSession.start), 'MMM DD, HH:mm a')} - {getTimeDifference(singleSession.start, singleSession.end)}h
+                    {sessionInfo}
                 </ColumnText>
             </div>
         );
@@ -110,13 +122,15 @@ export default class BookingsListColumn extends React.Component {
                     {getSymbolFromCurrency(finalPrice.currency)} {state === 'COMPLETE' ? amount : (amount - amountReceived)} {paymentInfo.name}
                 </ColumnText>
                 {/*{focused ? <BookingsListColumn.PaymentDetailsTooltip data={paymentDetails}/> : null}*/}
-                <BookingsListColumn.PaymentDetailsTooltip data={paymentDetails}/>
+                <BookingsListColumn.PaymentDetailsTooltip data={booking}/>
             </div>
         );
     });
 
-    static PaymentDetailsTooltip = ({data}) => {
-        const {couponDetails} = data;
+    static PaymentDetailsTooltip = ({data: {paymentDetails, bookingSource}}) => {
+        const {couponDetails} = paymentDetails;
+        const {platform} = bookingSource;
+        const bookingPlatform = BOOKING_PLATFORM_MAP[platform];
         const [isFocused, setIsFocused] = useState(false);
 
         const setFocused = useCallback(() => {
@@ -127,7 +141,6 @@ export default class BookingsListColumn extends React.Component {
             setIsFocused(false);
         }, []);
 
-
         const boldedTextStyle = {fontWeight: 'bold', fontSize: '14px', color: 'white', marginBottom: '0px'};
         const normalTextStyle = {fontWeight: 'normal', fontSize: '12px', color: 'white'};
 
@@ -135,15 +148,23 @@ export default class BookingsListColumn extends React.Component {
             <div className={st(classes.columnDisplayContainer, classes.paymentContent)}>
                 <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
                     <ColumnText style={boldedTextStyle}>Booking Platform</ColumnText>
-                    <ColumnText style={normalTextStyle}>Website</ColumnText>
+                    <div className={st(classes.rowDisplayContainer)}>
+                        {bookingPlatform.icon}
+                        <ColumnText style={normalTextStyle}>{bookingPlatform.name}</ColumnText>
+                    </div>
                 </div>
-                <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
-                    <ColumnText style={boldedTextStyle}>CoupnName</ColumnText>
-                    <ColumnText style={normalTextStyle}>Website</ColumnText>
-                </div>
+                {
+                    couponDetails ?
+                        <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
+                            <ColumnText style={boldedTextStyle}>Coupon Name</ColumnText>
+                            <ColumnText style={normalTextStyle}>{couponDetails.couponName}</ColumnText>
+                        </div>
+                        :
+                        null
+                }
                 <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
                     <ColumnText style={boldedTextStyle}>Payment Method & Details</ColumnText>
-                    <ColumnText style={normalTextStyle}>Paid Online with Credit Card</ColumnText>
+                    <ColumnText style={normalTextStyle}>Find out where this value is taken from</ColumnText>
                 </div>
             </div>
         );
