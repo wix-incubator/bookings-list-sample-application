@@ -217,7 +217,6 @@ export default class BookingsListColumn extends React.Component {
     static Payment = observer((props) => {
         const {data: {booking, focused}} = props;
         const {paymentDetails = {}} = booking;
-        const {state} = paymentDetails;
         const {balance = {}} = paymentDetails;
         const {finalPrice = {}} = balance;
         const {amountReceived} = balance;

@@ -16,7 +16,7 @@ const initialState = {
     staff: {},
     bookingsEntries: [],
     metadata: null,
-    serviceReschedule: null,
+    scheduleSlotsData: null,
     loadingBookings: true
 };
 
@@ -209,15 +209,41 @@ class BookingsListStore {
         this.setLoadingBookings(false);
     };
 
-    @action('Set service reschedule data')
-    setServiceRescheduleData = (serviceRescheduleData) => {
-        this.store.serviceReschedule = serviceRescheduleData;
+    @action('Set schedule slots data')
+    setScheduleSlotsData = (scheduleSlotsData) => {
+        this.store.scheduleSlotsData = scheduleSlotsData;
     };
 
-    @action('Fetch service data')
-    fetchServiceData = (serviceId) => {
+    @action('Fetch schedule data')
+    fetchScheduleSlots = async (scheduleId) => {
         try {
+            // let requestBody = {
+            //     query: {
+            //         filters: {
+            //             scheduleIds: [scheduleId]
+            //         }
+            //     }
+            // };
+            //
+            // requestBody.query.filters = JSON.stringify(requestBody.query.filters);
+            // requestBody.query = JSON.stringify(requestBody.query);
+            // requestBody = unescape(JSON.stringify(requestBody));
+            // console.log(requestBody)
 
+            // const requestBody = `{
+            //     "query": {
+            //        "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"]}"
+            //        "paging": "{\\"offset\\": 0, \\"limit\\": 5}"
+            //      }
+            //  }`;
+
+            const requestBody = `{
+                "query": {
+                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"]}"
+                 }
+             }`;
+            const result = await axiosInstance.post(`/calendar/listSlots`, requestBody, {headers: {"Content-Type": "application/json"}});
+            console.log({result});
         } catch (e) {
             console.log({e});
             raiseNotification(e.message, 'error');

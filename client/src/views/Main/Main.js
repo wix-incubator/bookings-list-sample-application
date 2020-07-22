@@ -72,6 +72,13 @@ export default class Main extends React.Component {
         }
     };
 
+    _onRowClick = (row) => {
+        console.logx({row});
+
+        const {bookingsListStore} = this.props;
+        bookingsListStore.fetchScheduleSlots(row.booking.bookedEntity.scheduleId);
+    };
+
     render() {
         const {bookingsListStore} = this.props;
         const {loadingBookings, services, staff, bookingsEntries, metadata, sort} = bookingsListStore.store;
@@ -83,6 +90,7 @@ export default class Main extends React.Component {
                     services={services}
                     staff={staff}
                     bookingEntries={bookingsEntries}
+                    onRowClick={this._onRowClick}
                     onFilterChanged={this._onFiltersChanged}
                     onSortChanged={this._onSortChanged}
                     filters={this._getFilters()}

@@ -183,7 +183,7 @@ export default class BookingsList extends React.Component {
                             data={this._getBookingEntries()}
                             columns={this._getBookingColumns()}
                             showSelection={false}
-                            onRowClick={(row) => console.logx({row})}
+                            onRowClick={this.props.onRowClick}
                             onMouseEnterRow={row => setRowFocused(row, true)}
                             onMouseLeaveRow={row => setRowFocused(row, false)}
                             onSortClick={this._onBookingSortChanged}
