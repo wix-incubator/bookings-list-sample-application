@@ -176,7 +176,6 @@ export default class BookingsList extends React.Component {
                 <Page>
                     <Page.Header title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
                     <Page.Content>
-
                         {this._renderBookingsListToolbar()}
                         <Table
                             showHeaderWhenEmpty
