@@ -4,6 +4,7 @@ import XHR from 'i18next-xhr-backend';
 // TODO: remove .json imports when they been deleted
 // translation files import
 import translationEn from './en/translations.json';
+import translationHe from './he/translations.json';
 import {initReactI18next} from 'react-i18next';
 // initialization
 i18n
@@ -22,6 +23,9 @@ i18n
         resources: {
             'en': {
                 translations: translationEn
+            },
+            'he': {
+                translations: translationHe
             }
         },
         // have a common namespace used around the full app

@@ -1,0 +1,63 @@
+{
+  "submit": "שליחה",
+  "cancel": "ביטול",
+  "lastNDays": "ימים אחרונים {{count}}",
+  "BookingsList": {
+    "pageHeaderTitle": "רשימת הזמנות",
+    "pageHeaderSubtitle": "תת כותרת רשימת הזמנות",
+    "noBookingsFound": "לא נמצאו הזמנות...",
+    "TableColumnsTitles": {
+      "bookingTime": "זמן הזמנה",
+      "clientName": "שם לקוח",
+      "serviceAndSession": "שם השירות",
+      "staff": "צוות",
+      "bookingAndAttendance": "הזמנה ונוכחות",
+      "paymentStatus": "מצב תשלום",
+      "payment": "תשלום"
+    },
+    "TableColumns": {
+      "notAvailable": "לא זמין"
+    }
+  },
+  "BookingStatus": {
+    "allBookingStatuses": "כל מצבי הזמנות",
+    "confirmed": "אושר",
+    "pending": "ממתין",
+    "cancelled": "בוטל",
+    "pendingApproval": "ממתין לאישור",
+    "pendingCheckout": "ממתין לצ׳ק אאוט",
+    "declined": "נדחה",
+    "undefined": "לא מוגדר"
+  },
+  "PaymentStatus": {
+    "unspecifiedPaymentStatus": "לא מוגדר",
+    "notPaid": "לא שולם",
+    "paid": "שולם",
+    "partiallyRefunded": "הוחזר חלקית",
+    "fullyRefunded": "הוחזר במלואו",
+    "pending": "ממתין"
+  },
+  "PaymentInfo": {
+    "undefined": "לא מוגדר",
+    "paid": "שולם",
+    "pendingCashier": "ממתין לקופאי",
+    "rejected": "נדחה",
+    "ready": "מוכן",
+    "cancelled": "בוטל",
+    "refunded": "הוחזק",
+    "pendingMerchant": "ממתין למוכר",
+    "wixPayFailure": "תקלה בשירות Wix Pay",
+    "pendingMarkAsPaid": "חייב",
+    "pendingBuyer": "חייב"
+  },
+  "BookingInfoTooltip": {
+    "bookingPlatform": "הוזמן דרך",
+    "couponName": "שם קופון",
+    "paymentMethodAndDetails": "שיטת תשלום ופרטים"
+  },
+  "BookingPlatform": {
+    "unavailable": "לא זמין",
+    "web": "אתר",
+    "mobile": "מכשיר סלולרי"
+  }
+}
