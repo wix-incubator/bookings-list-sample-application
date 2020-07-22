@@ -11,9 +11,10 @@ import MobileSmall from 'wix-ui-icons-common/MobileSmall';
 
 const ColumnText = (props) => {
     return (
-        <Text style={{color: '#32536a'}} {...props}/>
+        <Text style={{color: '#32536a'}} size="small" {...props}/>
     );
 };
+
 const BOOKING_AND_ATTENDANCE_MAP = {};
 
 const PAYMENT_STATUS_MAP = {
@@ -217,18 +218,30 @@ export default class BookingsListColumn extends React.Component {
         const {data: {booking, focused}} = props;
         const {paymentDetails = {}} = booking;
         const {state} = paymentDetails;
-        const paymentInfo = PAYMENT_INFO_MAP[state] || {};
         const {balance = {}} = paymentDetails;
         const {finalPrice = {}} = balance;
         const {amountReceived} = balance;
         const {amount} = finalPrice;
+
+        const currencySymbol = getSymbolFromCurrency(finalPrice.currency);
+        const fullyPaid = amount === amountReceived;
+        const paymentInfoLabel = translate(`PaymentInfo.${fullyPaid ? 'paid' : 'due'}`);
+
+
+        const paymentLabel = <ColumnText>{currencySymbol} {fullyPaid ? amount : (amount - amountReceived)} {paymentInfoLabel}</ColumnText>;
+        const depositLabel = !fullyPaid && +amountReceived > 0 ?
+            <ColumnText>{currencySymbol} {translate('PaymentInfo.onlineDeposit', {count: +amountReceived})}</ColumnText>
+            :
+            null;
+
         return (
             <div className={st(classes.rowDisplayContainer)}>
-                <ColumnText>
-                    {getSymbolFromCurrency(finalPrice.currency)} {state === 'COMPLETE' ? amount : (amount - amountReceived)} {translate(paymentInfo.localeLabelKey)}
-                </ColumnText>
-                {/*{focused ? <BookingsListColumn.PaymentDetailsTooltip data={paymentDetails}/> : null}*/}
-                <BookingsListColumn.PaymentDetailsTooltip data={booking}/>
+                <div className={st(classes.columnDisplayContainer)}>
+                    {paymentLabel}
+                    {depositLabel}
+                </div>
+                {focused ? <BookingsListColumn.PaymentDetailsTooltip data={booking}/> : null}
+                {/*<BookingsListColumn.PaymentDetailsTooltip data={booking}/>*/}
             </div>
         );
     });

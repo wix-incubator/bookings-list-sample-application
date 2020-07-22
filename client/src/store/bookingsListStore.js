@@ -16,6 +16,7 @@ const initialState = {
     staff: {},
     bookingsEntries: [],
     metadata: null,
+    serviceReschedule: null,
     loadingBookings: true
 };
 
@@ -143,6 +144,7 @@ class BookingsListStore {
         }
 
         return {
+            withBookingAllowedActions: true,
             'query.filter.stringValue': {
                 status: filters.status,
                 ...dateRange
@@ -182,7 +184,7 @@ class BookingsListStore {
         };
     };
 
-    @action('fetch data')
+    @action('Fetch data')
     fetchData = async (concatenate = false) => {
         const {filters, sort, paging} = this.store;
         const requestConfig = {
@@ -205,6 +207,21 @@ class BookingsListStore {
             raiseNotification(e.message, 'error');
         }
         this.setLoadingBookings(false);
+    };
+
+    @action('Set service reschedule data')
+    setServiceRescheduleData = (serviceRescheduleData) => {
+        this.store.serviceReschedule = serviceRescheduleData;
+    };
+
+    @action('Fetch service data')
+    fetchServiceData = (serviceId) => {
+        try {
+
+        } catch (e) {
+            console.log({e});
+            raiseNotification(e.message, 'error');
+        }
     };
 
     @action('Set row focused')

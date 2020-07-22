@@ -48,7 +48,8 @@
     "pendingMerchant": "ממתין למוכר",
     "wixPayFailure": "תקלה בשירות Wix Pay",
     "pendingMarkAsPaid": "חייב",
-    "pendingBuyer": "חייב"
+    "pendingBuyer": "חייב",
+    "onlineDeposit": "{{count}} פיקדון אונליין"
   },
   "BookingInfoTooltip": {
     "bookingPlatform": "הוזמן דרך",

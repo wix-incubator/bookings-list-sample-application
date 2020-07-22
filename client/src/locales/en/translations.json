@@ -40,6 +40,7 @@
   "PaymentInfo": {
     "undefined": "Undefined",
     "paid": "Paid",
+    "due": "Due",
     "pendingCashier": "Pending Cashier",
     "rejected": "Rejected",
     "ready": "Ready",
@@ -48,7 +49,8 @@
     "pendingMerchant": "Pending Merchant",
     "wixPayFailure": "Wix Pay Failure",
     "pendingMarkAsPaid": "Due",
-    "pendingBuyer": "Due"
+    "pendingBuyer": "Due",
+    "onlineDeposit": "{{count}} Online deposit"
   },
   "BookingInfoTooltip": {
     "bookingPlatform": "Booking Platform",
