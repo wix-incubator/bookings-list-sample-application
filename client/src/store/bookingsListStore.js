@@ -2,6 +2,7 @@ import {observable, action} from 'mobx';
 import axiosInstance from '../network';
 import mockData from './mockData';
 import {SORT_ORDER} from './constants';
+import {raiseNotification} from '../utils';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
 const USE_MOCK = false;
@@ -27,6 +28,10 @@ const getData = async (endpoint, config) => {
 };
 
 class BookingsListStore {
+    constructor(mobxRoot) {
+        this.mobxRoot = mobxRoot;
+    }
+
     @observable store = initialState;
 
     @action('Set loading bookings')
@@ -85,6 +90,7 @@ class BookingsListStore {
             this.setResources(resources);
         } catch (e) {
             console.log({e});
+            raiseNotification(e.message, 'error');
         }
     };
 
@@ -107,7 +113,7 @@ class BookingsListStore {
     @action('Update sort')
     updateSort = (fieldName) => {
         // TODO: enable once sorting implemented on the API
-        return;
+        // return;
         const fieldNameSort = this.store.sort[fieldName];
         if (!fieldNameSort) {
             // first click => order by ASC
@@ -128,7 +134,6 @@ class BookingsListStore {
             [name]: value
         };
     };
-
 
     prepareFilters = (filters) => {
         const dateRange = {};
@@ -164,7 +169,7 @@ class BookingsListStore {
             //  should be one of the options below
             return {
                 // 'query.sort': JSON.stringify(sortParams).replace('[', '').replace(']', '')
-                // 'query.sort': JSON.stringify(sortParams)
+                'query.sort': JSON.stringify(sortParams)
                 // 'query.sort': sortParams
             };
         }
@@ -198,7 +203,8 @@ class BookingsListStore {
             this.setBookingsEntries(data.bookingsEntries, concatenate);
             this.setMetadata(data.metadata);
         } catch (e) {
-
+            console.log({e});
+            raiseNotification(e.message, 'error');
         }
         this.setLoadingBookings(false);
     };

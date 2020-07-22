@@ -38,6 +38,7 @@
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0",
     "uuid": "^8.2.0",
+    "uuidv4": "^6.2.0",
     "wix-style-react": "8.18.0",
     "wix-ui-icons-common": "^2.0.241"
   },

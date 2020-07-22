@@ -46,7 +46,14 @@ const BOOKING_PLATFORM_MAP = {
 };
 
 export default class BookingsListColumn extends React.Component {
-    static BookingTime = ({data: {booking = {}}}) => {
+    static NotAvailable = () => {
+        return (
+            <ColumnText>Not Available</ColumnText>
+        );
+    };
+
+    static BookingTime = (props) => {
+        const {data: {booking = {}}} = props;
         return (
             <div className={st(classes.columnDisplayContainer)}>
                 <ColumnText size="small">{formatDate(new Date(booking.created), dateOnlyFormat)}</ColumnText>
@@ -55,7 +62,8 @@ export default class BookingsListColumn extends React.Component {
         );
     };
 
-    static ClientName = ({data: {booking}}) => {
+    static ClientName = (props) => {
+        const {data: {booking}} = props;
         const {formInfo = {}} = booking;
         const {contactDetails = {}, paymentSelection = []} = formInfo;
         // TODO: extract guests from paymentSelection (if numberOfParticipants > 1)
@@ -70,7 +78,9 @@ export default class BookingsListColumn extends React.Component {
         );
     };
 
-    static ServiceAndSession = ({services, data: {booking}}) => {
+    static ServiceAndSession = (props) => {
+        const {services, data: {booking}} = props;
+
         const {bookedEntity = {}} = booking;
         const service = services[bookedEntity.serviceId];
         if (!service) {
@@ -94,7 +104,8 @@ export default class BookingsListColumn extends React.Component {
         );
     };
 
-    static Staff = ({staff, data: {booking}}) => {
+    static Staff = (props) => {
+        const {staff, data: {booking}} = props;
         const {bookedResources = []} = booking;
 
         return (
@@ -108,7 +119,9 @@ export default class BookingsListColumn extends React.Component {
         );
     };
 
-    static BookingAndAttendance = ({data: {booking}}) => {
+    static BookingAndAttendance = (props) => {
+        const {data: {booking}} = props;
+        return <BookingsListColumn.NotAvailable/>;
         // TODO: implement real options
         const options = [
             {
@@ -185,20 +198,23 @@ export default class BookingsListColumn extends React.Component {
 
         return (
             <BadgeSelect
-                selectedId={'0'}
+                selectedId={booking.selectedBookingId}
                 disabled={true}
-                onSelect={() => {
-                }}
+                type="outlined"
+                onSelect={(option) => booking.selectedBookingId = option.id}
                 options={options}
             />
         );
     };
 
-    static PaymentStatus = ({data: {booking}}) => {
+    static PaymentStatus = (props) => {
+        const {data: {booking}} = props;
+        return <BookingsListColumn.NotAvailable/>;
         return null;
     };
 
-    static Payment = observer(({data: {booking, focused}}) => {
+    static Payment = observer((props) => {
+        const {data: {booking, focused}} = props;
         const {paymentDetails = {}} = booking;
         const {state} = paymentDetails;
         const paymentInfo = PAYMENT_MAP[state] || {};
@@ -217,7 +233,9 @@ export default class BookingsListColumn extends React.Component {
         );
     });
 
-    static PaymentDetailsTooltip = ({data: {paymentDetails, bookingSource}}) => {
+    static PaymentDetailsTooltip = (props) => {
+        const {data: {paymentDetails, bookingSource}} = props;
+
         const {couponDetails} = paymentDetails;
         const {platform} = bookingSource;
         const bookingPlatform = BOOKING_PLATFORM_MAP[platform];

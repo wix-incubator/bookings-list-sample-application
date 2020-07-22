@@ -1,6 +1,7 @@
 import {parse, stringify} from 'flatted/esm';
 import dequal from 'dequal';
 import {differenceInMinutes} from 'date-fns';
+import {getStores} from './store/getStores';
 
 /**
  * custom console.log for outputting mobx store variables
@@ -40,6 +41,11 @@ export const getTimeDifference = (t1, t2) => {
     const difference = Math.abs(differenceInMinutes(new Date(t1), new Date(t2)) / 60);
 
     return Number.isInteger(difference) ? difference : parseFloat(difference).toFixed(2);
+};
+
+export const raiseNotification = (text, theme) => {
+    const {bookingsNotificationStore} = getStores('bookingsNotificationStore');
+    bookingsNotificationStore.setNotification(text, theme);
 };
 
 export const dateOnlyFormat = 'MMM DD YYYY';

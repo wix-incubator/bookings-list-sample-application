@@ -6,6 +6,7 @@ import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
 import BookingsListColumn from '../BookingsListColumn';
 import {addDays} from '../../utils';
 import {observer} from 'mobx-react';
+import BookingNotification from '../BookingNotification/BookingNotification';
 
 
 function getDefaultPresets() {
@@ -71,7 +72,7 @@ export default class BookingsList extends React.Component {
         };
     };
 
-    _onBookingStatusChanged = (bookingStatus) =>{
+    _onBookingStatusChanged = (bookingStatus) => {
         const {filters} = this.props;
         if (filters.status === bookingStatus.id) {
             return;
@@ -167,30 +168,34 @@ export default class BookingsList extends React.Component {
         const {setRowFocused} = this.props;
 
         return (
-            <Page>
-                <Page.Header title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
-                <Page.Content>
-                    {this._renderBookingsListToolbar()}
-                    <Table
-                        showHeaderWhenEmpty
-                        infiniteScroll
-                        data={this._getBookingEntries()}
-                        columns={this._getBookingColumns()}
-                        showSelection={false}
-                        onRowClick={(row) => console.logx({row})}
-                        onMouseEnterRow={row => setRowFocused(row, true)}
-                        onMouseLeaveRow={row => setRowFocused(row, false)}
-                        onSortClick={this._onBookingSortChanged}
-                        loadMore={this.props.loadMore}
-                        hasMore={this.props.hasMore}
-                        loader={null}
-                    >
-                        <Table.Content/>
-                        {this._renderLoader()}
-                        {this._renderEmptyState()}
-                    </Table>
-                </Page.Content>
-            </Page>
+            <div className={st(classes.bookingsListContainer)}>
+                <BookingNotification/>
+                <Page>
+                    <Page.Header title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
+                    <Page.Content>
+
+                        {this._renderBookingsListToolbar()}
+                        <Table
+                            showHeaderWhenEmpty
+                            infiniteScroll
+                            data={this._getBookingEntries()}
+                            columns={this._getBookingColumns()}
+                            showSelection={false}
+                            onRowClick={(row) => console.logx({row})}
+                            onMouseEnterRow={row => setRowFocused(row, true)}
+                            onMouseLeaveRow={row => setRowFocused(row, false)}
+                            onSortClick={this._onBookingSortChanged}
+                            loadMore={this.props.loadMore}
+                            hasMore={this.props.hasMore}
+                            loader={null}
+                        >
+                            <Table.Content/>
+                            {this._renderLoader()}
+                            {this._renderEmptyState()}
+                        </Table>
+                    </Page.Content>
+                </Page>
+            </div>
         );
     }
 }

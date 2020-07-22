@@ -1,5 +1,6 @@
 .bookingsListContainer {
-
+    display: flex;
+    flex-direction: column;
 }
 
 .centered {
