@@ -112,8 +112,6 @@ class BookingsListStore {
      */
     @action('Update sort')
     updateSort = (fieldName) => {
-        // TODO: enable once sorting implemented on the API
-        // return;
         const fieldNameSort = this.store.sort[fieldName];
         if (!fieldNameSort) {
             // first click => order by ASC
@@ -169,7 +167,7 @@ class BookingsListStore {
             //  should be one of the options below
             return {
                 // 'query.sort': JSON.stringify(sortParams).replace('[', '').replace(']', '')
-                'query.sort': JSON.stringify(sortParams)
+                // 'query.sort': JSON.stringify(sortParams)
                 // 'query.sort': sortParams
             };
         }

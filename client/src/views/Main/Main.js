@@ -28,6 +28,8 @@ export default class Main extends React.Component {
     };
 
     _onSortChanged = (fieldName) => {
+        // TODO: enable once sorting implemented on the API
+        return;
         const {bookingsListStore} = this.props;
         bookingsListStore.updateSort(fieldName);
         bookingsListStore.fetchData();
