@@ -2,6 +2,7 @@ import {parse, stringify} from 'flatted/esm';
 import dequal from 'dequal';
 import {differenceInMinutes} from 'date-fns';
 import {getStores} from './store/getStores';
+import i18n from 'i18next';
 
 /**
  * custom console.log for outputting mobx store variables
@@ -47,6 +48,8 @@ export const raiseNotification = (text, theme) => {
     const {bookingsNotificationStore} = getStores('bookingsNotificationStore');
     bookingsNotificationStore.setNotification(text, theme);
 };
+
+export const translate = (...args) => i18n.t(...args);
 
 export const dateOnlyFormat = 'MMM DD YYYY';
 export const timeOnlyFormat = 'HH:mm a';

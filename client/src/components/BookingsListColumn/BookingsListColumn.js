@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import {Badge, BadgeSelect, Text, Tooltip} from 'wix-style-react';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 import {st, classes} from './BookingsListColumns.st.css';
-import {dateOnlyFormat, dayHourFormat, getTimeDifference, timeOnlyFormat} from '../../utils';
+import {dateOnlyFormat, dayHourFormat, getTimeDifference, timeOnlyFormat, translate} from '../../utils';
 import {observer} from 'mobx-react';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import StatusAlert from 'wix-ui-icons-common/StatusAlert';
@@ -17,38 +17,38 @@ const ColumnText = (props) => {
 const BOOKING_AND_ATTENDANCE_MAP = {};
 
 const PAYMENT_STATUS_MAP = {
-    UNSPECIFIED_PAYMENT_STATUS: {name: 'Unspecified Payment Status'},
-    NOT_PAID: {name: 'Not Paid'},
-    PAID: {name: 'Paid'},
-    PARTIALLY_REFUNDED: {name: 'Partially Refunded'},
-    FULLY_REFUNDED: {name: 'Fully Refunded'},
-    PENDING: {name: 'Pending'}
+    UNSPECIFIED_PAYMENT_STATUS: {localeLabelKey: 'PaymentStatus.unspecifiedPaymentStatus'},
+    NOT_PAID: {localeLabelKey: 'PaymentStatus.notPaid'},
+    PAID: {localeLabelKey: 'PaymentStatus.paid'},
+    PARTIALLY_REFUNDED: {localeLabelKey: 'PaymentStatus.partiallyRefunded'},
+    FULLY_REFUNDED: {localeLabelKey: 'PaymentStatus.fullyRefunded'},
+    PENDING: {localeLabelKey: 'PaymentStatus.pending'}
 };
 
-const PAYMENT_MAP = {
-    UNDEFINED: {name: ''},
-    COMPLETE: {name: 'Paid'},
-    PENDING_CASHIER: {name: 'Pending Cashier'},
-    REJECTED: {name: 'Rejected'},
-    READY: {name: 'Ready'},
-    CANCELED: {name: 'Cancelled'},
-    REFUNDED: {name: 'Refunded'},
-    PENDING_MERCHANT: {name: 'Pending Merchant'},
-    WIX_PAY_FAILURE: {name: 'Wix Pay Failure'},
-    PENDING_MARK_AS_PAID: {name: 'Due'},
-    PENDING_BUYER: {name: 'Due'}
+const PAYMENT_INFO_MAP = {
+    UNDEFINED: {localeLabelKey: 'PaymentInfo.undefined'},
+    COMPLETE: {localeLabelKey: 'PaymentInfo.paid'},
+    PENDING_CASHIER: {localeLabelKey: 'PaymentInfo.pendingCashier'},
+    REJECTED: {localeLabelKey: 'PaymentInfo.rejected'},
+    READY: {localeLabelKey: 'PaymentInfo.ready'},
+    CANCELED: {localeLabelKey: 'PaymentInfo.cancelled'},
+    REFUNDED: {localeLabelKey: 'PaymentInfo.refunded'},
+    PENDING_MERCHANT: {localeLabelKey: 'PaymentInfo.pendingMerchant'},
+    WIX_PAY_FAILURE: {localeLabelKey: 'PaymentInfo.wixPayFailure'},
+    PENDING_MARK_AS_PAID: {localeLabelKey: 'PaymentInfo.pendingMarkAsPaid'},
+    PENDING_BUYER: {localeLabelKey: 'PaymentInfo.pendingBuyer'}
 };
 
 const BOOKING_PLATFORM_MAP = {
-    UNDEFINED_PLATFORM: {name: 'Unavailable', icon: null},
-    WEB: {name: 'Web', icon: <LanguagesSmall className={st(classes.platformIcon)}/>},
-    MOBILE_APP: {name: 'Mobile', icon: <MobileSmall className={st(classes.platformIcon)}/>}
+    UNDEFINED_PLATFORM: {localeLabelKey: 'BookingPlatform.unavailable', icon: null},
+    WEB: {localeLabelKey: 'BookingPlatform.web', icon: <LanguagesSmall className={st(classes.platformIcon)}/>},
+    MOBILE_APP: {localeLabelKey: 'BookingPlatform.mobile', icon: <MobileSmall className={st(classes.platformIcon)}/>}
 };
 
 export default class BookingsListColumn extends React.Component {
     static NotAvailable = () => {
         return (
-            <ColumnText>Not Available</ColumnText>
+            <ColumnText>{translate('BookingsList.TableColumns.notAvailable')}</ColumnText>
         );
     };
 
@@ -217,7 +217,7 @@ export default class BookingsListColumn extends React.Component {
         const {data: {booking, focused}} = props;
         const {paymentDetails = {}} = booking;
         const {state} = paymentDetails;
-        const paymentInfo = PAYMENT_MAP[state] || {};
+        const paymentInfo = PAYMENT_INFO_MAP[state] || {};
         const {balance = {}} = paymentDetails;
         const {finalPrice = {}} = balance;
         const {amountReceived} = balance;
@@ -225,7 +225,7 @@ export default class BookingsListColumn extends React.Component {
         return (
             <div className={st(classes.rowDisplayContainer)}>
                 <ColumnText>
-                    {getSymbolFromCurrency(finalPrice.currency)} {state === 'COMPLETE' ? amount : (amount - amountReceived)} {paymentInfo.name}
+                    {getSymbolFromCurrency(finalPrice.currency)} {state === 'COMPLETE' ? amount : (amount - amountReceived)} {translate(paymentInfo.localeLabelKey)}
                 </ColumnText>
                 {/*{focused ? <BookingsListColumn.PaymentDetailsTooltip data={paymentDetails}/> : null}*/}
                 <BookingsListColumn.PaymentDetailsTooltip data={booking}/>
@@ -255,23 +255,23 @@ export default class BookingsListColumn extends React.Component {
         const paymentContent = (
             <div className={st(classes.columnDisplayContainer, classes.paymentContent)}>
                 <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
-                    <ColumnText style={boldedTextStyle}>Booking Platform</ColumnText>
+                    <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.bookingPlatform')}</ColumnText>
                     <div className={st(classes.rowDisplayContainer)}>
                         {bookingPlatform.icon}
-                        <ColumnText style={normalTextStyle}>{bookingPlatform.name}</ColumnText>
+                        <ColumnText style={normalTextStyle}>{translate(bookingPlatform.localeLabelKey)}</ColumnText>
                     </div>
                 </div>
                 {
                     couponDetails ?
                         <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
-                            <ColumnText style={boldedTextStyle}>Coupon Name</ColumnText>
+                            <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.couponName')}</ColumnText>
                             <ColumnText style={normalTextStyle}>{couponDetails.couponName}</ColumnText>
                         </div>
                         :
                         null
                 }
                 <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
-                    <ColumnText style={boldedTextStyle}>Payment Method & Details</ColumnText>
+                    <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.paymentMethodAndDetails')}</ColumnText>
                     <ColumnText style={normalTextStyle}>TODO: Find out where this value is taken from</ColumnText>
                 </div>
             </div>

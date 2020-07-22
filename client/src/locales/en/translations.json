@@ -1,0 +1,63 @@
+{
+  "submit": "Submit",
+  "cancel": "Cancel",
+  "lastNDays": "Last {{count}} days",
+  "BookingsList": {
+    "pageHeaderTitle": "Booking List",
+    "pageHeaderSubtitle": "Booking List Subtitle",
+    "noBookingsFound": "No Bookings Found...",
+    "TableColumnsTitles": {
+      "bookingTime": "Booking Time",
+      "clientName": "Client Name",
+      "serviceAndSession": "Service & Session",
+      "staff": "Staff",
+      "bookingAndAttendance": "Booking & Attendance",
+      "paymentStatus": "Payment Status",
+      "payment": "Payment"
+    },
+    "TableColumns": {
+      "notAvailable": "N/A"
+    }
+  },
+  "BookingStatus": {
+    "allBookingStatuses": "All Booking Statuses",
+    "confirmed": "Confirmed",
+    "pending": "Pending",
+    "cancelled": "Cancelled",
+    "pendingApproval": "Pending Approval",
+    "pendingCheckout": "Pending Checkout",
+    "declined": "Declined",
+    "undefined": "Undefined"
+  },
+  "PaymentStatus": {
+    "unspecifiedPaymentStatus": "Unspecified Payment Status",
+    "notPaid": "Not Paid",
+    "paid": "Paid",
+    "partiallyRefunded": "Partially Refunded",
+    "fullyRefunded": "Fully Refunded",
+    "pending": "Pending"
+  },
+  "PaymentInfo": {
+    "undefined": "Undefined",
+    "paid": "Paid",
+    "pendingCashier": "Pending Cashier",
+    "rejected": "Rejected",
+    "ready": "Ready",
+    "cancelled": "Cancelled",
+    "refunded": "Refunded",
+    "pendingMerchant": "Pending Merchant",
+    "wixPayFailure": "Wix Pay Failure",
+    "pendingMarkAsPaid": "Due",
+    "pendingBuyer": "Due"
+  },
+  "BookingInfoTooltip": {
+    "bookingPlatform": "Booking Platform",
+    "couponName": "Coupon Name",
+    "paymentMethodAndDetails": "Payment Method & Details"
+  },
+  "BookingPlatform": {
+    "unavailable": "Unavailable",
+    "web": "Web",
+    "mobile": "Mobile"
+  }
+}

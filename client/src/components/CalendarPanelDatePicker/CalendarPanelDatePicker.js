@@ -260,8 +260,8 @@ CalendarPanelDatePicker.propTypes = {
     inputMinWidth: PropTypes.string,
     locale: PropTypes.oneOf([
         'en', 'es', 'pt', 'fr', 'de', 'pl', 'it', 'ru', 'ja',
-        'ko', 'tr', 'sv', 'no', 'nl', 'da', 'zh', 'th', 'cs'
-    ]),
+        'ko', 'tr', 'sv', 'no', 'nl', 'da', 'zh', 'th', 'cs']
+    ),
     numOfMonths: PropTypes.oneOf([1, 2]),
     onClose: PropTypes.func,
     onFocus: PropTypes.func,

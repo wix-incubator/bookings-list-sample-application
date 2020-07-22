@@ -4,10 +4,9 @@ import {st, classes} from './BookingsList.st.css';
 import {Page, Table, Card, TableToolbar, Dropdown, Loader, Text} from 'wix-style-react';
 import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
 import BookingsListColumn from '../BookingsListColumn';
-import {addDays} from '../../utils';
+import {addDays, translate} from '../../utils';
 import {observer} from 'mobx-react';
 import BookingNotification from '../BookingNotification/BookingNotification';
-
 
 function getDefaultPresets() {
     return [
@@ -17,7 +16,7 @@ function getDefaultPresets() {
                 from: addDays(-30),
                 to: new Date()
             },
-            value: 'Last 30 Days'
+            value: translate('lastNDays', {count: 30})
         }, {
             id: 2,
 
@@ -25,19 +24,19 @@ function getDefaultPresets() {
                 from: addDays(-7),
                 to: new Date()
             },
-            value: 'Last 7 Days'
+            value: translate('lastNDays', {count: 7})
         }
     ];
 }
 
 const getBookingStatuses = () => [
-    {id: 'CONFIRMED', value: 'Confirmed'},
-    {id: 'PENDING', value: 'Pending'},
-    {id: 'CANCELED', value: 'Cancelled'},
-    {id: 'PENDING_APPROVAL', value: 'Pending Approval'},
-    {id: 'PENDING_CHECKOUT', value: 'Pending Checkout'},
-    {id: 'DECLINED', value: 'Declined'}
-    // {id: 'UNDEFINED', value: 'Undefined'}
+    {id: 'CONFIRMED', value: translate('BookingStatus.confirmed')},
+    {id: 'PENDING', value: translate('BookingStatus.pending')},
+    {id: 'CANCELED', value: translate('BookingStatus.cancelled')},
+    {id: 'PENDING_APPROVAL', value: translate('BookingStatus.pendingApproval')},
+    {id: 'PENDING_CHECKOUT', value: translate('BookingStatus.pendingCheckout')},
+    {id: 'DECLINED', value: translate('BookingStatus.declined')}
+    // {id: 'UNDEFINED', value: translate('BookingStatus.undefined')}
 ];
 
 @observer
@@ -46,7 +45,7 @@ export default class BookingsList extends React.Component {
         const {metadata} = this.props;
         return (
             <div>
-                <h4 className={st(classes.title)}>Booking List</h4>
+                <h4 className={st(classes.title)}>{translate('BookingsList.pageHeaderTitle')}</h4>
                 {metadata ? <h4 className={st(classes.title, classes.amount)}>{metadata.totalCount}</h4> : null}
             </div>
         );
@@ -54,7 +53,7 @@ export default class BookingsList extends React.Component {
 
     _renderBookingsListHeaderSubtitle = () => {
         return (
-            <label>Ut placet, inquam tum dicere exorsus est laborum et fortibus.</label>
+            <label>{translate('BookingsList.pageHeaderSubtitle')}</label>
         );
     };
 
@@ -68,7 +67,9 @@ export default class BookingsList extends React.Component {
             primaryActionOnClick: this._onBookingDateRangeChanged,
             dateFormat: 'MMM DD, YYYY',
             presets: calendarPresets || getDefaultPresets(),
-            value: filters.dateRange
+            value: filters.dateRange,
+            primaryActionLabel: translate('submit'),
+            secondaryActionLabel: translate('cancel')
         };
     };
 
@@ -102,7 +103,7 @@ export default class BookingsList extends React.Component {
                             <TableToolbar.Label>
                                 <Dropdown
                                     roundInput
-                                    placeholder={'All Booking Statuses'}
+                                    placeholder={translate('BookingStatus.allBookingStatuses')}
                                     options={getBookingStatuses()}
                                     selectedId={filters.status}
                                     onSelect={this._onBookingStatusChanged}
@@ -123,16 +124,18 @@ export default class BookingsList extends React.Component {
 
     _getBookingColumns = () => {
         const {services, staff, filters, sort} = this.props;
+
         return [
-            {fieldName: 'created', sortable: true, title: 'Booking Time', render: row => <BookingsListColumn.BookingTime data={row}/>},
-            {fieldName: 'formInfo.contactDetails.firstName', sortable: true, title: 'Client Name', render: row => <BookingsListColumn.ClientName data={row}/>},
-            {fieldName: '', title: 'Service & Session', render: row => <BookingsListColumn.ServiceAndSession services={services} data={row}/>},
-            {fieldName: '', title: 'Staff', render: row => <BookingsListColumn.Staff staff={staff} data={row}/>},
-            {fieldName: '', title: 'Booking & Attendance', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
-            {fieldName: '', title: 'Payment Status', render: row => <BookingsListColumn.PaymentStatus data={row}/>},
-            {fieldName: '', title: 'Payment', render: row => <BookingsListColumn.Payment data={row}/>}
+            {fieldName: 'created', sortable: true, localeLabelKey: 'bookingTime', render: row => <BookingsListColumn.BookingTime data={row}/>},
+            {fieldName: 'formInfo.contactDetails.firstName', sortable: true, localeLabelKey: 'clientName', render: row => <BookingsListColumn.ClientName data={row}/>},
+            {fieldName: '', localeLabelKey: 'serviceAndSession', render: row => <BookingsListColumn.ServiceAndSession services={services} data={row}/>},
+            {fieldName: '', localeLabelKey: 'staff', render: row => <BookingsListColumn.Staff staff={staff} data={row}/>},
+            {fieldName: '', localeLabelKey: 'bookingAndAttendance', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
+            {fieldName: '', localeLabelKey: 'paymentStatus', render: row => <BookingsListColumn.PaymentStatus data={row}/>},
+            {fieldName: '', localeLabelKey: 'payment', render: row => <BookingsListColumn.Payment data={row}/>}
         ].map(column => ({
             ...column,
+            title: translate(`BookingsList.TableColumnsTitles.${column.localeLabelKey}`),
             fieldName: `booking.${column.fieldName}`,
             sortDescending: sort[`booking.${column.fieldName}`] && sort[`booking.${column.fieldName}`].order === 'DESC'
         }));
@@ -159,7 +162,7 @@ export default class BookingsList extends React.Component {
 
         return (
             <Table.EmptyState
-                title="No Records Found..."
+                title={translate('BookingsList.noBookingsFound')}
             />
         );
     };
