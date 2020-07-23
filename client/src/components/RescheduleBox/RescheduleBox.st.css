@@ -25,11 +25,6 @@
 }
 
 .rescheduleBoxLabel {
-    color: #162d3d;
-}
-
-.rescheduleBoxLabel:hover {
-    color: #3999ec;
 }
 
 .rescheduleBoxSkeleton {
