@@ -17,6 +17,14 @@ export default class RescheduleModal extends React.PureComponent {
         bookingsListStore.setRescheduleModalIsOpen(false);
     };
 
+    _setSelectedSlot = (slot) => {
+        const {bookingsListStore} = this.props;
+        const {rescheduleModal} = bookingsListStore.store;
+        const {slots} = rescheduleModal;
+        // bookingsListStore.setSelectedSlot(slots, slot);
+        bookingsListStore.setRescheduleModalData('selectedSlot', slot);
+    };
+
     _renderSlotsSkeleton = () => {
         return (
             <div className={st(classes.slotsContainer)}>
@@ -28,10 +36,15 @@ export default class RescheduleModal extends React.PureComponent {
     _renderSlots = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
-        const {slots} = rescheduleModal;
+        const {slots, selectedSlot} = rescheduleModal;
         return (
             <div className={st(classes.slotsContainer)}>
-                {slots.slice(0, MAX_SLOTS_AMOUNT).map((slot, index) => <RescheduleBox key={index} data={slot}/>)}
+                {
+                    slots.slice(0, MAX_SLOTS_AMOUNT).map((slot, index) => (
+                            <RescheduleBox key={index} onClick={this._setSelectedSlot} isSelected={slot.clientId === selectedSlot.clientId} data={slot}/>
+                        )
+                    )
+                }
             </div>
         );
     };

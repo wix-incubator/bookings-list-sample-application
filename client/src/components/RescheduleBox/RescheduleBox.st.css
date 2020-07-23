@@ -17,10 +17,14 @@
 }
 
 .rescheduleBox:hover {
+    background: rgba(122, 122, 122, 0.1);
+}
+
+.rescheduleBoxSelected {
     border: 1px solid #3999ec;
 }
 
-.rescheduleBox:hover > .rescheduleBoxLabel {
+.rescheduleBoxSelected > span.rescheduleBoxLabel {
     color: #3999ec;
 }
 

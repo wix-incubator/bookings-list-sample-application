@@ -3,13 +3,15 @@ import axiosInstance from '../network';
 import mockData from './mockData';
 import {SORT_ORDER} from './constants';
 import {raiseNotification, pause} from '../utils';
+import {uuid} from 'uuidv4';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 const rescheduleModalInitialState = {
     isOpen: false,
     slots: [],
+    selectedSlot: {},
     data: null,
     loading: false
 };
@@ -246,6 +248,11 @@ class BookingsListStore {
         this.store.rescheduleModal[key] = value;
     };
 
+    @action('Set selected slot')
+    setSelectedSlot = (slots, selectedSlot) => {
+        console.logx(slots, selectedSlot);
+    };
+
     @action('Fetch schedule data')
     fetchScheduleSlots = async (scheduleId) => {
         this.setLoadingScheduleSlots(true);
@@ -260,7 +267,13 @@ class BookingsListStore {
             // const result = await axiosInstance.post(`/calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const {data} = result;
-            this.setRescheduleModalData('slots', data.slots);
+
+            const slots = data.slots.map(slot => ({
+                ...slot,
+                clientId: uuid()
+            }));
+
+            this.setRescheduleModalData('slots', slots);
         } catch (e) {
             console.log({e});
             raiseNotification(e.message, 'error');
