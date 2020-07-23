@@ -1,6 +1,49 @@
 {
   "services": [
     {
+      "id": "08597c8c-9345-4bc5-aa43-d0aa70807a8f",
+      "info": {
+        "name": "Front End Course",
+        "description": "",
+        "images": [],
+        "tagLine": ""
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": true,
+        "wixPayInPerson": true,
+        "custom": false,
+        "wixPaidPlan": false
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "9ab80b1d-3301-4256-9082-b3d85e7a3b79"
+      ],
+      "customProperties": {
+        "order": "6",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 6
+    },
+    {
       "id": "180963ce-85ec-4f04-a9ec-6741ca673020",
       "info": {
         "name": "Gyrotonic",
@@ -221,7 +264,10 @@
         }
       },
       "paymentOptions": {
-        "wixPayOnline": true
+        "wixPayOnline": true,
+        "wixPayInPerson": false,
+        "custom": false,
+        "wixPaidPlan": false
       },
       "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
       "bookingFormId": "00000000-0000-0000-0000-000000000000",

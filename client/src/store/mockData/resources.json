@@ -49,12 +49,12 @@
         {
           "id": "dfb200b3-a0eb-4892-be86-bffc7a1bf47e",
           "scheduleOwnerId": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d",
-          "firstSessionStart": "2020-04-14T08:10:17.685Z",
+          "firstSessionStart": "2020-07-21T07:00:00Z",
           "timeZone": "Asia/Jerusalem",
           "intervals": [
             {
-              "id": "0adec7eb-4529-494f-9581-dde5ac1ba6cb",
-              "start": "2020-04-07T08:10:17.685Z",
+              "id": "deee4653-24b9-4721-9c1e-84ce7b4a782e",
+              "start": "2020-07-20T21:00:00Z",
               "interval": {
                 "daysOfWeek": "MON",
                 "hourOfDay": 10,
@@ -68,8 +68,8 @@
               "intervalType": "UNDEFINED"
             },
             {
-              "id": "d51e48b5-047a-4033-81e0-7ae369bac85c",
-              "start": "2020-04-07T08:10:17.685Z",
+              "id": "1a065bb1-99a8-4890-bc20-fd19b4bb0f95",
+              "start": "2020-07-20T21:00:00Z",
               "interval": {
                 "daysOfWeek": "TUE",
                 "hourOfDay": 10,
@@ -83,8 +83,8 @@
               "intervalType": "UNDEFINED"
             },
             {
-              "id": "25c96598-789f-4ea3-b4bd-1478da47d0d7",
-              "start": "2020-04-07T08:10:17.685Z",
+              "id": "ca6d2979-459c-42d3-be85-a85062f92376",
+              "start": "2020-07-20T21:00:00Z",
               "interval": {
                 "daysOfWeek": "WED",
                 "hourOfDay": 10,
@@ -98,8 +98,8 @@
               "intervalType": "UNDEFINED"
             },
             {
-              "id": "1db7e080-7004-4827-8181-b407ff9bbdd4",
-              "start": "2020-04-07T08:10:17.685Z",
+              "id": "882d2edc-0bb5-45c5-990e-45d0f2e3d7ff",
+              "start": "2020-07-20T21:00:00Z",
               "interval": {
                 "daysOfWeek": "THU",
                 "hourOfDay": 10,
@@ -113,8 +113,8 @@
               "intervalType": "UNDEFINED"
             },
             {
-              "id": "1b91ea3f-f4fa-454a-beb3-f48ec9530860",
-              "start": "2020-04-07T08:10:17.685Z",
+              "id": "02724da8-306e-4567-8944-ea3d17fc12c3",
+              "start": "2020-07-20T21:00:00Z",
               "interval": {
                 "daysOfWeek": "FRI",
                 "hourOfDay": 10,
@@ -133,11 +133,9 @@
           "participants": [],
           "status": "CREATED",
           "created": "2019-08-15T14:23:16.207Z",
-          "updated": "2020-04-07T08:10:17.689Z",
-          "version": 8,
-          "inheritedFields": [
-            "timeZone"
-          ]
+          "updated": "2020-07-21T06:33:42.804Z",
+          "version": 9,
+          "inheritedFields": []
         }
       ],
       "status": "UPDATED"

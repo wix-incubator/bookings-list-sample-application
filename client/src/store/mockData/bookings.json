@@ -2,204 +2,6 @@
   "bookingsEntries": [
     {
       "booking": {
-        "id": "264d197e-27d6-47ee-a19a-32ca1129fb84",
-        "bookedEntity": {
-          "serviceId": "3c19f139-9b29-4141-8a5f-548bd588280f",
-          "scheduleId": "6cb2fd56-a280-48dd-8890-d6151ac00c52",
-          "singleSession": {
-            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IF40KDYeX1JCx7OtbjM71JUBZrAIM6QabC2Uh562hd4Q3Soy0VLZ8RExdAVJRhbbfZbfW5f6HxxRI2Bc4HdMsvW43sIbi3dHCgXtkhxaKj9RfPinCjU2edPBROIMdI0csW9WTrg5lrAlvsM9WhOyJkPyOj40Jg8OXmR61Tu1p1E2hXxH4OnITUeeEQ0OaFfn2evnIv2KHqcsgR3X7qLeaAaSLXsIoWGOEKB3tX8DrDArMSBT3ovOFEXKOV23bU0CcJlxgW1jFl",
-            "start": "2020-07-13T06:00:00Z",
-            "end": "2020-07-13T07:00:00Z"
-          },
-          "title": "Mat",
-          "location": {
-            "locationType": "OWNER_BUSINESS"
-          },
-          "rate": {
-            "labeledPriceOptions": {
-              "general": {
-                "amount": "15",
-                "currency": "USD",
-                "downPayAmount": "0"
-              }
-            },
-            "priceText": ""
-          },
-          "tags": [
-            "GROUP"
-          ]
-        },
-        "bookedResources": [
-          {
-            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
-            "name": "Staff Member #1",
-            "email": "info@mysite.com"
-          }
-        ],
-        "formInfo": {
-          "contactDetails": {
-            "contactId": "e52888ca-d478-4827-9516-a3ef86ca60cd",
-            "firstName": "Alon",
-            "lastName": "Roth",
-            "email": "alon@codicate.com",
-            "phone": "",
-            "timeZone": "Asia/Jerusalem",
-            "countryCode": "IL"
-          },
-          "paymentSelection": [
-            {
-              "rateLabel": "general",
-              "numberOfParticipants": 1
-            }
-          ],
-          "customFormFields": {},
-          "additionalFields": [
-            {
-              "id": "5352a173-473c-48df-8ff4-366a663414d7",
-              "label": "Add Your Message",
-              "valueType": "LONG_TEXT"
-            }
-          ]
-        },
-        "paymentDetails": {
-          "balance": {
-            "finalPrice": {
-              "amount": "15",
-              "currency": "USD",
-              "downPayAmount": "0"
-            },
-            "amountReceived": "0"
-          },
-          "wixPayDetails": {
-            "txId": "b426463c-7417-4ee5-b43b-b88ff33712bb",
-            "orderId": "6171d83c-d9b4-430f-a313-a078b1f22dfe",
-            "orderAmount": "15",
-            "orderStatus": "UNDEFINED",
-            "paymentVendorName": "inPerson"
-          },
-          "state": "PENDING_MARK_AS_PAID",
-          "wixPayMultipleDetails": [
-            {
-              "txId": "b426463c-7417-4ee5-b43b-b88ff33712bb",
-              "orderId": "6171d83c-d9b4-430f-a313-a078b1f22dfe",
-              "orderAmount": "15",
-              "orderStatus": "UNDEFINED",
-              "paymentVendorName": "inPerson"
-            }
-          ]
-        },
-        "status": "CONFIRMED",
-        "created": "2020-07-20T11:01:40.832Z",
-        "bookingSource": {
-          "platform": "MOBILE_APP",
-          "actor": "UNDEFINED_ACTOR",
-          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
-          "appName": "Wix Bookings"
-        }
-      }
-    },
-    {
-      "booking": {
-        "id": "40c8bfe6-058f-4c36-bac5-09df2df38707",
-        "bookedEntity": {
-          "serviceId": "6a451864-174c-417a-b607-4dc90d9cd600",
-          "scheduleId": "33ac32ac-e495-4d9f-9fea-b533a2a93e5f",
-          "singleSession": {
-            "sessionId": "2mmoW0vwKcSFyxtOfCdMtbtBQSci0MJt7N2Fi65qy5yZGMDx93FYQ6JS87xpYdEurXEHAaEiOfr5MpGd4ix2k5cjGztgjJqMpd9h",
-            "start": "2020-04-16T09:30:00Z",
-            "end": "2020-04-16T10:30:00Z"
-          },
-          "title": "1x1 service",
-          "location": {
-            "locationType": "OWNER_BUSINESS"
-          },
-          "rate": {
-            "labeledPriceOptions": {
-              "general": {
-                "amount": "150",
-                "currency": "ILS",
-                "downPayAmount": "0"
-              }
-            }
-          },
-          "tags": [
-            "INDIVIDUAL"
-          ]
-        },
-        "bookedResources": [
-          {
-            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
-            "name": "Staff Member #1",
-            "email": "info@mysite.com"
-          }
-        ],
-        "formInfo": {
-          "contactDetails": {
-            "contactId": "0f131ebc-6f99-4365-969f-3e4997f03dbc",
-            "firstName": "aasdasd",
-            "email": "a@a.com",
-            "timeZone": "Asia/Jerusalem",
-            "countryCode": "IL"
-          },
-          "paymentSelection": [
-            {
-              "rateLabel": "general",
-              "numberOfParticipants": 1
-            }
-          ],
-          "customFormFields": {},
-          "additionalFields": [
-            {
-              "id": "5352a173-473c-48df-8ff4-366a663414d7",
-              "label": "Add Your Message",
-              "valueType": "LONG_TEXT"
-            }
-          ]
-        },
-        "paymentDetails": {
-          "balance": {
-            "finalPrice": {
-              "amount": "150",
-              "currency": "ILS",
-              "downPayAmount": "0"
-            },
-            "amountReceived": "0"
-          },
-          "wixPayDetails": {
-            "txId": "f24b15b7-0152-4aba-ac21-7af03d5570de",
-            "orderId": "06d511c1-9b28-4b7f-9b05-d0f031cee80c",
-            "orderAmount": "150",
-            "orderStatus": "UNDEFINED",
-            "paymentVendorName": "offline"
-          },
-          "state": "PENDING_MARK_AS_PAID",
-          "wixPayMultipleDetails": [
-            {
-              "txId": "f24b15b7-0152-4aba-ac21-7af03d5570de",
-              "orderId": "06d511c1-9b28-4b7f-9b05-d0f031cee80c",
-              "orderAmount": "150",
-              "orderStatus": "UNDEFINED",
-              "paymentVendorName": "offline"
-            }
-          ],
-          "couponDetails": {
-            "couponName": "Summer 2020"
-          }
-        },
-        "status": "CONFIRMED",
-        "created": "2020-04-15T14:20:53.984Z",
-        "attendanceInfo": {
-          "attendanceStatus": false,
-          "numberOfAttendees": 1
-        },
-        "bookingSource": {
-          "platform": "WEB",
-          "actor": "UNDEFINED_ACTOR"
-        }
-      }
-    },
-    {
-      "booking": {
         "id": "5ce57f18-12aa-4d8c-a725-c7538c233c8c",
         "bookedEntity": {
           "serviceId": "3d4a3762-b43b-4f17-addd-b7a010825cf6",
@@ -300,592 +102,11 @@
           "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
           "appName": "Wix Bookings"
         }
-      }
-    },
-    {
-      "booking": {
-        "id": "69d904e6-b464-4aa4-81f6-3bf958400f0a",
-        "bookedEntity": {
-          "serviceId": "180963ce-85ec-4f04-a9ec-6741ca673020",
-          "scheduleId": "7c351505-9172-46e1-b779-fdf3b049f66c",
-          "singleSession": {
-            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IW6h44CAwgsa4fMSr6X5OkuV1XaxVLNUr1poxxHfM8qkSi5UV6UzXGsgyef62OSGd27pmFtZrR7jjdhAt0uaRmStIRqUEAGz9X0QxBXj3pe7jjAnDZwE9xKY5ucE6BHNiwB78Q41t02O9VQFY8uSM7q4ZQM9JgIig8kbmjSQmzpMu6wLSijxPrDhxSoIgU1oKkv2oIzOpeMVaKUYeYxCZ2dvQInTxY9IQmnwhqY8LdHxX8MfEGiBS2FGqdp8bYHOI7toBCsUDl",
-            "start": "2020-04-13T07:00:00Z",
-            "end": "2020-04-13T08:00:00Z"
-          },
-          "title": "Gyrotonic",
-          "location": {
-            "locationType": "OWNER_BUSINESS"
-          },
-          "rate": {
-            "labeledPriceOptions": {
-              "general": {
-                "amount": "15",
-                "currency": "USD",
-                "downPayAmount": "0"
-              }
-            },
-            "priceText": ""
-          },
-          "tags": [
-            "GROUP"
-          ]
-        },
-        "bookedResources": [
-          {
-            "id": "ec9ad76a-0a9e-4787-b534-e42eb5b6f2f8",
-            "name": "Staff Member #2",
-            "email": "aa@a.com"
-          }
-        ],
-        "formInfo": {
-          "contactDetails": {
-            "contactId": "0f131ebc-6f99-4365-969f-3e4997f03dbc",
-            "firstName": "Alon",
-            "lastName": "R",
-            "email": "a@a.com",
-            "phone": "",
-            "timeZone": "Asia/Jerusalem",
-            "countryCode": "IL"
-          },
-          "paymentSelection": [
-            {
-              "rateLabel": "general",
-              "numberOfParticipants": 1
-            }
-          ],
-          "customFormFields": {},
-          "additionalFields": [
-            {
-              "id": "5352a173-473c-48df-8ff4-366a663414d7",
-              "label": "Add Your Message",
-              "valueType": "LONG_TEXT"
-            }
-          ]
-        },
-        "paymentDetails": {
-          "balance": {
-            "finalPrice": {
-              "amount": "15",
-              "currency": "USD",
-              "downPayAmount": "0"
-            },
-            "amountReceived": "15"
-          },
-          "wixPayDetails": {
-            "txId": "4bd43ab0-304b-4ed0-9b2c-6388465fb916",
-            "orderId": "50670d09-dfb9-4e8c-80cf-3245186f63c3",
-            "orderAmount": "15",
-            "orderStatus": "UNDEFINED",
-            "orderApprovalTime": "2020-04-22T15:38:26.758Z",
-            "paymentVendorName": "inPerson"
-          },
-          "state": "COMPLETE",
-          "wixPayMultipleDetails": [
-            {
-              "txId": "4bd43ab0-304b-4ed0-9b2c-6388465fb916",
-              "orderId": "50670d09-dfb9-4e8c-80cf-3245186f63c3",
-              "orderAmount": "15",
-              "orderStatus": "UNDEFINED",
-              "orderApprovalTime": "2020-04-22T15:38:26.758Z",
-              "paymentVendorName": "inPerson"
-            }
-          ]
-        },
-        "status": "CONFIRMED",
-        "created": "2020-04-15T13:53:44.330Z",
-        "attendanceInfo": {
-          "attendanceStatus": true,
-          "numberOfAttendees": 1
-        },
-        "bookingSource": {
-          "platform": "UNDEFINED_PLATFORM",
-          "actor": "UNDEFINED_ACTOR"
-        }
-      }
-    },
-    {
-      "booking": {
-        "id": "6f5fee70-1335-480d-95e9-58d272d7735e",
-        "bookedEntity": {
-          "serviceId": "3c19f139-9b29-4141-8a5f-548bd588280f",
-          "scheduleId": "6cb2fd56-a280-48dd-8890-d6151ac00c52",
-          "singleSession": {
-            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IF40KDYeX1JCx7OtbjM71JUBZrAIM6QabC2Uh562hd4Q3Soy0VLZ8RExdAVJRhbbfZbfW5f6HxxRI2Bc4HdMsvW43sIbi3dHCgXtkhxaKj9RfPinCjU2edPBROIMdI0csW9WTrg5lrAlvsM9WhOyJkPyOj40Jg8OXmR61Tu1p1E2hXxH4OnITUeeEQ0OaFfn2evnIv2KHqcsgR3X7qLeaAaSLXsIoWGOEKB3tX8DrDArMSBT3ovOFEXKOV23bU0CcJlxgW1jFl",
-            "start": "2020-07-13T06:00:00Z",
-            "end": "2020-07-13T07:00:00Z"
-          },
-          "title": "Mat",
-          "location": {
-            "locationType": "OWNER_BUSINESS"
-          },
-          "rate": {
-            "labeledPriceOptions": {
-              "general": {
-                "amount": "15",
-                "currency": "USD",
-                "downPayAmount": "0"
-              }
-            },
-            "priceText": ""
-          },
-          "tags": [
-            "GROUP"
-          ]
-        },
-        "bookedResources": [
-          {
-            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
-            "name": "Staff Member #1",
-            "email": "info@mysite.com"
-          }
-        ],
-        "formInfo": {
-          "contactDetails": {
-            "contactId": "0f131ebc-6f99-4365-969f-3e4997f03dbc",
-            "firstName": "Alon",
-            "lastName": "R",
-            "email": "a@a.com",
-            "phone": "",
-            "timeZone": "Asia/Jerusalem",
-            "countryCode": "IL"
-          },
-          "paymentSelection": [
-            {
-              "rateLabel": "general",
-              "numberOfParticipants": 1
-            }
-          ],
-          "customFormFields": {},
-          "additionalFields": [
-            {
-              "id": "5352a173-473c-48df-8ff4-366a663414d7",
-              "label": "Add Your Message",
-              "valueType": "LONG_TEXT"
-            }
-          ]
-        },
-        "paymentDetails": {
-          "balance": {
-            "finalPrice": {
-              "amount": "15",
-              "currency": "USD",
-              "downPayAmount": "0"
-            },
-            "amountReceived": "0"
-          },
-          "wixPayDetails": {
-            "txId": "520aca9f-193e-48e3-bea7-0871e0da68e4",
-            "orderId": "43134fa6-5537-4a9c-aa96-500b3ab85b73",
-            "orderAmount": "15",
-            "orderStatus": "UNDEFINED",
-            "paymentVendorName": "inPerson"
-          },
-          "state": "PENDING_MARK_AS_PAID",
-          "wixPayMultipleDetails": [
-            {
-              "txId": "520aca9f-193e-48e3-bea7-0871e0da68e4",
-              "orderId": "43134fa6-5537-4a9c-aa96-500b3ab85b73",
-              "orderAmount": "15",
-              "orderStatus": "UNDEFINED",
-              "paymentVendorName": "inPerson"
-            }
-          ]
-        },
-        "status": "CONFIRMED",
-        "created": "2020-07-20T11:01:32.870Z",
-        "bookingSource": {
-          "platform": "UNDEFINED_PLATFORM",
-          "actor": "UNDEFINED_ACTOR",
-          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
-          "appName": "Wix Bookings"
-        }
-      }
-    },
-    {
-      "booking": {
-        "id": "ad980be2-d0f8-4c62-981d-4328f0ff32de",
-        "bookedEntity": {
-          "serviceId": "6a451864-174c-417a-b607-4dc90d9cd600",
-          "scheduleId": "33ac32ac-e495-4d9f-9fea-b533a2a93e5f",
-          "singleSession": {
-            "sessionId": "2mmoW0vwKcSFyxtOfCdKGmv3d4w7J8AJDmWq8Nb4W2aMLQYFU9OLGddZOagbACZ7Q87Yv6MnmDUTR9exTEvHS5eDuXzsFgwBUrk5",
-            "start": "2020-04-27T09:00:00Z",
-            "end": "2020-04-27T10:00:00Z"
-          },
-          "title": "1x1 service",
-          "location": {
-            "locationType": "OWNER_BUSINESS"
-          },
-          "rate": {
-            "labeledPriceOptions": {
-              "general": {
-                "amount": "150",
-                "currency": "ILS",
-                "downPayAmount": "0"
-              }
-            }
-          },
-          "tags": [
-            "INDIVIDUAL"
-          ]
-        },
-        "bookedResources": [
-          {
-            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
-            "name": "Staff Member #1",
-            "email": "info@mysite.com"
-          }
-        ],
-        "formInfo": {
-          "contactDetails": {
-            "contactId": "c01d8aaa-787b-4a0d-a78a-b764dcd27866",
-            "firstName": "asdasd",
-            "email": "asd@aDASD.COM",
-            "timeZone": "Asia/Jerusalem",
-            "countryCode": "IL"
-          },
-          "paymentSelection": [
-            {
-              "rateLabel": "general",
-              "numberOfParticipants": 1
-            }
-          ],
-          "customFormFields": {},
-          "additionalFields": [
-            {
-              "id": "5352a173-473c-48df-8ff4-366a663414d7",
-              "label": "Add Your Message",
-              "valueType": "LONG_TEXT"
-            }
-          ]
-        },
-        "paymentDetails": {
-          "balance": {
-            "finalPrice": {
-              "amount": "150",
-              "currency": "ILS",
-              "downPayAmount": "0"
-            },
-            "amountReceived": "0"
-          },
-          "wixPayDetails": {
-            "txId": "61d115bc-9805-490f-8fcd-e92b2f04b8f6",
-            "orderId": "66e140f5-942a-4867-9d55-4706d76dba81",
-            "orderAmount": "150",
-            "orderStatus": "UNDEFINED",
-            "paymentVendorName": "offline"
-          },
-          "state": "PENDING_MARK_AS_PAID",
-          "wixPayMultipleDetails": [
-            {
-              "txId": "61d115bc-9805-490f-8fcd-e92b2f04b8f6",
-              "orderId": "66e140f5-942a-4867-9d55-4706d76dba81",
-              "orderAmount": "150",
-              "orderStatus": "UNDEFINED",
-              "paymentVendorName": "offline"
-            }
-          ]
-        },
-        "status": "CONFIRMED",
-        "created": "2020-04-22T15:01:50.592Z",
-        "bookingSource": {
-          "platform": "UNDEFINED_PLATFORM",
-          "actor": "UNDEFINED_ACTOR"
-        }
-      }
-    },
-    {
-      "booking": {
-        "id": "bab69634-c1e7-412e-b50f-a8370d494983",
-        "bookedEntity": {
-          "serviceId": "3c19f139-9b29-4141-8a5f-548bd588280f",
-          "scheduleId": "6cb2fd56-a280-48dd-8890-d6151ac00c52",
-          "singleSession": {
-            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IF40KDYeX1JCx7OtbjM71JUBZrAIM6QabC2Uh562hd4Q3Soy0VLZ8RExdAVJRhbbfZbfW5f6HxxRI2Bc4HdMsvW43sIbi3dHCgXtkhxaKj9RfPinCjU2edPBROIMdI0csW9WTrg5lrAlvsM9WhOyJkPyOj40Jg8OXmR61Tu1p1E2hXxH4OnITUeeEQ0OaFfn2evnIv2KHqcsgR3X7qLeaAaSLXsIoWGOEKB3tX8DrDArMSBT3ovOFEXKOV23bU0CcJlxgW1jFl",
-            "start": "2020-07-13T06:00:00Z",
-            "end": "2020-07-13T07:00:00Z"
-          },
-          "title": "Mat",
-          "location": {
-            "locationType": "OWNER_BUSINESS"
-          },
-          "rate": {
-            "labeledPriceOptions": {
-              "general": {
-                "amount": "15",
-                "currency": "USD",
-                "downPayAmount": "0"
-              }
-            },
-            "priceText": ""
-          },
-          "tags": [
-            "GROUP"
-          ]
-        },
-        "bookedResources": [
-          {
-            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
-            "name": "Staff Member #1",
-            "email": "info@mysite.com"
-          }
-        ],
-        "formInfo": {
-          "contactDetails": {
-            "contactId": "42cee523-9b0b-42d6-ac00-5e23ee39bb37",
-            "firstName": "Ducky",
-            "lastName": "Duck",
-            "email": "ducky@duck.com",
-            "phone": "0123456789",
-            "timeZone": "Asia/Jerusalem",
-            "countryCode": "IL"
-          },
-          "paymentSelection": [
-            {
-              "rateLabel": "general",
-              "numberOfParticipants": 4
-            }
-          ],
-          "customFormFields": {},
-          "additionalFields": [
-            {
-              "id": "5352a173-473c-48df-8ff4-366a663414d7",
-              "label": "Add Your Message",
-              "valueType": "LONG_TEXT"
-            }
-          ]
-        },
-        "paymentDetails": {
-          "balance": {
-            "finalPrice": {
-              "amount": "60",
-              "currency": "USD",
-              "downPayAmount": "0"
-            },
-            "amountReceived": "0"
-          },
-          "wixPayDetails": {
-            "txId": "1bbd2308-7e9c-4152-930b-aa0edd127c7b",
-            "orderId": "99e5065e-8643-4cbe-a7db-c05f9c57b73f",
-            "orderAmount": "60",
-            "orderStatus": "UNDEFINED",
-            "paymentVendorName": "inPerson"
-          },
-          "state": "PENDING_MARK_AS_PAID",
-          "wixPayMultipleDetails": [
-            {
-              "txId": "1bbd2308-7e9c-4152-930b-aa0edd127c7b",
-              "orderId": "99e5065e-8643-4cbe-a7db-c05f9c57b73f",
-              "orderAmount": "60",
-              "orderStatus": "UNDEFINED",
-              "paymentVendorName": "inPerson"
-            }
-          ]
-        },
-        "status": "CONFIRMED",
-        "created": "2020-07-20T11:02:01.879Z",
-        "bookingSource": {
-          "platform": "UNDEFINED_PLATFORM",
-          "actor": "UNDEFINED_ACTOR",
-          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
-          "appName": "Wix Bookings"
-        }
-      }
-    },
-    {
-      "booking": {
-        "id": "cb527961-a8f0-4f75-8357-e6b5ad7d98aa",
-        "bookedEntity": {
-          "serviceId": "180963ce-85ec-4f04-a9ec-6741ca673020",
-          "scheduleId": "7c351505-9172-46e1-b779-fdf3b049f66c",
-          "singleSession": {
-            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IW6h44CAwgsa4fMSr6X5OkuV1XaxVLNUr1poxxHfM8qkSi5UV6UzXGsgyef62OSGd27pmFtZrR7jjdhAt0uaRmStIRqUEAGz9X0QxBXj3pe7jjAnDZwE9xKY5ucE6BHNiwB78Q41t02O9VQFY8uSM7q4ZQM9JgIig8kbmjSQmzpMu6wLSijxPrDhxSoIgU1oKkv2oIzOpeMVaKUYeYxCZ2dvQInTxY9IQmnwhqY8LdHxX8MfEGiBS2FGqdp8bYHOI7toBCsUDl",
-            "start": "2020-04-13T07:00:00Z",
-            "end": "2020-04-13T08:00:00Z"
-          },
-          "title": "Gyrotonic",
-          "location": {
-            "locationType": "OWNER_BUSINESS"
-          },
-          "rate": {
-            "labeledPriceOptions": {
-              "general": {
-                "amount": "15",
-                "currency": "USD",
-                "downPayAmount": "0"
-              }
-            },
-            "priceText": ""
-          },
-          "tags": [
-            "GROUP"
-          ]
-        },
-        "bookedResources": [
-          {
-            "id": "ec9ad76a-0a9e-4787-b534-e42eb5b6f2f8",
-            "name": "Staff Member #2",
-            "email": "aa@a.com"
-          }
-        ],
-        "formInfo": {
-          "contactDetails": {
-            "contactId": "c01d8aaa-787b-4a0d-a78a-b764dcd27866",
-            "firstName": "asdasd",
-            "email": "asd@adasd.com",
-            "phone": "",
-            "timeZone": "Asia/Jerusalem",
-            "countryCode": "IL"
-          },
-          "paymentSelection": [
-            {
-              "rateLabel": "general",
-              "numberOfParticipants": 1
-            }
-          ],
-          "customFormFields": {},
-          "additionalFields": [
-            {
-              "id": "5352a173-473c-48df-8ff4-366a663414d7",
-              "label": "Add Your Message",
-              "valueType": "LONG_TEXT"
-            }
-          ]
-        },
-        "paymentDetails": {
-          "balance": {
-            "finalPrice": {
-              "amount": "15",
-              "currency": "USD",
-              "downPayAmount": "0"
-            },
-            "amountReceived": "0"
-          },
-          "wixPayDetails": {
-            "txId": "68f3dda2-b452-44db-9708-da9447e9bb71",
-            "orderId": "498d5df0-90cc-4585-af84-c43ffe0bba3d",
-            "orderAmount": "15",
-            "orderStatus": "UNDEFINED",
-            "paymentVendorName": "inPerson"
-          },
-          "state": "PENDING_MARK_AS_PAID",
-          "wixPayMultipleDetails": [
-            {
-              "txId": "68f3dda2-b452-44db-9708-da9447e9bb71",
-              "orderId": "498d5df0-90cc-4585-af84-c43ffe0bba3d",
-              "orderAmount": "15",
-              "orderStatus": "UNDEFINED",
-              "paymentVendorName": "inPerson"
-            }
-          ]
-        },
-        "status": "CONFIRMED",
-        "created": "2020-04-26T08:17:43.412Z",
-        "bookingSource": {
-          "platform": "UNDEFINED_PLATFORM",
-          "actor": "UNDEFINED_ACTOR"
-        }
-      }
-    },
-    {
-      "booking": {
-        "id": "d2c0ea35-1c84-4bcf-87c4-96ceafa40d95",
-        "bookedEntity": {
-          "serviceId": "180963ce-85ec-4f04-a9ec-6741ca673020",
-          "scheduleId": "7c351505-9172-46e1-b779-fdf3b049f66c",
-          "singleSession": {
-            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IW6h44CAwgsa4fMSr6X5OkuV1XaxVLNUr1poxxHfM8qkSi5UV6UzXGsgyef62OSGd27pmFtZrR7jjdhAt0uaRmStIRqUEAGz9X0QxBXj3pe7jjAnDZwE9xKY5ucE6BHNiwB78Q41t02O9VQFY8uSM7q4ZQM9JgIig8kbmjSQmzpMu6wLSijxPrDhxSoIgU1oKkv2oIzOpeMVaKUYeYxCZ2dvQInTxY9IQmnwhqY8LdHxX8MfEGiBS2FGqdp8bYHOI7toBCsUDl",
-            "start": "2020-04-13T07:00:00Z",
-            "end": "2020-04-13T08:00:00Z"
-          },
-          "title": "Gyrotonic",
-          "location": {
-            "locationType": "OWNER_BUSINESS"
-          },
-          "rate": {
-            "labeledPriceOptions": {
-              "general": {
-                "amount": "15",
-                "currency": "USD",
-                "downPayAmount": "0"
-              }
-            },
-            "priceText": ""
-          },
-          "tags": [
-            "GROUP"
-          ]
-        },
-        "bookedResources": [
-          {
-            "id": "ec9ad76a-0a9e-4787-b534-e42eb5b6f2f8",
-            "name": "Staff Member #2",
-            "email": "aa@a.com"
-          }
-        ],
-        "formInfo": {
-          "contactDetails": {
-            "contactId": "40636f74-84a3-4b2c-9c10-0d37033b8396",
-            "firstName": "Alonas",
-            "lastName": "Roth",
-            "email": "alon+asdasd@codicate.com",
-            "phone": "0542214598",
-            "timeZone": "Asia/Jerusalem",
-            "countryCode": "IL"
-          },
-          "paymentSelection": [
-            {
-              "rateLabel": "general",
-              "numberOfParticipants": 1
-            }
-          ],
-          "customFormFields": {},
-          "additionalFields": [
-            {
-              "id": "5352a173-473c-48df-8ff4-366a663414d7",
-              "label": "Add Your Message",
-              "valueType": "LONG_TEXT"
-            }
-          ]
-        },
-        "paymentDetails": {
-          "balance": {
-            "finalPrice": {
-              "amount": "15",
-              "currency": "USD",
-              "downPayAmount": "0"
-            },
-            "amountReceived": "15"
-          },
-          "wixPayDetails": {
-            "txId": "a13644b2-7550-4ff4-8839-9538a5add34d",
-            "orderId": "93ce5494-57c1-42df-837f-abfcacb616e4",
-            "orderAmount": "15",
-            "orderStatus": "UNDEFINED",
-            "orderApprovalTime": "2020-06-22T18:37:39.140Z",
-            "paymentVendorName": "inPerson"
-          },
-          "state": "COMPLETE",
-          "wixPayMultipleDetails": [
-            {
-              "txId": "a13644b2-7550-4ff4-8839-9538a5add34d",
-              "orderId": "93ce5494-57c1-42df-837f-abfcacb616e4",
-              "orderAmount": "15",
-              "orderStatus": "UNDEFINED",
-              "orderApprovalTime": "2020-06-22T18:37:39.140Z",
-              "paymentVendorName": "inPerson"
-            }
-          ]
-        },
-        "status": "CONFIRMED",
-        "created": "2020-06-22T18:37:23.265Z",
-        "bookingSource": {
-          "platform": "UNDEFINED_PLATFORM",
-          "actor": "UNDEFINED_ACTOR",
-          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
-          "appName": "Wix Bookings"
-        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
       }
     },
     {
@@ -984,18 +205,124 @@
           "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
           "appName": "Wix Bookings"
         }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
       }
     },
     {
       "booking": {
-        "id": "eecd9bd2-378d-4ae0-b32f-9206c409d52b",
+        "id": "df5203e0-dccb-4ddd-b6e2-90f5ec62a9cf",
+        "bookedEntity": {
+          "serviceId": "6a451864-174c-417a-b607-4dc90d9cd600",
+          "scheduleId": "33ac32ac-e495-4d9f-9fea-b533a2a93e5f",
+          "singleSession": {
+            "sessionId": "2mmoW0vwKcSFyxtOfCdKTeyNXyYqZC4huPFqd7alVvzwosV6Q2LNw8k9z2vngBKBgPKwPG4eq3tISJmsi26y7BIUnvCMV2Q7cQs1",
+            "start": "2020-07-09T02:30:00Z",
+            "end": "2020-07-09T03:30:00Z"
+          },
+          "title": "1x1 service",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "150",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "INDIVIDUAL"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "f8445fb8-cf92-44fd-873d-fe48cb682d62",
+            "firstName": "asdsad",
+            "email": "a@asd.com",
+            "phone": "0505",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "150",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "ae9f8b3a-b71a-41e6-aee6-c8ede03b8df8",
+            "orderId": "ca9a96d3-c611-4f90-9ae2-01133ab247df",
+            "orderAmount": "150",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "ae9f8b3a-b71a-41e6-aee6-c8ede03b8df8",
+              "orderId": "ca9a96d3-c611-4f90-9ae2-01133ab247df",
+              "orderAmount": "150",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T06:33:16.993Z",
+        "bookingSource": {
+          "platform": "WEB",
+          "actor": "BUSINESS",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "264d197e-27d6-47ee-a19a-32ca1129fb84",
         "bookedEntity": {
           "serviceId": "3c19f139-9b29-4141-8a5f-548bd588280f",
           "scheduleId": "6cb2fd56-a280-48dd-8890-d6151ac00c52",
           "singleSession": {
-            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IF40KDYeX1JCx7OtbjM71JUBZrAIM6QabC2Uh562hd4Q3Soy0VLZ8RExdAVJRhbbfZbfW5f6HxxRI2Bc4HdJAteYKDZLcfetcBWikL3Bsui30TnznAZq5QGqhI01ljyQwSEIZfZnTXRXPGbxpD9so1soYLJt49Dzr3TL1Xgih6dSg7m387enEJnaMvJnSt1fquAbrxoHagTQCxo8msKcCjMYtniVqEKvmN6vYfElfbLWrvwAdnMUs36XZ20am0jVjN2kkEvT93",
-            "start": "2020-04-24T06:00:00Z",
-            "end": "2020-04-24T07:00:00Z"
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IF40KDYeX1JCx7OtbjM71JUBZrAIM6QabC2Uh562hd4Q3Soy0VLZ8RExdAVJRhbbfZbfW5f6HxxRI2Bc4HdMsvW43sIbi3dHCgXtkhxaKj9RfPinCjU2edPBROIMdI0csW9WTrg5lrAlvsM9WhOyJkPyOj40Jg8OXmR61Tu1p1E2hXxH4OnITUeeEQ0OaFfn2evnIv2KHqcsgR3X7qLeaAaSLXsIoWGOEKB3tX8DrDArMSBT3ovOFEXKOV23bU0CcJlxgW1jFl",
+            "start": "2020-07-13T06:00:00Z",
+            "end": "2020-07-13T07:00:00Z"
           },
           "title": "Mat",
           "location": {
@@ -1024,9 +351,11 @@
         ],
         "formInfo": {
           "contactDetails": {
-            "contactId": "c01d8aaa-787b-4a0d-a78a-b764dcd27866",
-            "firstName": "asdasd",
-            "email": "asd@aDASD.COM",
+            "contactId": "e52888ca-d478-4827-9516-a3ef86ca60cd",
+            "firstName": "Alon",
+            "lastName": "Roth",
+            "email": "alon@codicate.com",
+            "phone": "",
             "timeZone": "Asia/Jerusalem",
             "countryCode": "IL"
           },
@@ -1055,8 +384,8 @@
             "amountReceived": "0"
           },
           "wixPayDetails": {
-            "txId": "d64a1f0f-6dd6-4e83-9a8f-467ac2e2c1fb",
-            "orderId": "9afe4788-b9b8-49bc-97e5-01330d3a97fd",
+            "txId": "b426463c-7417-4ee5-b43b-b88ff33712bb",
+            "orderId": "6171d83c-d9b4-430f-a313-a078b1f22dfe",
             "orderAmount": "15",
             "orderStatus": "UNDEFINED",
             "paymentVendorName": "inPerson"
@@ -1064,8 +393,8 @@
           "state": "PENDING_MARK_AS_PAID",
           "wixPayMultipleDetails": [
             {
-              "txId": "d64a1f0f-6dd6-4e83-9a8f-467ac2e2c1fb",
-              "orderId": "9afe4788-b9b8-49bc-97e5-01330d3a97fd",
+              "txId": "b426463c-7417-4ee5-b43b-b88ff33712bb",
+              "orderId": "6171d83c-d9b4-430f-a313-a078b1f22dfe",
               "orderAmount": "15",
               "orderStatus": "UNDEFINED",
               "paymentVendorName": "inPerson"
@@ -1073,15 +402,230 @@
           ]
         },
         "status": "CONFIRMED",
-        "created": "2020-04-22T14:59:36.756Z",
+        "created": "2020-07-20T11:01:40.832Z",
         "attendanceInfo": {
           "attendanceStatus": true,
           "numberOfAttendees": 1
         },
         "bookingSource": {
           "platform": "UNDEFINED_PLATFORM",
-          "actor": "UNDEFINED_ACTOR"
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
         }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "6f5fee70-1335-480d-95e9-58d272d7735e",
+        "bookedEntity": {
+          "serviceId": "3c19f139-9b29-4141-8a5f-548bd588280f",
+          "scheduleId": "6cb2fd56-a280-48dd-8890-d6151ac00c52",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IF40KDYeX1JCx7OtbjM71JUBZrAIM6QabC2Uh562hd4Q3Soy0VLZ8RExdAVJRhbbfZbfW5f6HxxRI2Bc4HdMsvW43sIbi3dHCgXtkhxaKj9RfPinCjU2edPBROIMdI0csW9WTrg5lrAlvsM9WhOyJkPyOj40Jg8OXmR61Tu1p1E2hXxH4OnITUeeEQ0OaFfn2evnIv2KHqcsgR3X7qLeaAaSLXsIoWGOEKB3tX8DrDArMSBT3ovOFEXKOV23bU0CcJlxgW1jFl",
+            "start": "2020-07-13T06:00:00Z",
+            "end": "2020-07-13T07:00:00Z"
+          },
+          "title": "Mat",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "15",
+                "currency": "USD",
+                "downPayAmount": "0"
+              }
+            },
+            "priceText": ""
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "0f131ebc-6f99-4365-969f-3e4997f03dbc",
+            "firstName": "Alon",
+            "lastName": "R",
+            "email": "a@a.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "15",
+              "currency": "USD",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "15"
+          },
+          "wixPayDetails": {
+            "txId": "520aca9f-193e-48e3-bea7-0871e0da68e4",
+            "orderId": "43134fa6-5537-4a9c-aa96-500b3ab85b73",
+            "orderAmount": "15",
+            "orderStatus": "UNDEFINED",
+            "orderApprovalTime": "2020-07-20T11:53:52.388Z",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "COMPLETE",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "520aca9f-193e-48e3-bea7-0871e0da68e4",
+              "orderId": "43134fa6-5537-4a9c-aa96-500b3ab85b73",
+              "orderAmount": "15",
+              "orderStatus": "UNDEFINED",
+              "orderApprovalTime": "2020-07-20T11:53:52.388Z",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-20T11:01:32.870Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "bab69634-c1e7-412e-b50f-a8370d494983",
+        "bookedEntity": {
+          "serviceId": "3c19f139-9b29-4141-8a5f-548bd588280f",
+          "scheduleId": "6cb2fd56-a280-48dd-8890-d6151ac00c52",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IF40KDYeX1JCx7OtbjM71JUBZrAIM6QabC2Uh562hd4Q3Soy0VLZ8RExdAVJRhbbfZbfW5f6HxxRI2Bc4HdMsvW43sIbi3dHCgXtkhxaKj9RfPinCjU2edPBROIMdI0csW9WTrg5lrAlvsM9WhOyJkPyOj40Jg8OXmR61Tu1p1E2hXxH4OnITUeeEQ0OaFfn2evnIv2KHqcsgR3X7qLeaAaSLXsIoWGOEKB3tX8DrDArMSBT3ovOFEXKOV23bU0CcJlxgW1jFl",
+            "start": "2020-07-13T06:00:00Z",
+            "end": "2020-07-13T07:00:00Z"
+          },
+          "title": "Mat",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "15",
+                "currency": "USD",
+                "downPayAmount": "0"
+              }
+            },
+            "priceText": ""
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "42cee523-9b0b-42d6-ac00-5e23ee39bb37",
+            "firstName": "Ducky",
+            "lastName": "Duck",
+            "email": "ducky@duck.com",
+            "phone": "0123456789",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 4
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "60",
+              "currency": "USD",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "1bbd2308-7e9c-4152-930b-aa0edd127c7b",
+            "orderId": "99e5065e-8643-4cbe-a7db-c05f9c57b73f",
+            "orderAmount": "60",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "1bbd2308-7e9c-4152-930b-aa0edd127c7b",
+              "orderId": "99e5065e-8643-4cbe-a7db-c05f9c57b73f",
+              "orderAmount": "60",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-20T11:02:01.879Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
       }
     },
     {
@@ -1180,29 +724,3202 @@
           "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
           "appName": "Wix Bookings"
         }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
       }
     },
     {
       "booking": {
-        "id": "ffa72e87-1816-4a2b-b216-a3c62f3bb9e7",
+        "id": "1b3775c1-7583-4020-a6d9-bfca8d4521a6",
         "bookedEntity": {
-          "serviceId": "180963ce-85ec-4f04-a9ec-6741ca673020",
-          "scheduleId": "7c351505-9172-46e1-b779-fdf3b049f66c",
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
           "singleSession": {
-            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1IW6h44CAwgsa4fMSr6X5OkuV1XaxVLNUr1poxxHfM8qkSi5UV6UzXGsgyef62OSGd27pmFtZrR7jjdhAt0uaRmStIRqUEAGz9X0QxBXj3pe7jjAnDZwE9xKY5ucE6BHNiwB78Q41t02O9VQFY8uSM7q4ZQM9JgIig8kbmjSQmzpMu6wLSijxPrDhxSoIgU1oKkv2oIzOpeMVaKUYeYxCZ2dvQInTxY9IQmnwhqY8LdHxX8MfEGiBS2FGqdp8bYHOI7toBCsUDl",
-            "start": "2020-04-13T07:00:00Z",
-            "end": "2020-04-13T08:00:00Z"
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
           },
-          "title": "Gyrotonic",
+          "title": "eXtreme Pilates",
           "location": {
             "locationType": "OWNER_BUSINESS"
           },
           "rate": {
             "labeledPriceOptions": {
               "general": {
-                "amount": "15",
-                "currency": "USD",
+                "amount": "200",
+                "currency": "ILS",
                 "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "42cee523-9b0b-42d6-ac00-5e23ee39bb37",
+            "firstName": "Ducky",
+            "lastName": "Duck",
+            "email": "ducky@duck.com",
+            "phone": "0123456789",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "c869e217-d581-42e6-b79d-b5e6d50dfa0e",
+            "orderId": "55d13fa0-e7e5-4487-9993-5c443c11e3a0",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "c869e217-d581-42e6-b79d-b5e6d50dfa0e",
+              "orderId": "55d13fa0-e7e5-4487-9993-5c443c11e3a0",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:40:28.178Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "1d6c513a-107e-4ace-bca2-abf032a97a50",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "40636f74-84a3-4b2c-9c10-0d37033b8396",
+            "firstName": "Alonas",
+            "lastName": "Roth",
+            "email": "alon+asdasd@codicate.com",
+            "phone": "0542214598",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "55ce76c9-e92e-4423-987a-7562e677a974",
+            "orderId": "4cc9f8c5-38e4-42d9-b028-1b32a4a19108",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "55ce76c9-e92e-4423-987a-7562e677a974",
+              "orderId": "4cc9f8c5-38e4-42d9-b028-1b32a4a19108",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:42:33.501Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "203aa01d-a017-42b7-9f3f-7c59d9efeb47",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "42cee523-9b0b-42d6-ac00-5e23ee39bb37",
+            "firstName": "Ducky",
+            "lastName": "Duck",
+            "email": "ducky@duck.com",
+            "phone": "0123456789",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "697f3f6e-43a3-49f5-840c-9bb4ec1afe2a",
+            "orderId": "6049a5cb-bee4-4471-bdd7-c01dd28da07f",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "697f3f6e-43a3-49f5-840c-9bb4ec1afe2a",
+              "orderId": "6049a5cb-bee4-4471-bdd7-c01dd28da07f",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:41:20.834Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "25995a8a-6f67-48aa-b14c-90f62f01fc0b",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "e52888ca-d478-4827-9516-a3ef86ca60cd",
+            "firstName": "Alon",
+            "lastName": "Roth",
+            "email": "alon@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "e67ec2a1-3844-4583-b683-7af2f1fb7f9c",
+            "orderId": "b0e7d27f-cce9-4042-92c4-ed131b8d6cbb",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "e67ec2a1-3844-4583-b683-7af2f1fb7f9c",
+              "orderId": "b0e7d27f-cce9-4042-92c4-ed131b8d6cbb",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:40:49.983Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "32758a13-3ffe-4c13-91e4-9a7ac659ba8c",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "0f131ebc-6f99-4365-969f-3e4997f03dbc",
+            "firstName": "Alon",
+            "lastName": "R",
+            "email": "a@a.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "dac6738d-63ba-46db-937a-c4e48879b9ea",
+            "orderId": "9c32bf75-5425-42df-bbec-0d2b7b9e7d82",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "dac6738d-63ba-46db-937a-c4e48879b9ea",
+              "orderId": "9c32bf75-5425-42df-bbec-0d2b7b9e7d82",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:41:25.772Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "43547d6a-a01a-46e9-879a-fd5b273e7eb8",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "20acfb64-0b03-4214-8fe2-847560253cf5",
+            "firstName": "",
+            "lastName": "",
+            "email": "alon+aaa@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "200"
+          },
+          "wixPayDetails": {
+            "txId": "7acd7e31-14bc-4825-8271-6e38582ef538",
+            "orderId": "5ad89a73-713e-4b05-b0ed-f6da90db616e",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "orderApprovalTime": "2020-07-21T14:34:07.973Z",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "COMPLETE",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "7acd7e31-14bc-4825-8271-6e38582ef538",
+              "orderId": "5ad89a73-713e-4b05-b0ed-f6da90db616e",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "orderApprovalTime": "2020-07-21T14:34:07.973Z",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:42:07.608Z",
+        "attendanceInfo": {
+          "attendanceStatus": true,
+          "numberOfAttendees": 1
+        },
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "45b9011e-eda5-4bb5-ac76-6d26bd421583",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "0f131ebc-6f99-4365-969f-3e4997f03dbc",
+            "firstName": "Alon",
+            "lastName": "R",
+            "email": "a@a.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "b7132006-4e37-4bdb-8008-88b42f61d302",
+            "orderId": "3ca20ddc-3065-4909-9c5c-b26011637851",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "b7132006-4e37-4bdb-8008-88b42f61d302",
+              "orderId": "3ca20ddc-3065-4909-9c5c-b26011637851",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:40:08.195Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "4696e69c-57c8-4854-a866-0b515f88aa7a",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "0f131ebc-6f99-4365-969f-3e4997f03dbc",
+            "firstName": "Alon",
+            "lastName": "R",
+            "email": "a@a.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "88904331-1b54-4e48-9ce6-23401ff44685",
+            "orderId": "fa208866-6b82-4174-b179-dc7f75cfd49a",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "88904331-1b54-4e48-9ce6-23401ff44685",
+              "orderId": "fa208866-6b82-4174-b179-dc7f75cfd49a",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:41:56.791Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "4851b9e5-4667-442c-932f-9dd847da56ed",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "20acfb64-0b03-4214-8fe2-847560253cf5",
+            "firstName": "",
+            "lastName": "",
+            "email": "alon+aaa@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "14e089eb-2d9b-4ddc-bb60-69be6c7d9139",
+            "orderId": "a64ffc80-ae59-4daf-9d79-0d258804a062",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "14e089eb-2d9b-4ddc-bb60-69be6c7d9139",
+              "orderId": "a64ffc80-ae59-4daf-9d79-0d258804a062",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:42:12.929Z",
+        "attendanceInfo": {
+          "attendanceStatus": false,
+          "numberOfAttendees": 1
+        },
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "55fd16ba-8cc7-47b0-bb58-df9d18c064a3",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "20acfb64-0b03-4214-8fe2-847560253cf5",
+            "firstName": "",
+            "lastName": "",
+            "email": "alon+aaa@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "f3eb7211-0bee-4a78-83b4-872c3727d67d",
+            "orderId": "38480f2d-5301-4559-88d6-2ce44f177e73",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "f3eb7211-0bee-4a78-83b4-872c3727d67d",
+              "orderId": "38480f2d-5301-4559-88d6-2ce44f177e73",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:40:17.089Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "63084277-baf4-4f31-981e-cbf79900f10c",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "20acfb64-0b03-4214-8fe2-847560253cf5",
+            "firstName": "",
+            "lastName": "",
+            "email": "alon+aaa@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "af56d9a1-1a29-46d6-b232-3006226c69ba",
+            "orderId": "add71e62-2487-4384-a007-fc034ba29b74",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "af56d9a1-1a29-46d6-b232-3006226c69ba",
+              "orderId": "add71e62-2487-4384-a007-fc034ba29b74",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:38:38.266Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "642c8180-6222-4d9e-a746-ca83daa33d4c",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "e151c0fd-9add-426c-8919-c17c96297096",
+            "firstName": "Kat",
+            "lastName": "Jones (Demo)",
+            "email": "kat_demo@wix.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "3466c84b-15dd-4301-84c5-30e329573bf6",
+            "orderId": "c7b76d04-0147-4e40-b997-bcc320261762",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "3466c84b-15dd-4301-84c5-30e329573bf6",
+              "orderId": "c7b76d04-0147-4e40-b997-bcc320261762",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:38:56.448Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "6b161c9d-ba60-4a6d-a06c-875ca752b5ad",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "e52888ca-d478-4827-9516-a3ef86ca60cd",
+            "firstName": "Alon",
+            "lastName": "Roth",
+            "email": "alon@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "9d6a9122-08fc-4e71-9bbd-45246783a382",
+            "orderId": "cf2223fb-f22c-4fbf-a6d2-838afdaebc3f",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "9d6a9122-08fc-4e71-9bbd-45246783a382",
+              "orderId": "cf2223fb-f22c-4fbf-a6d2-838afdaebc3f",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:42:42.515Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "70fb75de-ee49-4694-8bb9-6d4ff67ea725",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "42cee523-9b0b-42d6-ac00-5e23ee39bb37",
+            "firstName": "Ducky",
+            "lastName": "Duck",
+            "email": "ducky@duck.com",
+            "phone": "0123456789",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "fb1451a4-5872-4608-9916-877652da7948",
+            "orderId": "77704016-e43a-406e-8be2-719f3137169a",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "fb1451a4-5872-4608-9916-877652da7948",
+              "orderId": "77704016-e43a-406e-8be2-719f3137169a",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:38:50.835Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "71da4613-89d1-4859-b486-fac004201912",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "40636f74-84a3-4b2c-9c10-0d37033b8396",
+            "firstName": "Alonas",
+            "lastName": "Roth",
+            "email": "alon+asdasd@codicate.com",
+            "phone": "0542214598",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "87f4e9f0-0bdf-46b2-8d93-02a36db88b5a",
+            "orderId": "0e7da57c-dd80-4224-9c1e-ccfbed059f62",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "87f4e9f0-0bdf-46b2-8d93-02a36db88b5a",
+              "orderId": "0e7da57c-dd80-4224-9c1e-ccfbed059f62",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T14:46:43.208Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "735c3aa6-f9e9-4d59-9575-69c5db8ff4e4",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "0f131ebc-6f99-4365-969f-3e4997f03dbc",
+            "firstName": "Alon",
+            "lastName": "R",
+            "email": "a@a.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "5d224697-35f7-433a-b7f1-7620732e4324",
+            "orderId": "272d23b6-a660-4492-91bc-eac79b7deb09",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "5d224697-35f7-433a-b7f1-7620732e4324",
+              "orderId": "272d23b6-a660-4492-91bc-eac79b7deb09",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:25:52.960Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "83996d48-16c1-464a-b659-6c5f8110179f",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "e52888ca-d478-4827-9516-a3ef86ca60cd",
+            "firstName": "Alon",
+            "lastName": "Roth",
+            "email": "alon@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "81d62714-2c7e-47fb-b427-478cde3c46fd",
+            "orderId": "f0d91e64-d862-41cf-8011-c38cf5fbd2f7",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "81d62714-2c7e-47fb-b427-478cde3c46fd",
+              "orderId": "f0d91e64-d862-41cf-8011-c38cf5fbd2f7",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:40:12.912Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "850ca705-8d69-46d5-bf44-1c27ad84ed5f",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "c01d8aaa-787b-4a0d-a78a-b764dcd27866",
+            "firstName": "asdasd",
+            "email": "asd@adasd.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "c4952c8d-c49c-41ce-a68b-6682fd58eb9f",
+            "orderId": "ccd56a8b-f336-4b75-8c68-1e2d97a938ef",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "c4952c8d-c49c-41ce-a68b-6682fd58eb9f",
+              "orderId": "ccd56a8b-f336-4b75-8c68-1e2d97a938ef",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:38:45.267Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "86b3c2ec-9d05-4896-914c-e1c9bf542b41",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "40636f74-84a3-4b2c-9c10-0d37033b8396",
+            "firstName": "Alonas",
+            "lastName": "Roth",
+            "email": "alon+asdasd@codicate.com",
+            "phone": "0542214598",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "07c20a4b-dc25-4c1b-99a0-0645962cd8d3",
+            "orderId": "8848ca0c-90bb-44a5-94c5-351fcb189435",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "07c20a4b-dc25-4c1b-99a0-0645962cd8d3",
+              "orderId": "8848ca0c-90bb-44a5-94c5-351fcb189435",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T14:47:15.940Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "87aa9eae-e896-41a5-83f9-192fac641d98",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "40636f74-84a3-4b2c-9c10-0d37033b8396",
+            "firstName": "Alonas",
+            "lastName": "Roth",
+            "email": "alon+asdasd@codicate.com",
+            "phone": "0542214598",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "ae173fb6-32f7-4bc2-a01c-c2b03d45655c",
+            "orderId": "7bf8d1f0-d0d5-4760-bcf8-efdaa850573a",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "ae173fb6-32f7-4bc2-a01c-c2b03d45655c",
+              "orderId": "7bf8d1f0-d0d5-4760-bcf8-efdaa850573a",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:40:21.597Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "98c03674-a9cb-40d3-910b-14f4fa0c6406",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "0ac3363e-4a4f-4339-8519-0ca720288f7b",
+            "firstName": "asdasd",
+            "email": "a@as.cd",
+            "phone": "23424",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "57c8d7ba-b9f8-4afd-8284-204ba976371f",
+            "orderId": "659bd653-829b-43f5-b08e-bf79dedd4788",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "57c8d7ba-b9f8-4afd-8284-204ba976371f",
+              "orderId": "659bd653-829b-43f5-b08e-bf79dedd4788",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T14:46:52.850Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "a3e71e86-142b-4333-b7fd-2ccdf4c8ab87",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "f8445fb8-cf92-44fd-873d-fe48cb682d62",
+            "firstName": "asdsad",
+            "email": "a@asd.com",
+            "phone": "0505",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 17
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "3400",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "af7e9465-2915-4cf2-b08a-a9ecbe0d850c",
+            "orderId": "164cd602-f945-4092-965e-e1b7237b8e7e",
+            "orderAmount": "3400",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "af7e9465-2915-4cf2-b08a-a9ecbe0d850c",
+              "orderId": "164cd602-f945-4092-965e-e1b7237b8e7e",
+              "orderAmount": "3400",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:39:20.375Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "a6202358-dba1-4823-a9db-152516f2ea27",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "0f131ebc-6f99-4365-969f-3e4997f03dbc",
+            "firstName": "Alon",
+            "lastName": "R",
+            "email": "a@a.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "a33d5027-5c80-4284-b326-eebf2af98725",
+            "orderId": "5a6c45ff-e06d-4c33-aaab-b861977e8632",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "a33d5027-5c80-4284-b326-eebf2af98725",
+              "orderId": "5a6c45ff-e06d-4c33-aaab-b861977e8632",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:42:37.873Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "ad0bea9b-1945-4259-a584-f19815e5488b",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "e52888ca-d478-4827-9516-a3ef86ca60cd",
+            "firstName": "Alon",
+            "lastName": "Roth",
+            "email": "alon@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "52270d69-cb3b-4a0f-8478-d47d4ee2404b",
+            "orderId": "6c4d49af-1e9c-47a8-91d2-3385a8458a85",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "52270d69-cb3b-4a0f-8478-d47d4ee2404b",
+              "orderId": "6c4d49af-1e9c-47a8-91d2-3385a8458a85",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:42:27.019Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "c17bb9d6-6c14-4b28-9867-b17e37c261f7",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "20acfb64-0b03-4214-8fe2-847560253cf5",
+            "firstName": "",
+            "lastName": "",
+            "email": "alon+aaa@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "b7c1b6b1-c0d2-43c4-ac17-7812240355ad",
+            "orderId": "6f41e2e1-966a-47cf-9c64-2f154db0d290",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "b7c1b6b1-c0d2-43c4-ac17-7812240355ad",
+              "orderId": "6f41e2e1-966a-47cf-9c64-2f154db0d290",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:42:17.249Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "d0534529-15c7-45eb-934e-2f682cfcc6fc",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "40636f74-84a3-4b2c-9c10-0d37033b8396",
+            "firstName": "Alonas",
+            "lastName": "Roth",
+            "email": "alon+asdasd@codicate.com",
+            "phone": "0542214598",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "4eeec722-5f18-411f-a596-c908a9d5b7c0",
+            "orderId": "e6d76661-f20d-481e-9342-42c9c33efab8",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "4eeec722-5f18-411f-a596-c908a9d5b7c0",
+              "orderId": "e6d76661-f20d-481e-9342-42c9c33efab8",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:40:45.351Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "e5f4a492-83fd-4c04-aeab-8f359c2e1c25",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "20acfb64-0b03-4214-8fe2-847560253cf5",
+            "firstName": "",
+            "lastName": "",
+            "email": "alon+aaa@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "e4f3a76d-f22c-4bae-b49a-b4785d5e380d",
+            "orderId": "78211ddd-ad56-4794-aade-cfe52f3a7532",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "e4f3a76d-f22c-4bae-b49a-b4785d5e380d",
+              "orderId": "78211ddd-ad56-4794-aade-cfe52f3a7532",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:42:03.139Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "eb4cbaf2-bcaa-4020-8291-6e23102808e1",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "e151c0fd-9add-426c-8919-c17c96297096",
+            "firstName": "Kat",
+            "lastName": "Jones (Demo)",
+            "email": "kat_demo@wix.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "cea5f3ea-4902-4aab-86f2-383968d69e67",
+            "orderId": "1e6b6f71-eedb-4260-85bf-ff790296a589",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "cea5f3ea-4902-4aab-86f2-383968d69e67",
+              "orderId": "1e6b6f71-eedb-4260-85bf-ff790296a589",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:40:59.108Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "ef755a18-fb5f-40b7-a887-8e538e94d138",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "e52888ca-d478-4827-9516-a3ef86ca60cd",
+            "firstName": "Alon",
+            "lastName": "Roth",
+            "email": "alon@codicate.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 7
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "1400",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "5071c32e-3239-4b4c-955d-daa0dae4fd79",
+            "orderId": "7bf25497-8154-4001-93d4-80dad477aca3",
+            "orderAmount": "1400",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "5071c32e-3239-4b4c-955d-daa0dae4fd79",
+              "orderId": "7bf25497-8154-4001-93d4-80dad477aca3",
+              "orderAmount": "1400",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:38:28.661Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "f0880074-2a5d-4c0d-bc13-58a0072e61dd",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSqghYGCofuJ0M2Xj4NORozxU59ELnbNPwLS9RWmUGLNXc69UOGALJxgnUGhOQ4ZnzzcQjOpTajzN0IRIjMQlEle290QGaDQjp4duVp",
+            "start": "2020-07-21T09:00:00Z",
+            "end": "2020-07-21T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "40636f74-84a3-4b2c-9c10-0d37033b8396",
+            "firstName": "Alonas",
+            "lastName": "Roth",
+            "email": "alon+asdasd@codicate.com",
+            "phone": "0542214598",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "bf67385a-682a-4f1c-94b5-7306c287a741",
+            "orderId": "16dafcef-c968-4b28-b16b-8910ddc93504",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "bf67385a-682a-4f1c-94b5-7306c287a741",
+              "orderId": "16dafcef-c968-4b28-b16b-8910ddc93504",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T10:42:21.940Z",
+        "bookingSource": {
+          "platform": "UNDEFINED_PLATFORM",
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "f9716ed1-f264-4490-81b3-9f537d3a8ae5",
+        "bookedEntity": {
+          "serviceId": "6a451864-174c-417a-b607-4dc90d9cd600",
+          "scheduleId": "33ac32ac-e495-4d9f-9fea-b533a2a93e5f",
+          "singleSession": {
+            "sessionId": "2mmoW0vwKcSFyxtOfCdKfRppYrJUy5e43vgHikuuzfxQJtpLja47syvIivXFWStTbnPKGj9FbeN8yk9P6kIqk5XnbxV4COMMkWBZ",
+            "start": "2020-07-24T04:30:00Z",
+            "end": "2020-07-24T05:30:00Z"
+          },
+          "title": "1x1 service",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "150",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "INDIVIDUAL"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "0ac3363e-4a4f-4339-8519-0ca720288f7b",
+            "firstName": "asdasd",
+            "email": "a@as.cd",
+            "phone": "23424",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "150",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "8ede779c-d71a-4e3e-8bba-d340d7d3461b",
+            "orderId": "8551724f-b55a-48d3-8599-bff19fb6607b",
+            "orderAmount": "150",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "8ede779c-d71a-4e3e-8bba-d340d7d3461b",
+              "orderId": "8551724f-b55a-48d3-8599-bff19fb6607b",
+              "orderAmount": "150",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-21T06:36:41.397Z",
+        "bookingSource": {
+          "platform": "WEB",
+          "actor": "BUSINESS",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": true,
+        "reschedule": true,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "db5c53bf-88bf-46e7-8028-054b6a8458e5",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUSrFSwxpAj1FKskeZQzwPZ3DgGKa3HnGfkyIhmDLb99vHiJcP9xNDKEpVdGaFYslIzTgij1f59mBZfyp4qnX9wPE23Da4no9fTuur7N",
+            "start": "2020-07-28T09:00:00Z",
+            "end": "2020-07-28T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "150",
+                "currency": "ILS",
+                "downPayAmount": "1"
               }
             },
             "priceText": ""
@@ -1213,18 +3930,224 @@
         },
         "bookedResources": [
           {
-            "id": "ec9ad76a-0a9e-4787-b534-e42eb5b6f2f8",
-            "name": "Staff Member #2",
-            "email": "aa@a.com"
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
           }
         ],
         "formInfo": {
           "contactDetails": {
-            "contactId": "9e289f47-4f50-48e0-9906-88603d6f9cda",
-            "firstName": "Dan",
-            "lastName": "Smith (Demo)",
-            "email": "dan_demo@wix.com",
-            "phone": "",
+            "contactId": "fd1298ab-c922-4ea3-b777-802e67fa5490",
+            "firstName": "zxczxc",
+            "email": "zxczx@asdasd.com",
+            "phone": "12313",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "150",
+              "currency": "ILS",
+              "downPayAmount": "1"
+            },
+            "amountReceived": "1"
+          },
+          "wixPayDetails": {
+            "txId": "07d1adc7-888d-44f2-a623-42f18d4eabd3",
+            "orderId": "00a56130-bf6a-47a0-9ac9-b501dd3b6858",
+            "orderAmount": "1",
+            "orderStatus": "UNDEFINED",
+            "orderApprovalTime": "2020-07-22T12:39:51.011Z",
+            "paymentVendorName": "payPal"
+          },
+          "state": "READY",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "07d1adc7-888d-44f2-a623-42f18d4eabd3",
+              "orderId": "00a56130-bf6a-47a0-9ac9-b501dd3b6858",
+              "orderAmount": "1",
+              "orderStatus": "UNDEFINED",
+              "orderApprovalTime": "2020-07-22T12:39:51.011Z",
+              "paymentVendorName": "payPal"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-22T12:37:57.189Z",
+        "attendanceInfo": {
+          "attendanceStatus": true,
+          "numberOfAttendees": 1
+        },
+        "bookingSource": {
+          "platform": "WEB",
+          "actor": "CUSTOMER",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": true,
+        "reschedule": true,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "37e00ba2-43fc-441b-8e4c-52195597292c",
+        "bookedEntity": {
+          "serviceId": "08597c8c-9345-4bc5-aa43-d0aa70807a8f",
+          "scheduleId": "9ab80b1d-3301-4256-9082-b3d85e7a3b79",
+          "setOfSessions": {
+            "firstSessionStart": "2020-08-24T06:00:00Z",
+            "lastSessionEnd": "2020-09-21T15:00:00Z"
+          },
+          "title": "Front End Course",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "15",
+                "currency": "USD",
+                "downPayAmount": "5"
+              }
+            },
+            "priceText": ""
+          },
+          "tags": [
+            "COURSE"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "1f0c3cee-7636-40d5-b2b1-17dc41c91282",
+            "name": "asdasd",
+            "email": "aasd@asdasd.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "fd1298ab-c922-4ea3-b777-802e67fa5490",
+            "firstName": "zxczxc",
+            "email": "zxczx@asdasd.com",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "15",
+              "currency": "USD",
+              "downPayAmount": "5"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "077af37d-8443-452a-8731-6037c9a8a6d7",
+            "orderId": "394b28d2-fcbe-43fc-b2e6-9ceb70c7f499",
+            "orderAmount": "5",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "offline"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "077af37d-8443-452a-8731-6037c9a8a6d7",
+              "orderId": "394b28d2-fcbe-43fc-b2e6-9ceb70c7f499",
+              "orderAmount": "5",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "offline"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-22T12:24:29.061Z",
+        "bookingSource": {
+          "platform": "WEB",
+          "actor": "CUSTOMER",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "d9e0396f-4ec9-43d5-bc28-be892917ae26",
+        "bookedEntity": {
+          "serviceId": "08597c8c-9345-4bc5-aa43-d0aa70807a8f",
+          "scheduleId": "9ab80b1d-3301-4256-9082-b3d85e7a3b79",
+          "setOfSessions": {
+            "firstSessionStart": "2020-08-24T06:00:00Z",
+            "lastSessionEnd": "2020-09-21T15:00:00Z"
+          },
+          "title": "Front End Course",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "15",
+                "currency": "USD",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "COURSE"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "1f0c3cee-7636-40d5-b2b1-17dc41c91282",
+            "name": "asdasd",
+            "email": "aasd@asdasd.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "f08036ac-0624-4634-8740-faa6339536e1",
+            "firstName": "sdsdv",
+            "lastName": "",
+            "email": "asdads@asdasd.om",
+            "phone": "05051233",
             "timeZone": "Asia/Jerusalem",
             "countryCode": "IL"
           },
@@ -1250,40 +4173,147 @@
               "currency": "USD",
               "downPayAmount": "0"
             },
-            "amountReceived": "15"
+            "amountReceived": "0"
           },
           "wixPayDetails": {
-            "txId": "a7656577-2b78-42ae-8482-5813bf765dc3",
-            "orderId": "2fe05323-5dfd-452a-8739-9c6dbb3ea9e2",
+            "txId": "73eba914-3c0d-4209-b982-f81e6e4bc735",
+            "orderId": "824bfb0f-71a8-42fc-9f5c-a9bcec0d5c06",
             "orderAmount": "15",
             "orderStatus": "UNDEFINED",
-            "orderApprovalTime": "2020-04-26T08:17:52.834Z",
             "paymentVendorName": "inPerson"
           },
-          "state": "COMPLETE",
+          "state": "PENDING_MARK_AS_PAID",
           "wixPayMultipleDetails": [
             {
-              "txId": "a7656577-2b78-42ae-8482-5813bf765dc3",
-              "orderId": "2fe05323-5dfd-452a-8739-9c6dbb3ea9e2",
+              "txId": "73eba914-3c0d-4209-b982-f81e6e4bc735",
+              "orderId": "824bfb0f-71a8-42fc-9f5c-a9bcec0d5c06",
               "orderAmount": "15",
               "orderStatus": "UNDEFINED",
-              "orderApprovalTime": "2020-04-26T08:17:52.834Z",
               "paymentVendorName": "inPerson"
             }
           ]
         },
         "status": "CONFIRMED",
-        "created": "2020-04-15T14:08:52.559Z",
+        "created": "2020-07-22T12:18:25.116Z",
+        "bookingSource": {
+          "platform": "WEB",
+          "actor": "BUSINESS",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
+        }
+      },
+      "allowedActions": {
+        "cancel": false,
+        "reschedule": false,
+        "bookAnother": true
+      }
+    },
+    {
+      "booking": {
+        "id": "86b60d7b-aa97-40c0-8e99-38737e66caae",
+        "bookedEntity": {
+          "serviceId": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+          "scheduleId": "3a01d840-54a5-49a7-ac46-c377a76f8dc4",
+          "singleSession": {
+            "sessionId": "193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1HPkarKfMMSTeXFBhENFyNCK9ElXWN3OOhYUiQKo8TV6Zr2eM3MjapgGEJGlDbhwIRkFYaUn9cOPKkZvXypgWVsPuzVubl3t2afrolgFI7YwBIftH1JOIj9cnrcFxg94At6mIzMurH1qVaW9x6SHvYq9RzMEbtHDtAGPUU0SYYJOL6EjNt6fplxVmtjOdAa2889S4SXx29PGhQh2iRtqgrSjptLfw41x6bgJmw4TZxZN1vHBX3nWe5JdlKTxqCAfwe2Bm8zcu21",
+            "start": "2020-08-25T09:00:00Z",
+            "end": "2020-08-25T10:00:00Z"
+          },
+          "title": "eXtreme Pilates",
+          "location": {
+            "locationType": "OWNER_BUSINESS"
+          },
+          "rate": {
+            "labeledPriceOptions": {
+              "general": {
+                "amount": "200",
+                "currency": "ILS",
+                "downPayAmount": "0"
+              }
+            }
+          },
+          "tags": [
+            "GROUP"
+          ]
+        },
+        "bookedResources": [
+          {
+            "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+            "name": "Staff Member #1",
+            "email": "info@mysite.com"
+          }
+        ],
+        "formInfo": {
+          "contactDetails": {
+            "contactId": "0f131ebc-6f99-4365-969f-3e4997f03dbc",
+            "firstName": "Alon",
+            "lastName": "R",
+            "email": "a@a.com",
+            "phone": "",
+            "timeZone": "Asia/Jerusalem",
+            "countryCode": "IL"
+          },
+          "paymentSelection": [
+            {
+              "rateLabel": "general",
+              "numberOfParticipants": 1
+            }
+          ],
+          "customFormFields": {},
+          "additionalFields": [
+            {
+              "id": "5352a173-473c-48df-8ff4-366a663414d7",
+              "label": "Add Your Message",
+              "valueType": "LONG_TEXT"
+            }
+          ]
+        },
+        "paymentDetails": {
+          "balance": {
+            "finalPrice": {
+              "amount": "200",
+              "currency": "ILS",
+              "downPayAmount": "0"
+            },
+            "amountReceived": "0"
+          },
+          "wixPayDetails": {
+            "txId": "6eb4e6fb-a105-4339-90a3-d8dc3db364ed",
+            "orderId": "5f0b37aa-2ad8-415f-8857-f19cebffb6c4",
+            "orderAmount": "200",
+            "orderStatus": "UNDEFINED",
+            "paymentVendorName": "inPerson"
+          },
+          "state": "PENDING_MARK_AS_PAID",
+          "wixPayMultipleDetails": [
+            {
+              "txId": "6eb4e6fb-a105-4339-90a3-d8dc3db364ed",
+              "orderId": "5f0b37aa-2ad8-415f-8857-f19cebffb6c4",
+              "orderAmount": "200",
+              "orderStatus": "UNDEFINED",
+              "paymentVendorName": "inPerson"
+            }
+          ]
+        },
+        "status": "CONFIRMED",
+        "created": "2020-07-22T12:33:09.383Z",
         "bookingSource": {
           "platform": "UNDEFINED_PLATFORM",
-          "actor": "UNDEFINED_ACTOR"
+          "actor": "UNDEFINED_ACTOR",
+          "appDefId": "13d21c63-b5ec-5912-8397-c3a5ddb27a97",
+          "appName": "Wix Bookings"
         }
+      },
+      "allowedActions": {
+        "cancel": true,
+        "reschedule": true,
+        "bookAnother": true
       }
     }
   ],
   "metadata": {
-    "items": 13,
+    "items": 42,
     "offset": 0,
-    "totalCount": 13
+    "totalCount": 42
   }
 }

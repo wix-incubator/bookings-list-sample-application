@@ -1,0 +1,191 @@
+{
+  "slots": [
+    {
+      "scheduleId": "33ac32ac-e495-4d9f-9fea-b533a2a93e5f",
+      "scheduleOwnerId": "6a451864-174c-417a-b607-4dc90d9cd600",
+      "start": {
+        "timestamp": "2020-07-23T12:30:00Z"
+      },
+      "end": {
+        "timestamp": "2020-07-23T13:30:00Z"
+      },
+      "affectedSchedules": [
+        {
+          "scheduleId": "b1dd49dc-5b66-4db8-a918-84372e194f2e",
+          "transparency": "BUSY",
+          "scheduleOwnerId": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe"
+        }
+      ],
+      "tags": [],
+      "location": {
+        "locationType": "OWNER_BUSINESS"
+      },
+      "capacity": 1,
+      "rate": {
+        "labeledPriceOptions": {
+          "general": {
+            "amount": "150",
+            "currency": "ILS",
+            "downPayAmount": "0"
+          }
+        }
+      },
+      "notes": "",
+      "totalNumberOfParticipants": 0,
+      "participants": [],
+      "inheritedFields": [],
+      "status": "UNDEFINED",
+      "type": "UNDEFINED"
+    },
+    {
+      "scheduleId": "33ac32ac-e495-4d9f-9fea-b533a2a93e5f",
+      "scheduleOwnerId": "6a451864-174c-417a-b607-4dc90d9cd600",
+      "start": {
+        "timestamp": "2020-07-23T13:00:00Z"
+      },
+      "end": {
+        "timestamp": "2020-07-23T14:00:00Z"
+      },
+      "affectedSchedules": [
+        {
+          "scheduleId": "b1dd49dc-5b66-4db8-a918-84372e194f2e",
+          "transparency": "BUSY",
+          "scheduleOwnerId": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe"
+        }
+      ],
+      "tags": [],
+      "location": {
+        "locationType": "OWNER_BUSINESS"
+      },
+      "capacity": 1,
+      "rate": {
+        "labeledPriceOptions": {
+          "general": {
+            "amount": "150",
+            "currency": "ILS",
+            "downPayAmount": "0"
+          }
+        }
+      },
+      "notes": "",
+      "totalNumberOfParticipants": 0,
+      "participants": [],
+      "inheritedFields": [],
+      "status": "UNDEFINED",
+      "type": "UNDEFINED"
+    },
+    {
+      "scheduleId": "33ac32ac-e495-4d9f-9fea-b533a2a93e5f",
+      "scheduleOwnerId": "6a451864-174c-417a-b607-4dc90d9cd600",
+      "start": {
+        "timestamp": "2020-07-23T13:30:00Z"
+      },
+      "end": {
+        "timestamp": "2020-07-23T14:30:00Z"
+      },
+      "affectedSchedules": [
+        {
+          "scheduleId": "b1dd49dc-5b66-4db8-a918-84372e194f2e",
+          "transparency": "BUSY",
+          "scheduleOwnerId": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe"
+        }
+      ],
+      "tags": [],
+      "location": {
+        "locationType": "OWNER_BUSINESS"
+      },
+      "capacity": 1,
+      "rate": {
+        "labeledPriceOptions": {
+          "general": {
+            "amount": "150",
+            "currency": "ILS",
+            "downPayAmount": "0"
+          }
+        }
+      },
+      "notes": "",
+      "totalNumberOfParticipants": 0,
+      "participants": [],
+      "inheritedFields": [],
+      "status": "UNDEFINED",
+      "type": "UNDEFINED"
+    },
+    {
+      "scheduleId": "33ac32ac-e495-4d9f-9fea-b533a2a93e5f",
+      "scheduleOwnerId": "6a451864-174c-417a-b607-4dc90d9cd600",
+      "start": {
+        "timestamp": "2020-07-23T14:00:00Z"
+      },
+      "end": {
+        "timestamp": "2020-07-23T15:00:00Z"
+      },
+      "affectedSchedules": [
+        {
+          "scheduleId": "b1dd49dc-5b66-4db8-a918-84372e194f2e",
+          "transparency": "BUSY",
+          "scheduleOwnerId": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe"
+        }
+      ],
+      "tags": [],
+      "location": {
+        "locationType": "OWNER_BUSINESS"
+      },
+      "capacity": 1,
+      "rate": {
+        "labeledPriceOptions": {
+          "general": {
+            "amount": "150",
+            "currency": "ILS",
+            "downPayAmount": "0"
+          }
+        }
+      },
+      "notes": "",
+      "totalNumberOfParticipants": 0,
+      "participants": [],
+      "inheritedFields": [],
+      "status": "UNDEFINED",
+      "type": "UNDEFINED"
+    },
+    {
+      "id": "2mmoW0vwKcSFyxtOfCdKfRppYrJUy5e43vgHikuuzfxQJtpLja47syvIivXFWStTbnPKGj9FbeN8yk9P6kIqk5XnbxV4COMMkWBZ",
+      "scheduleId": "33ac32ac-e495-4d9f-9fea-b533a2a93e5f",
+      "scheduleOwnerId": "6a451864-174c-417a-b607-4dc90d9cd600",
+      "start": {
+        "timestamp": "2020-07-24T04:30:00Z"
+      },
+      "end": {
+        "timestamp": "2020-07-24T05:30:00Z"
+      },
+      "affectedSchedules": [
+        {
+          "scheduleId": "b1dd49dc-5b66-4db8-a918-84372e194f2e",
+          "transparency": "BUSY",
+          "scheduleOwnerId": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe"
+        }
+      ],
+      "tags": [],
+      "location": {
+        "locationType": "OWNER_BUSINESS"
+      },
+      "capacity": 1,
+      "rate": {
+        "labeledPriceOptions": {
+          "general": {
+            "amount": "150",
+            "currency": "ILS",
+            "downPayAmount": "0"
+          }
+        }
+      },
+      "notes": "",
+      "totalNumberOfParticipants": 1,
+      "participants": [],
+      "inheritedFields": [],
+      "status": "UNDEFINED",
+      "type": "UNDEFINED"
+    }
+  ],
+  "nextPageToken": "JWE.eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiSF9ObGwwREwifQ.qQKrPwdlyPBPJZ_5GCEeoxoKeC-77nI1_srIeqX6p4uK0EZBbKeQ2A.KpT2LF8wnIGbRibAm9C9xQ.u1y21zcklQFSjXK6lxkxWfDMAMnVtyY4CQG_TB4urYdV-Ej6rXhN8CALUKLqojPCULevQDRoXZ4KnaznOIPFJg2GXr9mrdAl0yRN461-hicvIfs9YGG8MRTfGT1Jw0voWjOeI9FC4mbo_2Nu4Cb8QFuvRrm7dP3qyeLo4jU8nf0UdpD2ZoarAp2CDAaYMEubc9cMUEuTJF-BLkthICoA2cQ-sLXi65XlnWVGoeHAogwEXk5GW_Tlpb5Poc0p7b964dhgijm0Ab36Ng4XYUMYDFfYVeRzjWWm5EPK3-d9IGUs68VnIg72BLs4u2Vuit9nPEXJz5aOjtArAW-5CyXfFaRf3BXUgl5WL-acZ-ne5cOfnXYwXM2x1QhvSj7Rn5rkDVsmwOOZqZaC9_7ZuZCeQCklabfgPwX6X6D8wIFC7EtSfs1rpuP79NwoNb0vnlGE98JYaTwp0BuHKla4dZEm3snSGo0K1YnfdNNkhDvONx8ARdjRXmGxIdzZm1JVT216D707kLcVfCO5jhkVcjjMvt0ztMDZEJ6SVU2_ksHzmoo.6cbPtnabqAwjCYJj5NCNBA"
+}
