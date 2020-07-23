@@ -49,8 +49,11 @@ export const raiseNotification = (text, theme) => {
     bookingsNotificationStore.setNotification(text, theme);
 };
 
+export const pause = async (t) => (new Promise(resolve => setTimeout(resolve, t)));
+
 export const translate = (...args) => i18n.t(...args);
 
 export const dateOnlyFormat = 'MMM DD YYYY';
+export const dateOnlyWithoutYearFormat = 'DD MMM';
 export const timeOnlyFormat = 'HH:mm a';
 export const dayHourFormat = 'MMM DD, HH:mm a';

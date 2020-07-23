@@ -61,5 +61,11 @@
     "unavailable": "Unavailable",
     "web": "Web",
     "mobile": "Mobile"
+  },
+  "RescheduleModal": {
+    "title": "Reschedule Booking",
+    "confirmButtonText": "Reschedule",
+    "cancelButtonText": "Cancel",
+    "chooseNewSlotLabel": "Please choose a new slot for {{name}}'s {{booking}} booking at {{date}}:"
   }
 }

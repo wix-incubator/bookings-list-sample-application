@@ -4,6 +4,7 @@ import BookingsList from '../../components/BookingsList';
 import {getDefaultValue} from '../../components/CalendarPanelDatePicker/CalendarPanelDatePicker';
 
 import {inject, observer} from 'mobx-react';
+import RescheduleModal from '../../components/RescheduleModal';
 
 @inject('bookingsListStore')
 @observer
@@ -76,6 +77,10 @@ export default class Main extends React.Component {
         console.logx({row});
 
         const {bookingsListStore} = this.props;
+
+        // TODO: move these to more specific case
+        bookingsListStore.setRescheduleModalIsOpen(true);
+        bookingsListStore.setRescheduleModalData('data', row.booking);
         bookingsListStore.fetchScheduleSlots(row.booking.bookedEntity.scheduleId);
     };
 
@@ -85,6 +90,7 @@ export default class Main extends React.Component {
 
         return (
             <div className={classes.mainContainer}>
+                <RescheduleModal/>
                 <BookingsList
                     metadata={metadata}
                     services={services}

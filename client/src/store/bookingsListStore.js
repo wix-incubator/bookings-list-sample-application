@@ -2,10 +2,17 @@ import {observable, action} from 'mobx';
 import axiosInstance from '../network';
 import mockData from './mockData';
 import {SORT_ORDER} from './constants';
-import {raiseNotification} from '../utils';
+import {raiseNotification, pause} from '../utils';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = false;
+const USE_MOCK = true;
+
+const rescheduleModalInitialState = {
+    isOpen: false,
+    slots: [],
+    data: null,
+    loading: false
+};
 
 const initialState = {
     filters: {},
@@ -16,9 +23,10 @@ const initialState = {
     staff: {},
     bookingsEntries: [],
     metadata: null,
-    scheduleSlotsData: null,
+    rescheduleModal: rescheduleModalInitialState,
     loadingBookings: true
 };
+
 
 const getData = async (endpoint, config) => {
     if (USE_MOCK && mockData[endpoint]) {
@@ -26,6 +34,15 @@ const getData = async (endpoint, config) => {
     }
 
     return axiosInstance.get(`/${endpoint}`, config);
+};
+
+const postData = async (endpoint, payload, config) => {
+    if (USE_MOCK && mockData[endpoint]) {
+        await pause(2000);
+        return {data: mockData[endpoint]};
+    }
+
+    return axiosInstance.post(`/${endpoint}`, payload, config);
 };
 
 class BookingsListStore {
@@ -38,6 +55,11 @@ class BookingsListStore {
     @action('Set loading bookings')
     setLoadingBookings = (loadingBookings) => {
         this.store.loadingBookings = loadingBookings;
+    };
+
+    @action('Set loading schedule slots')
+    setLoadingScheduleSlots = (loadingScheduleSlots) => {
+        this.store.rescheduleModal.loading = loadingScheduleSlots;
     };
 
     @action('Set booking entries')
@@ -209,45 +231,41 @@ class BookingsListStore {
         this.setLoadingBookings(false);
     };
 
-    @action('Set schedule slots data')
-    setScheduleSlotsData = (scheduleSlotsData) => {
-        this.store.scheduleSlotsData = scheduleSlotsData;
+    @action('Set reschedule modal is open')
+    setRescheduleModalIsOpen = (rescheduleModalIsOpen) => {
+        this.store.rescheduleModal.isOpen = rescheduleModalIsOpen;
+    };
+
+    // @action('Set schedule slots data')
+    // setScheduleSlotsData = (scheduleData) => {
+    //     this.store.rescheduleModal.slots = scheduleData.slots;
+    // };
+
+    @action('Set reschedule modal data')
+    setRescheduleModalData = (key, value) => {
+        this.store.rescheduleModal[key] = value;
     };
 
     @action('Fetch schedule data')
     fetchScheduleSlots = async (scheduleId) => {
+        this.setLoadingScheduleSlots(true);
         try {
-            // let requestBody = {
-            //     query: {
-            //         filters: {
-            //             scheduleIds: [scheduleId]
-            //         }
-            //     }
-            // };
-            //
-            // requestBody.query.filters = JSON.stringify(requestBody.query.filters);
-            // requestBody.query = JSON.stringify(requestBody.query);
-            // requestBody = unescape(JSON.stringify(requestBody));
-            // console.log(requestBody)
-
-            // const requestBody = `{
-            //     "query": {
-            //        "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"]}"
-            //        "paging": "{\\"offset\\": 0, \\"limit\\": 5}"
-            //      }
-            //  }`;
-
             const requestBody = `{
                 "query": {
-                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"]}"
+                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"]}",
+                   "paging": {"limit": 5}
                  }
              }`;
-            const result = await axiosInstance.post(`/calendar/listSlots`, requestBody, {headers: {"Content-Type": "application/json"}});
-            console.log({result});
+
+            // const result = await axiosInstance.post(`/calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
+            const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
+            const {data} = result;
+            this.setRescheduleModalData('slots', data.slots);
         } catch (e) {
             console.log({e});
             raiseNotification(e.message, 'error');
         }
+        this.setLoadingScheduleSlots(false);
     };
 
     @action('Set row focused')
