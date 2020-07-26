@@ -2,7 +2,7 @@ import React from 'react';
 import {st, classes} from './RescheduleModal.st.css';
 import {Box, Text, MessageBoxFunctionalLayout, Modal} from 'wix-style-react';
 import {inject, observer} from 'mobx-react';
-import {dateOnlyWithoutYearFormat, translate} from '../../utils';
+import {translate} from '../../utils';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 import RescheduleBox from '../RescheduleBox';
 
@@ -19,9 +19,6 @@ export default class RescheduleModal extends React.PureComponent {
 
     _setSelectedSlot = (slot) => {
         const {bookingsListStore} = this.props;
-        const {rescheduleModal} = bookingsListStore.store;
-        const {slots} = rescheduleModal;
-        // bookingsListStore.setSelectedSlot(slots, slot);
         bookingsListStore.setRescheduleModalData('selectedSlot', slot);
     };
 

@@ -73,15 +73,19 @@ export default class Main extends React.Component {
         }
     };
 
-    _onRowClick = (row) => {
-        console.logx({row});
-
+    _openRescheduleBookingModal = (row) => {
         const {bookingsListStore} = this.props;
 
         // TODO: move these to more specific case
         bookingsListStore.setRescheduleModalIsOpen(true);
         bookingsListStore.setRescheduleModalData('data', row.booking);
         bookingsListStore.fetchScheduleSlots(row.booking.bookedEntity.scheduleId);
+    };
+
+    _onRowClick = (row) => {
+        console.logx({row});
+
+        this._openRescheduleBookingModal(row);
     };
 
     render() {
