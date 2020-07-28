@@ -2,6 +2,6 @@
 }
 
 :global(html) {
-    background-color: #f0f4f7;
+    background-color: rgba(240, 243, 245, 0.7);
     color: white;
 }
