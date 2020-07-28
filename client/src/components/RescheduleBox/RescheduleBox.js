@@ -1,5 +1,5 @@
 import React from 'react';
-import {classes, st} from './RescheduleBox.st.css';
+import {st, classes} from './RescheduleBox.st.css';
 import {Text} from 'wix-style-react';
 import {dateOnlyWithoutYearFormat, timeOnlyFormat} from '../../utils';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';

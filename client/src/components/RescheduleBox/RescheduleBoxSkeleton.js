@@ -1,5 +1,5 @@
 import React from 'react';
-import {classes, st} from './RescheduleBox.st.css';
+import {st, classes} from './RescheduleBox.st.css';
 import {Skeleton, Box} from 'wix-style-react';
 
 const RescheduleBoxSkeleton = () => {
