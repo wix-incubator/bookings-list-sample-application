@@ -25,7 +25,7 @@ export default class RescheduleModal extends React.PureComponent {
     _renderSlotsSkeleton = () => {
         return (
             <div className={st(classes.slotsContainer)}>
-                {[...Array(MAX_SLOTS_AMOUNT)].map((_, index) => <RescheduleBox.Skeleton key={index}/>)}
+                {[...Array(MAX_SLOTS_AMOUNT)].map((_, index) => <RescheduleBox.SkeletonBox key={index}/>)}
             </div>
         );
     };

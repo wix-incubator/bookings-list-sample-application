@@ -18,7 +18,7 @@ const RescheduleBox = (props) => {
     );
 };
 
-RescheduleBox.Skeleton = () => {
+RescheduleBox.SkeletonBox = () => {
     return (
         <Box className={st(classes.rescheduleBoxContainer)}>
             <Skeleton
