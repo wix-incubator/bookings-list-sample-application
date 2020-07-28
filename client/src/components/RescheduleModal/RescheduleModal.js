@@ -5,7 +5,7 @@ import {inject, observer} from 'mobx-react';
 import {translate} from '../../utils';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 import RescheduleBox from '../RescheduleBox';
-import RescheduleBoxSkeleton from '../RescheduleBox/RescheduleBoxSkeleton';
+// import RescheduleBoxSkeleton from '../RescheduleBox/RescheduleBoxSkeleton';
 
 const MAX_SLOTS_AMOUNT = 5;
 
