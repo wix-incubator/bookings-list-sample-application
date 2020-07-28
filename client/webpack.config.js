@@ -7,9 +7,13 @@ const Dotenv = require('dotenv-webpack');
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    // mode: 'development',
     mode: isDevelopment ? 'development' : 'production',
     devtool: 'source-map',
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9000
+    },
     module: {
         rules: [
             {

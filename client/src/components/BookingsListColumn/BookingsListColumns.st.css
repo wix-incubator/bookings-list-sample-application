@@ -16,6 +16,18 @@
 
 }
 
+.serviceAndSessionRescheduleIcon {
+    color: #3999ec;
+    margin: 0 10px;
+    padding: 1px;
+}
+
+.serviceAndSessionRescheduleIcon:hover {
+    background: #3999ec;
+    color: white;
+    border-radius: 50%;
+}
+
 .paymentDetailsTooltip {
 
 }

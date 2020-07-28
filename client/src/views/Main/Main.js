@@ -25,6 +25,7 @@ export default class Main extends React.Component {
             bookingsListStore.updateFilters(name, value);
         }
 
+        bookingsListStore.resetBookingsEntries();
         bookingsListStore.fetchData();
     };
 
@@ -32,6 +33,7 @@ export default class Main extends React.Component {
         // TODO: enable once sorting implemented on the API
         return;
         const {bookingsListStore} = this.props;
+        bookingsListStore.resetBookingsEntries();
         bookingsListStore.updateSort(fieldName);
         bookingsListStore.fetchData();
     };
@@ -56,51 +58,53 @@ export default class Main extends React.Component {
 
     _hasMoreBookings = () => {
         const {bookingsListStore} = this.props;
-        const {metadata, bookingsEntries} = bookingsListStore.store;
+        const {bookingsMetadata, bookingsEntries} = bookingsListStore.store;
 
-        if (!metadata) {
+        if (!bookingsMetadata) {
             return true;
         }
 
-        return metadata.totalCount > bookingsEntries.length;
+        return bookingsMetadata.totalCount > bookingsEntries.length;
     };
 
     _loadMoreBookings = () => {
         const {bookingsListStore} = this.props;
-        const {loadingBookings} = bookingsListStore.store;
+        const {loadingBookings, paging} = bookingsListStore.store;
         if (!loadingBookings && this._hasMoreBookings()) {
+            bookingsListStore.updatePaging('offset', paging.offset + paging.limit);
             bookingsListStore.fetchData(true);
         }
     };
 
-    _openRescheduleBookingModal = (row) => {
+    _openRescheduleBookingModal = (booking) => {
         const {bookingsListStore} = this.props;
 
         // TODO: move these to more specific case
         bookingsListStore.setRescheduleModalIsOpen(true);
-        bookingsListStore.setRescheduleModalData('data', row.booking);
-        bookingsListStore.fetchScheduleSlots(row.booking.bookedEntity.scheduleId);
+        bookingsListStore.setRescheduleModalData('data', booking);
+        bookingsListStore.fetchScheduleSlots(booking.bookedEntity.scheduleId);
     };
 
     _onRowClick = (row) => {
         console.logx({row});
 
-        this._openRescheduleBookingModal(row);
+        // this._openRescheduleBookingModal(row);
     };
 
     render() {
         const {bookingsListStore} = this.props;
-        const {loadingBookings, services, staff, bookingsEntries, metadata, sort} = bookingsListStore.store;
+        const {loadingBookings, services, staff, bookingsEntries, bookingsMetadata, sort} = bookingsListStore.store;
 
         return (
             <div className={classes.mainContainer}>
                 <RescheduleModal/>
                 <BookingsList
-                    metadata={metadata}
+                    bookingsMetadata={bookingsMetadata}
                     services={services}
                     staff={staff}
                     bookingEntries={bookingsEntries}
                     onRowClick={this._onRowClick}
+                    openRescheduleBookingModal={this._openRescheduleBookingModal}
                     onFilterChanged={this._onFiltersChanged}
                     onSortChanged={this._onSortChanged}
                     filters={this._getFilters()}

@@ -42,11 +42,11 @@ const getBookingStatuses = () => [
 @observer
 export default class BookingsList extends React.Component {
     _renderBookingsListHeaderTitle = () => {
-        const {metadata} = this.props;
+        const {bookingsMetadata} = this.props;
         return (
             <div>
                 <h4 className={st(classes.title)}>{translate('BookingsList.pageHeaderTitle')}</h4>
-                {metadata ? <h4 className={st(classes.title, classes.amount)}>{metadata.totalCount}</h4> : null}
+                {bookingsMetadata ? <h4 className={st(classes.title, classes.amount)}>{this._getBookingEntries().length}/{bookingsMetadata.totalCount}</h4> : null}
             </div>
         );
     };
@@ -128,7 +128,12 @@ export default class BookingsList extends React.Component {
         return [
             {fieldName: 'created', sortable: true, localeLabelKey: 'bookingTime', render: row => <BookingsListColumn.BookingTime data={row}/>},
             {fieldName: 'formInfo.contactDetails.firstName', sortable: true, localeLabelKey: 'clientName', render: row => <BookingsListColumn.ClientName data={row}/>},
-            {fieldName: '', localeLabelKey: 'serviceAndSession', render: row => <BookingsListColumn.ServiceAndSession services={services} data={row}/>},
+            {
+                fieldName: '',
+                localeLabelKey: 'serviceAndSession',
+                width: '17%',
+                render: row => <BookingsListColumn.ServiceAndSession services={services} onCalendarClick={this.props.openRescheduleBookingModal} data={row}/>
+            },
             {fieldName: '', localeLabelKey: 'staff', render: row => <BookingsListColumn.Staff staff={staff} data={row}/>},
             {fieldName: '', localeLabelKey: 'bookingAndAttendance', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
             {fieldName: '', localeLabelKey: 'paymentStatus', render: row => <BookingsListColumn.PaymentStatus data={row}/>},
@@ -180,6 +185,7 @@ export default class BookingsList extends React.Component {
                         <Table
                             showHeaderWhenEmpty
                             infiniteScroll
+                            itemsPerPage={this._getBookingEntries().length}
                             data={this._getBookingEntries()}
                             columns={this._getBookingColumns()}
                             showSelection={false}
@@ -209,9 +215,11 @@ BookingsList.propTypes = {
     hasMore: PropTypes.bool,
     loadMore: PropTypes.func,
     loading: PropTypes.bool,
-    metadata: PropTypes.object,
+    bookingsMetadata: PropTypes.object,
     onFilterChanged: PropTypes.func,
+    onRowClick: PropTypes.func,
     onSortChanged: PropTypes.func,
+    openRescheduleBookingModal: PropTypes.func,
     services: PropTypes.object,
     setRowFocused: PropTypes.func,
     sort: PropTypes.object,

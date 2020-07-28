@@ -24,7 +24,7 @@ const initialState = {
     resources: {},
     staff: {},
     bookingsEntries: [],
-    metadata: null,
+    bookingsMetadata: null,
     rescheduleModal: rescheduleModalInitialState,
     loadingBookings: true
 };
@@ -64,7 +64,14 @@ class BookingsListStore {
         this.store.rescheduleModal.loading = loadingScheduleSlots;
     };
 
-    @action('Set booking entries')
+    @action('Rest bookings entries')
+    resetBookingsEntries = () => {
+        this.updatePaging('offset', 0);
+        this.store.bookingsMetadata = null;
+        this.store.bookingsEntries = [];
+    };
+
+    @action('Set bookings entries')
     setBookingsEntries = (bookingsEntries, concatenate) => {
         const mappedData = bookingsEntries.map(bookingsEntry => ({...bookingsEntry, focused: false}));
         if (concatenate) {
@@ -97,9 +104,9 @@ class BookingsListStore {
         }, {});
     };
 
-    @action('Set metadata')
-    setMetadata = (metadata) => {
-        this.store.metadata = metadata;
+    @action('Set bookingsMetadata')
+    setBookingsMetadata = (bookingsMetadata) => {
+        this.store.bookingsMetadata = bookingsMetadata;
     };
 
 
@@ -107,7 +114,7 @@ class BookingsListStore {
     loadConstants = async () => {
         try {
             // const result = await Promise.all([axiosInstance.get('/services'), axiosInstance.get('/resources')]);
-            const result = await Promise.all([getData('services'), getData('resources')]);
+            const result = await Promise.all([getData('services', true), getData('resources', true)]);
 
             const services = result[0].data.services;
             const resources = result[1].data.resources;
@@ -203,9 +210,14 @@ class BookingsListStore {
 
     preparePaging = (paging) => {
         // TODO: activate this once the API is implemented
-        return {
-            // 'query.paging': paging
-        };
+        const pagingObject = {};
+        if (paging.limit !== undefined) {
+            pagingObject['query.paging.limit'] = paging.limit;
+        }
+        if (paging.offset !== undefined) {
+            pagingObject['query.paging.offset'] = paging.offset;
+        }
+        return pagingObject;
     };
 
     @action('Fetch data')
@@ -225,7 +237,7 @@ class BookingsListStore {
             const result = await getData('bookings', requestConfig);
             const {data} = result;
             this.setBookingsEntries(data.bookingsEntries, concatenate);
-            this.setMetadata(data.metadata);
+            this.setBookingsMetadata(data.metadata);
         } catch (e) {
             console.log({e});
             raiseNotification(e.message, 'error');
@@ -237,11 +249,6 @@ class BookingsListStore {
     setRescheduleModalIsOpen = (rescheduleModalIsOpen) => {
         this.store.rescheduleModal.isOpen = rescheduleModalIsOpen;
     };
-
-    // @action('Set schedule slots data')
-    // setScheduleSlotsData = (scheduleData) => {
-    //     this.store.rescheduleModal.slots = scheduleData.slots;
-    // };
 
     @action('Set reschedule modal data')
     setRescheduleModalData = (key, value) => {

@@ -8,6 +8,7 @@ import getSymbolFromCurrency from 'currency-symbol-map';
 import StatusAlert from 'wix-ui-icons-common/StatusAlert';
 import LanguagesSmall from 'wix-ui-icons-common/LanguagesSmall';
 import MobileSmall from 'wix-ui-icons-common/MobileSmall';
+import DateAndTimeSmall from 'wix-ui-icons-common/DateAndTimeSmall';
 
 const ColumnText = (props) => {
     return (
@@ -79,14 +80,15 @@ export default class BookingsListColumn extends React.Component {
         );
     };
 
-    static ServiceAndSession = (props) => {
-        const {services, data: {booking}} = props;
+    static ServiceAndSession = observer((props) => {
+        const {services, onCalendarClick, data: {allowedActions, booking, focused}} = props;
 
         const {bookedEntity = {}} = booking;
         const service = services[bookedEntity.serviceId];
         if (!service) {
-            return null;
+            return <BookingsListColumn.NotAvailable/>;
         }
+
         const {singleSession, setOfSessions} = bookedEntity;
 
         // TODO: add indication for singleSession | setOfSessions
@@ -96,14 +98,18 @@ export default class BookingsListColumn extends React.Component {
             `${formatDate(new Date(setOfSessions.firstSessionStart), dayHourFormat)}`;
 
         return (
-            <div className={st(classes.columnDisplayContainer)}>
-                <ColumnText>{service.info.name}</ColumnText>
-                <ColumnText size="tiny">
-                    {sessionInfo}
-                </ColumnText>
+            <div className={st(classes.rowDisplayContainer)}>
+                <div className={st(classes.columnDisplayContainer)}>
+                    <ColumnText>{service.info.name}</ColumnText>
+                    <ColumnText size="tiny">
+                        {sessionInfo}
+                    </ColumnText>
+                </div>
+                {focused && allowedActions && allowedActions.reschedule ? <DateAndTimeSmall className={st(classes.serviceAndSessionRescheduleIcon)} onClick={() => onCalendarClick(booking)}/> : null}
             </div>
+
         );
-    };
+    });
 
     static Staff = (props) => {
         const {staff, data: {booking}} = props;

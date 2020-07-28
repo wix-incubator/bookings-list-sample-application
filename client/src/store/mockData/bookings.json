@@ -4311,7 +4311,7 @@
       }
     }
   ],
-  "metadata": {
+  "bookingsMetadata": {
     "items": 42,
     "offset": 0,
     "totalCount": 42
