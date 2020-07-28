@@ -5,6 +5,7 @@ import {inject, observer} from 'mobx-react';
 import {translate} from '../../utils';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 import RescheduleBox from '../RescheduleBox';
+import RescheduleBoxSkeleton from '../RescheduleBox/RescheduleBoxSkeleton';
 
 const MAX_SLOTS_AMOUNT = 5;
 
@@ -25,7 +26,7 @@ export default class RescheduleModal extends React.PureComponent {
     _renderSlotsSkeleton = () => {
         return (
             <div className={st(classes.slotsContainer)}>
-                {[...Array(MAX_SLOTS_AMOUNT)].map((_, index) => <RescheduleBox.SkeletonBox key={index}/>)}
+                {[...Array(MAX_SLOTS_AMOUNT)].map((_, index) => <RescheduleBoxSkeleton key={index}/>)}
             </div>
         );
     };

@@ -1,6 +1,6 @@
 import React from 'react';
 import {classes, st} from './RescheduleBox.st.css';
-import {Text, Skeleton, Box} from 'wix-style-react';
+import {Text} from 'wix-style-react';
 import {dateOnlyWithoutYearFormat, timeOnlyFormat} from '../../utils';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
@@ -15,27 +15,6 @@ const RescheduleBox = (props) => {
             <Text size="tiny" className={st(classes.rescheduleBoxLabel)}>{startDate}</Text>
             <Text size="tiny" className={st(classes.rescheduleBoxLabel)}>{startTime}</Text>
         </div>
-    );
-};
-
-RescheduleBox.SkeletonBox = () => {
-    return (
-        <Box className={st(classes.rescheduleBoxContainer)}>
-            <Skeleton
-                className={st(classes.rescheduleBoxSkeleton)}
-                spacing="small"
-                content={[
-                    {
-                        size: 'medium',
-                        type: 'line'
-                    },
-                    {
-                        size: 'large',
-                        type: 'line'
-                    }
-                ]}
-            />
-        </Box>
     );
 };
 
