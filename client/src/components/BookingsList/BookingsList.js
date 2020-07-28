@@ -135,7 +135,7 @@ export default class BookingsList extends React.Component {
                 render: row => <BookingsListColumn.ServiceAndSession services={services} onCalendarClick={this.props.openRescheduleBookingModal} data={row}/>
             },
             {fieldName: '', localeLabelKey: 'staff', render: row => <BookingsListColumn.Staff staff={staff} data={row}/>},
-            {fieldName: '', localeLabelKey: 'bookingAndAttendance', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
+            {fieldName: '', localeLabelKey: 'bookingAndAttendance', width: '15%', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
             {fieldName: '', localeLabelKey: 'paymentStatus', render: row => <BookingsListColumn.PaymentStatus data={row}/>},
             {fieldName: '', localeLabelKey: 'payment', render: row => <BookingsListColumn.Payment data={row}/>}
         ].map(column => ({

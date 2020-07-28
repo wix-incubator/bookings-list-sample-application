@@ -55,7 +55,8 @@
   "BookingInfoTooltip": {
     "bookingPlatform": "Booking Platform",
     "couponName": "Coupon Name",
-    "paymentMethodAndDetails": "Payment Method & Details"
+    "paymentMethodAndDetails": "Payment Method & Details",
+    "paidPlanDetails": "Paid Plan Details"
   },
   "BookingPlatform": {
     "unavailable": "Unavailable",
@@ -67,5 +68,11 @@
     "confirmButtonText": "Reschedule",
     "cancelButtonText": "Cancel",
     "chooseNewSlotLabel": "Please choose a new slot for {{name}}'s {{booking}} booking at {{date}}:"
+  },
+  "WixPayDetails": {
+    "inPerson": "In Person",
+    "creditCard": "Credit Card",
+    "payPal": "PayPal",
+    "offline": "Offline"
   }
 }

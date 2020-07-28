@@ -47,6 +47,12 @@ const BOOKING_PLATFORM_MAP = {
     MOBILE_APP: {localeLabelKey: 'BookingPlatform.mobile', icon: <MobileSmall className={st(classes.platformIcon)}/>}
 };
 
+const WIX_PAY_DETAILS_MAP = {
+    inPerson: {localeLabelKey: 'WixPayDetails.inPerson'},
+    payPal: {localeLabelKey: 'WixPayDetails.payPal'},
+    offline: {localeLabelKey: 'WixPayDetails.offline'}
+};
+
 export default class BookingsListColumn extends React.Component {
     static NotAvailable = () => {
         return (
@@ -68,8 +74,7 @@ export default class BookingsListColumn extends React.Component {
         const {data: {booking}} = props;
         const {formInfo = {}} = booking;
         const {contactDetails = {}, paymentSelection = []} = formInfo;
-        // TODO: extract guests from paymentSelection (if numberOfParticipants > 1)
-        //  unsure how to handle it tho since paymentSelection is an array
+
         const numberOfParticipants = paymentSelection.length ? paymentSelection[0].numberOfParticipants : 1;
 
         return (
@@ -254,7 +259,7 @@ export default class BookingsListColumn extends React.Component {
     static PaymentDetailsTooltip = (props) => {
         const {data: {paymentDetails, bookingSource}} = props;
 
-        const {couponDetails} = paymentDetails;
+        const {couponDetails, wixPayMultipleDetails, paidPlanDetails} = paymentDetails;
         const {platform} = bookingSource;
         const bookingPlatform = BOOKING_PLATFORM_MAP[platform];
         const [isFocused, setIsFocused] = useState(false);
@@ -270,28 +275,58 @@ export default class BookingsListColumn extends React.Component {
         const boldedTextStyle = {fontWeight: 'bold', fontSize: '14px', color: 'white', marginBottom: '0px'};
         const normalTextStyle = {fontWeight: 'normal', fontSize: '12px', color: 'white'};
 
+        const bookingPlatformElement = (
+            <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
+                <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.bookingPlatform')}</ColumnText>
+                <div className={st(classes.rowDisplayContainer)}>
+                    {bookingPlatform.icon}
+                    <ColumnText style={normalTextStyle}>{translate(bookingPlatform.localeLabelKey)}</ColumnText>
+                </div>
+            </div>
+        );
+
+        const couponDetailsElement = couponDetails ?
+            <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
+                <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.couponName')}</ColumnText>
+                <ColumnText style={normalTextStyle}>{couponDetails.couponName}</ColumnText>
+            </div>
+            :
+            null;
+
+        const paymentMethodAndDetailsElement = (
+            <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
+                <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.paymentMethodAndDetails')}</ColumnText>
+                {
+                    wixPayMultipleDetails.map((wixPayDetails, index) => {
+                            const paymentVendor = WIX_PAY_DETAILS_MAP[wixPayDetails.paymentVendorName] || {};
+                            return (
+                                <ColumnText
+                                    key={`${index}-${wixPayDetails.orderId}`}
+                                    style={normalTextStyle}
+                                >
+                                    {translate(paymentVendor.localeLabelKey)} - {wixPayDetails.orderAmount}
+                                </ColumnText>
+                            );
+                        }
+                    )
+                }
+            </div>
+        );
+
+        const paidPlanDetailsElement = paidPlanDetails ?
+            <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
+                <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.paidPlanDetails')}</ColumnText>
+                <ColumnText style={normalTextStyle}>{paidPlanDetails.planName}</ColumnText>
+            </div>
+            :
+            null;
+
         const paymentContent = (
             <div className={st(classes.columnDisplayContainer, classes.paymentContent)}>
-                <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
-                    <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.bookingPlatform')}</ColumnText>
-                    <div className={st(classes.rowDisplayContainer)}>
-                        {bookingPlatform.icon}
-                        <ColumnText style={normalTextStyle}>{translate(bookingPlatform.localeLabelKey)}</ColumnText>
-                    </div>
-                </div>
-                {
-                    couponDetails ?
-                        <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
-                            <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.couponName')}</ColumnText>
-                            <ColumnText style={normalTextStyle}>{couponDetails.couponName}</ColumnText>
-                        </div>
-                        :
-                        null
-                }
-                <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
-                    <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.paymentMethodAndDetails')}</ColumnText>
-                    <ColumnText style={normalTextStyle}>TODO: Find out where this value is taken from</ColumnText>
-                </div>
+                {bookingPlatformElement}
+                {couponDetailsElement}
+                {paymentMethodAndDetailsElement}
+                {paidPlanDetailsElement}
             </div>
         );
 

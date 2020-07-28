@@ -79,7 +79,6 @@ export default class Main extends React.Component {
     _openRescheduleBookingModal = (booking) => {
         const {bookingsListStore} = this.props;
 
-        // TODO: move these to more specific case
         bookingsListStore.setRescheduleModalIsOpen(true);
         bookingsListStore.setRescheduleModalData('data', booking);
         bookingsListStore.fetchScheduleSlots(booking.bookedEntity.scheduleId);
@@ -87,8 +86,6 @@ export default class Main extends React.Component {
 
     _onRowClick = (row) => {
         console.logx({row});
-
-        // this._openRescheduleBookingModal(row);
     };
 
     render() {

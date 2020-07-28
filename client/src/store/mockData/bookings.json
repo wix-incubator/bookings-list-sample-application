@@ -88,7 +88,10 @@
               "orderApprovalTime": "2020-06-22T20:20:22.306Z",
               "paymentVendorName": "inPerson"
             }
-          ]
+          ],
+          "paidPlanDetails": {
+            "planName": "eXtreme Plan"
+          }
         },
         "status": "CONFIRMED",
         "created": "2020-06-22T20:06:54.755Z",
@@ -4311,7 +4314,7 @@
       }
     }
   ],
-  "bookingsMetadata": {
+  "metadata": {
     "items": 42,
     "offset": 0,
     "totalCount": 42

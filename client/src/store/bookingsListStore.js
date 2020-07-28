@@ -209,7 +209,6 @@ class BookingsListStore {
     };
 
     preparePaging = (paging) => {
-        // TODO: activate this once the API is implemented
         const pagingObject = {};
         if (paging.limit !== undefined) {
             pagingObject['query.paging.limit'] = paging.limit;
