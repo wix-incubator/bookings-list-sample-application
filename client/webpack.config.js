@@ -1,50 +1,29 @@
 const path = require('path');
-const {StylableWebpackPlugin} = require('@stylable/webpack-plugin');
+const { StylableWebpackPlugin } = require('@stylable/webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-
-const isDevelopment = process.env.NODE_ENV !== 'production';
-
 module.exports = {
-    mode: isDevelopment ? 'development' : 'production',
+    mode: 'development',
     devtool: 'source-map',
-    devServer: {
-        contentBase: path.join(__dirname, 'dist'),
-        compress: true,
-        port: 9000
-    },
     module: {
         rules: [
             {
                 test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
                 use: [
                     {
-                        loader: 'url-loader'
+                        loader: 'url-loader',
                     }
                 ]
             },
             {
                 test: /\.tsx?$/,
-                include: path.join(__dirname, 'src'),
-                use: [
-                    isDevelopment && {loader: 'babel-loader', options: {plugins: ['react-refresh/babel']}},
-                    'awesome-typescript-loader'
-                ].filter(Boolean)
-            },
-            {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
+                loader: 'ts-loader',
             },
             {
                 test: /\.scss$/,
                 include: [
                     path.join(__dirname, 'node_modules/wix-animations'),
-                    path.join(__dirname, 'node_modules/wix-style-react')
-                    // path.join(__dirname, 'node_modules/bootstrap-sass')
+                    path.join(__dirname, 'node_modules/wix-style-react'),
+                    path.join(__dirname, 'node_modules/bootstrap-sass')
                 ],
                 use: [
                     'style-loader',
@@ -66,18 +45,17 @@ module.exports = {
                         options: {
                             sourceMap: true
                         }
-                    }
-                ]
-            }
-        ]
+                    },
+                ],
+            },
+        ],
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.mjs', '.js', '.json']
+        extensions: ['.ts', '.tsx', '.mjs', '.js', '.json'],
     },
     plugins: [
-        new Dotenv(),
-        new StylableWebpackPlugin(),
-        new HtmlWebpackPlugin({title: 'Bookings List'}),
-        isDevelopment && new ReactRefreshWebpackPlugin()
-    ].filter(Boolean)
+    new StylableWebpackPlugin({
+        experimentalHMR: true
+    }),
+    new HtmlWebpackPlugin({ title: 'Stylable App' })],
 };

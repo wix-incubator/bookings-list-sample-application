@@ -11,28 +11,23 @@
     "prettier",
     "prettier/react"
   ],
-  "plugins": ["react-hooks", "jsx-a11y", "react"],
+  "plugins": ["react-hooks", "jsx-a11y"],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
   "rules": {
-    "no-console": "off",
-    "react-hooks/rules-of-hooks": "off",
+    "no-console": "error",
+    "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
-    "react/prop-types": "off",
-    "jsx-a11y/no-static-element-interactions": "off",
-    "jsx-a11y/click-events-have-key-events": "off"
+    "react/prop-types": "off"
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["*.ts", "*.tsx"],
       "parserOptions": {
-        "project": "./tsconfig.json",
-        "sourceType": "module",
-        "ecmaVersion": 11,
-        "allowImportExportEverywhere": true
+        "project": "./tsconfig.json"
       },
       "extends": [
         "plugin:@typescript-eslint/recommended",
@@ -40,16 +35,7 @@
         "prettier/@typescript-eslint"
       ],
       "rules": {
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/no-unsafe-member-access": "off",
-        "@typescript-eslint/no-unsafe-assignment": "off",
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/no-unsafe-call": "off",
-        "@typescript-eslint/no-unsafe-return": "off",
-        "@typescript-eslint/no-floating-promise": "off",
-        "@typescript-eslint/restrict-template-expressions": "off",
-        "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/no-var-requires": "off"
+        "@typescript-eslint/no-unused-vars": "off"
       }
     }
   ]
