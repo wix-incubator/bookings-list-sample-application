@@ -1,0 +1,27 @@
+import React from 'react';
+import {classes, st} from './RescheduleBox.st.css';
+import {Skeleton, Box} from 'wix-style-react';
+
+const RescheduleBoxSkeleton = (props) => {
+    return (
+        <Box className={st(classes.rescheduleBoxContainer)}>
+            <Skeleton
+                className={st(classes.rescheduleBoxSkeleton)}
+                spacing="small"
+                content={[
+                    {
+                        size: 'medium',
+                        type: 'line'
+                    },
+                    {
+                        size: 'large',
+                        type: 'line'
+                    }
+                ]}
+            />
+        </Box>
+    );
+};
+
+
+export default RescheduleBoxSkeleton;
