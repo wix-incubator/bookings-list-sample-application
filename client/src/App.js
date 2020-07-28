@@ -3,11 +3,10 @@ import {st, classes} from './App.st.css';
 import Main from './views/Main';
 import Wix from 'wix-sdk';
 
-
 export const App = ({className}) => {
     useEffect(() => {
         try {
-            window.sessionStorage.set('instanceId', Wix.Utils.getInstanceId());
+            window.sessionStorage.setItem('instanceId', Wix.Utils.getInstanceId());
         } catch (e) {
             console.log({e});
         }
