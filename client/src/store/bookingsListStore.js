@@ -19,7 +19,7 @@ const rescheduleModalInitialState = {
 const initialState = {
     filters: {},
     sort: {},
-    paging: {offset: 0, limit: 10},
+    paging: {offset: 0, limit: 15},
     services: {},
     resources: {},
     staff: {},
