@@ -3,6 +3,29 @@
     flex-direction: column;
 }
 
+/*
+    bookingsListPage class is used to cancel out the overflows defined on the Page component and its grandchild
+    rather hacky solution in order to allow the sticky table header to work
+    unsure what effect this will cause on smaller displays
+*/
+.bookingsListPage {
+    overflow-x: unset !important;
+}
+
+.bookingsListPage > div > div {
+    overflow-y: unset !important;
+}
+
+/*
+    define sticky on each of the header cells
+    cannot define direct class on the header tr/th elements so had to use this convention
+*/
+.bookingsListContainer table > thead > tr > th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
 .centered {
     display: flex;
     justify-content: center;

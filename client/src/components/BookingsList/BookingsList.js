@@ -192,7 +192,7 @@ export default class BookingsList extends React.Component {
         return (
             <div className={st(classes.bookingsListContainer)}>
                 <BookingNotification/>
-                <Page>
+                <Page className={st(classes.bookingsListPage)}>
                     <Page.Header title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
                     <Page.Content>
                         {this._renderBookingsListToolbar()}
