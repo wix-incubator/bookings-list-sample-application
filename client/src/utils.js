@@ -3,6 +3,7 @@ import dequal from 'dequal';
 import {differenceInMinutes} from 'date-fns';
 import {getStores} from './store/getStores';
 import i18n from 'i18next';
+import Wix from 'wix-sdk';
 
 /**
  * custom console.log for outputting mobx store variables
@@ -10,6 +11,27 @@ import i18n from 'i18next';
  * @param args
  */
 window.console.logx = (...args) => console.log(...args.map(arg => !arg ? arg : parse(stringify(arg))));
+
+export const isDevelopment = process.env.NODE_ENV !== 'production';
+
+/**
+ * set the wix instance id in the session storage
+ * fallback to dev instance id for development purposes (defined in .env)
+ */
+export const setWixInstanceId = () => {
+    let instanceId;
+    try {
+        if (isDevelopment) {
+            instanceId = process.env.DEV_INSTANCE_ID;
+        } else {
+            instanceId = Wix.Utils.getInstanceId();
+        }
+        window.sessionStorage.setItem('instanceId', instanceId);
+
+    } catch (e) {
+        console.log(e);
+    }
+};
 
 /**
  * add days to a given date
