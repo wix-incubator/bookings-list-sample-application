@@ -30,7 +30,13 @@ const initialState = {
     constantsLoaded: false
 };
 
-
+/**
+ * wrapper for GET method
+ * returns mock data if the USE_MOCK flag === true and there is available mock data for the EP
+ * @param endpoint
+ * @param config
+ * @returns Object
+ */
 const getData = async (endpoint, config) => {
     if (USE_MOCK && mockData[endpoint]) {
         return {data: mockData[endpoint]};
@@ -39,6 +45,14 @@ const getData = async (endpoint, config) => {
     return axiosInstance.get(`/${endpoint}`, config);
 };
 
+/**
+ * wrapper for POST method
+ * returns mock data if the USE_MOCK flag === true and there is available mock data for the EP
+ * @param endpoint
+ * @param payload
+ * @param config
+ * @returns Object
+ */
 const postData = async (endpoint, payload, config) => {
     if (USE_MOCK && mockData[endpoint]) {
         await pause(2000);
@@ -227,7 +241,6 @@ class BookingsListStore {
 
         this.setLoadingBookings(true);
         try {
-            // const result = await axiosInstance.get('/bookings', requestConfig);
             const result = await getData('bookings', requestConfig);
             const {data} = result;
             this.setBookingsEntries(data.bookingsEntries, concatenate);
@@ -265,8 +278,6 @@ class BookingsListStore {
                  }
              }`;
 
-
-            // const result = await axiosInstance.post(`/calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const {data} = result;
 
