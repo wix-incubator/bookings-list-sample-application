@@ -209,14 +209,10 @@ class BookingsListStore {
     };
 
     preparePaging = (paging) => {
-        const pagingObject = {};
-        if (paging.limit !== undefined) {
-            pagingObject['query.paging.limit'] = paging.limit;
-        }
-        if (paging.offset !== undefined) {
-            pagingObject['query.paging.offset'] = paging.offset;
-        }
-        return pagingObject;
+        return Object.keys(paging).reduce((acc, curr) => {
+            acc[`query.paging.${curr}`] = paging[curr];
+            return acc;
+        }, {});
     };
 
     @action('Fetch data')
