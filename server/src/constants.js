@@ -1,0 +1,18 @@
+const HTTP_STATUS = {
+    SUCCESS: 200,
+    CREATED: 201,
+    UNAUTHORIZED: 401,
+    INTERNAL_SERVER_ERROR: 500,
+    BAD_INPUT: 400,
+    FORBIDDEN: 403,
+    NOT_FOUND: 404,
+    NO_CONTENT: 204,
+    GONE: 410
+};
+
+const DEFAULT_PORT = 3000;
+
+module.exports = {
+    HTTP_STATUS,
+    DEFAULT_PORT
+};

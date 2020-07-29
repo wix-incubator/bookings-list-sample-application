@@ -6,6 +6,8 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 
+const {HTTP_STATUS, DEFAULT_PORT} = require('./constants');
+
 const APP_ID = process.env.APP_ID;
 const APP_SECRET = process.env.APP_SECRET;
 const PUBLIC_KEY = fs.readFileSync(path.resolve('./public.pem'), 'utf8');
@@ -14,7 +16,7 @@ const INSTANCE_API_URL = 'https://dev.wix.com/api/v1';
 const BOOKINGS_API_URL = 'https://www.wixapis.com/bookings/v1';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || DEFAULT_PORT;
 const incomingWebhooks = [];
 
 const knex = require('knex')({
@@ -36,7 +38,7 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'statics')));
 app.use(cors());
 
-async function getRequestConfig(refreshToken, params, requestBody) {
+async function getRequestConfig(refreshToken, params) {
     const {access_token} = await getAccessToken(refreshToken);
     const options = {
         baseURL: BOOKINGS_API_URL,
@@ -121,7 +123,7 @@ async function getConstants(refreshToken) {
             services: servicesResponse.services,
             resources: resourcesResponse.resources
         };
-        return {response, code: 200};
+        return {response, code: HTTP_STATUS.SUCCESS};
     } catch (e) {
         console.log({e});
         return {code: e.response.status};
@@ -132,7 +134,7 @@ async function getBookings(refreshToken, params) {
     try {
         const config = await getRequestConfig(refreshToken, params);
         const response = (await axios.get('bookings', config)).data;
-        return {response, code: 200};
+        return {response, code: HTTP_STATUS.SUCCESS};
     } catch (e) {
         console.log({e});
         return {code: e.response.status};
@@ -143,7 +145,7 @@ async function postCalendarListSlots(refreshToken, requestBody) {
     try {
         const config = await getRequestConfig(refreshToken, undefined, requestBody);
         const response = (await axios.post('calendar/listSlots', requestBody, config)).data;
-        return {response, code: 200};
+        return {response, code: HTTP_STATUS.SUCCESS};
     } catch (e) {
         console.log({e});
         return {code: e.response.status};
@@ -161,7 +163,7 @@ app.get('/signup', (req, res) => {
     const appId = APP_ID;
     const redirectUrl = `https://${req.get('host')}/login`;
     const token = req.query.token;
-    var url = `${permissionRequestUrl}?token=${token}&appId=${appId}&redirectUrl=${redirectUrl}`
+    const url = `${permissionRequestUrl}?token=${token}&appId=${appId}&redirectUrl=${redirectUrl}`
 
     console.log("redirecting to " + url);
     console.log("=============================");
@@ -209,11 +211,11 @@ app.get('/login', async (req, res) => {
 
         // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
 
-        res.status(200).send('Hello Logged in user!')
+        res.status(HTTP_STATUS.SUCCESS).send('Hello Logged in user!')
     } catch (wixError) {
         console.log("Error getting token from Wix");
         console.log({wixError});
-        res.status(500);
+        res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR);
         return;
     }
 });
@@ -242,10 +244,10 @@ app.get('/constants', async (req, res) => {
         const instanceId = getInstanceIdFromRequestHeaders(req);
         const refreshToken = await getRefreshToken(instanceId);
         const out = await getConstants(refreshToken);
-        res.status(200).send(out.response);
+        res.status(HTTP_STATUS.SUCCESS).send(out.response);
     } catch (e) {
         console.log({e});
-        res.status(500);
+        res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR);
         return;
     }
 });
@@ -256,10 +258,10 @@ app.get('/bookings', async (req, res) => {
         const refreshToken = await getRefreshToken(instanceId);
         const out = await getBookings(refreshToken, req.query);
         const bookings = out.response;
-        res.status(200).send(bookings);
+        res.status(HTTP_STATUS.SUCCESS).send(bookings);
     } catch (e) {
         console.log({e});
-        res.status(500);
+        res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR);
         return;
     }
 });
@@ -269,10 +271,10 @@ app.post('/calendar/listSlots', async (req, res) => {
         const instanceId = getInstanceIdFromRequestHeaders(req);
         const refreshToken = await getRefreshToken(instanceId);
         const out = await postCalendarListSlots(refreshToken, req.body);
-        res.status(200).send(out.response);
+        res.status(HTTP_STATUS.SUCCESS).send(out.response);
     } catch (e) {
         console.log({e});
-        res.status(500);
+        res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR);
         return;
     }
 });
