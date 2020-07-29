@@ -112,6 +112,22 @@ async function getAppInstance(refreshToken) {
     }
 }
 
+async function getConstants(refreshToken) {
+    try {
+        const config = await getRequestConfig(refreshToken);
+        const servicesResponse = (await axios.get('services', config)).data;
+        const resourcesResponse = (await axios.get('resources', config)).data;
+        const response = {
+            services: servicesResponse.services,
+            resources: resourcesResponse.resources
+        };
+        return {response, code: 200};
+    } catch (e) {
+        console.log({e});
+        return {code: e.response.status};
+    }
+}
+
 async function getBookings(refreshToken, params) {
     try {
         const config = await getRequestConfig(refreshToken, params);
@@ -208,6 +224,19 @@ app.get('/webhooks', async (req, res) => {
         app_id: APP_ID,
         webhooks: JSON.stringify(incomingWebhooks, null, 2)
     });
+});
+
+app.get('/constants', async (req, res) => {
+    try {
+        const instanceId = getInstanceIdFromRequestHeaders(req);
+        const refreshToken = await getRefreshToken(instanceId);
+        const out = await getConstants(refreshToken);
+        res.status(200).send(out.response);
+    } catch (e) {
+        console.log({e});
+        res.status(500);
+        return;
+    }
 });
 
 app.get('/bookings', async (req, res) => {
