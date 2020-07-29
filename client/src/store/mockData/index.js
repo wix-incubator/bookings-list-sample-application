@@ -1,6 +1,7 @@
 import bookings from './bookings';
 import services from './services';
 import resources from './resources';
+import constants from './constants';
 import listSlots from './listSlots';
 
 /**
@@ -10,5 +11,6 @@ export default {
     bookings,
     services,
     resources,
+    constants,
     ["calendar/listSlots"]: listSlots
 }

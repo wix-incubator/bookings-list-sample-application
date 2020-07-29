@@ -26,7 +26,8 @@ const initialState = {
     bookingsEntries: [],
     bookingsMetadata: null,
     rescheduleModal: rescheduleModalInitialState,
-    loadingBookings: true
+    loadingBookings: true,
+    constantsLoaded: false
 };
 
 
@@ -109,17 +110,15 @@ class BookingsListStore {
         this.store.bookingsMetadata = bookingsMetadata;
     };
 
-
-    @action('Load services')
+    @action('Load constants')
     loadConstants = async () => {
         try {
-            // const result = await Promise.all([axiosInstance.get('/services'), axiosInstance.get('/resources')]);
-            const result = await Promise.all([getData('services', true), getData('resources', true)]);
-
-            const services = result[0].data.services;
-            const resources = result[1].data.resources;
+            const result = await getData('constants');
+            const {data} = result;
+            const {services, resources} = data;
             this.setServices(services);
             this.setResources(resources);
+            this.store.constantsLoaded = true;
         } catch (e) {
             console.log({e});
             raiseNotification(e.message, 'error');

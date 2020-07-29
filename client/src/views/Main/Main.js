@@ -90,10 +90,10 @@ export default class Main extends React.Component {
 
     render() {
         const {bookingsListStore} = this.props;
-        const {loadingBookings, services, staff, bookingsEntries, bookingsMetadata, sort} = bookingsListStore.store;
+        const {constantsLoaded, loadingBookings, services, staff, bookingsEntries, bookingsMetadata, sort} = bookingsListStore.store;
 
         return (
-            <div className={classes.mainContainer}>
+            <div className={st(classes.mainContainer)}>
                 <RescheduleModal/>
                 <BookingsList
                     bookingsMetadata={bookingsMetadata}
@@ -108,6 +108,7 @@ export default class Main extends React.Component {
                     sort={sort}
                     setRowFocused={bookingsListStore.setRowFocused}
                     loading={loadingBookings}
+                    constantsLoaded={constantsLoaded}
                     loadMore={this._loadMoreBookings}
                     hasMore={this._hasMoreBookings()}
                 />

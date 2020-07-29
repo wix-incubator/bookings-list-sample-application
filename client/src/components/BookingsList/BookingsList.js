@@ -42,11 +42,17 @@ const getBookingStatuses = () => [
 @observer
 export default class BookingsList extends React.Component {
     _renderBookingsListHeaderTitle = () => {
-        const {bookingsMetadata} = this.props;
+        const {constantsLoaded, bookingsMetadata} = this.props;
+
+        const bookingsCount = constantsLoaded && bookingsMetadata ?
+            <h4 className={st(classes.title, classes.amount)}>{this._getBookingEntries().length}/{bookingsMetadata.totalCount}</h4>
+            :
+            null;
+
         return (
             <div>
                 <h4 className={st(classes.title)}>{translate('BookingsList.pageHeaderTitle')}</h4>
-                {bookingsMetadata ? <h4 className={st(classes.title, classes.amount)}>{this._getBookingEntries().length}/{bookingsMetadata.totalCount}</h4> : null}
+                {bookingsCount}
             </div>
         );
     };
@@ -119,7 +125,11 @@ export default class BookingsList extends React.Component {
     };
 
     _getBookingEntries = () => {
-        return this.props.bookingEntries;
+        const {constantsLoaded, bookingEntries} = this.props;
+        if (!constantsLoaded) {
+            return [];
+        }
+        return bookingEntries;
     };
 
     _getBookingColumns = () => {
@@ -147,8 +157,8 @@ export default class BookingsList extends React.Component {
     };
 
     _renderLoader = () => {
-        const {loading} = this.props;
-        if (!loading) {
+        const {loading, constantsLoaded} = this.props;
+        if (!loading && constantsLoaded) {
             return null;
         }
 
@@ -215,6 +225,7 @@ BookingsList.propTypes = {
     hasMore: PropTypes.bool,
     loadMore: PropTypes.func,
     loading: PropTypes.bool,
+    constantsLoaded: PropTypes.bool,
     bookingsMetadata: PropTypes.object,
     onFilterChanged: PropTypes.func,
     onRowClick: PropTypes.func,

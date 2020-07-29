@@ -1,0 +1,509 @@
+{
+  "services": [
+    {
+      "id": "08597c8c-9345-4bc5-aa43-d0aa70807a8f",
+      "info": {
+        "name": "Front End Course",
+        "description": "",
+        "images": [],
+        "tagLine": ""
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": true,
+        "wixPayInPerson": true,
+        "custom": false,
+        "wixPaidPlan": false
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "9ab80b1d-3301-4256-9082-b3d85e7a3b79"
+      ],
+      "customProperties": {
+        "order": "6",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 6
+    },
+    {
+      "id": "180963ce-85ec-4f04-a9ec-6741ca673020",
+      "info": {
+        "name": "Gyrotonic",
+        "description": "Describe your class, group tour or event here. Tell people why they should join and what makes it a great experience. Include a few words on who it’s good for like customer age, experience, skill level etc.",
+        "images": [
+          {
+            "id": "84770f_1993f9fec17b4c3f96e67382f820dbd5.jpg",
+            "url": "84770f_1993f9fec17b4c3f96e67382f820dbd5.jpg",
+            "height": 899,
+            "width": 1348
+          }
+        ]
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": true,
+        "wixPayInPerson": true,
+        "custom": false,
+        "wixPaidPlan": true
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "7c351505-9172-46e1-b779-fdf3b049f66c"
+      ],
+      "customProperties": {
+        "order": "1",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 1
+    },
+    {
+      "id": "3c19f139-9b29-4141-8a5f-548bd588280f",
+      "info": {
+        "name": "Mat",
+        "description": "Describe your class, group tour or event here. Tell people why they should join and what makes it a great experience. Include a few words on who it’s good for like customer age, experience, skill level etc.",
+        "images": [
+          {
+            "id": "84770f_2ff68ec115b644a5805de7aef985af95.jpg",
+            "url": "84770f_2ff68ec115b644a5805de7aef985af95.jpg",
+            "height": 818,
+            "width": 1230
+          }
+        ]
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": false,
+        "wixPayInPerson": true,
+        "custom": false,
+        "wixPaidPlan": false
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "6cb2fd56-a280-48dd-8890-d6151ac00c52"
+      ],
+      "customProperties": {
+        "order": "2",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 2
+    },
+    {
+      "id": "3d4a3762-b43b-4f17-addd-b7a010825cf6",
+      "info": {
+        "name": "Reformer",
+        "description": "Describe your class, group tour or event here. Tell people why they should join and what makes it a great experience. Include a few words on who it’s good for like customer age, experience, skill level etc.",
+        "images": [
+          {
+            "id": "84770f_6dc4c4aab655411d962d8db71b92972c.jpg",
+            "url": "84770f_6dc4c4aab655411d962d8db71b92972c.jpg",
+            "height": 968,
+            "width": 1293
+          }
+        ]
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": true,
+        "wixPayInPerson": true,
+        "custom": false,
+        "wixPaidPlan": false
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "965bb2d6-be37-4a1a-b01b-d554e8073fd2"
+      ],
+      "customProperties": {
+        "order": "3",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 3
+    },
+    {
+      "id": "6a451864-174c-417a-b607-4dc90d9cd600",
+      "info": {
+        "name": "1x1 service",
+        "images": []
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        },
+        "bookingsApprovalPolicy": {
+          "isBusinessApprovalRequired": false,
+          "requestsAffectsAvailability": true
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": true,
+        "wixPayInPerson": false,
+        "custom": false,
+        "wixPaidPlan": false
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "33ac32ac-e495-4d9f-9fea-b533a2a93e5f"
+      ],
+      "customProperties": {
+        "order": "4",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 4
+    },
+    {
+      "id": "8afeee8c-cfd5-4f1c-a853-f81bcb814d0b",
+      "info": {
+        "name": "eXtreme Pilates",
+        "images": [],
+        "tagLine": "eXtreme pilates workout"
+      },
+      "policy": {
+        "maxParticipantsPerBooking": 1,
+        "bookUpToXMinutesBefore": 0,
+        "cancelRescheduleUpToXMinutesBefore": 0,
+        "isBookOnlineAllowed": true,
+        "isCancelAllowed": true,
+        "isRescheduleAllowed": true,
+        "futureBookingsPolicy": {
+          "shouldLimit": false,
+          "limitXMinutesToTheFuture": 10080
+        },
+        "waitingListPolicy": {
+          "isEnabled": false,
+          "capacity": 10,
+          "timeWindowMinutes": 10
+        },
+        "bookingsApprovalPolicy": {
+          "isBusinessApprovalRequired": false,
+          "requestsAffectsAvailability": true
+        }
+      },
+      "paymentOptions": {
+        "wixPayOnline": true,
+        "wixPayInPerson": false,
+        "custom": false,
+        "wixPaidPlan": false
+      },
+      "categoryId": "7acb0cc9-5dca-4f45-9bc4-9d97066d4c81",
+      "bookingFormId": "00000000-0000-0000-0000-000000000000",
+      "scheduleIds": [
+        "3a01d840-54a5-49a7-ac46-c377a76f8dc4"
+      ],
+      "customProperties": {
+        "order": "5",
+        "uouHidden": "false"
+      },
+      "status": "CREATED",
+      "sortOrder": 5
+    }
+  ],
+  "resources": [
+    {
+      "id": "1f0c3cee-7636-40d5-b2b1-17dc41c91282",
+      "name": "asdasd",
+      "email": "aasd@asdasd.com",
+      "tags": [
+        "staff"
+      ],
+      "images": [],
+      "schedules": [
+        {
+          "id": "1b23f7be-819c-42ce-bec6-f5b383b44cb1",
+          "scheduleOwnerId": "1f0c3cee-7636-40d5-b2b1-17dc41c91282",
+          "timeZone": "Asia/Jerusalem",
+          "intervals": [],
+          "tags": [],
+          "availability": {
+            "start": "2020-06-22T21:00:00Z",
+            "linkedSchedules": [
+              {
+                "scheduleId": "dfb200b3-a0eb-4892-be86-bffc7a1bf47e",
+                "transparency": "FREE",
+                "scheduleOwnerId": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d"
+              }
+            ]
+          },
+          "totalNumberOfParticipants": 0,
+          "participants": [],
+          "status": "CREATED",
+          "created": "2020-06-22T21:01:52.531Z",
+          "updated": "2020-06-22T21:01:52.531Z",
+          "version": 0,
+          "inheritedFields": [
+            "timeZone"
+          ]
+        }
+      ],
+      "status": "CREATED"
+    },
+    {
+      "id": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d",
+      "name": "business",
+      "tags": [
+        "business"
+      ],
+      "images": [],
+      "schedules": [
+        {
+          "id": "dfb200b3-a0eb-4892-be86-bffc7a1bf47e",
+          "scheduleOwnerId": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d",
+          "firstSessionStart": "2020-07-21T07:00:00Z",
+          "timeZone": "Asia/Jerusalem",
+          "intervals": [
+            {
+              "id": "deee4653-24b9-4721-9c1e-84ce7b4a782e",
+              "start": "2020-07-20T21:00:00Z",
+              "interval": {
+                "daysOfWeek": "MON",
+                "hourOfDay": 10,
+                "minuteOfHour": 0,
+                "duration": 480
+              },
+              "frequency": {
+                "repetition": 1
+              },
+              "affectedSchedules": [],
+              "intervalType": "UNDEFINED"
+            },
+            {
+              "id": "1a065bb1-99a8-4890-bc20-fd19b4bb0f95",
+              "start": "2020-07-20T21:00:00Z",
+              "interval": {
+                "daysOfWeek": "TUE",
+                "hourOfDay": 10,
+                "minuteOfHour": 0,
+                "duration": 480
+              },
+              "frequency": {
+                "repetition": 1
+              },
+              "affectedSchedules": [],
+              "intervalType": "UNDEFINED"
+            },
+            {
+              "id": "ca6d2979-459c-42d3-be85-a85062f92376",
+              "start": "2020-07-20T21:00:00Z",
+              "interval": {
+                "daysOfWeek": "WED",
+                "hourOfDay": 10,
+                "minuteOfHour": 0,
+                "duration": 480
+              },
+              "frequency": {
+                "repetition": 1
+              },
+              "affectedSchedules": [],
+              "intervalType": "UNDEFINED"
+            },
+            {
+              "id": "882d2edc-0bb5-45c5-990e-45d0f2e3d7ff",
+              "start": "2020-07-20T21:00:00Z",
+              "interval": {
+                "daysOfWeek": "THU",
+                "hourOfDay": 10,
+                "minuteOfHour": 0,
+                "duration": 480
+              },
+              "frequency": {
+                "repetition": 1
+              },
+              "affectedSchedules": [],
+              "intervalType": "UNDEFINED"
+            },
+            {
+              "id": "02724da8-306e-4567-8944-ea3d17fc12c3",
+              "start": "2020-07-20T21:00:00Z",
+              "interval": {
+                "daysOfWeek": "FRI",
+                "hourOfDay": 10,
+                "minuteOfHour": 0,
+                "duration": 480
+              },
+              "frequency": {
+                "repetition": 1
+              },
+              "affectedSchedules": [],
+              "intervalType": "UNDEFINED"
+            }
+          ],
+          "tags": [],
+          "totalNumberOfParticipants": 0,
+          "participants": [],
+          "status": "CREATED",
+          "created": "2019-08-15T14:23:16.207Z",
+          "updated": "2020-07-21T06:33:42.804Z",
+          "version": 9,
+          "inheritedFields": []
+        }
+      ],
+      "status": "UPDATED"
+    },
+    {
+      "id": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+      "name": "Staff Member #1",
+      "email": "info@mysite.com",
+      "phone": "123-456-7890",
+      "tags": [
+        "staff",
+        "defaultStaff"
+      ],
+      "images": [],
+      "schedules": [
+        {
+          "id": "b1dd49dc-5b66-4db8-a918-84372e194f2e",
+          "scheduleOwnerId": "9ebf1bf5-ae39-4f77-b77d-3a441efd2bbe",
+          "firstSessionStart": "2020-04-15T11:00:00Z",
+          "lastSessionEnd": "2020-04-16T10:00:00Z",
+          "timeZone": "Asia/Jerusalem",
+          "intervals": [],
+          "tags": [],
+          "availability": {
+            "start": "2020-04-14T08:10:17.624Z",
+            "linkedSchedules": [
+              {
+                "scheduleId": "dfb200b3-a0eb-4892-be86-bffc7a1bf47e",
+                "transparency": "FREE",
+                "scheduleOwnerId": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d"
+              }
+            ]
+          },
+          "totalNumberOfParticipants": 0,
+          "participants": [],
+          "status": "CREATED",
+          "created": "2019-08-15T14:23:16.858Z",
+          "updated": "2020-04-15T14:20:32.265Z",
+          "version": 9,
+          "inheritedFields": [
+            "timeZone"
+          ]
+        }
+      ],
+      "status": "CREATED"
+    },
+    {
+      "id": "ec9ad76a-0a9e-4787-b534-e42eb5b6f2f8",
+      "name": "Staff Member #2",
+      "email": "aa@a.com",
+      "tags": [
+        "staff"
+      ],
+      "images": [],
+      "schedules": [
+        {
+          "id": "b897a18e-d20f-4ecc-abe3-830c0ecff2ac",
+          "scheduleOwnerId": "ec9ad76a-0a9e-4787-b534-e42eb5b6f2f8",
+          "firstSessionStart": "2020-04-15T11:00:00Z",
+          "lastSessionEnd": "2020-04-15T17:00:00Z",
+          "timeZone": "Asia/Jerusalem",
+          "intervals": [],
+          "tags": [],
+          "availability": {
+            "start": "2020-04-14T21:00:00Z",
+            "linkedSchedules": [
+              {
+                "scheduleId": "dfb200b3-a0eb-4892-be86-bffc7a1bf47e",
+                "transparency": "FREE",
+                "scheduleOwnerId": "3c37f5a4-313f-4294-a4ff-4ed1ef88391d"
+              }
+            ]
+          },
+          "totalNumberOfParticipants": 0,
+          "participants": [],
+          "status": "CREATED",
+          "created": "2020-04-15T14:00:58.946Z",
+          "updated": "2020-04-15T14:09:45.571Z",
+          "version": 1,
+          "inheritedFields": [
+            "timeZone"
+          ]
+        }
+      ],
+      "status": "CREATED"
+    }
+  ]
+}
