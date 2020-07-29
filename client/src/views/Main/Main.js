@@ -5,6 +5,7 @@ import {getDefaultValue} from '../../components/CalendarPanelDatePicker/Calendar
 
 import {inject, observer} from 'mobx-react';
 import RescheduleModal from '../../components/RescheduleModal';
+import PaymentModal from '../../components/PaymentModal';
 
 @inject('bookingsListStore')
 @observer
@@ -88,6 +89,15 @@ export default class Main extends React.Component {
         console.logx({row});
     };
 
+    _onPaymentStatusSelect = (booking, option) => {
+        const {bookingsListStore} = this.props;
+
+        if (option.id === 'PAID') {
+            bookingsListStore.setPaymentModalIsOpen(true);
+            bookingsListStore.setPaymentModalData('data', booking);
+        }
+    };
+
     render() {
         const {bookingsListStore} = this.props;
         const {constantsLoaded, loadingBookings, services, staff, bookingsEntries, bookingsMetadata, sort} = bookingsListStore.store;
@@ -95,6 +105,7 @@ export default class Main extends React.Component {
         return (
             <div className={st(classes.mainContainer)}>
                 <RescheduleModal/>
+                <PaymentModal/>
                 <BookingsList
                     bookingsMetadata={bookingsMetadata}
                     services={services}
@@ -102,6 +113,7 @@ export default class Main extends React.Component {
                     bookingEntries={bookingsEntries}
                     onRowClick={this._onRowClick}
                     openRescheduleBookingModal={this._openRescheduleBookingModal}
+                    onPaymentStatusSelect={this._onPaymentStatusSelect}
                     onFilterChanged={this._onFiltersChanged}
                     onSortChanged={this._onSortChanged}
                     filters={this._getFilters()}

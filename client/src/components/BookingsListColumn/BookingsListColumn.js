@@ -9,12 +9,31 @@ import StatusAlert from 'wix-ui-icons-common/StatusAlert';
 import LanguagesSmall from 'wix-ui-icons-common/LanguagesSmall';
 import MobileSmall from 'wix-ui-icons-common/MobileSmall';
 import DateAndTimeSmall from 'wix-ui-icons-common/DateAndTimeSmall';
+import {BadgeDropdown} from '../BadgeDropdown/BadgeDropdown';
 
 const ColumnText = (props) => {
     return (
         <Text style={{color: '#32536a'}} size="small" {...props}/>
     );
 };
+
+const getPaymentStatusOptions = () => [
+    {
+        id: 'PAID',
+        skin: 'general',
+        text: translate('PaymentStatusDropdown.paid')
+    },
+    {
+        id: 'NOT_PAID',
+        skin: 'danger',
+        text: translate('PaymentStatusDropdown.notPaid')
+    },
+    {
+        id: 'DEPOSIT_PAID',
+        skin: 'warning',
+        text: translate('PaymentStatusDropdown.depositPaid')
+    }
+];
 
 const BOOKING_AND_ATTENDANCE_MAP = {};
 
@@ -203,15 +222,11 @@ export default class BookingsListColumn extends React.Component {
             }
         ];
 
-        // TODO: return this for "disabled" option
-        // return (
-        //     <Badge type="outlined" skin="general">Paid</Badge>
-        // );
-
         return (
-            <BadgeSelect
+            <BadgeDropdown
+                skin="general"
                 selectedId={booking.selectedBookingId}
-                disabled={true}
+                disabled={false}
                 type="outlined"
                 onSelect={(option) => booking.selectedBookingId = option.id}
                 options={options}
@@ -219,11 +234,40 @@ export default class BookingsListColumn extends React.Component {
         );
     };
 
-    static PaymentStatus = (props) => {
-        const {data: {booking}} = props;
-        return <BookingsListColumn.NotAvailable/>;
-        return null;
-    };
+    static PaymentStatus = observer((props) => {
+        const {onPaymentStatusSelect, data: {booking}} = props;
+        const {paymentDetails = {}} = booking;
+        const {balance = {}} = paymentDetails;
+        const {finalPrice = {}} = balance;
+        const {amountReceived} = balance;
+        const {amount} = finalPrice;
+
+        const fullyPaid = amount === amountReceived;
+        const hasDeposit = !fullyPaid && +amountReceived > 0;
+        let paymentStatusId;
+        let paymentStatusOptions;
+        if (fullyPaid) {
+            paymentStatusId = 'PAID';
+            paymentStatusOptions = getPaymentStatusOptions().filter(option => option.id === 'PAID');
+        } else if (!fullyPaid && hasDeposit) {
+            paymentStatusId = 'DEPOSIT_PAID';
+            paymentStatusOptions = getPaymentStatusOptions().filter(option => ['PAID', 'DEPOSIT_PAID'].includes(option.id));
+        } else {
+            paymentStatusId = 'NOT_PAID';
+            paymentStatusOptions = getPaymentStatusOptions().filter(option => ['PAID', 'NOT_PAID'].includes(option.id));
+        }
+
+        return (
+            <BadgeDropdown
+                skin="general"
+                selectedId={paymentStatusId}
+                disabled={paymentStatusId === 'PAID'}
+                type="outlined"
+                onSelect={onPaymentStatusSelect}
+                options={paymentStatusOptions}
+            />
+        );
+    });
 
     static Payment = observer((props) => {
         const {data: {booking, focused}} = props;

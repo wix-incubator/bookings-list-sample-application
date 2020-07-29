@@ -37,6 +37,11 @@
     "fullyRefunded": "Fully Refunded",
     "pending": "Pending"
   },
+  "PaymentStatusDropdown": {
+    "paid": "PAID",
+    "notPaid": "NOT PAID",
+    "depositPaid": "DEPOSIT PAID"
+  },
   "PaymentInfo": {
     "undefined": "Undefined",
     "paid": "Paid",
@@ -68,6 +73,12 @@
     "confirmButtonText": "Reschedule",
     "cancelButtonText": "Cancel",
     "chooseNewSlotLabel": "Please choose a new slot for {{name}}'s {{booking}} booking at {{date}}:"
+  },
+  "PaymentModal": {
+    "title": "Mark This Session as Paid?",
+    "confirmButtonText": "Mark as Paid",
+    "cancelButtonText": "Cancel",
+    "message": "Once you mark {{name}} as paid, it cannot be undone."
   },
   "WixPayDetails": {
     "inPerson": "In Person",

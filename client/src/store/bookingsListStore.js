@@ -16,6 +16,12 @@ const rescheduleModalInitialState = {
     loading: false
 };
 
+const paymentModalInitialState = {
+    isOpen: false,
+    data: null,
+    loading: false
+};
+
 const initialState = {
     filters: {},
     sort: {},
@@ -26,6 +32,7 @@ const initialState = {
     bookingsEntries: [],
     bookingsMetadata: null,
     rescheduleModal: rescheduleModalInitialState,
+    paymentModal: paymentModalInitialState,
     loadingBookings: true,
     constantsLoaded: false
 };
@@ -292,6 +299,34 @@ class BookingsListStore {
             raiseNotification(e.message, 'error');
         }
         this.setLoadingScheduleSlots(false);
+    };
+
+    @action('Set payment modal is open')
+    setPaymentModalIsOpen = (paymentModalIsOpen) => {
+        this.store.paymentModal.isOpen = paymentModalIsOpen;
+    };
+
+    @action('Set payment modal data')
+    setPaymentModalData = (key, value) => {
+        this.store.paymentModal[key] = value;
+    };
+
+    @action('Mark booking as paid')
+    markBookingAsPaid = async (bookingId) => {
+        try {
+            const result = await postData(`bookings/${bookingId}/markAsPaid`);
+            const {data} = result;
+            const {booking} = data;
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            if (bookingEntryIndex > -1) {
+                this.store.bookingsEntries[bookingEntryIndex].booking = booking;
+            }
+            return true;
+        } catch (e) {
+            console.log({e});
+            raiseNotification(e.message, 'error');
+            return false;
+        }
     };
 
     @action('Set row focused')

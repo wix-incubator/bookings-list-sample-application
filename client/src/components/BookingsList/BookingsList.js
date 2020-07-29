@@ -146,7 +146,11 @@ export default class BookingsList extends React.Component {
             },
             {fieldName: '', localeLabelKey: 'staff', render: row => <BookingsListColumn.Staff staff={staff} data={row}/>},
             {fieldName: '', localeLabelKey: 'bookingAndAttendance', width: '15%', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
-            {fieldName: '', localeLabelKey: 'paymentStatus', render: row => <BookingsListColumn.PaymentStatus data={row}/>},
+            {
+                fieldName: '',
+                localeLabelKey: 'paymentStatus',
+                render: row => <BookingsListColumn.PaymentStatus onPaymentStatusSelect={(option) => this.props.onPaymentStatusSelect(row.booking, option)} data={row}/>
+            },
             {fieldName: '', localeLabelKey: 'payment', render: row => <BookingsListColumn.Payment data={row}/>}
         ].map(column => ({
             ...column,
@@ -231,6 +235,7 @@ BookingsList.propTypes = {
     onRowClick: PropTypes.func,
     onSortChanged: PropTypes.func,
     openRescheduleBookingModal: PropTypes.func,
+    onPaymentStatusSelect: PropTypes.func,
     services: PropTypes.object,
     setRowFocused: PropTypes.func,
     sort: PropTypes.object,
