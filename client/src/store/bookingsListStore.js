@@ -265,6 +265,7 @@ class BookingsListStore {
                  }
              }`;
 
+
             // const result = await axiosInstance.post(`/calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const {data} = result;
