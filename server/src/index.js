@@ -36,7 +36,7 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'statics')));
 app.use(cors());
 
-async function getRequestConfig(refreshToken, params) {
+async function getRequestConfig(refreshToken, params, requestBody) {
     const {access_token} = await getAccessToken(refreshToken);
     const options = {
         baseURL: BOOKINGS_API_URL,
@@ -132,6 +132,17 @@ async function getBookings(refreshToken, params) {
     try {
         const config = await getRequestConfig(refreshToken, params);
         const response = (await axios.get('bookings', config)).data;
+        return {response, code: 200};
+    } catch (e) {
+        console.log({e});
+        return {code: e.response.status};
+    }
+}
+
+async function postCalendarListSlots(refreshToken, requestBody) {
+    try {
+        const config = await getRequestConfig(refreshToken, undefined, requestBody);
+        const response = (await axios.post('calendar/listSlots', requestBody, config)).data;
         return {response, code: 200};
     } catch (e) {
         console.log({e});
@@ -252,5 +263,19 @@ app.get('/bookings', async (req, res) => {
         return;
     }
 });
+
+app.post('/calendar/listSlots', async (req, res) => {
+    try {
+        const instanceId = getInstanceIdFromRequestHeaders(req);
+        const refreshToken = await getRefreshToken(instanceId);
+        const out = await postCalendarListSlots(refreshToken, req.body);
+        res.status(200).send(out.response);
+    } catch (e) {
+        console.log({e});
+        res.status(500);
+        return;
+    }
+});
+
 
 app.listen(port, () => console.log(`My Wix Application ${APP_ID} is listening on port ${port}!`));
