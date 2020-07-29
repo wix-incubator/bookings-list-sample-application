@@ -143,8 +143,19 @@ async function getBookings(refreshToken, params) {
 
 async function postCalendarListSlots(refreshToken, requestBody) {
     try {
-        const config = await getRequestConfig(refreshToken, undefined, requestBody);
+        const config = await getRequestConfig(refreshToken, undefined);
         const response = (await axios.post('calendar/listSlots', requestBody, config)).data;
+        return {response, code: HTTP_STATUS.SUCCESS};
+    } catch (e) {
+        console.log({e});
+        return {code: e.response.status};
+    }
+}
+
+async function postBookingMarkAsPaid(refreshToken, requestParams) {
+    try {
+        const config = await getRequestConfig(refreshToken, undefined);
+        const response = (await axios.post(`bookings/${requestParams.id}/markAsPaid`, null, config)).data;
         return {response, code: HTTP_STATUS.SUCCESS};
     } catch (e) {
         console.log({e});
@@ -271,6 +282,19 @@ app.post('/calendar/listSlots', async (req, res) => {
         const instanceId = getInstanceIdFromRequestHeaders(req);
         const refreshToken = await getRefreshToken(instanceId);
         const out = await postCalendarListSlots(refreshToken, req.body);
+        res.status(HTTP_STATUS.SUCCESS).send(out.response);
+    } catch (e) {
+        console.log({e});
+        res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR);
+        return;
+    }
+});
+
+app.post('/bookings/:id/markAsPaid', async (req, res) => {
+    try {
+        const instanceId = getInstanceIdFromRequestHeaders(req);
+        const refreshToken = await getRefreshToken(instanceId);
+        const out = await postBookingMarkAsPaid(refreshToken, req.params);
         res.status(HTTP_STATUS.SUCCESS).send(out.response);
     } catch (e) {
         console.log({e});
