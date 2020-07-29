@@ -33,11 +33,11 @@ export default class PaymentModal extends React.PureComponent {
             return null;
         }
 
-        const {formInfo: {contactDetails: {firstName}}} = data;
+        const {formInfo: {contactDetails: {firstName, lastName}}} = data;
 
         return (
             <Box direction="vertical">
-                <Text size="small" style={{padding: '10px 5px'}}>{translate('PaymentModal.message', {name: firstName})}</Text>
+                <Text size="small" style={{padding: '10px 5px'}}>{translate('PaymentModal.message', {name: `${firstName} ${lastName}`})}</Text>
             </Box>
         );
     };

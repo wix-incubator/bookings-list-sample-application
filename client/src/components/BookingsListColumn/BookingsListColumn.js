@@ -295,13 +295,16 @@ export default class BookingsListColumn extends React.Component {
                     {depositLabel}
                 </div>
                 {focused ? <BookingsListColumn.PaymentDetailsTooltip data={booking}/> : null}
-                {/*<BookingsListColumn.PaymentDetailsTooltip data={booking}/>*/}
             </div>
         );
     });
 
     static PaymentDetailsTooltip = (props) => {
-        const {data: {paymentDetails, bookingSource}} = props;
+        const {data: {paymentDetails = {}, bookingSource}} = props;
+
+        const {balance = {}} = paymentDetails;
+        const {finalPrice = {}} = balance;
+        const {amountReceived} = balance;
 
         const {couponDetails, wixPayMultipleDetails, paidPlanDetails} = paymentDetails;
         const {platform} = bookingSource;
@@ -337,25 +340,27 @@ export default class BookingsListColumn extends React.Component {
             :
             null;
 
-        const paymentMethodAndDetailsElement = (
-            <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
-                <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.paymentMethodAndDetails')}</ColumnText>
-                {
-                    wixPayMultipleDetails.map((wixPayDetails, index) => {
-                            const paymentVendor = WIX_PAY_DETAILS_MAP[wixPayDetails.paymentVendorName] || {};
-                            return (
-                                <ColumnText
-                                    key={`${index}-${wixPayDetails.orderId}`}
-                                    style={normalTextStyle}
-                                >
-                                    {translate(paymentVendor.localeLabelKey)} - {wixPayDetails.orderAmount}
-                                </ColumnText>
-                            );
-                        }
-                    )
-                }
-            </div>
-        );
+        const paymentMethodAndDetailsElement = +amountReceived ? (
+                <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
+                    <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.paymentMethodAndDetails')}</ColumnText>
+                    {
+                        wixPayMultipleDetails.map((wixPayDetails, index) => {
+                                const paymentVendor = WIX_PAY_DETAILS_MAP[wixPayDetails.paymentVendorName] || {};
+                                return (
+                                    <ColumnText
+                                        key={`${index}-${wixPayDetails.orderId}`}
+                                        style={normalTextStyle}
+                                    >
+                                        {translate(paymentVendor.localeLabelKey)} - {wixPayDetails.orderAmount}
+                                    </ColumnText>
+                                );
+                            }
+                        )
+                    }
+                </div>
+            )
+            :
+            null;
 
         const paidPlanDetailsElement = paidPlanDetails ?
             <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
