@@ -2,7 +2,7 @@ import React from 'react';
 import {st, classes} from './RescheduleModal.st.css';
 import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification} from 'wix-style-react';
 import {inject, observer} from 'mobx-react';
-import {translate} from '../../utils';
+import {raiseNotification, translate} from '../../utils';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 import RescheduleBox from '../RescheduleBox';
 import RescheduleBoxSkeleton from '../RescheduleBox/RescheduleBoxSkeleton';
@@ -26,6 +26,7 @@ export default class RescheduleModal extends React.PureComponent {
         const success = await bookingsListStore.rescheduleBooking(rescheduleModal.data.id, selectedSlot);
         bookingsListStore.setRescheduleModalData('loading', false);
         if (success) {
+            raiseNotification(translate('RescheduleModal.rescheduleSuccessNotification'), 'success');
             this._closeModal();
         }
 

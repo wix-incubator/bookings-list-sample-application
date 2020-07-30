@@ -72,7 +72,8 @@
     "title": "Reschedule Booking",
     "confirmButtonText": "Reschedule",
     "cancelButtonText": "Cancel",
-    "chooseNewSlotLabel": "Please choose a new slot for {{name}}'s {{booking}} booking at {{date}}:"
+    "chooseNewSlotLabel": "Please choose a new slot for {{name}}'s {{booking}} booking at {{date}}:",
+    "rescheduleSuccessNotification": "The booking have been rescheduled successfully"
   },
   "PaymentModal": {
     "title": "Mark This Session as Paid?",
