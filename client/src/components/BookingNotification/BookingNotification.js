@@ -15,7 +15,7 @@ const BookingNotification = inject('bookingsNotificationStore')(observer((props)
                     <Cell key={id}>
                         <Notification
                             show={show}
-                            type={'local'}
+                            type={'sticky'}
                             theme={theme}
                             autoHideTimeout={DEFAULT_AUTO_HIDE_TIMEOUT}
                             onClose={() => bookingsNotificationStore.removeNotification(id)}

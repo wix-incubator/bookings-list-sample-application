@@ -1,6 +1,6 @@
 import React from 'react';
 import {st, classes} from './RescheduleModal.st.css';
-import {Box, Text, MessageBoxFunctionalLayout, Modal} from 'wix-style-react';
+import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification} from 'wix-style-react';
 import {inject, observer} from 'mobx-react';
 import {translate} from '../../utils';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
@@ -16,6 +16,19 @@ export default class RescheduleModal extends React.PureComponent {
     _closeModal = () => {
         const {bookingsListStore} = this.props;
         bookingsListStore.setRescheduleModalIsOpen(false);
+    };
+
+    _onOk = async () => {
+        const {bookingsListStore} = this.props;
+        const {rescheduleModal} = bookingsListStore.store;
+        const {selectedSlot} = rescheduleModal;
+        bookingsListStore.setRescheduleModalData('loading', true);
+        const success = await bookingsListStore.rescheduleBooking(rescheduleModal.data.id, selectedSlot);
+        bookingsListStore.setRescheduleModalData('loading', false);
+        if (success) {
+            this._closeModal();
+        }
+
     };
 
     _setSelectedSlot = (slot) => {
@@ -39,7 +52,7 @@ export default class RescheduleModal extends React.PureComponent {
             <div className={st(classes.slotsContainer)}>
                 {
                     slots.slice(0, MAX_SLOTS_AMOUNT).map((slot, index) => (
-                            <RescheduleBox key={index} onClick={this._setSelectedSlot} isSelected={slot.clientId === selectedSlot.clientId} data={slot}/>
+                            <RescheduleBox key={index} onClick={this._setSelectedSlot} isSelected={slot.clientId === (selectedSlot && selectedSlot.clientId)} data={slot}/>
                         )
                     )
                 }
@@ -47,10 +60,34 @@ export default class RescheduleModal extends React.PureComponent {
         );
     };
 
+    _renderErrorMessage = () => {
+        const {bookingsListStore} = this.props;
+        const {rescheduleModal} = bookingsListStore.store;
+        const {errorMessage} = rescheduleModal;
+
+        return (
+            <div className={st(classes.errorMessageContainer)}>
+                <Layout>
+                    <Cell>
+                        <Notification
+                            show={!!errorMessage}
+                            type={'global'}
+                            theme={'error'}
+                            onClose={() => bookingsListStore.setRescheduleModalData('errorMessage', '')}
+                        >
+                            <Notification.TextLabel>{errorMessage}</Notification.TextLabel>
+                            <Notification.CloseButton/>
+                        </Notification>
+                    </Cell>
+                </Layout>
+            </div>
+        );
+    };
+
     _renderContent = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
-        const {loading, data} = rescheduleModal;
+        const {loading, data, slots, errorMessage} = rescheduleModal;
 
         if (!data) {
             return null;
@@ -62,7 +99,8 @@ export default class RescheduleModal extends React.PureComponent {
         return (
             <Box direction="vertical">
                 <Text size="tiny" style={{padding: '10px 5px'}}>{translate('RescheduleModal.chooseNewSlotLabel', {name: firstName, booking: title, date: startDate})}</Text>
-                {loading ? this._renderSlotsSkeleton() : this._renderSlots()}
+                {this._renderErrorMessage()}
+                {loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots()}
             </Box>
         );
     };
@@ -70,7 +108,7 @@ export default class RescheduleModal extends React.PureComponent {
     render() {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
-        const {isOpen} = rescheduleModal;
+        const {loading, isOpen, selectedSlot} = rescheduleModal;
         return (
             <Box>
                 <Modal isOpen={isOpen} onRequestClose={this._closeModal} shouldCloseOnOverlayClick={true}>
@@ -79,9 +117,11 @@ export default class RescheduleModal extends React.PureComponent {
                         title={translate('RescheduleModal.title')}
                         confirmText={translate('RescheduleModal.confirmButtonText')}
                         cancelText={translate('RescheduleModal.cancelButtonText')}
-                        onOk={this._closeModal}
+                        onOk={this._onOk}
                         onCancel={this._closeModal}
                         onClose={this._closeModal}
+                        disableConfirmation={loading || !selectedSlot}
+                        disableCancel={loading}
                     >
                         {this._renderContent()}
                     </MessageBoxFunctionalLayout>

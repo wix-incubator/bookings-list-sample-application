@@ -2,18 +2,20 @@ import {observable, action} from 'mobx';
 import axiosInstance from '../network';
 import mockData from './mockData';
 import {SORT_ORDER} from './constants';
-import {raiseNotification, pause} from '../utils';
+import {handleResponseError, pause} from '../utils';
 import {uuid} from 'uuidv4';
+import {get} from 'lodash';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
 const USE_MOCK = false;
 
 const rescheduleModalInitialState = {
     isOpen: false,
-    slots: [],
-    selectedSlot: {},
+    slots: null,
+    selectedSlot: null,
     data: null,
-    loading: false
+    loading: false,
+    errorMessage: ''
 };
 
 const paymentModalInitialState = {
@@ -141,8 +143,7 @@ class BookingsListStore {
             this.setResources(resources);
             this.store.constantsLoaded = true;
         } catch (e) {
-            console.log({e});
-            raiseNotification(e.message, 'error');
+            handleResponseError(e);
         }
     };
 
@@ -254,7 +255,7 @@ class BookingsListStore {
             this.setBookingsMetadata(data.metadata);
         } catch (e) {
             console.log({e});
-            raiseNotification(e.message, 'error');
+            handleResponseError(e);
         }
         this.setLoadingBookings(false);
     };
@@ -262,6 +263,9 @@ class BookingsListStore {
     @action('Set reschedule modal is open')
     setRescheduleModalIsOpen = (rescheduleModalIsOpen) => {
         this.store.rescheduleModal.isOpen = rescheduleModalIsOpen;
+        if (!rescheduleModalIsOpen) {
+            this.store.rescheduleModal = rescheduleModalInitialState;
+        }
     };
 
     @action('Set reschedule modal data')
@@ -295,15 +299,49 @@ class BookingsListStore {
 
             this.setRescheduleModalData('slots', slots);
         } catch (e) {
-            console.log({e});
-            raiseNotification(e.message, 'error');
+            handleResponseError(e);
         }
         this.setLoadingScheduleSlots(false);
+    };
+
+    @action('Reschedule booking')
+    rescheduleBooking = async (bookingId, selectedSlot) => {
+        try {
+            const requestBody = {
+                participantNotification: {
+                    notifyParticipants: false
+                },
+                createSession: {
+                    scheduleId: selectedSlot.scheduleId,
+                    start: selectedSlot.start,
+                    end: selectedSlot.end,
+                    affectedSchedules: selectedSlot.affectedSchedules.map(affectedSchedule => ({scheduleId: affectedSchedule.scheduleId, transparency: affectedSchedule.transparency}))
+                }
+            };
+
+            const result = await postData(`bookings/${bookingId}/reschedule`, requestBody);
+            const {data} = result;
+            const {booking} = data;
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            if (bookingEntryIndex > -1 && booking) {
+                this.store.bookingsEntries[bookingEntryIndex].booking = booking;
+            }
+            return true;
+
+        } catch (e) {
+            const message = get(e, 'response.data.message');
+            this.setRescheduleModalData('errorMessage', message);
+            return false;
+        }
+
     };
 
     @action('Set payment modal is open')
     setPaymentModalIsOpen = (paymentModalIsOpen) => {
         this.store.paymentModal.isOpen = paymentModalIsOpen;
+        if (!paymentModalIsOpen) {
+            this.store.paymentModal = paymentModalInitialState;
+        }
     };
 
     @action('Set payment modal data')
@@ -318,13 +356,12 @@ class BookingsListStore {
             const {data} = result;
             const {booking} = data;
             const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
-            if (bookingEntryIndex > -1) {
+            if (bookingEntryIndex > -1 && booking) {
                 this.store.bookingsEntries[bookingEntryIndex].booking = booking;
             }
             return true;
         } catch (e) {
-            console.log({e});
-            raiseNotification(e.message, 'error');
+            handleResponseError(e);
             return false;
         }
     };

@@ -4,6 +4,7 @@ import {differenceInMinutes} from 'date-fns';
 import {getStores} from './store/getStores';
 import i18n from 'i18next';
 import Wix from 'wix-sdk';
+import {get} from 'lodash';
 
 /**
  * custom console.log for outputting mobx store variables
@@ -69,6 +70,11 @@ export const getTimeDifference = (t1, t2) => {
 export const raiseNotification = (text, theme) => {
     const {bookingsNotificationStore} = getStores('bookingsNotificationStore');
     bookingsNotificationStore.setNotification(text, theme);
+};
+
+export const handleResponseError = (e) => {
+    const message = get(e, 'response.data.message');
+    raiseNotification(message, 'error');
 };
 
 export const pause = async (t) => (new Promise(resolve => setTimeout(resolve, t)));
