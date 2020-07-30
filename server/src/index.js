@@ -115,52 +115,38 @@ async function getAppInstance(refreshToken) {
 }
 
 async function getConstants(refreshToken) {
-    try {
-        const config = await getRequestConfig(refreshToken);
-        const servicesResponse = (await axios.get('services', config)).data;
-        const resourcesResponse = (await axios.get('resources', config)).data;
-        const response = {
-            services: servicesResponse.services,
-            resources: resourcesResponse.resources
-        };
-        return {response, code: HTTP_STATUS.SUCCESS};
-    } catch (e) {
-        console.log({e});
-        return {code: e.response.status};
-    }
+    const config = await getRequestConfig(refreshToken);
+    const servicesResponse = (await axios.get('services', config)).data;
+    const resourcesResponse = (await axios.get('resources', config)).data;
+    const response = {
+        services: servicesResponse.services,
+        resources: resourcesResponse.resources
+    };
+    return {response, code: HTTP_STATUS.SUCCESS};
 }
 
 async function getBookings(refreshToken, params) {
-    try {
-        const config = await getRequestConfig(refreshToken, params);
-        const response = (await axios.get('bookings', config)).data;
-        return {response, code: HTTP_STATUS.SUCCESS};
-    } catch (e) {
-        console.log({e});
-        return {code: e.response.status};
-    }
+    const config = await getRequestConfig(refreshToken, params);
+    const response = (await axios.get('bookings', config)).data;
+    return {response, code: HTTP_STATUS.SUCCESS};
 }
 
 async function postCalendarListSlots(refreshToken, requestBody) {
-    try {
-        const config = await getRequestConfig(refreshToken, undefined);
-        const response = (await axios.post('calendar/listSlots', requestBody, config)).data;
-        return {response, code: HTTP_STATUS.SUCCESS};
-    } catch (e) {
-        console.log({e});
-        return {code: e.response.status};
-    }
+    const config = await getRequestConfig(refreshToken, undefined);
+    const response = (await axios.post('calendar/listSlots', requestBody, config)).data;
+    return {response, code: HTTP_STATUS.SUCCESS};
 }
 
 async function postBookingMarkAsPaid(refreshToken, requestParams) {
-    try {
-        const config = await getRequestConfig(refreshToken, undefined);
-        const response = (await axios.post(`bookings/${requestParams.id}/markAsPaid`, null, config)).data;
-        return {response, code: HTTP_STATUS.SUCCESS};
-    } catch (e) {
-        console.log({e});
-        return {code: e.response.status};
-    }
+    const config = await getRequestConfig(refreshToken, undefined);
+    const response = (await axios.post(`bookings/${requestParams.id}/markAsPaid`, null, config)).data;
+    return {response, code: HTTP_STATUS.SUCCESS};
+}
+
+async function postBookingReschedule(refreshToken, requestParams, requestBody) {
+    const config = await getRequestConfig(refreshToken, undefined);
+    const response = (await axios.post(`bookings/${requestParams.id}/reschedule`, requestBody, config)).data;
+    return {response, code: HTTP_STATUS.SUCCESS};
 }
 
 app.get('/signup', (req, res) => {
@@ -257,9 +243,7 @@ app.get('/constants', async (req, res) => {
         const out = await getConstants(refreshToken);
         res.status(HTTP_STATUS.SUCCESS).send(out.response);
     } catch (e) {
-        console.log({e});
-        res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR);
-        return;
+        res.status(e.response.status).send(e.response.data);
     }
 });
 
@@ -271,9 +255,7 @@ app.get('/bookings', async (req, res) => {
         const bookings = out.response;
         res.status(HTTP_STATUS.SUCCESS).send(bookings);
     } catch (e) {
-        console.log({e});
-        res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR);
-        return;
+        res.status(e.response.status).send(e.response.data);
     }
 });
 
@@ -284,9 +266,7 @@ app.post('/calendar/listSlots', async (req, res) => {
         const out = await postCalendarListSlots(refreshToken, req.body);
         res.status(HTTP_STATUS.SUCCESS).send(out.response);
     } catch (e) {
-        console.log({e});
-        res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR);
-        return;
+        res.status(e.response.status).send(e.response.data);
     }
 });
 
@@ -297,9 +277,18 @@ app.post('/bookings/:id/markAsPaid', async (req, res) => {
         const out = await postBookingMarkAsPaid(refreshToken, req.params);
         res.status(HTTP_STATUS.SUCCESS).send(out.response);
     } catch (e) {
-        console.log({e});
-        res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR);
-        return;
+        res.status(e.response.status).send(e.response.data);
+    }
+});
+
+app.post('/bookings/:id/reschedule', async (req, res) => {
+    try {
+        const instanceId = getInstanceIdFromRequestHeaders(req);
+        const refreshToken = await getRefreshToken(instanceId);
+        const out = await postBookingReschedule(refreshToken, req.params, req.body);
+        res.status(HTTP_STATUS.SUCCESS).send(out.response);
+    } catch (e) {
+        res.status(e.response.status).send(e.response.data);
     }
 });
 
