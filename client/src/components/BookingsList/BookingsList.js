@@ -75,7 +75,11 @@ export default class BookingsList extends React.Component {
             presets: calendarPresets || getDefaultPresets(),
             value: filters.dateRange,
             primaryActionLabel: translate('submit'),
-            secondaryActionLabel: translate('cancel')
+            secondaryActionLabel: translate('cancel'),
+            popoverProps: {
+                placement: 'top-start',
+                zIndex: 2
+            }
         };
     };
 
