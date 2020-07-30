@@ -29,7 +29,6 @@ export default class RescheduleModal extends React.PureComponent {
             raiseNotification(translate('RescheduleModal.rescheduleSuccessNotification'), 'success');
             this._closeModal();
         }
-
     };
 
     _setSelectedSlot = (slot) => {
