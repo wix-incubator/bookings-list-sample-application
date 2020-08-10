@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {st, classes} from './BookingsList.st.css';
-import {Page, Table, Card, TableToolbar, Dropdown, Loader, Text} from 'wix-style-react';
+import {Page, Table, Card, TableToolbar, Dropdown, Loader} from 'wix-style-react';
 import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
-import BookingsListColumn from '../BookingsListColumn';
 import {addDays, translate} from '../../utils';
 import {observer} from 'mobx-react';
 import BookingNotification from '../BookingNotification/BookingNotification';
+import {BookingTime, ClientName, ServiceAndSession, Staff, BookingAndAttendance, PaymentStatus, Payment} from '../BookingsListColumns';
 
 function getDefaultPresets() {
     return [
@@ -140,22 +140,22 @@ export default class BookingsList extends React.Component {
         const {services, staff, filters, sort} = this.props;
 
         return [
-            {fieldName: 'created', sortable: true, localeLabelKey: 'bookingTime', render: row => <BookingsListColumn.BookingTime data={row}/>},
-            {fieldName: 'formInfo.contactDetails.firstName', sortable: true, localeLabelKey: 'clientName', render: row => <BookingsListColumn.ClientName data={row}/>},
+            {fieldName: 'created', sortable: true, localeLabelKey: 'bookingTime', render: row => <BookingTime data={row}/>},
+            {fieldName: 'formInfo.contactDetails.firstName', sortable: true, localeLabelKey: 'clientName', render: row => <ClientName data={row}/>},
             {
                 fieldName: '',
                 localeLabelKey: 'serviceAndSession',
                 width: '17%',
-                render: row => <BookingsListColumn.ServiceAndSession services={services} onCalendarClick={this.props.openRescheduleBookingModal} data={row}/>
+                render: row => <ServiceAndSession services={services} onCalendarClick={this.props.openRescheduleBookingModal} data={row}/>
             },
-            {fieldName: '', localeLabelKey: 'staff', render: row => <BookingsListColumn.Staff staff={staff} data={row}/>},
-            {fieldName: '', localeLabelKey: 'bookingAndAttendance', width: '15%', render: row => <BookingsListColumn.BookingAndAttendance data={row}/>},
+            {fieldName: '', localeLabelKey: 'staff', render: row => <Staff staff={staff} data={row}/>},
+            {fieldName: '', localeLabelKey: 'bookingAndAttendance', width: '15%', render: row => <BookingAndAttendance data={row}/>},
             {
                 fieldName: '',
                 localeLabelKey: 'paymentStatus',
-                render: row => <BookingsListColumn.PaymentStatus onPaymentStatusSelect={(option) => this.props.onPaymentStatusSelect(row.booking, option)} data={row}/>
+                render: row => <PaymentStatus onPaymentStatusSelect={(option) => this.props.onPaymentStatusSelect(row.booking, option)} data={row}/>
             },
-            {fieldName: '', localeLabelKey: 'payment', render: row => <BookingsListColumn.Payment data={row}/>}
+            {fieldName: '', localeLabelKey: 'payment', render: row => <Payment data={row}/>}
         ].map(column => ({
             ...column,
             title: translate(`BookingsList.TableColumnsTitles.${column.localeLabelKey}`),
