@@ -2,3 +2,5 @@
 *.pem
 
 node_modules
+request_logs.txt
+.idea

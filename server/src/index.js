@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
+const httpLogger = require('./utils/http-logger');
 
 const {HTTP_STATUS, DEFAULT_PORT} = require('./constants');
 
@@ -31,12 +32,15 @@ const knex = require('knex')({
     pool: {min: 0, max: 7}
 });
 
+
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'statics')));
 app.use(cors());
+app.use(httpLogger());
 
 async function getRequestConfig(refreshToken, params) {
     const {access_token} = await getAccessToken(refreshToken);
