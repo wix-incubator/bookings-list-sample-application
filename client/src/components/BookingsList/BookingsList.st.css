@@ -9,11 +9,11 @@
     unsure what effect this will cause on smaller displays
 */
 .bookingsListPage {
-    overflow-x: unset !important;
+    /*overflow-x: unset !important;*/
 }
 
 .bookingsListPage > div > div {
-    overflow-y: unset !important;
+    /*overflow-y: unset !important;*/
 }
 
 /*

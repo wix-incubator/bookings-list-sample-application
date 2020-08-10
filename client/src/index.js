@@ -1,4 +1,5 @@
 import React from 'react';
+import './network';
 import ReactDOM from 'react-dom';
 import {App} from './App';
 import {Provider} from 'mobx-react';

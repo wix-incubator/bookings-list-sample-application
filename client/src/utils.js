@@ -19,7 +19,7 @@ export const isDevelopment = process.env.NODE_ENV !== 'production';
  * set the wix instance id in the session storage
  * fallback to dev instance id for development purposes (defined in .env)
  */
-export const setWixInstanceId = () => {
+export const getWixInstanceId = () => {
     let instanceId;
     try {
         if (isDevelopment) {
@@ -27,11 +27,10 @@ export const setWixInstanceId = () => {
         } else {
             instanceId = Wix.Utils.getInstanceId();
         }
-        window.sessionStorage.setItem('instanceId', instanceId);
-
     } catch (e) {
         console.log(e);
     }
+    return instanceId;
 };
 
 /**
