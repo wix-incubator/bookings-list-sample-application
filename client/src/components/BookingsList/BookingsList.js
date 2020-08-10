@@ -41,6 +41,7 @@ const getBookingStatuses = () => [
 
 @observer
 export default class BookingsList extends React.Component {
+
     _renderBookingsListHeaderTitle = () => {
         const {constantsLoaded, bookingsMetadata} = this.props;
 
@@ -196,11 +197,11 @@ export default class BookingsList extends React.Component {
         return (
             <div className={st(classes.bookingsListContainer)}>
                 <BookingNotification/>
-                <Page className={st(classes.bookingsListPage)}>
+                <Page className={st(classes.bookingsListPage)} height="100vh" scrollableContentRef={ref => (this.containerRef = ref)}>
                     <Page.Header title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
                     <Page.Content>
-                        {this._renderBookingsListToolbar()}
                         <Table
+                            scrollElement={this.containerRef}
                             showHeaderWhenEmpty
                             infiniteScroll
                             itemsPerPage={this._getBookingEntries().length}
@@ -215,7 +216,13 @@ export default class BookingsList extends React.Component {
                             hasMore={this.props.hasMore}
                             loader={null}
                         >
-                            <Table.Content/>
+                            <Page.Sticky>
+                                <>
+                                    {this._renderBookingsListToolbar()}
+                                    <Table.Titlebar/>
+                                </>
+                            </Page.Sticky>
+                            <Table.Content titleBarVisible={false}/>
                             {this._renderLoader()}
                             {this._renderEmptyState()}
                         </Table>
