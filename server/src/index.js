@@ -195,7 +195,7 @@ app.get('/login', async (req, res) => {
 //    console.log("accessToken = " + accessToken);
 //    console.log("=============================");
 
-        instance = await getAppInstance(refreshToken);
+        const instance = await getAppInstance(refreshToken);
         // TODO: Check if refreshToken is already exists in the DB for this instanceId
         knex('appInstances').insert({
             'instanceId': instance.instance.instanceId,
