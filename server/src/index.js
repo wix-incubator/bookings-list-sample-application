@@ -164,6 +164,12 @@ async function postBookingDecline(refreshToken, requestParams, requestBody) {
     return {response, code: HTTP_STATUS.SUCCESS};
 }
 
+async function postBookingSetAttendance(refreshToken, requestParams, requestBody) {
+    const config = await getRequestConfig(refreshToken, undefined);
+    const response = (await axios.post(`bookings/${requestParams.id}/setAttendance`, requestBody, config)).data;
+    return {response, code: HTTP_STATUS.SUCCESS};
+}
+
 app.get('/signup', (req, res) => {
     // This route  is called before the user is asked to provide consent
     // Configure the `App URL` in  Wix Developers to point here
@@ -323,6 +329,17 @@ app.post('/bookings/:id/decline', async (req, res) => {
         const instanceId = getInstanceIdFromRequestHeaders(req);
         const refreshToken = await getRefreshToken(instanceId);
         const out = await postBookingDecline(refreshToken, req.params, req.body);
+        res.status(HTTP_STATUS.SUCCESS).send(out.response);
+    } catch (e) {
+        res.status(e.response.status).send(e.response.data);
+    }
+});
+
+app.post('/bookings/:id/setAttendance', async (req, res) => {
+    try {
+        const instanceId = getInstanceIdFromRequestHeaders(req);
+        const refreshToken = await getRefreshToken(instanceId);
+        const out = await postBookingSetAttendance(refreshToken, req.params, req.body);
         res.status(HTTP_STATUS.SUCCESS).send(out.response);
     } catch (e) {
         res.status(e.response.status).send(e.response.data);
