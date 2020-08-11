@@ -33,7 +33,6 @@ const knex = require('knex')({
 });
 
 
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
@@ -150,6 +149,18 @@ async function postBookingMarkAsPaid(refreshToken, requestParams) {
 async function postBookingReschedule(refreshToken, requestParams, requestBody) {
     const config = await getRequestConfig(refreshToken, undefined);
     const response = (await axios.post(`bookings/${requestParams.id}/reschedule`, requestBody, config)).data;
+    return {response, code: HTTP_STATUS.SUCCESS};
+}
+
+async function postBookingConfirm(refreshToken, requestParams, requestBody) {
+    const config = await getRequestConfig(refreshToken, undefined);
+    const response = (await axios.post(`bookings/${requestParams.id}/confirm`, requestBody, config)).data;
+    return {response, code: HTTP_STATUS.SUCCESS};
+}
+
+async function postBookingDecline(refreshToken, requestParams, requestBody) {
+    const config = await getRequestConfig(refreshToken, undefined);
+    const response = (await axios.post(`bookings/${requestParams.id}/decline`, requestBody, config)).data;
     return {response, code: HTTP_STATUS.SUCCESS};
 }
 
@@ -296,5 +307,26 @@ app.post('/bookings/:id/reschedule', async (req, res) => {
     }
 });
 
+app.post('/bookings/:id/confirm', async (req, res) => {
+    try {
+        const instanceId = getInstanceIdFromRequestHeaders(req);
+        const refreshToken = await getRefreshToken(instanceId);
+        const out = await postBookingConfirm(refreshToken, req.params, req.body);
+        res.status(HTTP_STATUS.SUCCESS).send(out.response);
+    } catch (e) {
+        res.status(e.response.status).send(e.response.data);
+    }
+});
+
+app.post('/bookings/:id/decline', async (req, res) => {
+    try {
+        const instanceId = getInstanceIdFromRequestHeaders(req);
+        const refreshToken = await getRefreshToken(instanceId);
+        const out = await postBookingDecline(refreshToken, req.params, req.body);
+        res.status(HTTP_STATUS.SUCCESS).send(out.response);
+    } catch (e) {
+        res.status(e.response.status).send(e.response.data);
+    }
+});
 
 app.listen(port, () => console.log(`My Wix Application ${APP_ID} is listening on port ${port}!`));
