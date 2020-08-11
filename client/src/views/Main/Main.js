@@ -98,6 +98,21 @@ export default class Main extends React.Component {
         }
     };
 
+    _onBookingAndAttendanceStatusSelect = (booking, option) => {
+        const {bookingsListStore} = this.props;
+
+        switch (option.id) {
+            case 'CONFIRM':
+                bookingsListStore.confirmBooking(booking.id);
+                break;
+            case 'DECLINE':
+                bookingsListStore.declineBooking(booking.id);
+                break;
+            default:
+                break;
+        }
+    };
+
     render() {
         const {bookingsListStore} = this.props;
         const {constantsLoaded, loadingBookings, services, staff, bookingsEntries, bookingsMetadata, sort} = bookingsListStore.store;
@@ -114,6 +129,7 @@ export default class Main extends React.Component {
                     onRowClick={this._onRowClick}
                     openRescheduleBookingModal={this._openRescheduleBookingModal}
                     onPaymentStatusSelect={this._onPaymentStatusSelect}
+                    onBookingAndAttendanceStatusSelect={this._onBookingAndAttendanceStatusSelect}
                     onFilterChanged={this._onFiltersChanged}
                     onSortChanged={this._onSortChanged}
                     filters={this._getFilters()}

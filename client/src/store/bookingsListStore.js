@@ -370,6 +370,33 @@ class BookingsListStore {
     setRowFocused = (row, focused) => {
         row.focused = focused;
     };
+
+    @action('Confirm booking')
+    confirmBooking = async (bookingId) => {
+        console.log({bookingId});
+        try {
+            const result = await postData(`bookings/${bookingId}/confirm`);
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            if (bookingEntryIndex > -1) {
+                this.store.bookingsEntries[bookingEntryIndex].booking.status = 'CONFIRMED';
+            }
+        } catch (e) {
+            handleResponseError(e);
+        }
+    };
+
+    @action('Decline booking')
+    declineBooking = async (bookingId) => {
+        try {
+            const result = await postData(`bookings/${bookingId}/decline`);
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            if (bookingEntryIndex > -1) {
+                this.store.bookingsEntries[bookingEntryIndex].booking.status = 'DECLINED';
+            }
+        } catch (e) {
+            handleResponseError(e);
+        }
+    };
 }
 
 export default BookingsListStore;

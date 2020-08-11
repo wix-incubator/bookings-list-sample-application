@@ -29,6 +29,19 @@
     "declined": "Declined",
     "undefined": "Undefined"
   },
+  "BookingAndAttendanceDropdown": {
+    "booked": "Booked",
+    "confirm": "Confirm",
+    "confirmed": "Confirmed",
+    "pending": "Pending",
+    "pendingApproval": "Pending Approval",
+    "pendingCheckout": "Pending Checkout",
+    "checkedIn": "Checked-In",
+    "noShow": "No-Show",
+    "decline": "Decline",
+    "declined": "Declined",
+    "cancelled": "Cancelled"
+  },
   "PaymentStatus": {
     "unspecifiedPaymentStatus": "Unspecified Payment Status",
     "notPaid": "Not Paid",

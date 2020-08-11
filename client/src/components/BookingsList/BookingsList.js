@@ -150,7 +150,12 @@ export default class BookingsList extends React.Component {
                 render: row => <ServiceAndSession services={services} onCalendarClick={this.props.openRescheduleBookingModal} data={row}/>
             },
             {fieldName: '', localeLabelKey: 'staff', render: row => <Staff staff={staff} data={row}/>},
-            {fieldName: '', localeLabelKey: 'bookingAndAttendance', width: '15%', render: row => <BookingAndAttendance data={row}/>},
+            {
+                fieldName: '',
+                localeLabelKey: 'bookingAndAttendance',
+                width: '15%',
+                render: row => <BookingAndAttendance onBookingAndAttendanceStatusSelect={(option) => this.props.onBookingAndAttendanceStatusSelect(row.booking, option)} data={row}/>
+            },
             {
                 fieldName: '',
                 localeLabelKey: 'paymentStatus',
@@ -247,6 +252,7 @@ BookingsList.propTypes = {
     onSortChanged: PropTypes.func,
     openRescheduleBookingModal: PropTypes.func,
     onPaymentStatusSelect: PropTypes.func,
+    onBookingAndAttendanceStatusSelect: PropTypes.func,
     services: PropTypes.object,
     setRowFocused: PropTypes.func,
     sort: PropTypes.object,

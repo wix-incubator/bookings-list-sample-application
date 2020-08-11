@@ -1,91 +1,58 @@
 import React from 'react';
 import {BadgeDropdown} from '../../BadgeDropdown/BadgeDropdown';
-import NotAvailable from '../NotAvailable/NotAvailable';
+import {translate} from '../../../utils';
+import {observer} from 'mobx-react';
 
-const BOOKING_AND_ATTENDANCE_MAP = {};
 
-const BookingAndAttendance = (props) => {
-    const {data: {booking}} = props;
-    return <NotAvailable/>;
-    // TODO: implement real options
-    const options = [
-        {
-            id: '0',
-            skin: 'general',
-            text: 'general'
-        },
-        {
-            id: '1',
-            skin: 'standard',
-            text: 'standard'
-        },
-        {
-            id: '2',
-            skin: 'danger',
-            text: 'danger'
-        },
-        {
-            id: '3',
-            skin: 'success',
-            text: 'success'
-        },
-        {
-            id: '4',
-            skin: 'neutral',
-            text: 'neutral'
-        },
-        {
-            id: '5',
-            skin: 'neutralLight',
-            text: 'neutralLight'
-        },
-        {
-            id: '6',
-            skin: 'warning',
-            text: 'warning'
-        },
-        {
-            id: '7',
-            skin: 'warningLight',
-            text: 'warningLight'
-        },
-        {
-            id: '8',
-            skin: 'urgent',
-            text: 'urgent'
-        },
-        {
-            id: '9',
-            skin: 'neutralStandard',
-            text: 'neutralStandard'
-        },
-        {
-            id: '10',
-            skin: 'neutralSuccess',
-            text: 'neutralSuccess'
-        },
-        {
-            id: '11',
-            skin: 'neutralDanger',
-            text: 'neutralDanger'
-        },
-        {
-            id: '12',
-            skin: 'premium',
-            text: 'premium'
-        }
-    ];
+const ATTENDANCE_STATUS_MAP = {
+    undefined: 'BOOKED',
+    true: 'CHECKED_IN',
+    false: 'NO_SHOW'
+};
+
+const getBookingAndAttendanceOptions = () => [
+    {id: 'BOOKED', skin: 'general', text: translate('BookingAndAttendanceDropdown.booked')},
+    {id: 'PENDING', skin: 'premium', text: translate('BookingAndAttendanceDropdown.pending')},
+    {id: 'PENDING_APPROVAL', skin: 'premium', text: translate('BookingAndAttendanceDropdown.pendingApproval')},
+    {id: 'PENDING_CHECKOUT', skin: 'premium', text: translate('BookingAndAttendanceDropdown.pendingCheckout')},
+    {id: 'CHECKED_IN', skin: 'success', text: translate('BookingAndAttendanceDropdown.checkedIn')},
+    {id: 'NO_SHOW', skin: 'danger', text: translate('BookingAndAttendanceDropdown.noShow')},
+    {id: 'CONFIRM', skin: 'general', text: translate('BookingAndAttendanceDropdown.confirm')},
+    {id: 'DECLINE', skin: 'danger', text: translate('BookingAndAttendanceDropdown.decline')},
+    {id: 'DECLINED', skin: 'danger', text: translate('BookingAndAttendanceDropdown.declined')},
+    {id: 'CANCELED', skin: 'danger', text: translate('BookingAndAttendanceDropdown.cancelled')}
+];
+
+const BOOKING_AND_ATTENDANCE_MAP = {
+    PENDING: () => getBookingAndAttendanceOptions().filter(option => ['PENDING', 'CONFIRM', 'DECLINE'].includes(option.id)),
+    CONFIRMED: () => getBookingAndAttendanceOptions().filter(option => ['BOOKED', 'CHECKED_IN', 'NO_SHOW'].includes(option.id)),
+    PENDING_APPROVAL: () => getBookingAndAttendanceOptions().filter(option => ['PENDING', 'CONFIRM', 'DECLINE'].includes(option.id)),
+    PENDING_CHECKOUT: () => getBookingAndAttendanceOptions().filter(option => ['PENDING', 'CONFIRM', 'DECLINE'].includes(option.id)),
+    CANCELED: () => getBookingAndAttendanceOptions().filter(option => ['CANCELED'].includes(option.id)),
+    DECLINED: () => getBookingAndAttendanceOptions().filter(option => ['DECLINED'].includes(option.id))
+};
+
+const BookingAndAttendance = observer((props) => {
+    const {onBookingAndAttendanceStatusSelect, data: {booking}} = props;
+    let bookingStatusId = booking.status;
+    let attendanceStatus = booking.attendanceInfo && booking.attendanceInfo.attendanceStatus;
+    let attendanceStatusId = ATTENDANCE_STATUS_MAP[attendanceStatus];
+
+    const status = bookingStatusId === 'CONFIRMED' ? attendanceStatusId : bookingStatusId;
+    const disabled = ['CANCELED', 'DECLINED'].includes(bookingStatusId);
+
+    const bookingAndAttendanceOptions = BOOKING_AND_ATTENDANCE_MAP[bookingStatusId] ? BOOKING_AND_ATTENDANCE_MAP[bookingStatusId]() : [];
 
     return (
         <BadgeDropdown
             skin="general"
-            selectedId={booking.selectedBookingId}
-            disabled={false}
+            selectedId={status}
+            disabled={disabled}
             type="outlined"
-            onSelect={(option) => booking.selectedBookingId = option.id}
-            options={options}
+            onSelect={onBookingAndAttendanceStatusSelect}
+            options={bookingAndAttendanceOptions}
         />
     );
-};
+});
 
 export default BookingAndAttendance;

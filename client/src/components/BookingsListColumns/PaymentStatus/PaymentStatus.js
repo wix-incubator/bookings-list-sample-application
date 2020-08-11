@@ -5,21 +5,9 @@ import {translate} from '../../../utils';
 import {extractPaymentBalance} from '../utils';
 
 const getPaymentStatusOptions = () => [
-    {
-        id: 'PAID',
-        skin: 'general',
-        text: translate('PaymentStatusDropdown.paid')
-    },
-    {
-        id: 'NOT_PAID',
-        skin: 'danger',
-        text: translate('PaymentStatusDropdown.notPaid')
-    },
-    {
-        id: 'DEPOSIT_PAID',
-        skin: 'warning',
-        text: translate('PaymentStatusDropdown.depositPaid')
-    }
+    {id: 'NOT_PAID', skin: 'danger', text: translate('PaymentStatusDropdown.notPaid')},
+    {id: 'PAID', skin: 'general', text: translate('PaymentStatusDropdown.paid')},
+    {id: 'DEPOSIT_PAID', skin: 'warning', text: translate('PaymentStatusDropdown.depositPaid')}
 ];
 
 const PAYMENT_STATUS_MAP = {
