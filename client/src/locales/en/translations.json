@@ -88,6 +88,13 @@
     "chooseNewSlotLabel": "Please choose a new slot for {{name}}'s {{booking}} booking at {{date}}:",
     "rescheduleSuccessNotification": "The booking have been rescheduled successfully"
   },
+  "ReplaceStaffModal": {
+    "title": "Replace Staff",
+    "confirmButtonText": "Replace",
+    "cancelButtonText": "Cancel",
+    "chooseNewStaffLabel": "Please choose a new staff for {{name}}'s {{booking}} booking at {{date}}:",
+    "replaceStaffSuccessNotification": "The booking have been updated successfully"
+  },
   "PaymentModal": {
     "title": "Mark This Session as Paid?",
     "confirmButtonText": "Mark as Paid",

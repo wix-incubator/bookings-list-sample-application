@@ -18,6 +18,15 @@ const rescheduleModalInitialState = {
     errorMessage: ''
 };
 
+const replaceStaffModalInitialState = {
+    isOpen: false,
+    slots: null,
+    selectedSlot: null,
+    data: null,
+    loading: false,
+    errorMessage: ''
+};
+
 const paymentModalInitialState = {
     isOpen: false,
     data: null,
@@ -34,6 +43,7 @@ const initialState = {
     bookingsEntries: [],
     bookingsMetadata: null,
     rescheduleModal: rescheduleModalInitialState,
+    replaceStaffModal: replaceStaffModalInitialState,
     paymentModal: paymentModalInitialState,
     loadingBookings: true,
     constantsLoaded: false
@@ -273,11 +283,6 @@ class BookingsListStore {
         this.store.rescheduleModal[key] = value;
     };
 
-    @action('Set selected slot')
-    setSelectedSlot = (slots, selectedSlot) => {
-        console.logx(slots, selectedSlot);
-    };
-
     @action('Fetch schedule data')
     fetchScheduleSlots = async (scheduleId) => {
         this.setLoadingScheduleSlots(true);
@@ -333,7 +338,52 @@ class BookingsListStore {
             this.setRescheduleModalData('errorMessage', message);
             return false;
         }
+    };
 
+    @action('Set replace staff modal is open')
+    setReplaceStaffModalIsOpen = (replaceStaffModalIsOpen) => {
+        this.store.replaceStaffModal.isOpen = replaceStaffModalIsOpen;
+        if (!replaceStaffModalIsOpen) {
+            this.store.replaceStaffModal = replaceStaffModalInitialState;
+        }
+    };
+
+    @action('Set replace staff modal data')
+    setReplaceStaffModalData = (key, value) => {
+        this.store.replaceStaffModal[key] = value;
+    };
+
+
+    @action('Fetch available staff')
+    fetchAvailableStaff = async (booking) => {
+        this.setReplaceStaffModalData('loading', true);
+        try {
+            const scheduleIds = Object.values(this.store.staff).flatMap(staffMember => staffMember.schedules.map(schedule => schedule.id));
+
+            const {singleSession = {}} = booking.bookedEntity;
+            const {start: from, end: to} = singleSession;
+            console.logx({from, to});
+            console.logx({booking, scheduleIds});
+
+            const requestBody = `{
+                "query": {
+                   "filter": "{\\"scheduleIds\\":[\\"${scheduleIds[0]}\\"],\\"from\\":\\"${from}\\",\\"to\\":\\"${to}\\"}"
+                 }
+             }`;
+
+            const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
+            const {data} = result;
+
+            const slots = data.slots.map(slot => ({
+                ...slot,
+                clientId: uuid()
+            }));
+
+            this.setRescheduleModalData('slots', slots);
+        } catch (e) {
+            handleResponseError(e);
+        }
+        this.setReplaceStaffModalData('loading', false);
     };
 
     @action('Set payment modal is open')

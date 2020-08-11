@@ -6,6 +6,7 @@ import BookingsList from '../../components/BookingsList';
 import {getDefaultValue} from '../../components/CalendarPanelDatePicker/CalendarPanelDatePicker';
 import RescheduleModal from '../../components/RescheduleModal';
 import PaymentModal from '../../components/PaymentModal';
+import ReplaceStaffModal from '../../components/ReplaceStaffModal';
 
 @inject('bookingsListStore')
 @observer
@@ -85,6 +86,14 @@ export default class Main extends React.Component {
         bookingsListStore.fetchScheduleSlots(booking.bookedEntity.scheduleId);
     };
 
+    _openReplaceStaffModal = (booking) => {
+        const {bookingsListStore} = this.props;
+
+        bookingsListStore.setReplaceStaffModalIsOpen(true);
+        bookingsListStore.setReplaceStaffModalData('data', booking);
+        bookingsListStore.fetchAvailableStaff(booking);
+    };
+
     _onRowClick = (row) => {
         console.logx({row});
     };
@@ -131,6 +140,7 @@ export default class Main extends React.Component {
         return (
             <div className={st(classes.mainContainer)}>
                 <RescheduleModal/>
+                <ReplaceStaffModal/>
                 <PaymentModal/>
                 <BookingsList
                     bookingsMetadata={bookingsMetadata}
@@ -139,6 +149,7 @@ export default class Main extends React.Component {
                     bookingEntries={bookingsEntries}
                     onRowClick={this._onRowClick}
                     openRescheduleBookingModal={this._openRescheduleBookingModal}
+                    openReplaceStaffModal={this._openReplaceStaffModal}
                     onPaymentStatusSelect={this._onPaymentStatusSelect}
                     onBookingAndAttendanceStatusSelect={this._onBookingAndAttendanceStatusSelect}
                     onFilterChanged={this._onFiltersChanged}

@@ -1,0 +1,8 @@
+.slotsContainer {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.errorMessageContainer {
+    margin-bottom: 10px;
+}
