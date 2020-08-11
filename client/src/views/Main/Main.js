@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {st, classes} from './Main.st.css';
+import {inject, observer} from 'mobx-react';
 import BookingsList from '../../components/BookingsList';
 import {getDefaultValue} from '../../components/CalendarPanelDatePicker/CalendarPanelDatePicker';
-
-import {inject, observer} from 'mobx-react';
 import RescheduleModal from '../../components/RescheduleModal';
 import PaymentModal from '../../components/PaymentModal';
 
@@ -92,9 +92,13 @@ export default class Main extends React.Component {
     _onPaymentStatusSelect = (booking, option) => {
         const {bookingsListStore} = this.props;
 
-        if (option.id === 'PAID') {
-            bookingsListStore.setPaymentModalIsOpen(true);
-            bookingsListStore.setPaymentModalData('data', booking);
+        switch (option.id) {
+            case 'PAID':
+                bookingsListStore.setPaymentModalIsOpen(true);
+                bookingsListStore.setPaymentModalData('data', booking);
+                break;
+            default:
+                break;
         }
     };
 
@@ -107,6 +111,13 @@ export default class Main extends React.Component {
                 break;
             case 'DECLINE':
                 bookingsListStore.declineBooking(booking.id);
+                break;
+            case 'CHECKED_IN':
+            case 'NO_SHOW':
+                const {formInfo = {}} = booking;
+                const {paymentSelection = []} = formInfo;
+                const numberOfParticipants = paymentSelection.length ? paymentSelection[0].numberOfParticipants : 1;
+                bookingsListStore.setAttendance(booking.id, option.id === 'CHECKED_IN', numberOfParticipants);
                 break;
             default:
                 break;
@@ -144,3 +155,7 @@ export default class Main extends React.Component {
         );
     }
 }
+
+Main.propTypes = {
+    bookingsListStore: PropTypes.object
+};

@@ -9,7 +9,7 @@ export const BadgeDropdown = (props) => {
         const {options, selectedId} = props;
         const selectedOption = options.find(option => option.id === selectedId) || {};
         return (
-            <Badge {...props}>
+            <Badge {...props} {...selectedOption}>
                 {selectedOption.text}
             </Badge>
         );

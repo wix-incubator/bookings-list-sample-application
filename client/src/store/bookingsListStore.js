@@ -371,11 +371,20 @@ class BookingsListStore {
         row.focused = focused;
     };
 
+    @action('Set booking loading')
+    setBookingLoading = (bookingId, loading) => {
+        const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+        if (bookingEntryIndex > -1) {
+            this.store.bookingsEntries[bookingEntryIndex].booking.loading = loading;
+        }
+    };
+
     @action('Confirm booking')
     confirmBooking = async (bookingId) => {
-        console.log({bookingId});
         try {
+            this.setBookingLoading(bookingId, true);
             const result = await postData(`bookings/${bookingId}/confirm`);
+            this.setBookingLoading(bookingId, false);
             const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
             if (bookingEntryIndex > -1) {
                 this.store.bookingsEntries[bookingEntryIndex].booking.status = 'CONFIRMED';
@@ -388,10 +397,36 @@ class BookingsListStore {
     @action('Decline booking')
     declineBooking = async (bookingId) => {
         try {
+            this.setBookingLoading(bookingId, true);
             const result = await postData(`bookings/${bookingId}/decline`);
+            this.setBookingLoading(bookingId, false);
             const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
             if (bookingEntryIndex > -1) {
                 this.store.bookingsEntries[bookingEntryIndex].booking.status = 'DECLINED';
+            }
+        } catch (e) {
+            handleResponseError(e);
+        }
+    };
+
+
+    @action('Set attendance')
+    setAttendance = async (bookingId, attendanceStatus, numberOfAttendees) => {
+        try {
+            const requestBody = {
+                attendanceInfo: {
+                    attendanceStatus,
+                    numberOfAttendees
+                }
+            };
+            this.setBookingLoading(bookingId, true);
+            const result = await postData(`bookings/${bookingId}/setAttendance`, requestBody);
+            this.setBookingLoading(bookingId, false);
+            const {data} = result;
+            const {booking} = data;
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            if (bookingEntryIndex > -1 && booking) {
+                this.store.bookingsEntries[bookingEntryIndex].booking = booking;
             }
         } catch (e) {
             handleResponseError(e);
