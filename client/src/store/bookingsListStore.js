@@ -388,7 +388,8 @@ class BookingsListStore {
             }
             return true;
         } catch (e) {
-            handleResponseError(e);
+            const message = get(e, 'response.data.message');
+            this.setReplaceStaffModalData('errorMessage', message);
             return false;
         }
     };
