@@ -170,6 +170,12 @@ async function postBookingSetAttendance(refreshToken, requestParams, requestBody
     return {response, code: HTTP_STATUS.SUCCESS};
 }
 
+async function patchCalendarSession(refreshToken, requestParams, requestBody) {
+    const config = await getRequestConfig(refreshToken, undefined);
+    const response = (await axios.patch(`calendar/sessions/${requestParams.id}`, requestBody, config)).data;
+    return {response, code: HTTP_STATUS.SUCCESS};
+}
+
 app.get('/signup', (req, res) => {
     // This route  is called before the user is asked to provide consent
     // Configure the `App URL` in  Wix Developers to point here
@@ -345,5 +351,18 @@ app.post('/bookings/:id/setAttendance', async (req, res) => {
         res.status(e.response.status).send(e.response.data);
     }
 });
+
+app.patch('/calendar/sessions/:id', async (req, res) => {
+    try {
+        const instanceId = getInstanceIdFromRequestHeaders(req);
+        const refreshToken = await getRefreshToken(instanceId);
+        const out = await patchCalendarSession(refreshToken, req.params, req.body);
+        res.status(HTTP_STATUS.SUCCESS).send(out.response);
+    } catch (e) {
+        res.status(e.response.status).send(e.response.data);
+    }
+});
+
+
 
 app.listen(port, () => console.log(`My Wix Application ${APP_ID} is listening on port ${port}!`));
