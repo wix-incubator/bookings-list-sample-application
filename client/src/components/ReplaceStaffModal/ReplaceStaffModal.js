@@ -1,13 +1,11 @@
 import React from 'react';
 import {st, classes} from './ReplaceStaffModal.st.css';
-import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification} from 'wix-style-react';
+import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification, Dropdown} from 'wix-style-react';
 import {inject, observer} from 'mobx-react';
 import {raiseNotification, translate} from '../../utils';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
-import RescheduleBox from '../RescheduleBox';
-import RescheduleBoxSkeleton from '../RescheduleBox/RescheduleBoxSkeleton';
-
-const MAX_SLOTS_AMOUNT = 5;
+import User from 'wix-ui-icons-common/User';
+import UserSmall from 'wix-ui-icons-common/UserSmall';
 
 @inject('bookingsListStore')
 @observer
@@ -21,9 +19,17 @@ export default class ReplaceStaffModal extends React.PureComponent {
     _onOk = async () => {
         const {bookingsListStore} = this.props;
         const {replaceStaffModal} = bookingsListStore.store;
-        const {selectedSlot} = replaceStaffModal;
+        const {selectedStaffMember} = replaceStaffModal;
+        console.logx({replaceStaffModal})
         bookingsListStore.setReplaceStaffModalData('loading', true);
-        const success = await bookingsListStore.rescheduleBooking(replaceStaffModal.data.id, selectedSlot);
+        const success = await bookingsListStore.replaceStaffMember(
+            replaceStaffModal.data.id,
+            replaceStaffModal.data.bookedEntity.singleSession.sessionId,
+            selectedStaffMember.id,
+            selectedStaffMember.schedules[0].id,
+            replaceStaffModal.data.bookedEntity.singleSession.start,
+            replaceStaffModal.data.bookedEntity.singleSession.end
+        );
         bookingsListStore.setReplaceStaffModalData('loading', false);
         if (success) {
             raiseNotification(translate('ReplaceStaffModal.replaceStaffSuccessNotification'), 'success');
@@ -31,31 +37,33 @@ export default class ReplaceStaffModal extends React.PureComponent {
         }
     };
 
-    _setSelectedSlot = (slot) => {
+    _setSelectedStaffMember = (staffMember) => {
         const {bookingsListStore} = this.props;
-        bookingsListStore.setReplaceStaffModalData('selectedSlot', slot);
+        bookingsListStore.setReplaceStaffModalData('selectedStaffMember', staffMember);
     };
 
-    _renderSlotsSkeleton = () => {
-        return (
-            <div className={st(classes.slotsContainer)}>
-                {[...Array(MAX_SLOTS_AMOUNT)].map((_, index) => <RescheduleBoxSkeleton key={index}/>)}
-            </div>
-        );
-    };
-
-    _renderSlots = () => {
+    _renderAvailableStaffDropdown = () => {
         const {bookingsListStore} = this.props;
-        const {replaceStaffModal} = bookingsListStore.store;
-        const {slots, selectedSlot} = replaceStaffModal;
+        const {replaceStaffModal, staff} = bookingsListStore.store;
+        const {selectedStaffMember} = replaceStaffModal;
+
+        const staffMembersOptions = Object.values(staff).map(staffMember => ({
+            ...staffMember,
+            // value: <label className={st(classes.staffMemberOption)}><UserSmall/> {staffMember.name}</label>,
+            value: staffMember.name,
+        }));
+
+        console.logx({staffMembersOptions});
+
         return (
-            <div className={st(classes.slotsContainer)}>
-                {
-                    slots.slice(0, MAX_SLOTS_AMOUNT).map((slot, index) => (
-                            <RescheduleBox key={index} onClick={this._setSelectedSlot} isSelected={slot.clientId === (selectedSlot && selectedSlot.clientId)} data={slot}/>
-                        )
-                    )
-                }
+            <div className={st(classes.availableStaffContainer)}>
+                <User/>
+                <Text className={st(classes.staffLabel)}>{translate('ReplaceStaffModal.staffLabel')}</Text>
+                <Dropdown
+                    selectedId={selectedStaffMember && selectedStaffMember.id}
+                    options={staffMembersOptions}
+                    onSelect={this._setSelectedStaffMember}
+                />
             </div>
         );
     };
@@ -87,7 +95,7 @@ export default class ReplaceStaffModal extends React.PureComponent {
     _renderContent = () => {
         const {bookingsListStore} = this.props;
         const {replaceStaffModal} = bookingsListStore.store;
-        const {loading, data, slots, errorMessage} = replaceStaffModal;
+        const {loading, data, staff, errorMessage} = replaceStaffModal;
 
         if (!data) {
             return null;
@@ -100,7 +108,7 @@ export default class ReplaceStaffModal extends React.PureComponent {
             <Box direction="vertical">
                 <Text size="tiny" style={{padding: '10px 5px'}}>{translate('ReplaceStaffModal.chooseNewStaffLabel', {name: firstName, booking: title, date: startDate})}</Text>
                 {this._renderErrorMessage()}
-                {/*{loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots()}*/}
+                {this._renderAvailableStaffDropdown()}
             </Box>
         );
     };
@@ -108,7 +116,8 @@ export default class ReplaceStaffModal extends React.PureComponent {
     render() {
         const {bookingsListStore} = this.props;
         const {replaceStaffModal} = bookingsListStore.store;
-        const {loading, isOpen, selectedSlot} = replaceStaffModal;
+        const {loading, isOpen, selectedSlot, currentStaffMember, selectedStaffMember} = replaceStaffModal;
+
         return (
             <Box>
                 <Modal isOpen={isOpen} onRequestClose={this._closeModal} shouldCloseOnOverlayClick={true}>
@@ -120,7 +129,7 @@ export default class ReplaceStaffModal extends React.PureComponent {
                         onOk={this._onOk}
                         onCancel={this._closeModal}
                         onClose={this._closeModal}
-                        disableConfirmation={loading || !selectedSlot}
+                        disableConfirmation={loading || (currentStaffMember && selectedStaffMember && currentStaffMember.id === selectedStaffMember.id)}
                         disableCancel={loading}
                     >
                         {this._renderContent()}

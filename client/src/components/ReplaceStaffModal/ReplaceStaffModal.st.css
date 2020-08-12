@@ -1,6 +1,16 @@
-.slotsContainer {
+.availableStaffContainer {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+}
+
+.staffLabel {
+    margin: 0 5px;
+}
+
+.staffMemberOption {
+    display: flex;
+    align-items: center;
 }
 
 .errorMessageContainer {

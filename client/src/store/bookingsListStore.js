@@ -22,8 +22,8 @@ const rescheduleModalInitialState = {
 
 const replaceStaffModalInitialState = {
     isOpen: false,
-    slots: null,
-    selectedSlot: null,
+    currentStaffMember: null,
+    selectedStaffMember: null,
     data: null,
     loading: false,
     errorMessage: ''
@@ -81,6 +81,15 @@ const postData = async (endpoint, payload, config) => {
     }
 
     return axiosInstance.post(`/${endpoint}`, payload, config);
+};
+
+const patchData = async (endpoint, payload, config) => {
+    if (USE_MOCK && mockData[endpoint]) {
+        await pause(2000);
+        return {data: mockData[endpoint]};
+    }
+
+    return axiosInstance.patch(`/${endpoint}`, payload, config);
 };
 
 class BookingsListStore {
@@ -355,6 +364,35 @@ class BookingsListStore {
         this.store.replaceStaffModal[key] = value;
     };
 
+    @action('Replace staff member')
+    replaceStaffMember = async (bookingId, sessionId, staffMemberId, scheduleId, startTimestamp, endTimestamp) => {
+        this.setReplaceStaffModalData('loading', true);
+        try {
+            const requestBody = {
+                session: {
+                    affectedSchedules: [{scheduleId, transparency: 'BUSY'}],
+                    start: {timestamp: startTimestamp},
+                    end: {timestamp: endTimestamp}
+                },
+                updated: {
+                    paths: ['affectedSchedules']
+                }
+            };
+
+            // TODO: replace endpoint name with bookings/:id/replaceStaff (with same requestBody)
+
+            const result = await patchData(`calendar/sessions/${sessionId}`, requestBody);
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            if (bookingEntryIndex > -1) {
+                console.logx({result, booking: this.store.bookingsEntries[bookingEntryIndex].booking});
+                this.store.bookingsEntries[bookingEntryIndex].booking.bookedEntity.singleSession = result.data.session;
+                this.store.bookingsEntries[bookingEntryIndex].booking.bookedResources = [this.store.staff[staffMemberId]];
+            }
+        } catch (e) {
+            handleResponseError(e);
+        }
+        this.setReplaceStaffModalData('loading', false);
+    };
 
     @action('Fetch available staff')
     fetchAvailableStaff = async (booking) => {

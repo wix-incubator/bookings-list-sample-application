@@ -80,6 +80,18 @@ export const pause = async (t) => (new Promise(resolve => setTimeout(resolve, t)
 
 export const translate = (...args) => i18n.t(...args);
 
+export const isBookingOneOnOne = (booking) => {
+    const {bookedEntity = {}} = booking;
+    const {tags = []} = bookedEntity;
+    return tags.includes('INDIVIDUAL');
+};
+
+export const isBookingSingleSession = (booking) => {
+    const {bookedEntity = {}} = booking;
+    const {singleSession} = bookedEntity;
+    return !!singleSession;
+};
+
 export const dateOnlyFormat = 'MMM DD YYYY';
 export const dateOnlyWithoutYearFormat = 'DD MMM';
 export const timeOnlyFormat = 'HH:mm a';

@@ -92,6 +92,7 @@
     "title": "Replace Staff",
     "confirmButtonText": "Replace",
     "cancelButtonText": "Cancel",
+    "staffLabel": "Staff:",
     "chooseNewStaffLabel": "Please choose a new staff for {{name}}'s {{booking}} booking at {{date}}:",
     "replaceStaffSuccessNotification": "The booking have been updated successfully"
   },

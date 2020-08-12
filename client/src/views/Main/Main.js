@@ -86,12 +86,17 @@ export default class Main extends React.Component {
         bookingsListStore.fetchScheduleSlots(booking.bookedEntity.scheduleId);
     };
 
-    _openReplaceStaffModal = (booking) => {
+    _openReplaceStaffModal = (booking, currentStaff) => {
         const {bookingsListStore} = this.props;
+        const {staff} = booking;
 
         bookingsListStore.setReplaceStaffModalIsOpen(true);
         bookingsListStore.setReplaceStaffModalData('data', booking);
-        bookingsListStore.fetchAvailableStaff(booking);
+        if (currentStaff.length) {
+            bookingsListStore.setReplaceStaffModalData('currentStaffMember', currentStaff[0]);
+            bookingsListStore.setReplaceStaffModalData('selectedStaffMember', currentStaff[0]);
+        }
+        // bookingsListStore.fetchAvailableStaff(booking);
     };
 
     _onRowClick = (row) => {
