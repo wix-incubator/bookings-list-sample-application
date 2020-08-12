@@ -23,7 +23,6 @@ export default class ReplaceStaffModal extends React.PureComponent {
         const success = await bookingsListStore.replaceStaffMember(
             replaceStaffModal.data.id,
             replaceStaffModal.data.bookedEntity.singleSession.sessionId,
-            selectedStaffMember.id,
             selectedStaffMember.schedules[0].id,
             replaceStaffModal.data.bookedEntity.singleSession.start,
             replaceStaffModal.data.bookedEntity.singleSession.end

@@ -364,13 +364,13 @@ class BookingsListStore {
     };
 
     @action('Replace staff member')
-    replaceStaffMember = async (bookingId, sessionId, staffMemberId, scheduleId, startTimestamp, endTimestamp) => {
+    replaceStaffMember = async (bookingId, sessionId, staffMemberScheduleId, startTimestamp, endTimestamp) => {
         try {
             const requestBody = {
                 sessionId,
                 payload: {
                     session: {
-                        affectedSchedules: [{scheduleId, transparency: 'BUSY'}],
+                        affectedSchedules: [{scheduleId: staffMemberScheduleId, transparency: 'BUSY'}],
                         start: {timestamp: startTimestamp},
                         end: {timestamp: endTimestamp}
                     },
