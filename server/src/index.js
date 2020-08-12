@@ -352,17 +352,35 @@ app.post('/bookings/:id/setAttendance', async (req, res) => {
     }
 });
 
-app.patch('/calendar/sessions/:id', async (req, res) => {
+app.patch('/bookings/:id/replaceStaff', async (req, res) => {
     try {
         const instanceId = getInstanceIdFromRequestHeaders(req);
         const refreshToken = await getRefreshToken(instanceId);
-        const out = await patchCalendarSession(refreshToken, req.params, req.body);
-        res.status(HTTP_STATUS.SUCCESS).send(out.response);
+        const params = {id: req.body.sessionId};
+        const payload = req.body.payload;
+        const sessionResponse = await patchCalendarSession(refreshToken, params, payload);
+        const query = {
+            filter: {
+                bookingId: req.params.id
+            }
+        };
+        const bookingResponse = await getBookings(refreshToken, query);
+
+        let booking;
+        if (bookingResponse.response.bookingsEntries.length) {
+            booking = bookingResponse.response.bookingsEntries[0].booking;
+        }
+
+        const response = {
+            session: sessionResponse.response.session,
+            booking
+        };
+
+        res.status(HTTP_STATUS.SUCCESS).send(response);
     } catch (e) {
         res.status(e.response.status).send(e.response.data);
     }
 });
-
 
 
 app.listen(port, () => console.log(`My Wix Application ${APP_ID} is listening on port ${port}!`));
