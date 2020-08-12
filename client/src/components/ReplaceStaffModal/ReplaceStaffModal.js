@@ -5,7 +5,6 @@ import {inject, observer} from 'mobx-react';
 import {raiseNotification, translate} from '../../utils';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 import User from 'wix-ui-icons-common/User';
-import UserSmall from 'wix-ui-icons-common/UserSmall';
 
 @inject('bookingsListStore')
 @observer
@@ -20,7 +19,6 @@ export default class ReplaceStaffModal extends React.PureComponent {
         const {bookingsListStore} = this.props;
         const {replaceStaffModal} = bookingsListStore.store;
         const {selectedStaffMember} = replaceStaffModal;
-        console.logx({replaceStaffModal})
         bookingsListStore.setReplaceStaffModalData('loading', true);
         const success = await bookingsListStore.replaceStaffMember(
             replaceStaffModal.data.id,
@@ -49,11 +47,8 @@ export default class ReplaceStaffModal extends React.PureComponent {
 
         const staffMembersOptions = Object.values(staff).map(staffMember => ({
             ...staffMember,
-            // value: <label className={st(classes.staffMemberOption)}><UserSmall/> {staffMember.name}</label>,
-            value: staffMember.name,
+            value: staffMember.name
         }));
-
-        console.logx({staffMembersOptions});
 
         return (
             <div className={st(classes.availableStaffContainer)}>
@@ -95,7 +90,7 @@ export default class ReplaceStaffModal extends React.PureComponent {
     _renderContent = () => {
         const {bookingsListStore} = this.props;
         const {replaceStaffModal} = bookingsListStore.store;
-        const {loading, data, staff, errorMessage} = replaceStaffModal;
+        const {data} = replaceStaffModal;
 
         if (!data) {
             return null;
@@ -116,11 +111,11 @@ export default class ReplaceStaffModal extends React.PureComponent {
     render() {
         const {bookingsListStore} = this.props;
         const {replaceStaffModal} = bookingsListStore.store;
-        const {loading, isOpen, selectedSlot, currentStaffMember, selectedStaffMember} = replaceStaffModal;
+        const {loading, isOpen, currentStaffMember, selectedStaffMember} = replaceStaffModal;
 
         return (
             <Box>
-                <Modal isOpen={isOpen} onRequestClose={this._closeModal} shouldCloseOnOverlayClick={true}>
+                <Modal isOpen={isOpen} onRequestClose={this._closeModal} shouldCloseOnOverlayClick={!loading}>
                     <MessageBoxFunctionalLayout
                         width={'500px'}
                         title={translate('ReplaceStaffModal.title')}

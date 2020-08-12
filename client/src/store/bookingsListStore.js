@@ -275,7 +275,6 @@ class BookingsListStore {
             this.setBookingsEntries(data.bookingsEntries, concatenate);
             this.setBookingsMetadata(data.metadata);
         } catch (e) {
-            console.log({e});
             handleResponseError(e);
         }
         this.setLoadingBookings(false);
@@ -366,32 +365,32 @@ class BookingsListStore {
 
     @action('Replace staff member')
     replaceStaffMember = async (bookingId, sessionId, staffMemberId, scheduleId, startTimestamp, endTimestamp) => {
-        this.setReplaceStaffModalData('loading', true);
         try {
             const requestBody = {
-                session: {
-                    affectedSchedules: [{scheduleId, transparency: 'BUSY'}],
-                    start: {timestamp: startTimestamp},
-                    end: {timestamp: endTimestamp}
-                },
-                updated: {
-                    paths: ['affectedSchedules']
+                sessionId,
+                payload: {
+                    session: {
+                        affectedSchedules: [{scheduleId, transparency: 'BUSY'}],
+                        start: {timestamp: startTimestamp},
+                        end: {timestamp: endTimestamp}
+                    },
+                    updated: {
+                        paths: ['affectedSchedules']
+                    }
                 }
             };
 
-            // TODO: replace endpoint name with bookings/:id/replaceStaff (with same requestBody)
-
-            const result = await patchData(`calendar/sessions/${sessionId}`, requestBody);
+            const result = await patchData(`bookings/${bookingId}/replaceStaff`, requestBody);
+            const {booking} = result.data;
             const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
-            if (bookingEntryIndex > -1) {
-                console.logx({result, booking: this.store.bookingsEntries[bookingEntryIndex].booking});
-                this.store.bookingsEntries[bookingEntryIndex].booking.bookedEntity.singleSession = result.data.session;
-                this.store.bookingsEntries[bookingEntryIndex].booking.bookedResources = [this.store.staff[staffMemberId]];
+            if (bookingEntryIndex > -1 && booking) {
+                this.store.bookingsEntries[bookingEntryIndex].booking = booking;
             }
+            return true;
         } catch (e) {
             handleResponseError(e);
+            return false;
         }
-        this.setReplaceStaffModalData('loading', false);
     };
 
     @action('Fetch available staff')

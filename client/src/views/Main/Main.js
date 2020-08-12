@@ -96,7 +96,6 @@ export default class Main extends React.Component {
             bookingsListStore.setReplaceStaffModalData('currentStaffMember', currentStaff[0]);
             bookingsListStore.setReplaceStaffModalData('selectedStaffMember', currentStaff[0]);
         }
-        // bookingsListStore.fetchAvailableStaff(booking);
     };
 
     _onRowClick = (row) => {
