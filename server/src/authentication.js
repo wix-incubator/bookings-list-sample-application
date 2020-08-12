@@ -4,8 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const knex = require('./db');
 const {HTTP_STATUS} = require('./constants');
-const {APP_ID, APP_SECRET} = require('./config');
-const {getRequestConfig, getInstanceIdFromRequestHeaders, getTokensFromWix, getAccessToken, getRefreshToken, getAppInstance} = require('./utils/authentication-utils');
+const {APP_ID} = require('./config');
+const {getTokensFromWix, getAppInstance} = require('./utils/authentication-utils');
 const express = require('express');
 const router = express.Router();
 
