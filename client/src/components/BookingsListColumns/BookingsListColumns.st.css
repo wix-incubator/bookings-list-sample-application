@@ -28,6 +28,18 @@
     border-radius: 50%;
 }
 
+.staffReplaceIcon {
+    color: #3999ec;
+    margin: 0 10px;
+    padding: 1px;
+}
+
+.staffReplaceIcon:hover {
+    background: #3999ec;
+    color: white;
+    border-radius: 50%;
+}
+
 .paymentDetailsTooltip {
 
 }

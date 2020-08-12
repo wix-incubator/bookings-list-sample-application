@@ -5,6 +5,8 @@ import {SORT_ORDER} from './constants';
 import {handleResponseError, pause} from '../utils';
 import {uuid} from 'uuidv4';
 import {get} from 'lodash';
+import {formatDate} from 'wix-style-react/src/LocaleUtils';
+
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
 const USE_MOCK = false;
@@ -362,12 +364,10 @@ class BookingsListStore {
 
             const {singleSession = {}} = booking.bookedEntity;
             const {start: from, end: to} = singleSession;
-            console.logx({from, to});
-            console.logx({booking, scheduleIds});
 
             const requestBody = `{
                 "query": {
-                   "filter": "{\\"scheduleIds\\":[\\"${scheduleIds[0]}\\"],\\"from\\":\\"${from}\\",\\"to\\":\\"${to}\\"}"
+                   "filter": "{\\"scheduleIds\\":[\\"${scheduleIds.join('\\",\\"')}\\"],\\"from\\":\\"${formatDate(from)}\\",\\"to\\":\\"${formatDate(to)}\\",\\"isAvailable\\": true}"
                  }
              }`;
 
@@ -379,7 +379,7 @@ class BookingsListStore {
                 clientId: uuid()
             }));
 
-            this.setRescheduleModalData('slots', slots);
+            this.setReplaceStaffModalData('slots', slots);
         } catch (e) {
             handleResponseError(e);
         }

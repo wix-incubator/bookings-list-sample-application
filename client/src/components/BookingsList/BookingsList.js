@@ -149,7 +149,7 @@ export default class BookingsList extends React.Component {
                 width: '17%',
                 render: row => <ServiceAndSession services={services} onCalendarClick={this.props.openRescheduleBookingModal} data={row}/>
             },
-            {fieldName: '', localeLabelKey: 'staff', render: row => <Staff staff={staff} onReplaceClick={this.props.openReplaceStaffModal} data={row}/>},
+            {fieldName: '', localeLabelKey: 'staff', width: '17%', render: row => <Staff staff={staff} onReplaceClick={this.props.openReplaceStaffModal} data={row}/>},
             {
                 fieldName: '',
                 localeLabelKey: 'bookingAndAttendance',
