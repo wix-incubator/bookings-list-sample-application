@@ -13,18 +13,18 @@ function getDefaultPresets() {
         {
             id: 1,
             selectedDays: {
-                from: addDays(-30),
-                to: new Date()
+                from: new Date(),
+                to: addDays(30)
             },
-            value: translate('lastNDays', {count: 30})
+            value: translate('nextNDays', {count: 30})
         }, {
             id: 2,
 
             selectedDays: {
-                from: addDays(-7),
-                to: new Date()
+                from: new Date(),
+                to: addDays(7)
             },
-            value: translate('lastNDays', {count: 7})
+            value: translate('nextNDays', {count: 7})
         }
     ];
 }

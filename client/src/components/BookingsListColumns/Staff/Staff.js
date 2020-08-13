@@ -17,7 +17,7 @@ const Staff = observer((props) => {
             <div className={st(classes.columnDisplayContainer)}>
                 {staffResources.map(resource => <ColumnText key={resource.id}>{resource.name}</ColumnText>)}
             </div>
-            {focused && isBookingSingleSession(booking) && isBookingOneOnOne(booking) ? <ReplaceSmall className={st(classes.staffReplaceIcon)} onClick={() => onReplaceClick(booking, staffResources)}/> : null}
+            {focused && isBookingOneOnOne(booking) ? <ReplaceSmall className={st(classes.staffReplaceIcon)} onClick={() => onReplaceClick(booking, staffResources)}/> : null}
         </div>
     );
 });

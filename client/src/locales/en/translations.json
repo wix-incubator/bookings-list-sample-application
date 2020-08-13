@@ -2,6 +2,7 @@
   "submit": "Submit",
   "cancel": "Cancel",
   "lastNDays": "Last {{count}} days",
+  "nextNDays": "Next {{count}} days",
   "BookingsList": {
     "pageHeaderTitle": "Booking List",
     "pageHeaderSubtitle": "Booking List Subtitle",
@@ -31,7 +32,7 @@
   },
   "BookingAndAttendanceDropdown": {
     "booked": "Booked",
-    "confirm": "Confirm",
+    "approve": "Approve",
     "confirmed": "Confirmed",
     "pending": "Pending",
     "pendingApproval": "Pending Approval",

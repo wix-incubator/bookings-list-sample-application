@@ -4,7 +4,6 @@ import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification
 import {inject, observer} from 'mobx-react';
 import {raiseNotification, translate} from '../../utils';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
-import User from 'wix-ui-icons-common/User';
 
 @inject('bookingsListStore')
 @observer
@@ -51,7 +50,6 @@ export default class ReplaceStaffModal extends React.PureComponent {
 
         return (
             <div className={st(classes.availableStaffContainer)}>
-                <User/>
                 <Dropdown
                     selectedId={selectedStaffMember && selectedStaffMember.id}
                     options={staffMembersOptions}
@@ -95,7 +93,7 @@ export default class ReplaceStaffModal extends React.PureComponent {
         }
 
         const {formInfo: {contactDetails: {firstName}}, bookedEntity: {title, singleSession, setOfSessions}} = data;
-        const startDate = formatDate(new Date(singleSession ? singleSession.start : setOfSessions.firstSessionStart), 'MMM DD');
+        const startDate = formatDate(new Date(singleSession ? singleSession.start : setOfSessions.firstSessionStart), 'HH:mm, MMM DD');
 
         return (
             <Box direction="vertical">

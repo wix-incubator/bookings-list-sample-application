@@ -119,7 +119,7 @@ export default class Main extends React.Component {
         const {bookingsListStore} = this.props;
 
         switch (option.id) {
-            case 'CONFIRM':
+            case 'APPROVE':
                 bookingsListStore.confirmBooking(booking.id);
                 break;
             case 'DECLINE':

@@ -2,6 +2,7 @@
   "submit": "שליחה",
   "cancel": "ביטול",
   "lastNDays": "ימים אחרונים {{count}}",
+  "nextNDays": "ימים הבאים {{count}}",
   "BookingsList": {
     "pageHeaderTitle": "רשימת הזמנות",
     "pageHeaderSubtitle": "תת כותרת רשימת הזמנות",

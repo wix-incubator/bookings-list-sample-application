@@ -9,8 +9,8 @@ import {addDays, noop, objectsAreEqual} from '../../utils';
 
 export function getDefaultValue() {
     return {
-        from: addDays(-30),
-        to: new Date()
+        from: new Date(),
+        to: addDays(30)
     };
 }
 
