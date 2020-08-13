@@ -100,15 +100,12 @@ router.patch('/bookings/:id/replaceStaff', async (req, res) => {
         const params = {id: req.body.sessionId};
         const payload = req.body.payload;
         const sessionResponse = await patchCalendarSession(refreshToken, params, payload);
-        const query = {
-            filter: {
-                bookingId: req.params.id
-            }
-        };
-        const bookingResponse = await getBookings(refreshToken, query);
+
+        const queryParams = {'query.filter.stringValue': {bookingId: req.params.id}};
+        const bookingResponse = await getBookings(refreshToken, queryParams);
 
         let booking;
-        if (bookingResponse.response.bookingsEntries.length) {
+        if (bookingResponse.response.bookingsEntries.length === 1) {
             booking = bookingResponse.response.bookingsEntries[0].booking;
         }
 
