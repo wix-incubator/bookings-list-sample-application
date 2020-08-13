@@ -140,6 +140,8 @@ export default class BookingsList extends React.Component {
     _getBookingColumns = () => {
         const {services, staff, filters, sort} = this.props;
 
+        const style = {verticalAlign: 'top'};
+
         return [
             {fieldName: 'created', sortable: true, localeLabelKey: 'bookingTime', render: row => <BookingTime data={row}/>},
             {fieldName: 'formInfo.contactDetails.firstName', sortable: true, localeLabelKey: 'clientName', render: row => <ClientName data={row}/>},
@@ -161,9 +163,10 @@ export default class BookingsList extends React.Component {
                 localeLabelKey: 'paymentStatus',
                 render: row => <PaymentStatus onPaymentStatusSelect={(option) => this.props.onPaymentStatusSelect(row.booking, option)} data={row}/>
             },
-            {fieldName: '', localeLabelKey: 'payment', render: row => <Payment data={row}/>}
+            {fieldName: '', localeLabelKey: 'payment', width: '14%', render: row => <Payment data={row}/>}
         ].map(column => ({
             ...column,
+            style,
             title: translate(`BookingsList.TableColumnsTitles.${column.localeLabelKey}`),
             fieldName: `booking.${column.fieldName}`,
             sortDescending: sort[`booking.${column.fieldName}`] && sort[`booking.${column.fieldName}`].order === 'DESC'
@@ -203,7 +206,7 @@ export default class BookingsList extends React.Component {
             <div className={st(classes.bookingsListContainer)}>
                 <BookingNotification/>
                 <Page className={st(classes.bookingsListPage)} height="100vh" scrollableContentRef={ref => (this.containerRef = ref)}>
-                    <Page.Header title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
+                    <Page.Header className={st(classes.bookingsListHeader)} title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
                     <Page.Content>
                         <Table
                             scrollElement={this.containerRef}

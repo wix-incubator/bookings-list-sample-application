@@ -8,7 +8,7 @@ import LanguagesSmall from 'wix-ui-icons-common/LanguagesSmall';
 import MobileSmall from 'wix-ui-icons-common/MobileSmall';
 
 const BOOKING_PLATFORM_MAP = {
-    UNDEFINED_PLATFORM: {localeLabelKey: 'BookingPlatform.unavailable', icon: null},
+    // UNDEFINED_PLATFORM: {localeLabelKey: 'BookingPlatform.unavailable', icon: null},
     WEB: {localeLabelKey: 'BookingPlatform.web', icon: <LanguagesSmall className={st(classes.platformIcon)}/>},
     MOBILE_APP: {localeLabelKey: 'BookingPlatform.mobile', icon: <MobileSmall className={st(classes.platformIcon)}/>}
 };
@@ -23,7 +23,6 @@ const PaymentDetailsTooltip = (props) => {
     const {data: {paymentDetails = {}, bookingSource}} = props;
 
     const {balance = {}} = paymentDetails;
-    const {finalPrice = {}} = balance;
     const {amountReceived} = balance;
 
     const {couponDetails, wixPayMultipleDetails, paidPlanDetails} = paymentDetails;
@@ -42,15 +41,17 @@ const PaymentDetailsTooltip = (props) => {
     const boldedTextStyle = {fontWeight: 'bold', fontSize: '14px', color: 'white', marginBottom: '0px'};
     const normalTextStyle = {fontWeight: 'normal', fontSize: '12px', color: 'white'};
 
-    const bookingPlatformElement = (
-        <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
-            <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.bookingPlatform')}</ColumnText>
-            <div className={st(classes.rowDisplayContainer)}>
-                {bookingPlatform.icon}
-                <ColumnText style={normalTextStyle}>{translate(bookingPlatform.localeLabelKey)}</ColumnText>
+    const bookingPlatformElement = bookingPlatform ? (
+            <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
+                <ColumnText style={boldedTextStyle}>{translate('BookingInfoTooltip.bookingPlatform')}</ColumnText>
+                <div className={st(classes.rowDisplayContainer)}>
+                    {bookingPlatform.icon}
+                    <ColumnText style={normalTextStyle}>{translate(bookingPlatform.localeLabelKey)}</ColumnText>
+                </div>
             </div>
-        </div>
-    );
+        )
+        :
+        null;
 
     const couponDetailsElement = couponDetails ?
         <div className={st(classes.columnDisplayContainer, classes.paymentContentSection)}>
@@ -98,6 +99,10 @@ const PaymentDetailsTooltip = (props) => {
             {paidPlanDetailsElement}
         </div>
     );
+
+    if (!bookingPlatform && !couponDetails && !+amountReceived && !paidPlanDetails) {
+        return null;
+    }
 
     return (
         <Tooltip maxWidth={-1} className={st(classes.paymentDetailsTooltip)} onShow={setFocused} onHide={setUnfocused} content={paymentContent} size="medium">

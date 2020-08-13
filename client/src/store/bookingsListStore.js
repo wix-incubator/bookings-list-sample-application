@@ -383,6 +383,7 @@ class BookingsListStore {
             const result = await patchData(`bookings/${bookingId}/replaceStaff`, requestBody);
             const {booking} = result.data;
             const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            const bookingIndexTest = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === booking.id);
             if (bookingEntryIndex > -1 && booking) {
                 this.store.bookingsEntries[bookingEntryIndex].booking = booking;
             }

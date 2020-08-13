@@ -52,7 +52,6 @@ export default class ReplaceStaffModal extends React.PureComponent {
         return (
             <div className={st(classes.availableStaffContainer)}>
                 <User/>
-                <Text className={st(classes.staffLabel)}>{translate('ReplaceStaffModal.staffLabel')}</Text>
                 <Dropdown
                     selectedId={selectedStaffMember && selectedStaffMember.id}
                     options={staffMembersOptions}
@@ -116,7 +115,7 @@ export default class ReplaceStaffModal extends React.PureComponent {
             <Box>
                 <Modal isOpen={isOpen} onRequestClose={this._closeModal} shouldCloseOnOverlayClick={!loading}>
                     <MessageBoxFunctionalLayout
-                        width={'500px'}
+                        width={'600px'}
                         title={translate('ReplaceStaffModal.title')}
                         confirmText={translate('ReplaceStaffModal.confirmButtonText')}
                         cancelText={translate('ReplaceStaffModal.cancelButtonText')}

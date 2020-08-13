@@ -51,9 +51,10 @@
     "pending": "Pending"
   },
   "PaymentStatusDropdown": {
-    "paid": "PAID",
-    "notPaid": "NOT PAID",
-    "depositPaid": "DEPOSIT PAID"
+    "paid": "Paid",
+    "paidInPerson": "Paid in Person",
+    "notPaid": "Not Paid",
+    "depositPaid": "Deposit Paid"
   },
   "PaymentInfo": {
     "undefined": "Undefined",
@@ -89,11 +90,11 @@
     "rescheduleSuccessNotification": "The booking have been rescheduled successfully"
   },
   "ReplaceStaffModal": {
-    "title": "Replace Staff",
+    "title": "Replace Staff Member",
     "confirmButtonText": "Replace",
     "cancelButtonText": "Cancel",
-    "staffLabel": "Staff:",
-    "chooseNewStaffLabel": "Please choose a new staff for {{name}}'s {{booking}} booking at {{date}}:",
+    "staffLabel": "Staff Member:",
+    "chooseNewStaffLabel": "Please choose a new staff member for {{name}}'s {{booking}} booking at {{date}}:",
     "replaceStaffSuccessNotification": "The booking have been updated successfully"
   },
   "PaymentModal": {

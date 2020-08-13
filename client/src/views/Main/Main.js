@@ -106,7 +106,7 @@ export default class Main extends React.Component {
         const {bookingsListStore} = this.props;
 
         switch (option.id) {
-            case 'PAID':
+            case 'PAID_IN_PERSON':
                 bookingsListStore.setPaymentModalIsOpen(true);
                 bookingsListStore.setPaymentModalData('data', booking);
                 break;

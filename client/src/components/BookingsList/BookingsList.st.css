@@ -6,6 +6,9 @@
 .bookingsListPage {
 }
 
+.bookingsListHeader {
+}
+
 .centered {
     display: flex;
     justify-content: center;

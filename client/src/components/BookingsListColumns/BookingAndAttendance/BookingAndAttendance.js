@@ -2,9 +2,7 @@ import React from 'react';
 import {BadgeDropdown} from '../../BadgeDropdown/BadgeDropdown';
 import {translate} from '../../../utils';
 import {observer} from 'mobx-react';
-import {Loader} from 'wix-style-react';
 import NotAvailable from '../NotAvailable/NotAvailable';
-
 
 const ATTENDANCE_STATUS_MAP = {
     undefined: 'BOOKED',
@@ -54,8 +52,9 @@ const BookingAndAttendance = observer((props) => {
     }
 
     return (
-        <div style={{display: 'flex', alignItems: 'center'}}>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <BadgeDropdown
+                loading={loading}
                 skin="general"
                 selectedId={status}
                 disabled={disabled}
@@ -63,14 +62,6 @@ const BookingAndAttendance = observer((props) => {
                 onSelect={onBookingAndAttendanceStatusSelect}
                 options={bookingAndAttendanceOptions}
             />
-            {
-                loading ?
-                    <div style={{margin: '0 5px'}}>
-                        <Loader size="tiny"/>
-                    </div>
-                    :
-                    null
-            }
         </div>
     );
 });
