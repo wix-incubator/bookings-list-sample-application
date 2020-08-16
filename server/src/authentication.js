@@ -1,4 +1,5 @@
 // authentication EPs
+const axios = require('axios');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
@@ -62,16 +63,9 @@ router.get('/login', async (req, res) => {
         }).catch(e => {
             console.error(e);
         });
+        const url = `https://www.wix.com/_api/site-apps/v1/site-apps/token-received?${accessToken}`
+        res.redirect(url);
 
-        axios.post('https://www.wix.com/_api/site-apps/v1/site-apps/token-received', {}, {
-            headers: {
-                'authorization': accessToken
-            }
-        });
-
-        // need to post https://www.wix.com/app-oauth-installation/token-received to notif wix that we finished getting the token
-
-        res.status(HTTP_STATUS.SUCCESS).send('Hello Logged in user!')
     } catch (wixError) {
         console.log("Error getting token from Wix");
         console.log({wixError});
