@@ -52,7 +52,7 @@ const BookingAndAttendance = observer((props) => {
     }
 
     return (
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
             <BadgeDropdown
                 loading={loading}
                 skin="general"

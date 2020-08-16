@@ -20,7 +20,7 @@ const WIX_PAY_DETAILS_MAP = {
 };
 
 const PaymentDetailsTooltip = (props) => {
-    const {data: {paymentDetails = {}, bookingSource}} = props;
+    const {visible, data: {paymentDetails = {}, bookingSource}} = props;
 
     const {balance = {}} = paymentDetails;
     const {amountReceived} = balance;
@@ -37,6 +37,10 @@ const PaymentDetailsTooltip = (props) => {
     const setUnfocused = useCallback(() => {
         setIsFocused(false);
     }, []);
+
+    if (!visible) {
+        return <div style={{height: '22px'}}/>;
+    }
 
     const boldedTextStyle = {fontWeight: 'bold', fontSize: '14px', color: 'white', marginBottom: '0px'};
     const normalTextStyle = {fontWeight: 'normal', fontSize: '12px', color: 'white'};

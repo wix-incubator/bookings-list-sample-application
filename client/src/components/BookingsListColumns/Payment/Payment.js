@@ -41,7 +41,7 @@ const Payment = observer((props) => {
                 {paymentLabel}
                 {depositLabel}
             </div>
-            {focused ? <PaymentDetailsTooltip data={booking}/> : null}
+            <PaymentDetailsTooltip data={booking} visible={focused}/>
         </div>
     );
 });
