@@ -7,7 +7,7 @@ import {uuid} from 'uuidv4';
 import {get} from 'lodash';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = false;
+const USE_MOCK = process.env.USE_MOCKS === 'true';
 
 const rescheduleModalInitialState = {
     isOpen: false,
