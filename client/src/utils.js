@@ -5,6 +5,7 @@ import {getStores} from './store/getStores';
 import i18n from 'i18next';
 import Wix from 'wix-sdk';
 import {get} from 'lodash';
+import moment from 'moment-timezone';
 
 /**
  * custom console.log for outputting mobx store variables
@@ -39,8 +40,8 @@ export const getWixInstanceId = () => {
  * @returns {Date}
  */
 export const addDays = (daysDifference) => {
-    const now = (new Date()).getTime();
-    return new Date(now + (daysDifference * 24 * 60 * 60 * 1000));
+    const now = moment();
+    return now.add(daysDifference, 'days').toDate();
 };
 
 /**
@@ -61,8 +62,7 @@ export const objectsAreEqual = (o1, o2) => {
 };
 
 export const getTimeDifference = (t1, t2) => {
-    const difference = Math.abs(differenceInMinutes(new Date(t1), new Date(t2)) / 60);
-
+    const difference = Math.abs(differenceInMinutes(moment(t1).toDate(), moment(t2).toDate()) / 60);
     return Number.isInteger(difference) ? difference : parseFloat(difference).toFixed(2);
 };
 
@@ -92,7 +92,7 @@ export const isBookingSingleSession = (booking) => {
     return !!singleSession;
 };
 
-export const dateOnlyFormat = 'MMM DD YYYY';
+export const shorthandDateOnlyFormat = 'll';
 export const dateOnlyWithoutYearFormat = 'DD MMM';
 export const timeOnlyFormat = 'HH:mm a';
-export const dayHourFormat = 'MMM DD, HH:mm a';
+export const dayHourFormat = 'MMM D, HH:mm a';

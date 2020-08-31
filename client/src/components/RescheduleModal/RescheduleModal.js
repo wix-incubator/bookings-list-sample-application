@@ -3,9 +3,9 @@ import {st, classes} from './RescheduleModal.st.css';
 import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification} from 'wix-style-react';
 import {inject, observer} from 'mobx-react';
 import {raiseNotification, translate} from '../../utils';
-import {formatDate} from 'wix-style-react/src/LocaleUtils';
 import RescheduleBox from '../RescheduleBox';
 import RescheduleBoxSkeleton from '../RescheduleBox/RescheduleBoxSkeleton';
+import moment from 'moment-timezone';
 
 const MAX_SLOTS_AMOUNT = 5;
 
@@ -94,7 +94,7 @@ export default class RescheduleModal extends React.PureComponent {
         }
 
         const {formInfo: {contactDetails: {firstName}}, bookedEntity: {title, singleSession, setOfSessions}} = data;
-        const startDate = formatDate(new Date(singleSession ? singleSession.start : setOfSessions.firstSessionStart), 'MMM DD');
+        const startDate = moment(singleSession ? singleSession.start : setOfSessions.firstSessionStart).format('MMM DD');
 
         return (
             <Box direction="vertical">

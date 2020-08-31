@@ -1,11 +1,11 @@
 import React from 'react';
-import {formatDate} from 'wix-style-react/src/LocaleUtils';
 import {observer} from 'mobx-react';
 import {dayHourFormat, getTimeDifference, isBookingOneOnOne} from '../../../utils';
 import {classes, st} from '../BookingsListColumns.st.css';
 import NotAvailable from '../NotAvailable/NotAvailable';
 import DateAndTimeSmall from 'wix-ui-icons-common/DateAndTimeSmall';
 import ColumnText from '../ColumnText/ColumnText';
+import moment from 'moment-timezone';
 
 const ServiceAndSession = observer((props) => {
     const {services, onCalendarClick, data: {booking, focused}} = props;
@@ -19,15 +19,15 @@ const ServiceAndSession = observer((props) => {
     const {singleSession, setOfSessions} = bookedEntity;
 
     const sessionInfo = singleSession ?
-        `${formatDate(new Date(singleSession.start), dayHourFormat)} - ${getTimeDifference(singleSession.start, singleSession.end)}h`
+        `${moment(singleSession.start).format(dayHourFormat)} - ${getTimeDifference(singleSession.start, singleSession.end)}h`
         :
-        `${formatDate(new Date(setOfSessions.firstSessionStart), dayHourFormat)}`;
+        `${moment(setOfSessions.firstSessionStart).format(dayHourFormat)}`;
 
     return (
         <div className={st(classes.rowDisplayContainer)}>
             <div className={st(classes.columnDisplayContainer)}>
                 <ColumnText>{service.info.name}</ColumnText>
-                <ColumnText size="tiny">
+                <ColumnText size="tiny" isRTL={true}>
                     {sessionInfo}
                 </ColumnText>
             </div>
