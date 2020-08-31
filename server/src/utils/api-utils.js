@@ -1,14 +1,17 @@
 const axios = require('axios');
 const {HTTP_STATUS} = require('../constants');
-const {getRequestConfig, getInstanceIdFromRequestHeaders, getTokensFromWix, getAccessToken, getRefreshToken, getAppInstance} = require('./authentication-utils');
+const {getSiteProperties, getRequestConfig, getInstanceIdFromRequestHeaders, getTokensFromWix, getAccessToken, getRefreshToken, getAppInstance} = require('./authentication-utils');
 
 async function getConstants(refreshToken) {
     const config = await getRequestConfig(refreshToken);
     const servicesResponse = (await axios.get('services', config)).data;
     const resourcesResponse = (await axios.get('resources', config)).data;
+    const siteProperties = await getSiteProperties(refreshToken);
+
     const response = {
         services: servicesResponse.services,
-        resources: resourcesResponse.resources
+        resources: resourcesResponse.resources,
+        siteProperties: siteProperties.properties
     };
     return {response, code: HTTP_STATUS.SUCCESS};
 }
