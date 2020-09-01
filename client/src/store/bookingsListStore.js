@@ -213,7 +213,7 @@ class BookingsListStore {
             dateRange.startTime = {'$gte': filters.startTime};
         }
         if (filters.endTime) {
-            dateRange.endTime = {'$lt': filters.endTime};
+            dateRange.endTime = {'$lte': filters.endTime};
         }
 
         return {
