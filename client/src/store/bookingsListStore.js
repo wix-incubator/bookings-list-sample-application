@@ -41,6 +41,7 @@ const initialState = {
     paging: {offset: 0, limit: 15},
     services: {},
     resources: {},
+    siteProperties: {},
     staff: {},
     bookingsEntries: [],
     bookingsMetadata: null,
@@ -149,6 +150,11 @@ class BookingsListStore {
         }, {});
     };
 
+    @action('Set site properites')
+    setSiteProperties = (siteProperties) => {
+        this.store.siteProperties = siteProperties;
+    };
+
     @action('Set bookingsMetadata')
     setBookingsMetadata = (bookingsMetadata) => {
         this.store.bookingsMetadata = bookingsMetadata;
@@ -159,9 +165,10 @@ class BookingsListStore {
         try {
             const result = await getData('constants');
             const {data} = result;
-            const {services, resources} = data;
+            const {services, resources, siteProperties} = data;
             this.setServices(services);
             this.setResources(resources);
+            this.setSiteProperties(siteProperties);
             this.store.constantsLoaded = true;
         } catch (e) {
             handleResponseError(e);

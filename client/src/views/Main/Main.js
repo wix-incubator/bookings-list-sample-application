@@ -7,16 +7,29 @@ import {getDefaultValue} from '../../components/CalendarPanelDatePicker/Calendar
 import RescheduleModal from '../../components/RescheduleModal';
 import PaymentModal from '../../components/PaymentModal';
 import ReplaceStaffModal from '../../components/ReplaceStaffModal';
+import moment from 'moment-timezone';
 
 @inject('bookingsListStore')
 @observer
 export default class Main extends React.Component {
 
     componentDidMount() {
-        const {bookingsListStore} = this.props;
-        this._onFiltersChanged('dateRange', getDefaultValue());
-        bookingsListStore.loadConstants();
+        this._init();
     }
+
+    _init = async () => {
+        const {bookingsListStore} = this.props;
+        await bookingsListStore.loadConstants();
+        try {
+            const {siteProperties} = bookingsListStore.store;
+            const {timeZone, locale: {languageCode}} = siteProperties;
+            moment.tz.setDefault(timeZone);
+            moment.locale(languageCode);
+        } catch (e) {
+            console.log('Locale Setup Failure', e);
+        }
+        this._onFiltersChanged('dateRange', getDefaultValue());
+    };
 
     _onFiltersChanged = (name, value) => {
         const {bookingsListStore} = this.props;
