@@ -9,7 +9,7 @@ import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = false;
+const USE_MOCK = process.env.USE_MOCKS === 'true';
 
 const rescheduleModalInitialState = {
     isOpen: false,

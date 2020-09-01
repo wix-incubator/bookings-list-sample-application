@@ -13,12 +13,12 @@ import './base.st.css';
 const container = document.body.appendChild(document.createElement('div'));
 
 ReactDOM.render(
-    <>
-        <I18nextProvider i18n={i18n}>
-            <Provider mobxRoot={mobxRoot} {...mobxRoot}>
-                <App/>
-            </Provider>
-        </I18nextProvider>
-    </>,
-    container
+  <>
+    <I18nextProvider i18n={i18n}>
+      <Provider mobxRoot={mobxRoot} {...mobxRoot}>
+        <App/>
+      </Provider>
+    </I18nextProvider>
+  </>,
+  container
 );

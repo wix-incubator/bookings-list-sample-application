@@ -3,6 +3,7 @@ const {StylableWebpackPlugin} = require('@stylable/webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -72,9 +73,12 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.mjs', '.js', '.json']
+        extensions: ['.ts', '.tsx', '.mjs', '.js', '.json', '.jsx']
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env.USE_MOCKS': JSON.stringify(process.env.USE_MOCKS)
+        }),
         new Dotenv(),
         new StylableWebpackPlugin(),
         new HtmlWebpackPlugin({title: 'Bookings List'}),
