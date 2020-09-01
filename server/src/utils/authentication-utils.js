@@ -5,6 +5,20 @@ const {APP_ID, APP_SECRET} = require('../config');
 const AUTH_PROVIDER_BASE_URL = 'https://www.wix.com/oauth';
 const INSTANCE_API_URL = 'https://dev.wix.com/api/v1';
 const BOOKINGS_API_URL = 'https://www.wixapis.com/bookings/v1';
+const WIX_APIS_BASE_URL = 'https://www.wixapis.com';
+
+async function getSiteProperties(refreshToken) {
+    const {access_token} = await getAccessToken(refreshToken);
+
+    const options = {
+        baseURL: WIX_APIS_BASE_URL,
+        headers: {
+            authorization: access_token
+        }
+    };
+
+    return (await axios.get('site-properties/v4/properties', options)).data;
+}
 
 async function getRequestConfig(refreshToken, params) {
     const {access_token} = await getAccessToken(refreshToken);
@@ -83,6 +97,7 @@ async function getAppInstance(refreshToken) {
 }
 
 module.exports = {
+    getSiteProperties,
     getRequestConfig,
     getInstanceIdFromRequestHeaders,
     getTokensFromWix,

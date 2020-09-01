@@ -10,10 +10,19 @@ import {BookingTime, ClientName, ServiceAndSession, Staff, BookingAndAttendance,
 
 function getDefaultPresets() {
     return [
+         {
+            id: 0,
+            selectedDays: {
+                from: addDays(-90),
+                to: addDays(0)
+            },
+            value: translate('lastNDays', {count: 90})
+        },
+
         {
             id: 1,
             selectedDays: {
-                from: new Date(),
+                from: addDays(0),
                 to: addDays(30)
             },
             value: translate('nextNDays', {count: 30})
@@ -21,7 +30,7 @@ function getDefaultPresets() {
             id: 2,
 
             selectedDays: {
-                from: new Date(),
+                from: addDays(0),
                 to: addDays(7)
             },
             value: translate('nextNDays', {count: 7})

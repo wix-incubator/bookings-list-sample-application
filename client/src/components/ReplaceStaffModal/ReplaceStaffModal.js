@@ -3,7 +3,7 @@ import {st, classes} from './ReplaceStaffModal.st.css';
 import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification, Dropdown} from 'wix-style-react';
 import {inject, observer} from 'mobx-react';
 import {raiseNotification, translate} from '../../utils';
-import {formatDate} from 'wix-style-react/src/LocaleUtils';
+import moment from 'moment-timezone';
 
 @inject('bookingsListStore')
 @observer
@@ -93,7 +93,7 @@ export default class ReplaceStaffModal extends React.PureComponent {
         }
 
         const {formInfo: {contactDetails: {firstName}}, bookedEntity: {title, singleSession, setOfSessions}} = data;
-        const startDate = formatDate(new Date(singleSession ? singleSession.start : setOfSessions.firstSessionStart), 'HH:mm, MMM DD');
+        const startDate = moment(singleSession ? singleSession.start : setOfSessions.firstSessionStart).format('HH:mm, MMM DD');
 
         return (
             <Box direction="vertical">
