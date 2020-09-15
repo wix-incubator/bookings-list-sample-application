@@ -2,8 +2,16 @@
 ![Bookings List GIF](readme-images/wix-bookings-list-low.gif)
 
 ### Introduction
-We developed this sample application to give an example of Wix Bookings REST API usages and how you can use it to extend
-the functionality of our platform. You can use this repository as a code example or you can install it on your store and use it out of the box.
+This is a sample app that we have created for the Wix Bookings REST API. 
+
+It enables you to:
+* View all bookings in a list format (instead of calendar)
+* Filter the view by date and/or status
+* Update attendance and payments directly from this list.
+
+* QUESTION - can one sort from this view?
+
+Use this repository as a code example to further build an app of your own, or install it on your store and use it out of the box.
 
 ### Technology Stack
 
@@ -16,11 +24,20 @@ We used React, mobX & Express in this sample application.
 1. Yarn
 
 #### Installation Steps
-1. Follow the instructions of creating an Wix application [here](https://github.com/wix-incubator/sample-wix-rest-app)
+1. Follow the instructions of creating an Wix application [here](https://github.com/wix-incubator/sample-wix-rest-app).   QUESTION - this links to a private wix repo - shouldn't it link to the public wix-docs.
+
 1. Clone the repository
-1. Rename the `.env.example` files inside the client & the server folders to `.env`
+1. Rename the `.env.example` files inside the client & the server folders to `.env`. 
+
+QUESTION - when I did this, I didn't find any of these files.
+
 1. Update the settings in the `.env` files to your configuration
+
+QUESTION - does the user understand this or do we need to give more details to what "your configuration" is?
+
 1. Run the SQL migration script to setup the DB structure - [migration.sql](migration.sql)
+
+QUESTION - Again, does our user understand this?
 
 ### Running the project
 1. cd client && yarn start
