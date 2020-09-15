@@ -24,7 +24,7 @@ We used React, mobX & Express in this sample application.
 1. Yarn
 
 #### Installation Steps
-1. Follow the instructions of creating an Wix application [here](https://github.com/wix-incubator/sample-wix-rest-app).   QUESTION - this links to a private wix repo - shouldn't it link to the public wix-docs.
+1. Follow the instructions of creating a Wix application [here](https://github.com/wix-incubator/sample-wix-rest-app).   QUESTION - this links to a private wix repo - shouldn't it link to the public wix-docs.
 
 1. Clone the repository.
 1. Rename the `.env.example` files inside the client & the server folders to `.env`. 
