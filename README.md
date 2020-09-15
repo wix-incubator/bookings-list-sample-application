@@ -26,19 +26,21 @@ We used React, mobX & Express in this sample application.
 #### Installation Steps
 1. Follow the instructions of creating an Wix application [here](https://github.com/wix-incubator/sample-wix-rest-app).   QUESTION - this links to a private wix repo - shouldn't it link to the public wix-docs.
 
-1. Clone the repository
+1. Clone the repository.
 1. Rename the `.env.example` files inside the client & the server folders to `.env`. 
 
 QUESTION - when I did this, I didn't find any of these files.
 
-1. Update the settings in the `.env` files to your configuration
+1. Update the settings in the `.env` files to your configuration.
 
 QUESTION - does the user understand this or do we need to give more details to what "your configuration" is?
 
-1. Run the SQL migration script to setup the DB structure - [migration.sql](migration.sql)
+1. Run the SQL migration script to setup the DB structure - [migration.sql](migration.sql).
 
 QUESTION - Again, does our user understand this?
 
-### Running the project
+### Run the project
+QUESTION - does the user understand what this is?
+
 1. cd client && yarn start
 1. cd server && yarn start 
