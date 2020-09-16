@@ -9,7 +9,7 @@ It enables you to:
 * Filter the view by date and/or status
 * Update attendance and payments directly from this list.
 
-Use this repository as a code example to further build an app of your own, or install it on your store and use it out of the box.
+Use this repository as a code example to further build an app of your own, or install it on your store and use it out of the box. See [here](https://dev.wix.com/api/rest/wix-bookings) for the Bookings API documentation.
 
 ### Technology Stack
 
