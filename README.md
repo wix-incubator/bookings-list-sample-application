@@ -18,6 +18,8 @@ We used React, mobX & Express in this sample application.
 ### Bookings API Endpoints List
 This is a list of all the API endpoint we've used during the development of the app:
 
+<!-- Mark as Paid  is not in public docs - will it work? -->
+
 1. [List Services](https://dev.wix.com/api/rest/wix-bookings/services/service/list-services)
 1. [List Resources](https://dev.wix.com/api/rest/wix-bookings/resources/list-resources)
 1. [Bookings Reader List](https://dev.wix.com/api/rest/wix-bookings/bookings/bookings-reader/list)
@@ -37,25 +39,25 @@ This is a list of all the API endpoint we've used during the development of the 
 
 #### Installation Steps
 
-// QUESTION - this linked to https://github.com/wix-incubator/sample-wix-rest-app  I changed it to link to the documentation tutorials which are more updated
-// and relevant to TPA.
+<!--  QUESTION - this linked to https://github.com/wix-incubator/sample-wix-rest-app  -->
+<!-- I changed it to link to the documentation tutorials which are more updated and relevant to TPA.  -->
 
 1. Follow the instructions of creating a Wix application [here](https://dev.wix.com/api/rest/tutorials/create-your-wix-app).   
 1. Clone the repository.
 1. Rename the `.env.example` files inside the client & the server folders to `.env`. 
 
-// QUESTION - when I did this, I didn't find any of these files.
+<!-- QUESTION - when I did this, I didn't find any of these files. -->
 
 1. Update the settings in the `.env` files to your configuration.
 
-// QUESTION - does the user understand this or do we need to give more details to what "your configuration" is?
+<!-- QUESTION - does the user understand this or do we need to give more details to what "your configuration" is? -->
 
 1. Run the migration SQL query in order to set up your DB structure - [migration.sql](migration.sql).
 
-// QUESTION - Again, does our user understand this?
+<!--  QUESTION - Again, does our user understand this? -->
 
 ### Run the project
-// QUESTION - does the user understand what this is?
+<!--  QUESTION - does the user understand what this is?  -->
 1. Run the app:
   * **cd client && yarn start**
   * **cd server && yarn start** 
