@@ -22,9 +22,11 @@ We used React, mobX & Express in this sample application.
 1. Yarn
 
 #### Installation Steps
-1. Follow the instructions of creating a Wix application [here](https://dev.wix.com/api/rest/tutorials/create-your-wix-app).   
-// QUESTION - this linked to https://github.com/wix-incubator/sample-wix-rest-app  I changed it to the public docs. .
 
+// QUESTION - this linked to https://github.com/wix-incubator/sample-wix-rest-app  I changed it to link to the documentation tutorials which are more updated
+// and relevant to TPA.
+
+1. Follow the instructions of creating a Wix application [here](https://dev.wix.com/api/rest/tutorials/create-your-wix-app).   
 1. Clone the repository.
 1. Rename the `.env.example` files inside the client & the server folders to `.env`. 
 
@@ -34,12 +36,12 @@ We used React, mobX & Express in this sample application.
 
 // QUESTION - does the user understand this or do we need to give more details to what "your configuration" is?
 
-1. Run the SQL migration script to setup the DB structure - [migration.sql](migration.sql).
+1. Run the migration SQL query in order to set up your DB structure - [migration.sql](migration.sql).
 
 // QUESTION - Again, does our user understand this?
 
 ### Run the project
-QUESTION - does the user understand what this is?
-
-1. cd client && yarn start
-1. cd server && yarn start 
+// QUESTION - does the user understand what this is?
+1. Run the app:
+  * **cd client && yarn start**
+  * **cd server && yarn start** 
