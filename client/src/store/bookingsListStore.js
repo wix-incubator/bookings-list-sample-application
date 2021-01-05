@@ -226,6 +226,7 @@ class BookingsListStore {
         return {
             withBookingAllowedActions: true,
             'query.filter.stringValue': {
+                staffMember: filters.staffMember,
                 status: filters.status,
                 ...dateRange
             }

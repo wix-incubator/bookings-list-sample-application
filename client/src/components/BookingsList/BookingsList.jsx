@@ -48,6 +48,12 @@ const getBookingStatuses = () => [
     // {id: 'UNDEFINED', value: translate('BookingStatus.undefined')}
 ];
 
+const getStaffMembers = (staff) => {
+    return staff.map((staffMember) => {
+        return {id: staffMember.id, value: staffMember.name}
+    })
+};
+
 @observer
 export default class BookingsList extends React.Component {
 
@@ -101,12 +107,20 @@ export default class BookingsList extends React.Component {
         this.props.onFilterChanged('status', bookingStatus.id);
     };
 
+    _onStaffMemberChanged = (staffMember) => {
+        const {filters} = this.props;
+        if (filters.staffMember === staffMember.id) {
+            return;
+        }
+        this.props.onFilterChanged('staffMember', staffMember.id);
+    };
+
     _onBookingSortChanged = (column) => {
         this.props.onSortChanged(column.fieldName);
     };
 
     _renderBookingsListToolbar = () => {
-        const {filters} = this.props;
+        const {filters, staff} = this.props;
 
         return (
             <Card>
@@ -129,6 +143,19 @@ export default class BookingsList extends React.Component {
                                     onSelect={this._onBookingStatusChanged}
                                     onClear={this._onBookingStatusChanged}
                                     closeOnSelect={false} // not sure why this is working this way... bug in the library?
+                                />
+                            </TableToolbar.Label>
+                        </TableToolbar.Item>
+                        <TableToolbar.Item>
+                            <TableToolbar.Label>
+                                <Dropdown
+                                    roundInput
+                                    placeholder={translate('StaffFilter.placeHolder')}
+                                    options={getStaffMembers(Object.values(this.props.staff))}
+                                    selectedId={filters.staffMember}
+                                    onSelect={this._onStaffMemberChanged}
+                                    onClear={this._onStaffMemberChanged}
+                                    closeOnSelect={false}
                                 />
                             </TableToolbar.Label>
                         </TableToolbar.Item>
@@ -210,7 +237,6 @@ export default class BookingsList extends React.Component {
 
     render() {
         const {setRowFocused} = this.props;
-
         return (
             <div className={st(classes.bookingsListContainer)}>
                 <BookingNotification/>

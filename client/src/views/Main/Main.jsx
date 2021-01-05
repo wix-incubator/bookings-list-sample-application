@@ -66,6 +66,7 @@ export default class Main extends React.Component {
         }
 
         return {
+            staffMember: filters.staffMember,
             status: filters.status,
             dateRange
         };

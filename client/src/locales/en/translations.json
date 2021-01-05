@@ -109,5 +109,8 @@
     "creditCard": "Credit Card",
     "payPal": "PayPal",
     "offline": "Offline"
+  },
+  "StaffFilter": {
+    "placeHolder": "All Staff Members"
   }
 }
