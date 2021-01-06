@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {st, classes} from './BookingsList.st.css';
-import {Page, Table, Card, TableToolbar, Dropdown, Loader} from 'wix-style-react';
+import {Page, Table, Card, TableToolbar, Dropdown, Loader, MultiSelectCheckbox} from 'wix-style-react';
 import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
 import {addDays, translate} from '../../utils';
 import {observer} from 'mobx-react';
@@ -130,6 +130,13 @@ export default class BookingsList extends React.Component {
                                     onClear={this._onBookingStatusChanged}
                                     closeOnSelect={false} // not sure why this is working this way... bug in the library?
                                 />
+                            </TableToolbar.Label>
+                        </TableToolbar.Item>
+                        <TableToolbar.Item>
+                            <TableToolbar.Label>
+                                <MultiSelectCheckbox>
+                                    
+                                </MultiSelectCheckbox>
                             </TableToolbar.Label>
                         </TableToolbar.Item>
                     </TableToolbar.ItemGroup>
