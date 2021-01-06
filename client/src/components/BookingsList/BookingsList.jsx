@@ -135,7 +135,10 @@ export default class BookingsList extends React.Component {
                         <TableToolbar.Item>
                             <TableToolbar.Label>
                                 <MultiSelectCheckbox>
-                                    
+                                    {/* options={optionsList}
+                                    selectedOptions={selectedOptions}
+                                    onSelect={this.onSelect}
+                                    onDeselect={this.onDeselect} */}
                                 </MultiSelectCheckbox>
                             </TableToolbar.Label>
                         </TableToolbar.Item>
@@ -217,7 +220,7 @@ export default class BookingsList extends React.Component {
 
     render() {
         const {setRowFocused} = this.props;
-
+        console.logx(this.props.services)
         return (
             <div className={st(classes.bookingsListContainer)}>
                 <BookingNotification/>
