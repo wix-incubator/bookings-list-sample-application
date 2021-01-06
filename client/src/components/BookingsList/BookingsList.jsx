@@ -23,6 +23,7 @@ import {
   PaymentStatus,
   Payment,
 } from '../BookingsListColumns';
+import BuildersExample from './BuildersExample';
 
 function getDefaultPresets() {
   return [
@@ -154,12 +155,13 @@ export default class BookingsList extends React.Component {
             </TableToolbar.Item>
             <TableToolbar.Item>
               <TableToolbar.Label>
-                <MultiSelectCheckbox>
+                <BuildersExample />
+                {/* <MultiSelectCheckbox>
                   options={getServices(Object.values(services))}
-                  {/* selectedOptions={selectedOptions}
-                                    onSelect={this.onSelect}
-                                    onDeselect={this.onDeselect} */}
-                </MultiSelectCheckbox>
+                  selectedOptions={selectedOptions}
+                  onSelect={this.onSelect}
+                  onDeselect={this.onDeselect}
+                </MultiSelectCheckbox> */}
               </TableToolbar.Label>
             </TableToolbar.Item>
           </TableToolbar.ItemGroup>
