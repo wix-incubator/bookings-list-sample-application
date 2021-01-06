@@ -1,4 +1,4 @@
-# Wix Bookings List - Sample Application
+# Wix Bookings List - Sample Application 
 ![Bookings List GIF](readme-images/wix-bookings-list-low.gif)
 
 ### Introduction
