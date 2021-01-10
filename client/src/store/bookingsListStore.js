@@ -1,11 +1,11 @@
-import { observable, action } from 'mobx';
+import {observable, action} from 'mobx';
 import axiosInstance from '../network';
 import mockData from './mockData';
-import { SORT_ORDER } from './constants';
-import { handleResponseError, pause } from '../utils';
-import { uuid } from 'uuidv4';
-import { get } from 'lodash';
-import { formatDate } from 'wix-style-react/src/LocaleUtils';
+import {SORT_ORDER} from './constants';
+import {handleResponseError, pause} from '../utils';
+import {uuid} from 'uuidv4';
+import {get} from 'lodash';
+import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
 const USE_MOCK = process.env.USE_MOCKS === 'true';
@@ -16,7 +16,7 @@ const rescheduleModalInitialState = {
     selectedSlot: null,
     data: null,
     loading: false,
-    errorMessage: '',
+    errorMessage: ''
 };
 
 const replaceStaffModalInitialState = {
@@ -25,19 +25,19 @@ const replaceStaffModalInitialState = {
     selectedStaffMember: null,
     data: null,
     loading: false,
-    errorMessage: '',
+    errorMessage: ''
 };
 
 const paymentModalInitialState = {
     isOpen: false,
     data: null,
-    loading: false,
+    loading: false
 };
 
 const initialState = {
     filters: {},
     sort: {},
-    paging: { offset: 0, limit: 15 },
+    paging: {offset: 0, limit: 15},
     services: {},
     resources: {},
     siteProperties: {},
@@ -48,7 +48,7 @@ const initialState = {
     replaceStaffModal: replaceStaffModalInitialState,
     paymentModal: paymentModalInitialState,
     loadingBookings: true,
-    constantsLoaded: false,
+    constantsLoaded: false
 };
 
 /**
@@ -60,7 +60,7 @@ const initialState = {
  */
 const getData = async (endpoint, config) => {
     if (USE_MOCK && mockData[endpoint]) {
-        return { data: mockData[endpoint] };
+        return {data: mockData[endpoint]};
     }
 
     return axiosInstance.get(`/${endpoint}`, config);
@@ -77,7 +77,7 @@ const getData = async (endpoint, config) => {
 const postData = async (endpoint, payload, config) => {
     if (USE_MOCK && mockData[endpoint]) {
         await pause(2000);
-        return { data: mockData[endpoint] };
+        return {data: mockData[endpoint]};
     }
 
     return axiosInstance.post(`/${endpoint}`, payload, config);
@@ -86,7 +86,7 @@ const postData = async (endpoint, payload, config) => {
 const patchData = async (endpoint, payload, config) => {
     if (USE_MOCK && mockData[endpoint]) {
         await pause(2000);
-        return { data: mockData[endpoint] };
+        return {data: mockData[endpoint]};
     }
 
     return axiosInstance.patch(`/${endpoint}`, payload, config);
@@ -120,7 +120,7 @@ class BookingsListStore {
     setBookingsEntries = (bookingsEntries, concatenate) => {
         const mappedData = bookingsEntries.map((bookingsEntry) => ({
             ...bookingsEntry,
-            focused: false,
+            focused: false
         }));
         if (concatenate) {
             this.store.bookingsEntries.push(...mappedData);
@@ -166,8 +166,8 @@ class BookingsListStore {
     loadConstants = async () => {
         try {
             const result = await getData('constants');
-            const { data } = result;
-            const { services, resources, siteProperties } = data;
+            const {data} = result;
+            const {services, resources, siteProperties} = data;
             this.setServices(services);
             this.setResources(resources);
             this.setSiteProperties(siteProperties);
@@ -181,7 +181,7 @@ class BookingsListStore {
     updateFilters = (name, value) => {
         this.store.filters = {
             ...this.store.filters,
-            [name]: value,
+            [name]: value
         };
     };
 
@@ -198,7 +198,7 @@ class BookingsListStore {
         const fieldNameSort = this.store.sort[fieldName];
         if (!fieldNameSort) {
             // first click => order by ASC
-            this.store.sort[fieldName] = { fieldName, order: SORT_ORDER.ASC };
+            this.store.sort[fieldName] = {fieldName, order: SORT_ORDER.ASC};
         } else if (fieldNameSort && fieldNameSort.order === SORT_ORDER.ASC) {
             // second click => order by DESC
             fieldNameSort.order = SORT_ORDER.DESC;
@@ -212,17 +212,17 @@ class BookingsListStore {
     updatePaging = (name, value) => {
         this.store.paging = {
             ...this.store.paging,
-            [name]: value,
+            [name]: value
         };
     };
 
     prepareFilters = (filters, staff) => {
         const dateRange = {};
         if (filters.startTime) {
-            dateRange.startTime = { $gte: filters.startTime };
+            dateRange.startTime = {$gte: filters.startTime};
         }
         if (filters.endTime) {
-            dateRange.endTime = { $lte: filters.endTime };
+            dateRange.endTime = {$lte: filters.endTime};
         }
         const staffMember = {};
         if (filters.staffMember && staff[filters.staffMember]) {
@@ -233,8 +233,8 @@ class BookingsListStore {
             'query.filter.stringValue': {
                 status: filters.status,
                 ...dateRange,
-                ...staffMember,
-            },
+                ...staffMember
+            }
         };
     };
 
@@ -245,7 +245,7 @@ class BookingsListStore {
      */
     prepareSort = (sort) => {
         const sortParams = Object.keys(sort).reduce((acc, key) => {
-            acc.push({ ...sort[key] });
+            acc.push({...sort[key]});
 
             return acc;
         }, []);
@@ -272,19 +272,19 @@ class BookingsListStore {
 
     @action('Fetch data')
     fetchData = async (concatenate = false) => {
-        const { filters, sort, paging, staff } = this.store;
+        const {filters, sort, paging, staff} = this.store;
         const requestConfig = {
             params: {
                 ...this.prepareFilters(filters, staff),
                 ...this.prepareSort(sort),
-                ...this.preparePaging(paging),
-            },
+                ...this.preparePaging(paging)
+            }
         };
 
         this.setLoadingBookings(true);
         try {
             const result = await getData('bookings', requestConfig);
-            const { data } = result;
+            const {data} = result;
             this.setBookingsEntries(data.bookingsEntries, concatenate);
             this.setBookingsMetadata(data.metadata);
         } catch (e) {
@@ -318,13 +318,13 @@ class BookingsListStore {
              }`;
 
             const result = await postData(`calendar/listSlots`, requestBody, {
-                headers: { 'Content-Type': 'application/json' },
+                headers: {'Content-Type': 'application/json'}
             });
-            const { data } = result;
+            const {data} = result;
 
             const slots = data.slots.map((slot) => ({
                 ...slot,
-                clientId: uuid(),
+                clientId: uuid()
             }));
 
             this.setRescheduleModalData('slots', slots);
@@ -339,7 +339,7 @@ class BookingsListStore {
         try {
             const requestBody = {
                 participantNotification: {
-                    notifyParticipants: false,
+                    notifyParticipants: false
                 },
                 createSession: {
                     scheduleId: selectedSlot.scheduleId,
@@ -347,14 +347,14 @@ class BookingsListStore {
                     end: selectedSlot.end,
                     affectedSchedules: selectedSlot.affectedSchedules.map((affectedSchedule) => ({
                         scheduleId: affectedSchedule.scheduleId,
-                        transparency: affectedSchedule.transparency,
-                    })),
-                },
+                        transparency: affectedSchedule.transparency
+                    }))
+                }
             };
 
             const result = await postData(`bookings/${bookingId}/reschedule`, requestBody);
-            const { data } = result;
-            const { booking } = data;
+            const {data} = result;
+            const {booking} = data;
             const bookingEntryIndex = this.store.bookingsEntries.findIndex(
                 (bookingEntry) => bookingEntry.booking.id === bookingId
             );
@@ -396,19 +396,19 @@ class BookingsListStore {
                 payload: {
                     session: {
                         affectedSchedules: [
-                            { scheduleId: staffMemberScheduleId, transparency: 'BUSY' },
+                            {scheduleId: staffMemberScheduleId, transparency: 'BUSY'}
                         ],
-                        start: { timestamp: startTimestamp },
-                        end: { timestamp: endTimestamp },
+                        start: {timestamp: startTimestamp},
+                        end: {timestamp: endTimestamp}
                     },
                     updated: {
-                        paths: ['affectedSchedules'],
-                    },
-                },
+                        paths: ['affectedSchedules']
+                    }
+                }
             };
 
             const result = await patchData(`bookings/${bookingId}/replaceStaff`, requestBody);
-            const { booking } = result.data;
+            const {booking} = result.data;
             const bookingEntryIndex = this.store.bookingsEntries.findIndex(
                 (bookingEntry) => bookingEntry.booking.id === bookingId
             );
@@ -434,27 +434,27 @@ class BookingsListStore {
                 staffMember.schedules.map((schedule) => schedule.id)
             );
 
-            const { singleSession = {} } = booking.bookedEntity;
-            const { start: from, end: to } = singleSession;
+            const {singleSession = {}} = booking.bookedEntity;
+            const {start: from, end: to} = singleSession;
 
             const requestBody = `{
                 "query": {
                    "filter": "{\\"scheduleIds\\":[\\"${scheduleIds.join(
-                       '\\",\\"'
-                   )}\\"],\\"from\\":\\"${formatDate(from)}\\",\\"to\\":\\"${formatDate(
+                '\\",\\"'
+            )}\\"],\\"from\\":\\"${formatDate(from)}\\",\\"to\\":\\"${formatDate(
                 to
             )}\\",\\"isAvailable\\": true}"
                  }
              }`;
 
             const result = await postData(`calendar/listSlots`, requestBody, {
-                headers: { 'Content-Type': 'application/json' },
+                headers: {'Content-Type': 'application/json'}
             });
-            const { data } = result;
+            const {data} = result;
 
             const slots = data.slots.map((slot) => ({
                 ...slot,
-                clientId: uuid(),
+                clientId: uuid()
             }));
 
             this.setReplaceStaffModalData('slots', slots);
@@ -481,8 +481,8 @@ class BookingsListStore {
     markBookingAsPaid = async (bookingId) => {
         try {
             const result = await postData(`bookings/${bookingId}/markAsPaid`);
-            const { data } = result;
-            const { booking } = data;
+            const {data} = result;
+            const {booking} = data;
             const bookingEntryIndex = this.store.bookingsEntries.findIndex(
                 (bookingEntry) => bookingEntry.booking.id === bookingId
             );
@@ -551,14 +551,14 @@ class BookingsListStore {
             const requestBody = {
                 attendanceInfo: {
                     attendanceStatus,
-                    numberOfAttendees,
-                },
+                    numberOfAttendees
+                }
             };
             this.setBookingLoading(bookingId, true);
             const result = await postData(`bookings/${bookingId}/setAttendance`, requestBody);
             this.setBookingLoading(bookingId, false);
-            const { data } = result;
-            const { booking } = data;
+            const {data} = result;
+            const {booking} = data;
             const bookingEntryIndex = this.store.bookingsEntries.findIndex(
                 (bookingEntry) => bookingEntry.booking.id === bookingId
             );
