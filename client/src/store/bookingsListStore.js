@@ -7,9 +7,8 @@ import {uuid} from 'uuidv4';
 import {get} from 'lodash';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
-
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = process.env.USE_MOCKS === 'true';
+const USE_MOCK = process.env.USE_MOCKS === 'true' || true;
 
 const rescheduleModalInitialState = {
     isOpen: false,
@@ -35,12 +34,20 @@ const paymentModalInitialState = {
     loading: false
 };
 
+const servicesGroupsInitialState = {
+    INDIVIDUAL: [],
+    GROUP: [],
+    COURSE: []
+};
+
 const initialState = {
     filters: {},
     sort: {},
     paging: {offset: 0, limit: 15},
+    servicesGroups: servicesGroupsInitialState,
     services: {},
     resources: {},
+    schedules: {},
     siteProperties: {},
     staff: {},
     bookingsEntries: [],
@@ -119,7 +126,10 @@ class BookingsListStore {
 
     @action('Set bookings entries')
     setBookingsEntries = (bookingsEntries, concatenate) => {
-        const mappedData = bookingsEntries.map(bookingsEntry => ({...bookingsEntry, focused: false}));
+        const mappedData = bookingsEntries.map((bookingsEntry) => ({
+            ...bookingsEntry,
+            focused: false
+        }));
         if (concatenate) {
             this.store.bookingsEntries.push(...mappedData);
         } else {
@@ -127,9 +137,26 @@ class BookingsListStore {
         }
     };
 
+    @action('Set schedules')
+    setSchedules = (schedules) => {
+        this.store.schedules = schedules.reduce((acc, curr) => {
+            acc[curr.id] = curr;
+            return acc;
+        }, {});
+    };
+
     @action('Set services')
     setServices = (services) => {
         this.store.services = services.reduce((acc, curr) => {
+            // Filling servicesGroups with data for services filter
+            if (curr.status !== 'CANCELLED') {
+                curr.scheduleIds.forEach((scheduleId) => {
+                    const schedule = this.store.schedules[scheduleId];
+                    schedule.tags.forEach((tag) =>
+                        this.store.servicesGroups[tag].push({value: curr.info.name, id: curr.id})
+                    );
+                });
+            }
             acc[curr.id] = curr;
             return acc;
         }, {});
@@ -165,7 +192,8 @@ class BookingsListStore {
         try {
             const result = await getData('constants');
             const {data} = result;
-            const {services, resources, siteProperties} = data;
+            const {services, resources, schedules, siteProperties} = data;
+            this.setSchedules(schedules);
             this.setServices(services);
             this.setResources(resources);
             this.setSiteProperties(siteProperties);
@@ -217,10 +245,10 @@ class BookingsListStore {
     prepareFilters = (filters) => {
         const dateRange = {};
         if (filters.startTime) {
-            dateRange.startTime = {'$gte': filters.startTime};
+            dateRange.startTime = {$gte: filters.startTime};
         }
         if (filters.endTime) {
-            dateRange.endTime = {'$lte': filters.endTime};
+            dateRange.endTime = {$lte: filters.endTime};
         }
 
         return {
@@ -311,10 +339,12 @@ class BookingsListStore {
                  }
              }`;
 
-            const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
+            const result = await postData(`calendar/listSlots`, requestBody, {
+                headers: {'Content-Type': 'application/json'}
+            });
             const {data} = result;
 
-            const slots = data.slots.map(slot => ({
+            const slots = data.slots.map((slot) => ({
                 ...slot,
                 clientId: uuid()
             }));
@@ -337,19 +367,23 @@ class BookingsListStore {
                     scheduleId: selectedSlot.scheduleId,
                     start: selectedSlot.start,
                     end: selectedSlot.end,
-                    affectedSchedules: selectedSlot.affectedSchedules.map(affectedSchedule => ({scheduleId: affectedSchedule.scheduleId, transparency: affectedSchedule.transparency}))
+                    affectedSchedules: selectedSlot.affectedSchedules.map((affectedSchedule) => ({
+                        scheduleId: affectedSchedule.scheduleId,
+                        transparency: affectedSchedule.transparency
+                    }))
                 }
             };
 
             const result = await postData(`bookings/${bookingId}/reschedule`, requestBody);
             const {data} = result;
             const {booking} = data;
-            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(
+                (bookingEntry) => bookingEntry.booking.id === bookingId
+            );
             if (bookingEntryIndex > -1 && booking) {
                 this.store.bookingsEntries[bookingEntryIndex].booking = booking;
             }
             return true;
-
         } catch (e) {
             const message = get(e, 'response.data.message');
             this.setRescheduleModalData('errorMessage', message);
@@ -371,13 +405,21 @@ class BookingsListStore {
     };
 
     @action('Replace staff member')
-    replaceStaffMember = async (bookingId, sessionId, staffMemberScheduleId, startTimestamp, endTimestamp) => {
+    replaceStaffMember = async (
+        bookingId,
+        sessionId,
+        staffMemberScheduleId,
+        startTimestamp,
+        endTimestamp
+    ) => {
         try {
             const requestBody = {
                 sessionId,
                 payload: {
                     session: {
-                        affectedSchedules: [{scheduleId: staffMemberScheduleId, transparency: 'BUSY'}],
+                        affectedSchedules: [
+                            {scheduleId: staffMemberScheduleId, transparency: 'BUSY'}
+                        ],
                         start: {timestamp: startTimestamp},
                         end: {timestamp: endTimestamp}
                     },
@@ -389,8 +431,12 @@ class BookingsListStore {
 
             const result = await patchData(`bookings/${bookingId}/replaceStaff`, requestBody);
             const {booking} = result.data;
-            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
-            const bookingIndexTest = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === booking.id);
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(
+                (bookingEntry) => bookingEntry.booking.id === bookingId
+            );
+            const bookingIndexTest = this.store.bookingsEntries.findIndex(
+                (bookingEntry) => bookingEntry.booking.id === booking.id
+            );
             if (bookingEntryIndex > -1 && booking) {
                 this.store.bookingsEntries[bookingEntryIndex].booking = booking;
             }
@@ -406,21 +452,29 @@ class BookingsListStore {
     fetchAvailableStaff = async (booking) => {
         this.setReplaceStaffModalData('loading', true);
         try {
-            const scheduleIds = Object.values(this.store.staff).flatMap(staffMember => staffMember.schedules.map(schedule => schedule.id));
+            const scheduleIds = Object.values(this.store.staff).flatMap((staffMember) =>
+                staffMember.schedules.map((schedule) => schedule.id)
+            );
 
             const {singleSession = {}} = booking.bookedEntity;
             const {start: from, end: to} = singleSession;
 
             const requestBody = `{
                 "query": {
-                   "filter": "{\\"scheduleIds\\":[\\"${scheduleIds.join('\\",\\"')}\\"],\\"from\\":\\"${formatDate(from)}\\",\\"to\\":\\"${formatDate(to)}\\",\\"isAvailable\\": true}"
+                   "filter": "{\\"scheduleIds\\":[\\"${scheduleIds.join(
+                '\\",\\"'
+            )}\\"],\\"from\\":\\"${formatDate(from)}\\",\\"to\\":\\"${formatDate(
+                to
+            )}\\",\\"isAvailable\\": true}"
                  }
              }`;
 
-            const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
+            const result = await postData(`calendar/listSlots`, requestBody, {
+                headers: {'Content-Type': 'application/json'}
+            });
             const {data} = result;
 
-            const slots = data.slots.map(slot => ({
+            const slots = data.slots.map((slot) => ({
                 ...slot,
                 clientId: uuid()
             }));
@@ -451,7 +505,9 @@ class BookingsListStore {
             const result = await postData(`bookings/${bookingId}/markAsPaid`);
             const {data} = result;
             const {booking} = data;
-            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(
+                (bookingEntry) => bookingEntry.booking.id === bookingId
+            );
             if (bookingEntryIndex > -1 && booking) {
                 this.store.bookingsEntries[bookingEntryIndex].booking = booking;
             }
@@ -469,7 +525,9 @@ class BookingsListStore {
 
     @action('Set booking loading')
     setBookingLoading = (bookingId, loading) => {
-        const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+        const bookingEntryIndex = this.store.bookingsEntries.findIndex(
+            (bookingEntry) => bookingEntry.booking.id === bookingId
+        );
         if (bookingEntryIndex > -1) {
             this.store.bookingsEntries[bookingEntryIndex].booking.loading = loading;
         }
@@ -481,7 +539,9 @@ class BookingsListStore {
             this.setBookingLoading(bookingId, true);
             const result = await postData(`bookings/${bookingId}/confirm`);
             this.setBookingLoading(bookingId, false);
-            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(
+                (bookingEntry) => bookingEntry.booking.id === bookingId
+            );
             if (bookingEntryIndex > -1) {
                 this.store.bookingsEntries[bookingEntryIndex].booking.status = 'CONFIRMED';
             }
@@ -496,7 +556,9 @@ class BookingsListStore {
             this.setBookingLoading(bookingId, true);
             const result = await postData(`bookings/${bookingId}/decline`);
             this.setBookingLoading(bookingId, false);
-            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(
+                (bookingEntry) => bookingEntry.booking.id === bookingId
+            );
             if (bookingEntryIndex > -1) {
                 this.store.bookingsEntries[bookingEntryIndex].booking.status = 'DECLINED';
             }
@@ -504,7 +566,6 @@ class BookingsListStore {
             handleResponseError(e);
         }
     };
-
 
     @action('Set attendance')
     setAttendance = async (bookingId, attendanceStatus, numberOfAttendees) => {
@@ -520,7 +581,9 @@ class BookingsListStore {
             this.setBookingLoading(bookingId, false);
             const {data} = result;
             const {booking} = data;
-            const bookingEntryIndex = this.store.bookingsEntries.findIndex(bookingEntry => bookingEntry.booking.id === bookingId);
+            const bookingEntryIndex = this.store.bookingsEntries.findIndex(
+                (bookingEntry) => bookingEntry.booking.id === bookingId
+            );
             if (bookingEntryIndex > -1 && booking) {
                 this.store.bookingsEntries[bookingEntryIndex].booking = booking;
             }

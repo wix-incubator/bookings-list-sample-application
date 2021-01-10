@@ -152,7 +152,7 @@ export default class Main extends React.Component {
 
     render() {
         const {bookingsListStore} = this.props;
-        const {constantsLoaded, loadingBookings, services, staff, bookingsEntries, bookingsMetadata, sort} = bookingsListStore.store;
+        const {constantsLoaded, loadingBookings, services, staff, bookingsEntries, bookingsMetadata, sort, servicesGroups} = bookingsListStore.store;
 
         return (
             <div className={st(classes.mainContainer)}>
@@ -162,6 +162,7 @@ export default class Main extends React.Component {
                 <BookingsList
                     bookingsMetadata={bookingsMetadata}
                     services={services}
+                    servicesGroups={servicesGroups}
                     staff={staff}
                     bookingEntries={bookingsEntries}
                     onRowClick={this._onRowClick}

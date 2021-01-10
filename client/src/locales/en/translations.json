@@ -109,5 +109,10 @@
     "creditCard": "Credit Card",
     "payPal": "PayPal",
     "offline": "Offline"
+  },
+  "ServicesFilterHeadlines": {
+    "INDIVIDUAL": "Appointments",
+    "GROUP": "Classes",
+    "COURSE": "Courses"
   }
 }
