@@ -6,11 +6,13 @@ async function getConstants(refreshToken) {
     const config = await getRequestConfig(refreshToken);
     const servicesResponse = (await axios.get('services', config)).data;
     const resourcesResponse = (await axios.get('resources', config)).data;
+    const schedulesResponse = (await axios.get('calendar/schedules', config)).data;
     const siteProperties = await getSiteProperties(refreshToken);
 
     const response = {
         services: servicesResponse.services,
         resources: resourcesResponse.resources,
+        schedules: schedulesResponse.schedules,
         siteProperties: siteProperties.properties
     };
     return {response, code: HTTP_STATUS.SUCCESS};
