@@ -153,7 +153,7 @@ class BookingsListStore {
                 curr.scheduleIds.forEach((scheduleId) => {
                     const schedule = this.store.schedules[scheduleId];
                     schedule.tags.forEach((tag) =>
-                        this.store.servicesGroups[tag].push({value: curr.info.name, id: curr.id})
+                        this.store.servicesGroups[tag].push({value: curr.info.name, id: scheduleId})
                     );
                 });
             }
@@ -255,6 +255,7 @@ class BookingsListStore {
             withBookingAllowedActions: true,
             'query.filter.stringValue': {
                 status: filters.status,
+                services: filters.services,
                 ...dateRange
             }
         };

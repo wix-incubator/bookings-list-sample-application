@@ -67,6 +67,7 @@ export default class Main extends React.Component {
 
         return {
             status: filters.status,
+            services: filters.services,
             dateRange
         };
     };

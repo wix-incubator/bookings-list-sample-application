@@ -131,8 +131,14 @@ export default class BookingsList extends React.Component {
         }
     };
 
+    _onSelect = (optionId) => {
+        const {filters} = this.props;
+        this.props.onFilterChanged('services', [...filters.services, optionId]);
+        console.logx(filters.services);
+    }
+
     _renderBookingsListToolbar = () => {
-        const {filters, servicesGroups} = this.props;
+        const {filters} = this.props;
         const options = [];
         this._getOptionsList(options);
         return (
@@ -161,8 +167,8 @@ export default class BookingsList extends React.Component {
                             <TableToolbar.Label>
                                 <MultiSelectCheckbox
                                     options={options}
-                                    // selectedOptions={selectedOptions}
-                                    // onSelect={this.onSelect}
+                                    // selectedOptions={filters}
+                                    onSelect={this._onSelect}
                                     // onDeselect={this.onDeselect}
                                 />
                             </TableToolbar.Label>
