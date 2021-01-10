@@ -8,7 +8,7 @@ import {get} from 'lodash';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = process.env.USE_MOCKS === 'true' || true;
+const USE_MOCK = process.env.USE_MOCKS === 'true' || false;
 
 const rescheduleModalInitialState = {
     isOpen: false,
@@ -153,7 +153,10 @@ class BookingsListStore {
                 curr.scheduleIds.forEach((scheduleId) => {
                     const schedule = this.store.schedules[scheduleId];
                     schedule.tags.forEach((tag) =>
-                        this.store.servicesGroups[tag].push({value: curr.info.name, id: scheduleId})
+                        this.store.servicesGroups[tag].push({
+                            value: curr.info.name,
+                            id: scheduleId
+                        })
                     );
                 });
             }
@@ -255,7 +258,7 @@ class BookingsListStore {
             withBookingAllowedActions: true,
             'query.filter.stringValue': {
                 status: filters.status,
-                services: filters.services,
+                scheduleId: filters.services,
                 ...dateRange
             }
         };

@@ -111,8 +111,8 @@
     "offline": "Offline"
   },
   "ServicesFilterHeadlines": {
-    "INDIVIDUAL": "Appointments",
-    "GROUP": "Classes",
-    "COURSE": "Courses"
+    "INDIVIDUAL": "Filter by Appointments",
+    "GROUP": "Filter by Classes",
+    "COURSE": "Filter by Courses"
   }
 }

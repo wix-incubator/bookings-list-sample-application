@@ -8,7 +8,7 @@ import {
     TableToolbar,
     Dropdown,
     Loader,
-    MultiSelectCheckbox, listItemSectionBuilder, listItemSelectBuilder
+    MultiSelectCheckbox, listItemSectionBuilder
 } from 'wix-style-react';
 import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
 import {addDays, translate} from '../../utils';
@@ -131,11 +131,15 @@ export default class BookingsList extends React.Component {
         }
     };
 
-    _onSelect = (optionId) => {
+    _onServiceOptionDeselect = (optionScheduleId) => {
         const {filters} = this.props;
-        this.props.onFilterChanged('services', [...filters.services, optionId]);
-        console.logx(filters.services);
-    }
+        this.props.onFilterChanged('services', filters.services.filter((service) => service !== optionScheduleId));
+    };
+
+    _onServiceOptionSelect = (optionScheduleId) => {
+        const {filters} = this.props;
+        this.props.onFilterChanged('services', [...(filters.services || []), optionScheduleId]);
+    };
 
     _renderBookingsListToolbar = () => {
         const {filters} = this.props;
@@ -167,9 +171,9 @@ export default class BookingsList extends React.Component {
                             <TableToolbar.Label>
                                 <MultiSelectCheckbox
                                     options={options}
-                                    // selectedOptions={filters}
-                                    onSelect={this._onSelect}
-                                    // onDeselect={this.onDeselect}
+                                    selectedOptions={filters.services}
+                                    onSelect={this._onServiceOptionSelect}
+                                    onDeselect={this._onServiceOptionDeselect}
                                 />
                             </TableToolbar.Label>
                         </TableToolbar.Item>
