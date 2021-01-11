@@ -1,27 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {st, classes} from './BookingsList.st.css';
-import {
-    Page,
-    Table,
-    Card,
-    TableToolbar,
-    Dropdown,
-    Loader
-} from 'wix-style-react';
+import {Page, Table, Card, TableToolbar, Dropdown, Loader} from 'wix-style-react';
 import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
 import {addDays, translate} from '../../utils';
 import {observer} from 'mobx-react';
 import BookingNotification from '../BookingNotification/BookingNotification';
-import {
-    BookingTime,
-    ClientName,
-    ServiceAndSession,
-    Staff,
-    BookingAndAttendance,
-    PaymentStatus,
-    Payment
-} from '../BookingsListColumns';
+import {BookingTime, ClientName, ServiceAndSession, Staff, BookingAndAttendance, PaymentStatus, Payment} from '../BookingsListColumns';
 import ServicesFilter from '../ServicesFilter/ServicesFilter';
 
 function getDefaultPresets() {
@@ -34,7 +19,6 @@ function getDefaultPresets() {
             },
             value: translate('lastNDays', {count: 90})
         },
-
         {
             id: 1,
             selectedDays: {

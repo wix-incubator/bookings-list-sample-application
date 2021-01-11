@@ -8,7 +8,7 @@ import {get} from 'lodash';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = process.env.USE_MOCKS === 'true' || false;
+const USE_MOCK = process.env.USE_MOCKS === 'true';
 
 const rescheduleModalInitialState = {
     isOpen: false,
@@ -248,10 +248,10 @@ class BookingsListStore {
     prepareFilters = (filters) => {
         const dateRange = {};
         if (filters.startTime) {
-            dateRange.startTime = {$gte: filters.startTime};
+            dateRange.startTime = {'$gte': filters.startTime};
         }
         if (filters.endTime) {
-            dateRange.endTime = {$lte: filters.endTime};
+            dateRange.endTime = {'$lte': filters.endTime};
         }
 
         return {
