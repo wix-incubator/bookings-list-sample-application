@@ -7,8 +7,7 @@ import {
     Card,
     TableToolbar,
     Dropdown,
-    Loader,
-    MultiSelectCheckbox, listItemSectionBuilder
+    Loader
 } from 'wix-style-react';
 import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
 import {addDays, translate} from '../../utils';
@@ -23,6 +22,7 @@ import {
     PaymentStatus,
     Payment
 } from '../BookingsListColumns';
+import ServicesFilter from '../ServicesFilter/ServicesFilter';
 
 function getDefaultPresets() {
     return [
@@ -67,6 +67,7 @@ const getBookingStatuses = () => [
 
 @observer
 export default class BookingsList extends React.Component {
+
     _renderBookingsListHeaderTitle = () => {
         const {constantsLoaded, bookingsMetadata} = this.props;
 
@@ -121,30 +122,10 @@ export default class BookingsList extends React.Component {
         this.props.onSortChanged(column.fieldName);
     };
 
-    _getOptionsList = (options) => {
-        const {servicesGroups} = this.props;
-        for (const serviceGroup in servicesGroups) {
-            if (servicesGroups[serviceGroup] !== []) {
-                options.push(listItemSectionBuilder({title: translate(`ServicesFilterHeadlines.${serviceGroup}`)}));
-                options.push(...servicesGroups[serviceGroup]);
-            }
-        }
-    };
-
-    _onServiceOptionDeselect = (optionScheduleId) => {
-        const {filters} = this.props;
-        this.props.onFilterChanged('services', filters.services.filter((service) => service !== optionScheduleId));
-    };
-
-    _onServiceOptionSelect = (optionScheduleId) => {
-        const {filters} = this.props;
-        this.props.onFilterChanged('services', [...(filters.services || []), optionScheduleId]);
-    };
-
     _renderBookingsListToolbar = () => {
-        const {filters} = this.props;
-        const options = [];
-        this._getOptionsList(options);
+
+        const {filters, servicesGroups, onFilterChanged} = this.props;
+
         return (
             <Card>
                 <TableToolbar>
@@ -167,16 +148,7 @@ export default class BookingsList extends React.Component {
                                 />
                             </TableToolbar.Label>
                         </TableToolbar.Item>
-                        <TableToolbar.Item>
-                            <TableToolbar.Label>
-                                <MultiSelectCheckbox
-                                    options={options}
-                                    selectedOptions={filters.services}
-                                    onSelect={this._onServiceOptionSelect}
-                                    onDeselect={this._onServiceOptionDeselect}
-                                />
-                            </TableToolbar.Label>
-                        </TableToolbar.Item>
+                        <ServicesFilter filters={filters} servicesGroups={servicesGroups} onFilterChanged={onFilterChanged}/>
                     </TableToolbar.ItemGroup>
                 </TableToolbar>
             </Card>

@@ -114,5 +114,6 @@
     "INDIVIDUAL": "Filter by Appointments",
     "GROUP": "Filter by Classes",
     "COURSE": "Filter by Courses"
-  }
+  },
+  "ServicesFilterPlaceholder": "All Services"
 }
