@@ -110,10 +110,10 @@
     "payPal": "PayPal",
     "offline": "Offline"
   },
-  "ServicesFilterHeadlines": {
-    "INDIVIDUAL": "Filter by Appointments",
-    "GROUP": "Filter by Classes",
-    "COURSE": "Filter by Courses"
-  },
-  "ServicesFilterPlaceholder": "All Services"
+  "ServicesFilter": {
+    "individual": "Filter by Appointments",
+    "group": "Filter by Classes",
+    "course": "Filter by Courses",
+    "placeholder": "All Services"
+  }
 }

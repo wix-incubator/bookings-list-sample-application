@@ -45,7 +45,7 @@ const initialState = {
     sort: {},
     paging: {offset: 0, limit: 15},
     servicesGroups: servicesGroupsInitialState,
-    services: {}, // TODO: change 'services' to 'sheduleIds'
+    services: {},
     resources: {},
     schedules: {},
     siteProperties: {},
@@ -148,7 +148,7 @@ class BookingsListStore {
     @action('Set services')
     setServices = (services) => {
         this.store.services = services.reduce((acc, curr) => {
-            // Filling servicesGroups with data for services filter // TODO: change 'services' to 'sheduleIds'
+            // Filling servicesGroups with data for services filter
             if (curr.status !== 'CANCELLED') {
                 curr.scheduleIds.forEach((scheduleId) => {
                     const schedule = this.store.schedules[scheduleId];
@@ -258,7 +258,7 @@ class BookingsListStore {
             withBookingAllowedActions: true,
             'query.filter.stringValue': {
                 status: filters.status,
-                scheduleId: filters.services, // TODO: change 'services' to 'sheduleIds'
+                scheduleId: filters.services,
                 ...dateRange
             }
         };

@@ -15,8 +15,8 @@ export default class ServicesFilter extends React.Component {
     _getOptionsList = (options) => {
         const {servicesGroups} = this.props;
         for (const serviceGroup in servicesGroups) {
-            if (servicesGroups[serviceGroup] !== []) {
-                options.push(listItemSectionBuilder({title: translate(`ServicesFilterHeadlines.${serviceGroup}`)}));
+            if (servicesGroups[serviceGroup].length) {
+                options.push(listItemSectionBuilder({title: translate(`ServicesFilter.${serviceGroup.toLowerCase()}`)}));
                 options.push(...servicesGroups[serviceGroup]);
             }
         }
@@ -32,7 +32,6 @@ export default class ServicesFilter extends React.Component {
 
     _onServiceFilterClose = () => {
         const {onFilterChanged, filters} = this.props;
-        console.logx(!isEqual(filters.services, this.state.selectedServices));
         if (!isEqual(filters.services, this.state.selectedServices)) {
             onFilterChanged('services', this.state.selectedServices);
         }
@@ -49,7 +48,7 @@ export default class ServicesFilter extends React.Component {
                         selectedOptions={this.state.selectedServices}
                         onSelect={this._onServiceOptionSelect}
                         onDeselect={this._onServiceOptionDeselect}
-                        placeholder={translate('ServicesFilterPlaceholder')}
+                        placeholder={translate('ServicesFilter.placeholder')}
                         onClose={this._onServiceFilterClose}
                     />
                 </TableToolbar.Label>
