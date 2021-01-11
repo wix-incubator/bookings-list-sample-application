@@ -6,15 +6,7 @@ import CalendarPanelDatePicker from '../CalendarPanelDatePicker';
 import {addDays, translate} from '../../utils';
 import {observer} from 'mobx-react';
 import BookingNotification from '../BookingNotification/BookingNotification';
-import {
-    BookingTime,
-    ClientName,
-    ServiceAndSession,
-    Staff,
-    BookingAndAttendance,
-    PaymentStatus,
-    Payment
-} from '../BookingsListColumns';
+import {BookingTime, ClientName, ServiceAndSession, Staff, BookingAndAttendance, PaymentStatus, Payment} from '../BookingsListColumns';
 
 function getDefaultPresets() {
     return [
@@ -34,8 +26,7 @@ function getDefaultPresets() {
                 to: addDays(30)
             },
             value: translate('nextNDays', {count: 30})
-        },
-        {
+        }, {
             id: 2,
 
             selectedDays: {
@@ -65,15 +56,14 @@ const getStaffMembers = (staff) => {
 
 @observer
 export default class BookingsList extends React.Component {
+
     _renderBookingsListHeaderTitle = () => {
         const {constantsLoaded, bookingsMetadata} = this.props;
 
-        const bookingsCount =
-            constantsLoaded && bookingsMetadata ? (
-                <h4 className={st(classes.title, classes.amount)}>
-                    {this._getBookingEntries().length}/{bookingsMetadata.totalCount}
-                </h4>
-            ) : null;
+        const bookingsCount = constantsLoaded && bookingsMetadata ?
+            <h4 className={st(classes.title, classes.amount)}>{this._getBookingEntries().length}/{bookingsMetadata.totalCount}</h4>
+            :
+            null;
 
         return (
             <div>
@@ -84,11 +74,21 @@ export default class BookingsList extends React.Component {
     };
 
     _renderBookingsListHeaderSubtitle = () => {
-        return <label>{translate('BookingsList.pageHeaderSubtitle')}</label>;
+        return (
+            <label>{translate('BookingsList.pageHeaderSubtitle')}</label>
+        );
     };
 
     _onBookingDateRangeChanged = (value) => {
         this.props.onFilterChanged('dateRange', value);
+    };
+
+    _onStaffMemberChanged = (staffMember) => {
+        const {filters} = this.props;
+        if (filters.staffMember === staffMember.id) {
+            return;
+        }
+        this.props.onFilterChanged('staffMember', staffMember.id);
     };
 
     _getCalendarPanelDatePickerProps = () => {
@@ -115,14 +115,6 @@ export default class BookingsList extends React.Component {
         this.props.onFilterChanged('status', bookingStatus.id);
     };
 
-    _onStaffMemberChanged = (staffMember) => {
-        const {filters} = this.props;
-        if (filters.staffMember === staffMember.id) {
-            return;
-        }
-        this.props.onFilterChanged('staffMember', staffMember.id);
-    };
-
     _onBookingSortChanged = (column) => {
         this.props.onSortChanged(column.fieldName);
     };
@@ -130,13 +122,16 @@ export default class BookingsList extends React.Component {
     _renderBookingsListToolbar = () => {
         const {filters, staff} = this.props;
 
+
         return (
             <Card>
                 <TableToolbar>
                     <TableToolbar.ItemGroup position="start">
                         <TableToolbar.Item>
                             <TableToolbar.Label>
-                                <CalendarPanelDatePicker {...this._getCalendarPanelDatePickerProps()} />
+                                <CalendarPanelDatePicker
+                                    {...this._getCalendarPanelDatePickerProps()}
+                                />
                             </TableToolbar.Label>
                         </TableToolbar.Item>
                         <TableToolbar.Item>
@@ -185,76 +180,33 @@ export default class BookingsList extends React.Component {
         const style = {verticalAlign: 'top'};
 
         return [
-            {
-                fieldName: 'created',
-                sortable: true,
-                localeLabelKey: 'bookingTime',
-                render: (row) => <BookingTime data={row}/>
-            },
-            {
-                fieldName: 'formInfo.contactDetails.firstName',
-                sortable: true,
-                localeLabelKey: 'clientName',
-                render: (row) => <ClientName data={row}/>
-            },
+            {fieldName: 'created', sortable: true, localeLabelKey: 'bookingTime', render: row => <BookingTime data={row}/>},
+            {fieldName: 'formInfo.contactDetails.firstName', sortable: true, localeLabelKey: 'clientName', render: row => <ClientName data={row}/>},
             {
                 fieldName: '',
                 localeLabelKey: 'serviceAndSession',
                 width: '17%',
-                render: (row) => (
-                    <ServiceAndSession
-                        services={services}
-                        onCalendarClick={this.props.openRescheduleBookingModal}
-                        data={row}
-                    />
-                )
+                render: row => <ServiceAndSession services={services} onCalendarClick={this.props.openRescheduleBookingModal} data={row}/>
             },
-            {
-                fieldName: '',
-                localeLabelKey: 'staff',
-                width: '17%',
-                render: (row) => (
-                    <Staff staff={staff} onReplaceClick={this.props.openReplaceStaffModal} data={row}/>
-                )
-            },
+            {fieldName: '', localeLabelKey: 'staff', width: '17%', render: row => <Staff staff={staff} onReplaceClick={this.props.openReplaceStaffModal} data={row}/>},
             {
                 fieldName: '',
                 localeLabelKey: 'bookingAndAttendance',
                 width: '15%',
-                render: (row) => (
-                    <BookingAndAttendance
-                        onBookingAndAttendanceStatusSelect={(option) =>
-                            this.props.onBookingAndAttendanceStatusSelect(row.booking, option)
-                        }
-                        data={row}
-                    />
-                )
+                render: row => <BookingAndAttendance onBookingAndAttendanceStatusSelect={(option) => this.props.onBookingAndAttendanceStatusSelect(row.booking, option)} data={row}/>
             },
             {
                 fieldName: '',
                 localeLabelKey: 'paymentStatus',
-                render: (row) => (
-                    <PaymentStatus
-                        onPaymentStatusSelect={(option) =>
-                            this.props.onPaymentStatusSelect(row.booking, option)
-                        }
-                        data={row}
-                    />
-                )
+                render: row => <PaymentStatus onPaymentStatusSelect={(option) => this.props.onPaymentStatusSelect(row.booking, option)} data={row}/>
             },
-            {
-                fieldName: '',
-                localeLabelKey: 'payment',
-                width: '14%',
-                render: (row) => <Payment data={row}/>
-            }
-        ].map((column) => ({
+            {fieldName: '', localeLabelKey: 'payment', width: '14%', render: row => <Payment data={row}/>}
+        ].map(column => ({
             ...column,
             style,
             title: translate(`BookingsList.TableColumnsTitles.${column.localeLabelKey}`),
             fieldName: `booking.${column.fieldName}`,
-            sortDescending:
-                sort[`booking.${column.fieldName}`] && sort[`booking.${column.fieldName}`].order === 'DESC'
+            sortDescending: sort[`booking.${column.fieldName}`] && sort[`booking.${column.fieldName}`].order === 'DESC'
         }));
     };
 
@@ -277,24 +229,21 @@ export default class BookingsList extends React.Component {
             return null;
         }
 
-        return <Table.EmptyState title={translate('BookingsList.noBookingsFound')}/>;
+        return (
+            <Table.EmptyState
+                title={translate('BookingsList.noBookingsFound')}
+            />
+        );
     };
 
     render() {
         const {setRowFocused} = this.props;
+
         return (
             <div className={st(classes.bookingsListContainer)}>
                 <BookingNotification/>
-                <Page
-                    className={st(classes.bookingsListPage)}
-                    height="100vh"
-                    scrollableContentRef={(ref) => (this.containerRef = ref)}
-                >
-                    <Page.Header
-                        className={st(classes.bookingsListHeader)}
-                        title={this._renderBookingsListHeaderTitle()}
-                        subtitle={this._renderBookingsListHeaderSubtitle()}
-                    />
+                <Page className={st(classes.bookingsListPage)} height="100vh" scrollableContentRef={ref => (this.containerRef = ref)}>
+                    <Page.Header className={st(classes.bookingsListHeader)} title={this._renderBookingsListHeaderTitle()} subtitle={this._renderBookingsListHeaderSubtitle()}/>
                     <Page.Content>
                         <Table
                             scrollElement={this.containerRef}
@@ -305,8 +254,8 @@ export default class BookingsList extends React.Component {
                             columns={this._getBookingColumns()}
                             showSelection={false}
                             onRowClick={this.props.onRowClick}
-                            onMouseEnterRow={(row) => setRowFocused(row, true)}
-                            onMouseLeaveRow={(row) => setRowFocused(row, false)}
+                            onMouseEnterRow={row => setRowFocused(row, true)}
+                            onMouseLeaveRow={row => setRowFocused(row, false)}
                             onSortClick={this._onBookingSortChanged}
                             loadMore={this.props.loadMore}
                             hasMore={this.props.hasMore}
