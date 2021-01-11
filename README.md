@@ -2,7 +2,7 @@
 ![Bookings List GIF](readme-images/wix-bookings-list-low.gif)
 
 ### Introduction
-This is a sample app that we have created for the Wix Bookings REST API.
+This is a sample app that we have created for the Wix Bookings REST API. 
 
 It enables you to:
 * View all bookings in a list format (instead of calendar)
