@@ -9,10 +9,12 @@ import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = process.env.USE_MOCKS === 'true';
+const USE_MOCK = process.env.USE_MOCKS === 'true' || true;
 
 const rescheduleModalInitialState = {
     isOpen: false,
+    selectedDate: new Date(),
+    showSlots: false,
     slots: null,
     selectedSlot: null,
     data: null,
@@ -103,6 +105,16 @@ class BookingsListStore {
     @action('Set loading bookings')
     setLoadingBookings = (loadingBookings) => {
         this.store.loadingBookings = loadingBookings;
+    };
+
+    @action ('Set reschedule date')
+    setRescheduleDate = (selectedDate) => {
+        this.store.rescheduleModal.selectedDate = selectedDate;
+    };
+
+    @action ('Toggle show reschedule slots')
+    toggleShowRescheduleSlots = () => {
+        this.store.rescheduleModal.showSlots = !this.store.rescheduleModal.showSlots;
     };
 
     @action('Set loading schedule slots')

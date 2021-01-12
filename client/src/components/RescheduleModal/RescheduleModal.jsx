@@ -1,13 +1,13 @@
 import React from 'react';
 import {st, classes} from './RescheduleModal.st.css';
-import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification} from 'wix-style-react';
+import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification, DatePicker} from 'wix-style-react';
 import {inject, observer} from 'mobx-react';
 import {raiseNotification, translate} from '../../utils';
 import RescheduleBox from '../RescheduleBox';
 import RescheduleBoxSkeleton from '../RescheduleBox/RescheduleBoxSkeleton';
 import moment from 'moment-timezone';
 
-const MAX_SLOTS_AMOUNT = 5;
+// const MAX_SLOTS_AMOUNT = 5;
 
 @inject('bookingsListStore')
 @observer
@@ -18,47 +18,47 @@ export default class RescheduleModal extends React.PureComponent {
         bookingsListStore.setRescheduleModalIsOpen(false);
     };
 
-    _onOk = async () => {
-        const {bookingsListStore} = this.props;
-        const {rescheduleModal} = bookingsListStore.store;
-        const {selectedSlot} = rescheduleModal;
-        bookingsListStore.setRescheduleModalData('loading', true);
-        const success = await bookingsListStore.rescheduleBooking(rescheduleModal.data.id, selectedSlot);
-        bookingsListStore.setRescheduleModalData('loading', false);
-        if (success) {
-            raiseNotification(translate('RescheduleModal.rescheduleSuccessNotification'), 'success');
-            this._closeModal();
-        }
-    };
+    // _onOk = async () => {
+    //     const {bookingsListStore} = this.props;
+    //     const {rescheduleModal} = bookingsListStore.store;
+    //     const {selectedSlot} = rescheduleModal;
+    //     bookingsListStore.setRescheduleModalData('loading', true);
+    //     const success = await bookingsListStore.rescheduleBooking(rescheduleModal.data.id, selectedSlot);
+    //     bookingsListStore.setRescheduleModalData('loading', false);
+    //     if (success) {
+    //         raiseNotification(translate('RescheduleModal.rescheduleSuccessNotification'), 'success');
+    //         this._closeModal();
+    //     }
+    // };
 
-    _setSelectedSlot = (slot) => {
-        const {bookingsListStore} = this.props;
-        bookingsListStore.setRescheduleModalData('selectedSlot', slot);
-    };
+    // _setSelectedSlot = (slot) => {
+    //     const {bookingsListStore} = this.props;
+    //     bookingsListStore.setRescheduleModalData('selectedSlot', slot);
+    // };
 
-    _renderSlotsSkeleton = () => {
-        return (
-            <div className={st(classes.slotsContainer)}>
-                {[...Array(MAX_SLOTS_AMOUNT)].map((_, index) => <RescheduleBoxSkeleton key={index}/>)}
-            </div>
-        );
-    };
+    // _renderSlotsSkeleton = () => {
+    //     return (
+    //         <div className={st(classes.slotsContainer)}>
+    //             {[...Array(MAX_SLOTS_AMOUNT)].map((_, index) => <RescheduleBoxSkeleton key={index}/>)}
+    //         </div>
+    //     );
+    // };
 
-    _renderSlots = () => {
-        const {bookingsListStore} = this.props;
-        const {rescheduleModal} = bookingsListStore.store;
-        const {slots, selectedSlot} = rescheduleModal;
-        return (
-            <div className={st(classes.slotsContainer)}>
-                {
-                    slots.slice(0, MAX_SLOTS_AMOUNT).map((slot, index) => (
-                            <RescheduleBox key={index} onClick={this._setSelectedSlot} isSelected={slot.clientId === (selectedSlot && selectedSlot.clientId)} data={slot}/>
-                        )
-                    )
-                }
-            </div>
-        );
-    };
+    // _renderSlots = () => {
+    //     const {bookingsListStore} = this.props;
+    //     const {rescheduleModal} = bookingsListStore.store;
+    //     const {slots, selectedSlot} = rescheduleModal;
+    //     return (
+    //         <div className={st(classes.slotsContainer)}>
+    //             {
+    //                 slots.slice(0, MAX_SLOTS_AMOUNT).map((slot, index) => (
+    //                         <RescheduleBox key={index} onClick={this._setSelectedSlot} isSelected={slot.clientId === (selectedSlot && selectedSlot.clientId)} data={slot}/>
+    //                     )
+    //                 )
+    //             }
+    //         </div>
+    //     );
+    // };
 
     _renderErrorMessage = () => {
         const {bookingsListStore} = this.props;
@@ -84,6 +84,15 @@ export default class RescheduleModal extends React.PureComponent {
         );
     };
 
+    _onDateSelection = (value) => {
+        const {bookingsListStore} = this.props;
+        const {rescheduleModal} = bookingsListStore.store;
+        bookingsListStore.setRescheduleDate(value);
+        if (!rescheduleModal.showSlots) {
+            bookingsListStore.toggleShowRescheduleSlots();
+        }
+    };
+
     _renderContent = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
@@ -100,7 +109,13 @@ export default class RescheduleModal extends React.PureComponent {
             <Box direction="vertical">
                 <Text size="tiny" style={{padding: '10px 5px'}}>{translate('RescheduleModal.chooseNewSlotLabel', {name: firstName, booking: title, date: startDate})}</Text>
                 {this._renderErrorMessage()}
-                {loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots()}
+                <DatePicker
+                    placeholderText="Select Date"
+                    value={rescheduleModal.selectedDate}
+                    onChange={this._onDateSelection}
+                    excludePastDates
+                />
+                {/* {loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots()} */}
             </Box>
         );
     };
