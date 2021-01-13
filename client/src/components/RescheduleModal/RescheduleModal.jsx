@@ -18,47 +18,47 @@ export default class RescheduleModal extends React.PureComponent {
         bookingsListStore.setRescheduleModalIsOpen(false);
     };
 
-    // _onOk = async () => {
-    //     const {bookingsListStore} = this.props;
-    //     const {rescheduleModal} = bookingsListStore.store;
-    //     const {selectedSlot} = rescheduleModal;
-    //     bookingsListStore.setRescheduleModalData('loading', true);
-    //     const success = await bookingsListStore.rescheduleBooking(rescheduleModal.data.id, selectedSlot);
-    //     bookingsListStore.setRescheduleModalData('loading', false);
-    //     if (success) {
-    //         raiseNotification(translate('RescheduleModal.rescheduleSuccessNotification'), 'success');
-    //         this._closeModal();
-    //     }
-    // };
+    _onOk = async () => {
+        const {bookingsListStore} = this.props;
+        const {rescheduleModal} = bookingsListStore.store;
+        const {selectedSlot} = rescheduleModal;
+        bookingsListStore.setRescheduleModalData('loading', true);
+        const success = await bookingsListStore.rescheduleBooking(rescheduleModal.data.id, selectedSlot);
+        bookingsListStore.setRescheduleModalData('loading', false);
+        if (success) {
+            raiseNotification(translate('RescheduleModal.rescheduleSuccessNotification'), 'success');
+            this._closeModal();
+        }
+    };
 
-    // _setSelectedSlot = (slot) => {
-    //     const {bookingsListStore} = this.props;
-    //     bookingsListStore.setRescheduleModalData('selectedSlot', slot);
-    // };
+    _setSelectedSlot = (slot) => {
+        const {bookingsListStore} = this.props;
+        bookingsListStore.setRescheduleModalData('selectedSlot', slot);
+    };
 
-    // _renderSlotsSkeleton = () => {
-    //     return (
-    //         <div className={st(classes.slotsContainer)}>
-    //             {[...Array(MAX_SLOTS_AMOUNT)].map((_, index) => <RescheduleBoxSkeleton key={index}/>)}
-    //         </div>
-    //     );
-    // };
+    _renderSlotsSkeleton = () => {
+        return (
+            <div className={st(classes.slotsContainer)}>
+                {[...Array(MAX_SLOTS_AMOUNT)].map((_, index) => <RescheduleBoxSkeleton key={index}/>)}
+            </div>
+        );
+    };
 
-    // _renderSlots = () => {
-    //     const {bookingsListStore} = this.props;
-    //     const {rescheduleModal} = bookingsListStore.store;
-    //     const {slots, selectedSlot} = rescheduleModal;
-    //     return (
-    //         <div className={st(classes.slotsContainer)}>
-    //             {
-    //                 slots.slice(0, MAX_SLOTS_AMOUNT).map((slot, index) => (
-    //                         <RescheduleBox key={index} onClick={this._setSelectedSlot} isSelected={slot.clientId === (selectedSlot && selectedSlot.clientId)} data={slot}/>
-    //                     )
-    //                 )
-    //             }
-    //         </div>
-    //     );
-    // };
+    _renderSlots = () => {
+        const {bookingsListStore} = this.props;
+        const {rescheduleModal} = bookingsListStore.store;
+        const {slots, selectedSlot} = rescheduleModal;
+        return (
+            <div className={st(classes.slotsContainer)}>
+                {
+                    slots.slice(0, MAX_SLOTS_AMOUNT).map((slot, index) => (
+                            <RescheduleBox key={index} onClick={this._setSelectedSlot} isSelected={slot.clientId === (selectedSlot && selectedSlot.clientId)} data={slot}/>
+                        )
+                    )
+                }
+            </div>
+        );
+    };
 
     _renderErrorMessage = () => {
         const {bookingsListStore} = this.props;
@@ -87,10 +87,13 @@ export default class RescheduleModal extends React.PureComponent {
     _onDateSelection = (value) => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
-        bookingsListStore.setRescheduleDate(value);
+        bookingsListStore.setRescheduleModalData('selectedDate', value);
+        console.logx(value);
         if (!rescheduleModal.showSlots) {
             bookingsListStore.toggleShowRescheduleSlots();
         }
+        // bookingsListStore.fetchAvailableStaff(rescheduleModal.data.bookedEntity.scheduleId, moment(value).add(5, 'h').toISOString(), moment(value).add(24, 'h').toISOString());
+        bookingsListStore.fetchScheduleSlots(rescheduleModal.data.bookedEntity.scheduleId, moment(value).add(5, 'h').toISOString(), moment(value).add(24, 'h').toISOString());
     };
 
     _renderContent = () => {
@@ -110,7 +113,6 @@ export default class RescheduleModal extends React.PureComponent {
                 <Text size="tiny" style={{padding: '10px 5px'}}>{translate('RescheduleModal.chooseNewSlotLabel', {name: firstName, booking: title, date: startDate})}</Text>
                 {this._renderErrorMessage()}
                 <DatePicker
-                    placeholderText="Select Date"
                     value={rescheduleModal.selectedDate}
                     onChange={this._onDateSelection}
                     excludePastDates

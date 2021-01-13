@@ -96,8 +96,12 @@ export default class Main extends React.Component {
 
         bookingsListStore.setRescheduleModalIsOpen(true);
         bookingsListStore.setRescheduleModalData('data', booking);
-        bookingsListStore.fetchScheduleSlots(booking.bookedEntity.scheduleId);
     };
+
+    // _displayRescheduleSlots = (booking) => {
+    //     const {bookingsListStore} = this.props;
+    //     bookingsListStore.fetchScheduleSlots(booking.bookedEntity.scheduleId);
+    // };
 
     _openReplaceStaffModal = (booking, currentStaff) => {
         const {bookingsListStore} = this.props;
@@ -166,6 +170,7 @@ export default class Main extends React.Component {
                     bookingEntries={bookingsEntries}
                     onRowClick={this._onRowClick}
                     openRescheduleBookingModal={this._openRescheduleBookingModal}
+                    _displayRescheduleSlots={this._displayRescheduleSlots}
                     openReplaceStaffModal={this._openReplaceStaffModal}
                     onPaymentStatusSelect={this._onPaymentStatusSelect}
                     onBookingAndAttendanceStatusSelect={this._onBookingAndAttendanceStatusSelect}

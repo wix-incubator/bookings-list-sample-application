@@ -13,7 +13,7 @@ const USE_MOCK = process.env.USE_MOCKS === 'true' || true;
 
 const rescheduleModalInitialState = {
     isOpen: false,
-    selectedDate: new Date(),
+    selectedDate: null,
     showSlots: false,
     slots: null,
     selectedSlot: null,
@@ -107,12 +107,7 @@ class BookingsListStore {
         this.store.loadingBookings = loadingBookings;
     };
 
-    @action ('Set reschedule date')
-    setRescheduleDate = (selectedDate) => {
-        this.store.rescheduleModal.selectedDate = selectedDate;
-    };
-
-    @action ('Toggle show reschedule slots')
+    @action('Toggle show reschedule slots')
     toggleShowRescheduleSlots = () => {
         this.store.rescheduleModal.showSlots = !this.store.rescheduleModal.showSlots;
     };
@@ -312,20 +307,46 @@ class BookingsListStore {
         this.store.rescheduleModal[key] = value;
     };
 
+    // MICHAL: easy access
     @action('Fetch schedule data')
-    fetchScheduleSlots = async (scheduleId) => {
+    fetchScheduleSlots = async (scheduleId, from, to) => {
+        console.log(1);
         this.setLoadingScheduleSlots(true);
+        console.log(2);
+
+        // try {
+        //     const requestBody = `{
+        //         "query": {
+        //            "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"]}",
+        //            "paging": {"limit": 5}
+        //          }
+        //      }`;
+
         try {
+        //     const requestBody = JSON.stringify({
+        //         query: {
+        //             filter: {
+        //                 scheduleIds: [scheduleId],
+        //                 from: from,
+        //                 to: to,
+        //                 isAvailable: true
+        //             }
+        //         }
+        //     });
+
             const requestBody = `{
                 "query": {
-                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"]}",
-                   "paging": {"limit": 5}
+                    "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"],\\"from\\":\\"${from}\\",\\"to\\":\\"${to}\\",\\"isAvailable\\": true}"
                  }
              }`;
 
+            console.log(3);
+
+            console.log(requestBody);
             const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const {data} = result;
-
+            console.log('data:');
+            console.logx(data);
             const slots = data.slots.map(slot => ({
                 ...slot,
                 clientId: uuid()
