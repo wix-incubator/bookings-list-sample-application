@@ -15,3 +15,7 @@ export const SORT_ORDER = {
     ASC: 'ASC',
     DESC: 'DESC'
 };
+
+export const SERVICE_STATUS = {
+    CANCELLED: 'CANCELLED'
+};

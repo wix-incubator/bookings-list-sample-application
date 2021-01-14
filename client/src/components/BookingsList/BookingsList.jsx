@@ -7,7 +7,7 @@ import {addDays, translate} from '../../utils';
 import {observer} from 'mobx-react';
 import BookingNotification from '../BookingNotification/BookingNotification';
 import {BookingTime, ClientName, ServiceAndSession, Staff, BookingAndAttendance, PaymentStatus, Payment} from '../BookingsListColumns';
-import ServicesFilter from '../ServicesFilter/ServicesFilter';
+import ServicesFilter from '../ServicesFilter';
 
 function getDefaultPresets() {
     return [
@@ -133,7 +133,11 @@ export default class BookingsList extends React.Component {
                                 />
                             </TableToolbar.Label>
                         </TableToolbar.Item>
-                        <ServicesFilter filters={filters} servicesGroups={servicesGroups} onFilterChanged={onFilterChanged}/>
+                        <TableToolbar.Item>
+                            <TableToolbar.Label>
+                                <ServicesFilter filters={filters} servicesGroups={servicesGroups} onFilterChanged={onFilterChanged}/>
+                            </TableToolbar.Label>
+                        </TableToolbar.Item>
                     </TableToolbar.ItemGroup>
                 </TableToolbar>
             </Card>

@@ -1,7 +1,7 @@
 import {observable, action} from 'mobx';
 import axiosInstance from '../network';
 import mockData from './mockData';
-import {SORT_ORDER} from './constants';
+import {SORT_ORDER, SERVICE_STATUS} from './constants';
 import {handleResponseError, pause} from '../utils';
 import {uuid} from 'uuidv4';
 import {get} from 'lodash';
@@ -42,7 +42,7 @@ const servicesGroupsInitialState = {
 };
 
 const initialState = {
-    filters: {},
+    filters: {services: []},
     sort: {},
     paging: {offset: 0, limit: 15},
     servicesGroups: servicesGroupsInitialState,
@@ -147,7 +147,7 @@ class BookingsListStore {
     setServices = (services) => {
         this.store.services = services.reduce((acc, curr) => {
             // Filling servicesGroups with data for services filter
-            if (curr.status !== 'CANCELLED') {
+            if (curr.status !== SERVICE_STATUS.CANCELLED) {
                 curr.scheduleIds.forEach((scheduleId) => {
                     const schedule = this.store.schedules[scheduleId];
                     schedule.tags.forEach((tag) =>

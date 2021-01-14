@@ -23,7 +23,7 @@ export default class ServicesFilter extends React.Component {
     };
 
     _onServiceOptionSelect = (optionScheduleId) => {
-        this.setState({selectedServices: [...this.state.selectedServices || [], optionScheduleId]});
+        this.setState({selectedServices: [...this.state.selectedServices, optionScheduleId]});
     };
 
     _onServiceOptionDeselect = (optionScheduleId) => {
@@ -32,7 +32,7 @@ export default class ServicesFilter extends React.Component {
 
     _onServiceFilterClose = () => {
         const {onFilterChanged, filters} = this.props;
-        if (!isEqual(filters.services, this.state.selectedServices)) {
+        if (!isEqual(filters.services.toJS().sort(), this.state.selectedServices.sort())) {
             onFilterChanged('services', this.state.selectedServices);
         }
     };
@@ -41,18 +41,14 @@ export default class ServicesFilter extends React.Component {
         const options = [];
         this._getOptionsList(options);
         return (
-            <TableToolbar.Item>
-                <TableToolbar.Label>
-                    <MultiSelectCheckbox
-                        options={options}
-                        selectedOptions={this.state.selectedServices}
-                        onSelect={this._onServiceOptionSelect}
-                        onDeselect={this._onServiceOptionDeselect}
-                        placeholder={translate('ServicesFilter.placeholder')}
-                        onClose={this._onServiceFilterClose}
-                    />
-                </TableToolbar.Label>
-            </TableToolbar.Item>
+            <MultiSelectCheckbox
+                options={options}
+                selectedOptions={this.state.selectedServices}
+                onSelect={this._onServiceOptionSelect}
+                onDeselect={this._onServiceOptionDeselect}
+                placeholder={translate('ServicesFilter.placeholder')}
+                onClose={this._onServiceFilterClose}
+            />
         );
     }
 
