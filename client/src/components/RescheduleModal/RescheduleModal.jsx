@@ -1,13 +1,13 @@
 import React from 'react';
 import {st, classes} from './RescheduleModal.st.css';
-import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification, DatePicker} from 'wix-style-react';
+import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification} from 'wix-style-react';
 import {inject, observer} from 'mobx-react';
 import {raiseNotification, translate} from '../../utils';
 import RescheduleBox from '../RescheduleBox';
 import RescheduleBoxSkeleton from '../RescheduleBox/RescheduleBoxSkeleton';
 import moment from 'moment-timezone';
 
-// const MAX_SLOTS_AMOUNT = 5;
+const MAX_SLOTS_AMOUNT = 5;
 
 @inject('bookingsListStore')
 @observer
@@ -43,7 +43,6 @@ export default class RescheduleModal extends React.PureComponent {
             </div>
         );
     };
-
     _renderSlots = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
@@ -59,12 +58,10 @@ export default class RescheduleModal extends React.PureComponent {
             </div>
         );
     };
-
     _renderErrorMessage = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
         const {errorMessage} = rescheduleModal;
-
         return (
             <div className={st(classes.errorMessageContainer)}>
                 <Layout>
@@ -83,45 +80,23 @@ export default class RescheduleModal extends React.PureComponent {
             </div>
         );
     };
-
-    _onDateSelection = (value) => {
-        const {bookingsListStore} = this.props;
-        const {rescheduleModal} = bookingsListStore.store;
-        bookingsListStore.setRescheduleModalData('selectedDate', value);
-        console.logx(value);
-        if (!rescheduleModal.showSlots) {
-            bookingsListStore.toggleShowRescheduleSlots();
-        }
-        // bookingsListStore.fetchAvailableStaff(rescheduleModal.data.bookedEntity.scheduleId, moment(value).add(5, 'h').toISOString(), moment(value).add(24, 'h').toISOString());
-        bookingsListStore.fetchScheduleSlots(rescheduleModal.data.bookedEntity.scheduleId, moment(value).add(5, 'h').toISOString(), moment(value).add(24, 'h').toISOString());
-    };
-
     _renderContent = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
         const {loading, data, slots, errorMessage} = rescheduleModal;
-
         if (!data) {
             return null;
         }
-
         const {formInfo: {contactDetails: {firstName}}, bookedEntity: {title, singleSession, setOfSessions}} = data;
         const startDate = moment(singleSession ? singleSession.start : setOfSessions.firstSessionStart).format('MMM DD');
-
         return (
             <Box direction="vertical">
                 <Text size="tiny" style={{padding: '10px 5px'}}>{translate('RescheduleModal.chooseNewSlotLabel', {name: firstName, booking: title, date: startDate})}</Text>
                 {this._renderErrorMessage()}
-                <DatePicker
-                    value={rescheduleModal.selectedDate}
-                    onChange={this._onDateSelection}
-                    excludePastDates
-                />
-                {/* {loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots()} */}
+                {loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots()}
             </Box>
         );
     };
-
     render() {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;

@@ -93,15 +93,14 @@ export default class Main extends React.Component {
 
     _openRescheduleBookingModal = (booking) => {
         const {bookingsListStore} = this.props;
+        const from = moment(new Date).add(1, 'd').toISOString();
+        const to = moment(new Date).add(300, 'd').toISOString();
+
 
         bookingsListStore.setRescheduleModalIsOpen(true);
         bookingsListStore.setRescheduleModalData('data', booking);
+        bookingsListStore.fetchScheduleSlots(booking.bookedEntity.scheduleId, from, to);
     };
-
-    // _displayRescheduleSlots = (booking) => {
-    //     const {bookingsListStore} = this.props;
-    //     bookingsListStore.fetchScheduleSlots(booking.bookedEntity.scheduleId);
-    // };
 
     _openReplaceStaffModal = (booking, currentStaff) => {
         const {bookingsListStore} = this.props;
@@ -113,10 +112,6 @@ export default class Main extends React.Component {
             bookingsListStore.setReplaceStaffModalData('currentStaffMember', currentStaff[0]);
             bookingsListStore.setReplaceStaffModalData('selectedStaffMember', currentStaff[0]);
         }
-    };
-
-    _onRowClick = (row) => {
-        console.logx({row});
     };
 
     _onPaymentStatusSelect = (booking, option) => {
@@ -170,7 +165,6 @@ export default class Main extends React.Component {
                     bookingEntries={bookingsEntries}
                     onRowClick={this._onRowClick}
                     openRescheduleBookingModal={this._openRescheduleBookingModal}
-                    _displayRescheduleSlots={this._displayRescheduleSlots}
                     openReplaceStaffModal={this._openReplaceStaffModal}
                     onPaymentStatusSelect={this._onPaymentStatusSelect}
                     onBookingAndAttendanceStatusSelect={this._onBookingAndAttendanceStatusSelect}

@@ -9,12 +9,10 @@ import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
-const USE_MOCK = process.env.USE_MOCKS === 'true' || true;
+const USE_MOCK = process.env.USE_MOCKS === 'true';
 
 const rescheduleModalInitialState = {
     isOpen: false,
-    selectedDate: null,
-    showSlots: false,
     slots: null,
     selectedSlot: null,
     data: null,
@@ -105,11 +103,6 @@ class BookingsListStore {
     @action('Set loading bookings')
     setLoadingBookings = (loadingBookings) => {
         this.store.loadingBookings = loadingBookings;
-    };
-
-    @action('Toggle show reschedule slots')
-    toggleShowRescheduleSlots = () => {
-        this.store.rescheduleModal.showSlots = !this.store.rescheduleModal.showSlots;
     };
 
     @action('Set loading schedule slots')
@@ -307,46 +300,20 @@ class BookingsListStore {
         this.store.rescheduleModal[key] = value;
     };
 
-    // MICHAL: easy access
     @action('Fetch schedule data')
     fetchScheduleSlots = async (scheduleId, from, to) => {
-        console.log(1);
         this.setLoadingScheduleSlots(true);
-        console.log(2);
-
-        // try {
-        //     const requestBody = `{
-        //         "query": {
-        //            "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"]}",
-        //            "paging": {"limit": 5}
-        //          }
-        //      }`;
-
         try {
-        //     const requestBody = JSON.stringify({
-        //         query: {
-        //             filter: {
-        //                 scheduleIds: [scheduleId],
-        //                 from: from,
-        //                 to: to,
-        //                 isAvailable: true
-        //             }
-        //         }
-        //     });
-
             const requestBody = `{
                 "query": {
-                    "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"],\\"from\\":\\"${from}\\",\\"to\\":\\"${to}\\",\\"isAvailable\\": true}"
+                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"],\\"from\\":\\"${from}\\",\\"to\\":\\"${to}\\"}",
+                   "paging": {"limit": 5},
                  }
              }`;
 
-            console.log(3);
-
-            console.log(requestBody);
             const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const {data} = result;
-            console.log('data:');
-            console.logx(data);
+
             const slots = data.slots.map(slot => ({
                 ...slot,
                 clientId: uuid()
