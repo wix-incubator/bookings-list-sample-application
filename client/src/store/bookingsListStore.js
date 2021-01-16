@@ -306,14 +306,13 @@ class BookingsListStore {
         try {
             const requestBody = `{
                 "query": {
-                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"],\\"from\\":\\"${from}\\",\\"to\\":\\"${to}\\"}",
-                   "paging": {"limit": 5},
+                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"], \\"from\\":\\"${from}\\", \\"to\\":\\"${to}\\"}"
                  }
              }`;
 
             const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const {data} = result;
-
+            console.log(data);
             const slots = data.slots.map(slot => ({
                 ...slot,
                 clientId: uuid()

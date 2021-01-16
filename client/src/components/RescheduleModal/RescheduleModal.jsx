@@ -1,6 +1,6 @@
 import React from 'react';
 import {st, classes} from './RescheduleModal.st.css';
-import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification} from 'wix-style-react';
+import {Box, Text, MessageBoxFunctionalLayout, Modal, Layout, Cell, Notification, DatePicker} from 'wix-style-react';
 import {inject, observer} from 'mobx-react';
 import {raiseNotification, translate} from '../../utils';
 import RescheduleBox from '../RescheduleBox';
@@ -12,6 +12,11 @@ const MAX_SLOTS_AMOUNT = 5;
 @inject('bookingsListStore')
 @observer
 export default class RescheduleModal extends React.PureComponent {
+
+    constructor(props) {
+    super(props);
+    this.state = {selectedDate: null};
+  }
 
     _closeModal = () => {
         const {bookingsListStore} = this.props;
@@ -43,6 +48,7 @@ export default class RescheduleModal extends React.PureComponent {
             </div>
         );
     };
+
     _renderSlots = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
@@ -58,6 +64,7 @@ export default class RescheduleModal extends React.PureComponent {
             </div>
         );
     };
+
     _renderErrorMessage = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
@@ -80,10 +87,19 @@ export default class RescheduleModal extends React.PureComponent {
             </div>
         );
     };
+
+    _onDateSelection = (value) => {
+        const {bookingsListStore} = this.props;
+        const {rescheduleModal} = bookingsListStore.store;
+        this.setState({selectedDate: value});
+        bookingsListStore.fetchScheduleSlots(rescheduleModal.data.bookedEntity.scheduleId, moment(value).add(5, 'h').toISOString(), moment(value).add(24, 'h').toISOString());
+    };
+
     _renderContent = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
         const {loading, data, slots, errorMessage} = rescheduleModal;
+        const {selectedDate} = this.state;
         if (!data) {
             return null;
         }
@@ -93,10 +109,16 @@ export default class RescheduleModal extends React.PureComponent {
             <Box direction="vertical">
                 <Text size="tiny" style={{padding: '10px 5px'}}>{translate('RescheduleModal.chooseNewSlotLabel', {name: firstName, booking: title, date: startDate})}</Text>
                 {this._renderErrorMessage()}
-                {loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots()}
+                <DatePicker
+                    value={selectedDate}
+                    onChange={this._onDateSelection}
+                    excludePastDates
+                />
+                {/* {loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots()} */}
             </Box>
         );
     };
+
     render() {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
