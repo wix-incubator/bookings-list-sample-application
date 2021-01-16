@@ -8,12 +8,10 @@ const RescheduleBox = (props) => {
     const {data, isSelected} = props;
 
     const {start} = data;
-    const startDate = moment(start.timestamp).format(dateOnlyWithoutYearFormat);
     const startTime = moment(start.timestamp).format(timeOnlyFormat);
     return (
         <div onClick={() => props.onClick(data)} className={st(classes.rescheduleBoxContainer, classes.rescheduleBox, isSelected ? classes.rescheduleBoxSelected : null)}>
-            <Text size="tiny" className={st(classes.rescheduleBoxLabel)}>{startDate}</Text>
-            <Text size="tiny" className={st(classes.rescheduleBoxLabel)}>{startTime}</Text>
+            <Text size="medium" className={st(classes.rescheduleBoxLabel)}>{startTime}</Text>
         </div>
     );
 };

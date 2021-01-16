@@ -6,15 +6,12 @@ const RescheduleBoxSkeleton = () => {
     return (
         <Box className={st(classes.rescheduleBoxContainer)}>
             <Skeleton
+                alignment={'middle'}
                 className={st(classes.rescheduleBoxSkeleton)}
                 spacing="small"
                 content={[
                     {
                         size: 'medium',
-                        type: 'line'
-                    },
-                    {
-                        size: 'large',
                         type: 'line'
                     }
                 ]}

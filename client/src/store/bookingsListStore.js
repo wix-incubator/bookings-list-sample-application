@@ -312,7 +312,6 @@ class BookingsListStore {
 
             const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const {data} = result;
-            console.log(data);
             const slots = data.slots.map(slot => ({
                 ...slot,
                 clientId: uuid()
