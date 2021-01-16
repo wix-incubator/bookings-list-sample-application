@@ -109,6 +109,10 @@ export default class Main extends React.Component {
         }
     };
 
+    _onRowClick = (row) => {
+        console.logx({row});
+    };
+
     _onPaymentStatusSelect = (booking, option) => {
         const {bookingsListStore} = this.props;
 
