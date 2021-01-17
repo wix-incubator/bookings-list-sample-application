@@ -306,7 +306,7 @@ class BookingsListStore {
         try {
             const requestBody = `{
                 "query": {
-                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"], \\"from\\":\\"${from}\\", \\"to\\":\\"${to}\\"}"
+                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"], \\"from\\":\\"${from}\\", \\"to\\":\\"${to}\\",\\"isAvailable\\": true}"
                  }
              }`;
 
