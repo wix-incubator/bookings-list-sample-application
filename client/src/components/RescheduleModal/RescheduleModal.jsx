@@ -121,6 +121,8 @@ export default class RescheduleModal extends React.PureComponent {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
         this.setState({selectedDate: value});
+        bookingsListStore.setRescheduleModalData('slots', null);
+        bookingsListStore.setRescheduleModalData('selectedSlot', null);
         bookingsListStore.fetchScheduleSlots(rescheduleModal.data.bookedEntity.scheduleId, moment(value).add(START_HOUR_OF_DAY, 'h').toISOString(), moment(value).add(24, 'h').toISOString());
     };
 
@@ -130,14 +132,14 @@ export default class RescheduleModal extends React.PureComponent {
         const {loading, slots} = rescheduleModal;
         const {selectedDate} = this.state;
         if (selectedDate) {
-            return loading || !slots ? this._renderSlotsSkeleton() : this._renderSlots();
+            return loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots();
         }
     };
 
     _renderContent = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
-        const { data} = rescheduleModal;
+        const {data, loading} = rescheduleModal;
         const {selectedDate} = this.state;
         if (!data) {
             return null;
@@ -152,6 +154,7 @@ export default class RescheduleModal extends React.PureComponent {
                     value={selectedDate}
                     onChange={this._onDateSelection}
                     excludePastDates
+                    disabled={loading}
                 />
                 {this._displayAfterDateSelection()}
             </Box>
