@@ -1,7 +1,7 @@
 import React from 'react';
 import {st, classes} from './RescheduleBox.st.css';
 import {Text} from 'wix-style-react';
-import {dateOnlyWithoutYearFormat, timeOnlyFormat} from '../../utils';
+import {timeOnlyFormat} from '../../utils';
 import moment from 'moment-timezone';
 
 const RescheduleBox = (props) => {
