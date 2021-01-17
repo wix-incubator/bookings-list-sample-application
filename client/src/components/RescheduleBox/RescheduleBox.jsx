@@ -5,13 +5,14 @@ import {timeOnlyFormat} from '../../utils';
 import moment from 'moment-timezone';
 
 const RescheduleBox = (props) => {
-    const {data, isSelected} = props;
+    const {data, isSelected, loading} = props;
 
     const {start} = data;
     const startTime = moment(start.timestamp).format(timeOnlyFormat);
     return (
-        <div onClick={() => props.onClick(data)} className={st(classes.rescheduleBoxContainer, classes.rescheduleBox, isSelected ? classes.rescheduleBoxSelected : null)}>
-            <Text size="medium" className={st(classes.rescheduleBoxLabel)}>{startTime}</Text>
+        <div onClick={() => props.onClick(data)} className={st(classes.rescheduleBoxContainer, classes.rescheduleBox,
+            isSelected && !loading ? classes.rescheduleBoxSelected : null, loading ? classes.rescheduleBoxDisabled : classes.rescheduleBoxEnabled)}>
+            <Text size="medium" light={loading}>{startTime}</Text>
         </div>
     );
 };

@@ -41,7 +41,11 @@ export default class RescheduleModal extends React.PureComponent {
 
     _setSelectedSlot = (slot) => {
         const {bookingsListStore} = this.props;
-        bookingsListStore.setRescheduleModalData('selectedSlot', slot);
+        const {rescheduleModal} = bookingsListStore.store;
+        const {loading} = rescheduleModal;
+        if (!loading) {
+            bookingsListStore.setRescheduleModalData('selectedSlot', slot);
+        }
     };
 
     _renderSlotsSkeleton = () => {
@@ -75,7 +79,7 @@ export default class RescheduleModal extends React.PureComponent {
     _renderSlots = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
-        const {slots, selectedSlot} = rescheduleModal;
+        const {slots, selectedSlot, loading} = rescheduleModal;
         const dividedSlots = this._divideSlotsToDayParts(slots);
         return (
             <div className={st(classes.slotsContainer)}>
@@ -85,8 +89,8 @@ export default class RescheduleModal extends React.PureComponent {
                             <Text size="medium">{translate(`RescheduleModal.DayParts.${dayPart.name}`)}</Text>
                             {dividedSlots[dayPart.name] ?
                                 dividedSlots[dayPart.name].map((slot, index) =>
-                                    <RescheduleBox key={index} onClick={this._setSelectedSlot} isSelected={slot.clientId === (selectedSlot && selectedSlot.clientId)} data={slot}/>)
-                                : <Text size="medium">No Available Hours</Text>}
+                                    <RescheduleBox key={index} onClick={this._setSelectedSlot} isSelected={slot.clientId === (selectedSlot && selectedSlot.clientId)} data={slot} loading={loading}/>)
+                                : <Text size="medium">{translate('RescheduleModal.noAvailableHours')}</Text>}
                         </div>
                     );
                 })}

@@ -11,10 +11,18 @@
 .rescheduleBox {
     align-items: flex-start;
     padding: 0 10px;
+}
+
+.rescheduleBoxDisabled {
+    background-color: #b9bfc4;
+    border-color: #b9bfc4;
+}
+
+.rescheduleBoxEnabled {
     cursor: pointer;
 }
 
-.rescheduleBox:hover {
+.rescheduleBoxEnabled:hover {
     background: rgba(122, 122, 122, 0.1);
 }
 
@@ -24,9 +32,6 @@
 
 .rescheduleBoxSelected > span.rescheduleBoxLabel {
     color: #3999ec;
-}
-
-.rescheduleBoxLabel {
 }
 
 .rescheduleBoxSkeleton {
