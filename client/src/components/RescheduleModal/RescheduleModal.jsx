@@ -9,6 +9,8 @@ import moment from 'moment-timezone';
 import {range, groupBy} from 'lodash';
 
 const START_HOUR_OF_DAY = 5;
+const START_HOUR_OF_AFTERNOON = 12;
+const START_HOUR_OF_EVENING = 17;
 const PARTS_OF_DAY = [{name: 'morning', skeletonBoxes: 3}, {name: 'afternoon', skeletonBoxes: 2}, {name: 'evening', skeletonBoxes: 4}];
 
 @inject('bookingsListStore')
@@ -66,11 +68,11 @@ export default class RescheduleModal extends React.PureComponent {
     _divideSlotsToDayParts = (slots) => {
         return groupBy(slots, (slot) => {
             const startHour = moment(slot.start.timestamp).hour();
-            if (startHour >= START_HOUR_OF_DAY && startHour < 12) {
+            if (startHour >= START_HOUR_OF_DAY && startHour < START_HOUR_OF_AFTERNOON) {
                 return 'morning';
-            } else if (startHour >= 12 && startHour < 17) {
+            } else if (startHour >= START_HOUR_OF_AFTERNOON && startHour < START_HOUR_OF_EVENING) {
                 return 'afternoon';
-            } else if (startHour >= 17) {
+            } else if (startHour >= START_HOUR_OF_EVENING) {
                 return 'evening';
             }
         });
@@ -121,6 +123,9 @@ export default class RescheduleModal extends React.PureComponent {
         );
     };
 
+    /**
+     * value - a date with 00:00 time
+     **/
     _onDateSelection = (value) => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
@@ -130,13 +135,15 @@ export default class RescheduleModal extends React.PureComponent {
         bookingsListStore.fetchScheduleSlots(rescheduleModal.data.bookedEntity.scheduleId, moment(value).add(START_HOUR_OF_DAY, 'h').toISOString(), moment(value).add(24, 'h').toISOString());
     };
 
-    _displayAfterDateSelection = () => {
+    _displaySlots = () => {
         const {bookingsListStore} = this.props;
         const {rescheduleModal} = bookingsListStore.store;
         const {loading, slots} = rescheduleModal;
         const {selectedDate} = this.state;
         if (selectedDate) {
             return loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots();
+        } else {
+            return null;
         }
     };
 
@@ -160,7 +167,7 @@ export default class RescheduleModal extends React.PureComponent {
                     excludePastDates
                     disabled={loading}
                 />
-                {this._displayAfterDateSelection()}
+                {this._displaySlots()}
             </Box>
         );
     };
