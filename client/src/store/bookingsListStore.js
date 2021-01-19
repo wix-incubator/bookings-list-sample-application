@@ -1,7 +1,7 @@
 import {observable, action} from 'mobx';
 import axiosInstance from '../network';
 import mockData from './mockData';
-import {SORT_ORDER, SERVICE_STATUS} from './constants';
+import {SORT_ORDER} from './constants';
 import {handleResponseError, pause} from '../utils';
 import {uuid} from 'uuidv4';
 import {get} from 'lodash';
@@ -10,6 +10,7 @@ import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
 const USE_MOCK = process.env.USE_MOCKS === 'true';
+const CANCELLED_SERVICE_STATUS = 'CANCELLED';
 
 const rescheduleModalInitialState = {
     isOpen: false,
@@ -147,7 +148,7 @@ class BookingsListStore {
     setServices = (services) => {
         this.store.services = services.reduce((acc, curr) => {
             // Filling servicesGroups with data for services filter
-            if (curr.status !== SERVICE_STATUS.CANCELLED) {
+            if (curr.status !== CANCELLED_SERVICE_STATUS) {
                 curr.scheduleIds.forEach((scheduleId) => {
                     const schedule = this.store.schedules[scheduleId];
                     schedule.tags.forEach((tag) =>
