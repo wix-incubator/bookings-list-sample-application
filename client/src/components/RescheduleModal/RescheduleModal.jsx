@@ -142,9 +142,8 @@ export default class RescheduleModal extends React.PureComponent {
         const {selectedDate} = this.state;
         if (selectedDate) {
             return loading && !slots ? this._renderSlotsSkeleton() : this._renderSlots();
-        } else {
-            return null;
         }
+        return null;
     };
 
     _renderContent = () => {
