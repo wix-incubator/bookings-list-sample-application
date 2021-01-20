@@ -12,14 +12,15 @@ export default class ServicesFilter extends React.Component {
         };
     }
 
-    _getOptionsList = (options) => {
+    _getOptionsList = () => {
         const {servicesGroups} = this.props;
-        for (const serviceGroup in servicesGroups) {
+        return Object.keys(servicesGroups).reduce((options, serviceGroup) => {
             if (servicesGroups[serviceGroup].length) {
                 options.push(listItemSectionBuilder({title: translate(`ServicesFilter.${serviceGroup.toLowerCase()}`)}));
                 options.push(...servicesGroups[serviceGroup]);
             }
-        }
+            return options;
+        }, []);
     };
 
     _onServiceOptionSelect = (optionScheduleId) => {
@@ -38,11 +39,9 @@ export default class ServicesFilter extends React.Component {
     };
 
     render() {
-        const options = [];
-        this._getOptionsList(options);
         return (
             <MultiSelectCheckbox
-                options={options}
+                options={this._getOptionsList()}
                 selectedOptions={this.state.selectedServices}
                 onSelect={this._onServiceOptionSelect}
                 onDeselect={this._onServiceOptionDeselect}

@@ -42,8 +42,12 @@ const servicesGroupsInitialState = {
     COURSE: []
 };
 
+const filtersInitialState = {
+    services: []
+};
+
 const initialState = {
-    filters: {services: []},
+    filters: filtersInitialState,
     sort: {},
     paging: {offset: 0, limit: 15},
     servicesGroups: servicesGroupsInitialState,
