@@ -68,6 +68,7 @@ export default class Main extends React.Component {
         return {
             staffMember: filters.staffMember,
             status: filters.status,
+            services: filters.services,
             dateRange
         };
     };
@@ -94,10 +95,8 @@ export default class Main extends React.Component {
 
     _openRescheduleBookingModal = (booking) => {
         const {bookingsListStore} = this.props;
-
         bookingsListStore.setRescheduleModalIsOpen(true);
         bookingsListStore.setRescheduleModalData('data', booking);
-        bookingsListStore.fetchScheduleSlots(booking.bookedEntity.scheduleId);
     };
 
     _openReplaceStaffModal = (booking, currentStaff) => {
@@ -153,7 +152,7 @@ export default class Main extends React.Component {
 
     render() {
         const {bookingsListStore} = this.props;
-        const {constantsLoaded, loadingBookings, services, staff, bookingsEntries, bookingsMetadata, sort} = bookingsListStore.store;
+        const {constantsLoaded, loadingBookings, services, staff, bookingsEntries, bookingsMetadata, sort, servicesGroups} = bookingsListStore.store;
 
         return (
             <div className={st(classes.mainContainer)}>
@@ -163,6 +162,7 @@ export default class Main extends React.Component {
                 <BookingsList
                     bookingsMetadata={bookingsMetadata}
                     services={services}
+                    servicesGroups={servicesGroups}
                     staff={staff}
                     bookingEntries={bookingsEntries}
                     onRowClick={this._onRowClick}

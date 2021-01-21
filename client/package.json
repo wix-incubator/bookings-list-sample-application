@@ -48,8 +48,8 @@
     "uuid": "^8.2.0",
     "uuidv4": "^6.2.0",
     "wix-sdk": "^1.90.0",
-    "wix-style-react": "8.18.0",
-    "wix-ui-icons-common": "^2.0.241"
+    "wix-style-react": "9.63.0",
+    "wix-ui-icons-common": "^2.0.300"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
