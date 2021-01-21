@@ -109,5 +109,11 @@
     "creditCard": "Credit Card",
     "payPal": "PayPal",
     "offline": "Offline"
+  },
+  "ServicesFilter": {
+    "individual": "Filter by Appointments",
+    "group": "Filter by Classes",
+    "course": "Filter by Courses",
+    "placeholder": "All Services"
   }
 }

@@ -10,6 +10,7 @@ import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
 // TODO: set to false on production or get rid of the entire mocking mechanism
 const USE_MOCK = process.env.USE_MOCKS === 'true';
+const CANCELLED_SERVICE_STATUS = 'CANCELLED';
 
 const rescheduleModalInitialState = {
     isOpen: false,
@@ -35,12 +36,24 @@ const paymentModalInitialState = {
     loading: false
 };
 
+const servicesGroupsInitialState = {
+    INDIVIDUAL: [],
+    GROUP: [],
+    COURSE: []
+};
+
+const filtersInitialState = {
+    services: []
+};
+
 const initialState = {
-    filters: {},
+    filters: filtersInitialState,
     sort: {},
     paging: {offset: 0, limit: 15},
+    servicesGroups: servicesGroupsInitialState,
     services: {},
     resources: {},
+    schedules: {},
     siteProperties: {},
     staff: {},
     bookingsEntries: [],
@@ -127,9 +140,29 @@ class BookingsListStore {
         }
     };
 
+    @action('Set schedules')
+    setSchedules = (schedules) => {
+        this.store.schedules = schedules.reduce((acc, curr) => {
+            acc[curr.id] = curr;
+            return acc;
+        }, {});
+    };
+
     @action('Set services')
     setServices = (services) => {
         this.store.services = services.reduce((acc, curr) => {
+            // Filling servicesGroups with data for services filter
+            if (curr.status !== CANCELLED_SERVICE_STATUS) {
+                curr.scheduleIds.forEach((scheduleId) => {
+                    const schedule = this.store.schedules[scheduleId];
+                    schedule.tags.forEach((tag) =>
+                        this.store.servicesGroups[tag].push({
+                            value: curr.info.name,
+                            id: scheduleId
+                        })
+                    );
+                });
+            }
             acc[curr.id] = curr;
             return acc;
         }, {});
@@ -165,7 +198,8 @@ class BookingsListStore {
         try {
             const result = await getData('constants');
             const {data} = result;
-            const {services, resources, siteProperties} = data;
+            const {services, resources, schedules, siteProperties} = data;
+            this.setSchedules(schedules);
             this.setServices(services);
             this.setResources(resources);
             this.setSiteProperties(siteProperties);
@@ -227,6 +261,7 @@ class BookingsListStore {
             withBookingAllowedActions: true,
             'query.filter.stringValue': {
                 status: filters.status,
+                scheduleId: filters.services,
                 ...dateRange
             }
         };

@@ -7,10 +7,11 @@ import {addDays, translate} from '../../utils';
 import {observer} from 'mobx-react';
 import BookingNotification from '../BookingNotification/BookingNotification';
 import {BookingTime, ClientName, ServiceAndSession, Staff, BookingAndAttendance, PaymentStatus, Payment} from '../BookingsListColumns';
+import ServicesFilter from '../ServicesFilter';
 
 function getDefaultPresets() {
     return [
-         {
+        {
             id: 0,
             selectedDays: {
                 from: addDays(-90),
@@ -106,7 +107,7 @@ export default class BookingsList extends React.Component {
     };
 
     _renderBookingsListToolbar = () => {
-        const {filters} = this.props;
+        const {filters, servicesGroups, onFilterChanged} = this.props;
 
         return (
             <Card>
@@ -130,6 +131,11 @@ export default class BookingsList extends React.Component {
                                     onClear={this._onBookingStatusChanged}
                                     closeOnSelect={false} // not sure why this is working this way... bug in the library?
                                 />
+                            </TableToolbar.Label>
+                        </TableToolbar.Item>
+                        <TableToolbar.Item>
+                            <TableToolbar.Label>
+                                <ServicesFilter filters={filters} servicesGroups={servicesGroups} onFilterChanged={onFilterChanged}/>
                             </TableToolbar.Label>
                         </TableToolbar.Item>
                     </TableToolbar.ItemGroup>
@@ -269,5 +275,6 @@ BookingsList.propTypes = {
     services: PropTypes.object,
     setRowFocused: PropTypes.func,
     sort: PropTypes.object,
-    staff: PropTypes.object
+    staff: PropTypes.object,
+    servicesGroups: PropTypes.object
 };
