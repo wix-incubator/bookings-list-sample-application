@@ -34,7 +34,7 @@ export default class ServicesFilter extends React.Component {
     _onServiceFilterClose = () => {
         const {onFilterChanged, filters} = this.props;
         // toJS recursively converts an observable object to a javascript structure
-        if (!isEqual(filters.services.toJS().sort(), this.state.selectedServices.sort())) {
+        if (!isEqual(filters.services.toJS().slice().sort(), this.state.selectedServices.slice().sort())) {
             onFilterChanged('services', this.state.selectedServices);
         }
     };
