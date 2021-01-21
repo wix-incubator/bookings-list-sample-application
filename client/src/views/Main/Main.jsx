@@ -94,10 +94,8 @@ export default class Main extends React.Component {
 
     _openRescheduleBookingModal = (booking) => {
         const {bookingsListStore} = this.props;
-
         bookingsListStore.setRescheduleModalIsOpen(true);
         bookingsListStore.setRescheduleModalData('data', booking);
-        bookingsListStore.fetchScheduleSlots(booking.bookedEntity.scheduleId);
     };
 
     _openReplaceStaffModal = (booking, currentStaff) => {

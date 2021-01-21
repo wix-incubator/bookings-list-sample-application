@@ -94,5 +94,5 @@ export const isBookingSingleSession = (booking) => {
 
 export const shorthandDateOnlyFormat = 'll';
 export const dateOnlyWithoutYearFormat = 'DD MMM';
-export const timeOnlyFormat = 'HH:mm a';
-export const dayHourFormat = 'MMM D, HH:mm a';
+export const timeOnlyFormat = 'hh:mm a';
+export const dayHourFormat = 'MMM D, hh:mm a';

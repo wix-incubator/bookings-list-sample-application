@@ -87,8 +87,14 @@
     "title": "Reschedule Booking",
     "confirmButtonText": "Reschedule",
     "cancelButtonText": "Cancel",
-    "chooseNewSlotLabel": "Please choose a new slot for {{name}}'s {{booking}} booking at {{date}}:",
-    "rescheduleSuccessNotification": "The booking have been rescheduled successfully"
+    "chooseNewSlotLabel": "Please choose a date to see new possible slots for {{name}}'s {{booking}} booking at {{date}}:",
+    "rescheduleSuccessNotification": "The booking has been rescheduled successfully",
+    "DayParts": {
+      "morning": "Morning",
+      "afternoon": "Afternoon",
+      "evening": "Evening"
+    },
+    "noAvailableHours": "No Available Hours"
   },
   "ReplaceStaffModal": {
     "title": "Replace Staff Member",
@@ -96,7 +102,7 @@
     "cancelButtonText": "Cancel",
     "staffLabel": "Staff Member:",
     "chooseNewStaffLabel": "Please choose a new staff member for {{name}}'s {{booking}} booking at {{date}}:",
-    "replaceStaffSuccessNotification": "The booking have been updated successfully"
+    "replaceStaffSuccessNotification": "The booking has been updated successfully"
   },
   "PaymentModal": {
     "title": "Mark This Session as Paid?",

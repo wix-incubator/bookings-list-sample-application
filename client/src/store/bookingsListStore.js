@@ -336,19 +336,17 @@ class BookingsListStore {
     };
 
     @action('Fetch schedule data')
-    fetchScheduleSlots = async (scheduleId) => {
+    fetchScheduleSlots = async (scheduleId, from, to) => {
         this.setLoadingScheduleSlots(true);
         try {
             const requestBody = `{
                 "query": {
-                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"]}",
-                   "paging": {"limit": 5}
+                   "filter": "{\\"scheduleIds\\":[\\"${scheduleId}\\"], \\"from\\":\\"${from}\\", \\"to\\":\\"${to}\\",\\"isAvailable\\": true}"
                  }
              }`;
 
             const result = await postData(`calendar/listSlots`, requestBody, {headers: {'Content-Type': 'application/json'}});
             const {data} = result;
-
             const slots = data.slots.map(slot => ({
                 ...slot,
                 clientId: uuid()
