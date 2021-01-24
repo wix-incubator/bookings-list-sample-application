@@ -121,5 +121,8 @@
     "group": "Filter by Classes",
     "course": "Filter by Courses",
     "placeholder": "All Services"
+  },
+  "StaffFilter": {
+    "placeHolder": "All Staff Members"
   }
 }

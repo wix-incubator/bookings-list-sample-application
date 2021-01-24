@@ -78,6 +78,21 @@ export default class BookingsList extends React.Component {
         this.props.onFilterChanged('dateRange', value);
     };
 
+    _getStaffMembers = () => {
+        const {staff} = this.props;
+        return Object.values(staff).map((staffMember) => {
+            return {id: staffMember.id, value: staffMember.name};
+        });
+    };
+
+    _onStaffMemberChanged = (staffMember) => {
+        const {filters} = this.props;
+        if (filters.staffMember === staffMember.id) {
+            return;
+        }
+        this.props.onFilterChanged('staffMember', staffMember.id);
+    };
+
     _getCalendarPanelDatePickerProps = () => {
         const {filters, calendarPresets} = this.props;
         return {
@@ -136,6 +151,19 @@ export default class BookingsList extends React.Component {
                         <TableToolbar.Item>
                             <TableToolbar.Label>
                                 <ServicesFilter filters={filters} servicesGroups={servicesGroups} onFilterChanged={onFilterChanged}/>
+                            </TableToolbar.Label>
+                        </TableToolbar.Item>
+                        <TableToolbar.Item>
+                            <TableToolbar.Label>
+                                <Dropdown
+                                    roundInput
+                                    placeholder={translate('StaffFilter.placeHolder')}
+                                    options={this._getStaffMembers()}
+                                    selectedId={filters.staffMember}
+                                    onSelect={this._onStaffMemberChanged}
+                                    onClear={this._onStaffMemberChanged}
+                                    closeOnSelect={false}
+                                />
                             </TableToolbar.Label>
                         </TableToolbar.Item>
                     </TableToolbar.ItemGroup>
