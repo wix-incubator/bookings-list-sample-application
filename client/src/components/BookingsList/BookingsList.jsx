@@ -49,12 +49,6 @@ const getBookingStatuses = () => [
     // {id: 'UNDEFINED', value: translate('BookingStatus.undefined')}
 ];
 
-const getStaffMembers = (staff) => {
-    return staff.map((staffMember) => {
-        return {id: staffMember.id, value: staffMember.name};
-    });
-};
-
 @observer
 export default class BookingsList extends React.Component {
 
@@ -82,6 +76,13 @@ export default class BookingsList extends React.Component {
 
     _onBookingDateRangeChanged = (value) => {
         this.props.onFilterChanged('dateRange', value);
+    };
+
+    _getStaffMembers = () => {
+        const {staff} = this.props;
+        return Object.values(staff).map((staffMember) => {
+            return {id: staffMember.id, value: staffMember.name};
+        });
     };
 
     _onStaffMemberChanged = (staffMember) => {
@@ -121,7 +122,7 @@ export default class BookingsList extends React.Component {
     };
 
     _renderBookingsListToolbar = () => {
-        const {filters, servicesGroups, onFilterChanged, staff} = this.props;
+        const {filters, servicesGroups, onFilterChanged} = this.props;
 
         return (
             <Card>
@@ -157,7 +158,7 @@ export default class BookingsList extends React.Component {
                                 <Dropdown
                                     roundInput
                                     placeholder={translate('StaffFilter.placeHolder')}
-                                    options={getStaffMembers(Object.values(this.props.staff))}
+                                    options={this._getStaffMembers()}
                                     selectedId={filters.staffMember}
                                     onSelect={this._onStaffMemberChanged}
                                     onClear={this._onStaffMemberChanged}
