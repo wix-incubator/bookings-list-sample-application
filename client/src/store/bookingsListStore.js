@@ -4,7 +4,7 @@ import mockData from './mockData';
 import {SORT_ORDER} from './constants';
 import {handleResponseError, pause} from '../utils';
 import {uuid} from 'uuidv4';
-import {get} from 'lodash';
+import {get, intersection} from 'lodash';
 import {formatDate} from 'wix-style-react/src/LocaleUtils';
 
 
@@ -256,18 +256,32 @@ class BookingsListStore {
         if (filters.endTime) {
             dateRange.endTime = {'$lte': filters.endTime};
         }
-        const staffMember = {};
+        let staffMemberScheduleId = [];
         if (filters.staffMember && staff[filters.staffMember]) {
-            staffMember.scheduleId = staff[filters.staffMember].scheduleIds;
+            staffMemberScheduleId = staff[filters.staffMember].scheduleIds;
+        }
+
+        /**
+         * If only one of the services and staff filters is activated we do not want to send their intersection
+         * since that would mean intersecting with an empty array, and no filtering will apply
+         */
+        let singleFilterScheduleIds = [];
+        if (filters.services.length === 0 && staffMemberScheduleId.length > 0) {
+            singleFilterScheduleIds = staffMemberScheduleId;
+        } else if (filters.services.length > 0 && staffMemberScheduleId.length === 0) {
+            singleFilterScheduleIds = filters.services;
         }
 
         return {
             withBookingAllowedActions: true,
             'query.filter.stringValue': {
                 status: filters.status,
-                scheduleId: filters.services,
-                ...dateRange,
-                ...staffMember
+                // Filtering by staff member is not working - always returns no bookings
+                // also the intersection is always empty therefore does not filter
+                // There most probably is an issue with the API with filtering by a resource's schedule id
+                scheduleId: singleFilterScheduleIds.length > 0 ?
+                    singleFilterScheduleIds : intersection(filters.services, staffMemberScheduleId),
+                ...dateRange
             }
         };
     };
