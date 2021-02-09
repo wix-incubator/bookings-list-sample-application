@@ -8,6 +8,8 @@ import {observer} from 'mobx-react';
 import BookingNotification from '../BookingNotification/BookingNotification';
 import {BookingTime, ClientName, ServiceAndSession, Staff, BookingAndAttendance, PaymentStatus, Payment} from '../BookingsListColumns';
 import ServicesFilter from '../ServicesFilter';
+import MicrosoftConnect from './MicrosoftConnect/MicrosoftConnect';
+import AppleConnect from './AppleConnect/AppleConnect';
 
 function getDefaultPresets() {
     return [
@@ -136,6 +138,16 @@ export default class BookingsList extends React.Component {
                         <TableToolbar.Item>
                             <TableToolbar.Label>
                                 <ServicesFilter filters={filters} servicesGroups={servicesGroups} onFilterChanged={onFilterChanged}/>
+                            </TableToolbar.Label>
+                        </TableToolbar.Item>
+                        <TableToolbar.Item>
+                            <TableToolbar.Label>
+                                <MicrosoftConnect/>
+                            </TableToolbar.Label>
+                        </TableToolbar.Item>
+                        <TableToolbar.Item>
+                            <TableToolbar.Label>
+                                <AppleConnect/>
                             </TableToolbar.Label>
                         </TableToolbar.Item>
                     </TableToolbar.ItemGroup>

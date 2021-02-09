@@ -23,11 +23,8 @@ export const isDevelopment = process.env.NODE_ENV !== 'production';
 export const getWixInstanceId = () => {
     let instanceId;
     try {
-        if (isDevelopment) {
+        //TODO: revert change
             instanceId = process.env.DEV_INSTANCE_ID;
-        } else {
-            instanceId = Wix.Utils.getInstanceId();
-        }
     } catch (e) {
         console.log(e);
     }
