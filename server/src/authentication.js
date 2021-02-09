@@ -9,9 +9,67 @@ const {APP_ID} = require('./config');
 const {getTokensFromWix, getAppInstance} = require('./utils/authentication-utils');
 const express = require('express');
 const router = express.Router();
+const randomstring = require("randomstring");
+const crypto = require("crypto");
+const base64url = require("base64url");
 
 const PUBLIC_KEY = fs.readFileSync(path.resolve('./public.pem'), 'utf8');
 const incomingWebhooks = [];
+
+const code_verifier = randomstring.generate(128);
+
+router.get('/microsoft-auth', (req, res) => {
+
+    const base64Digest = crypto
+        .createHash('sha256')
+        .update(code_verifier)
+        .digest('base64');
+
+    const code_challenge = base64url.fromBase64(base64Digest);
+    res.status(HTTP_STATUS.SUCCESS).send('https://login.microsoftonline.com/common/oauth2/v2.0/authorize?' +
+        'client_id=cf814374-8298-4940-9378-de1c2d817bd1' +
+        '&response_type=code' +
+        '&redirect_uri=' + encodeURIComponent('http://localhost:5000/api/microsoft-token') +
+        '&response_mode=query' +
+        '&scope=' + encodeURIComponent('https://graph.microsoft.com/Calendars.Read') +
+        '&state=12345' +
+        '&code_challenge=' + code_challenge +
+        '&code_challenge_method=S256'
+    );
+});
+
+router.get('/microsoft-token', async (req, res) => {
+    const url = 'https://login.microsoftonline.com/common/oauth2/v2.0/token';
+    const params = new URLSearchParams();
+
+    params.append('grant_type', 'authorization_code');
+    params.append('client_id', 'cf814374-8298-4940-9378-de1c2d817bd1');
+    params.append('scope', 'https://graph.microsoft.com/Calendars.Read');
+    params.append('redirect_uri', 'http://localhost:5000/api/microsoft-token');
+    params.append('code', req.query.code);
+    params.append('code_verifier', code_verifier);
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Origin': 'http://localhost:5000',
+            'Access-Control-Allow-Origin': '*'
+        }
+    };
+    try {
+        const result = await axios.post(url, params, config);
+        req.session.access_token = result.data.access_token;
+        req.session.refresh_token = result.data.refresh_token;
+        console.log("access token: " + req.session.access_token);
+        console.log("refresh token: " + req.session.refresh_token);
+
+
+
+        res.redirect('/');
+    } catch (err) {
+        console.error(err);
+    }
+});
 
 router.get('/signup', (req, res) => {
     // This route  is called before the user is asked to provide consent

@@ -5,6 +5,7 @@ const cors = require('cors');
 const httpLogger = require('./utils/http-logger');
 const api = require('./api');
 const authentication_api = require('./authentication');
+const session = require('express-session');
 
 const {DEFAULT_PORT} = require('./constants');
 const {APP_ID, PORT} = require('./config');
@@ -12,7 +13,7 @@ const {APP_ID, PORT} = require('./config');
 const app = express();
 const port = PORT || DEFAULT_PORT;
 
-
+app.use(session({ secret: 'session secret', cookie: {}}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
