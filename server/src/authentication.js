@@ -31,7 +31,7 @@ router.get('/microsoft-auth', (req, res) => {
         '&response_type=code' +
         '&redirect_uri=' + encodeURIComponent('http://localhost:5000/api/microsoft-token') +
         '&response_mode=query' +
-        '&scope=' + encodeURIComponent('https://graph.microsoft.com/Calendars.Read') +
+        '&scope=' + encodeURIComponent('offline_access https://graph.microsoft.com/Calendars.ReadWrite') +
         '&state=12345' +
         '&code_challenge=' + code_challenge +
         '&code_challenge_method=S256'
@@ -44,7 +44,7 @@ router.get('/microsoft-token', async (req, res) => {
 
     params.append('grant_type', 'authorization_code');
     params.append('client_id', 'cf814374-8298-4940-9378-de1c2d817bd1');
-    params.append('scope', 'https://graph.microsoft.com/Calendars.Read');
+    params.append('scope', 'offline_access https://graph.microsoft.com/Calendars.ReadWrite');
     params.append('redirect_uri', 'http://localhost:5000/api/microsoft-token');
     params.append('code', req.query.code);
     params.append('code_verifier', code_verifier);
