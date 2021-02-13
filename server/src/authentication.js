@@ -19,6 +19,33 @@ const incomingWebhooks = [];
 
 const code_verifier = randomstring.generate(128);
 
+router.post('/icloud-nylas-auth', async (req, res) => {
+    try {
+        const result = await axios.post('https://api.nylas.com/connect/authorize', {
+            "client_id": "dobey21wzxs80x955av1tsd6",
+            "name": "Michal Menachem",
+            "email_address": "michalmenachem@icloud.com",
+            "provider": "icloud",
+            "settings": {
+                "username": "michalmenachem@icloud.com",
+                "password": "bskj-zurs-qrrg-vbsf"
+            },
+            "scopes": "email,calendar,contacts"
+        });
+
+        const token_result = await axios.post('https://api.nylas.com/connect/token', {
+            "client_id": "dobey21wzxs80x955av1tsd6",
+            "client_secret": "4uk1m5tlaitx3qc5e5qh8rtw3",
+            "code": result.data.code
+        })
+        req.session.nylas_info = token_result.data;
+        res.status(200).json({success: true, message: "Connected successfully with iCloud!"});
+    } catch (err) {
+        console.error(err);
+        res.status(401).json({success: false, message: "Connection to iCloud failed"});
+    }
+});
+
 router.get('/microsoft-auth', (req, res) => {
 
     const base64Digest = crypto
