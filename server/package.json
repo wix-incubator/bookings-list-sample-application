@@ -44,6 +44,7 @@
     "jsonwebtoken": "^8.3.0",
     "knex": "^0.21.2",
     "mysql": "^2.18.1",
+    "nylas": "^5.3.2",
     "pug": "^2.0.3",
     "query-string": "^6.13.8",
     "randomstring": "^1.1.5",

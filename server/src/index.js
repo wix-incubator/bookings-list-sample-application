@@ -13,7 +13,12 @@ const {APP_ID, PORT} = require('./config');
 const app = express();
 const port = PORT || DEFAULT_PORT;
 
-app.use(session({ secret: 'session secret', cookie: {}}));
+app.use(session({
+    secret: 'session secret',
+    cookie: {},
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
 app.use(bodyParser.json());
