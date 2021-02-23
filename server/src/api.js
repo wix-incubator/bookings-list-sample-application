@@ -19,6 +19,7 @@ router.get('/bookings', async (req, res) => {
     try {
         const instanceId = getInstanceIdFromRequestHeaders(req);
         const refreshToken = await getRefreshToken(instanceId);
+        console.log(req.query);
         const out = await getBookings(refreshToken, req.query);
         const bookings = out.response;
         res.status(HTTP_STATUS.SUCCESS).send(bookings);

@@ -14,13 +14,21 @@ const crypto = require("crypto");
 const base64url = require("base64url");
 const Nylas = require('nylas');
 
+
 const PUBLIC_KEY = fs.readFileSync(path.resolve('./public.pem'), 'utf8');
 const incomingWebhooks = [];
 
 const code_verifier = randomstring.generate(128);
 
 router.post('/icloud-nylas-auth', async (req, res) => {
+    // try {
+    //     await Nylas.webhooks.delete('80aoeagz2v9z8zfzt589o24jp');
+    //     Nylas.webhooks.list().then(webhooks => console.log(webhooks));
+    // } catch (err) {
+    //     console.error(err);
+    // }
     try {
+
         const result = await axios.post('https://api.nylas.com/connect/authorize', {
             "client_id": "dobey21wzxs80x955av1tsd6",
             "name": "Michal Menachem",
@@ -39,10 +47,42 @@ router.post('/icloud-nylas-auth', async (req, res) => {
             "code": result.data.code
         })
         req.session.nylas_info = token_result.data;
-        res.status(200).json({success: true, message: "Connected successfully with iCloud!"});
+        process.env.NYLAS_ACCESS_TOKEN = token_result.data.access_token;
+        const nylas = Nylas.with(token_result.data.access_token);
+        res.status(200).json({success: true, message: "Connected successfully with iCloud!", data: req.session.nylas_info});
     } catch (err) {
         console.error(err);
         res.status(401).json({success: false, message: "Connection to iCloud failed"});
+    }
+});
+
+router.post('/outlook-nylas-auth', async (req, res) => {
+    try {
+        const result = await axios.post("https://api.nylas.com/connect/authorize", {
+            client_id: "dobey21wzxs80x955av1tsd6",
+            name: "Michal Menachem",
+            email_address: "michalmenachem@outlook.com",
+            provider: "outlook",
+            settings: {
+                username: "michalmenachem@outlook.com",
+                password: "OutMicNylas456",
+                eas_server_host: "eas.outlook.com"
+            },
+            scopes: "calendar"
+        });
+
+        const token_result = await axios.post("https://api.nylas.com/connect/token", {
+            client_id: "dobey21wzxs80x955av1tsd6",
+            client_secret: "4uk1m5tlaitx3qc5e5qh8rtw3",
+            code: result.data.code
+        });
+
+        req.session.nylas_info = token_result.data;
+        process.env.NYLAS_ACCESS_TOKEN = token_result.data.access_token;
+        res.status(200).json({success: true, message: "Connected successfully with Outlook!", data: req.session.nylas_info});
+    } catch (err) {
+        console.error(err);
+        res.status(401).json({success: false, message: "Connection to Outlook failed"});
     }
 });
 
@@ -66,6 +106,8 @@ router.get('/microsoft-auth', (req, res) => {
     );
 });
 
+
+// microsoft issue 1
 router.get('/microsoft-token', async (req, res) => {
         const url = 'https://login.microsoftonline.com/common/oauth2/v2.0/token';
         const params = new URLSearchParams();

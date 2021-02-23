@@ -5,6 +5,8 @@ const cors = require('cors');
 const httpLogger = require('./utils/http-logger');
 const api = require('./api');
 const authentication_api = require('./authentication');
+const sync_api = require('./sync');
+const webhooks_api = require('./webhooks');
 const session = require('express-session');
 
 const {DEFAULT_PORT} = require('./constants');
@@ -15,9 +17,9 @@ const port = PORT || DEFAULT_PORT;
 
 app.use(session({
     secret: 'session secret',
-    cookie: {},
+    cookie: { secure: false },
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
 }));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.text());
@@ -28,5 +30,7 @@ app.use(cors());
 app.use(httpLogger());
 app.use('/api', api);
 app.use('/api', authentication_api);
+app.use('/api', sync_api);
+app.use('/api', webhooks_api);
 
 app.listen(port, () => console.log(`My Wix Application ${APP_ID} is listening on port ${port}!`));
