@@ -10,6 +10,8 @@ import {BookingTime, ClientName, ServiceAndSession, Staff, BookingAndAttendance,
 import ServicesFilter from '../ServicesFilter';
 import MicrosoftConnect from './MicrosoftConnect/MicrosoftConnect';
 import AppleConnect from './AppleConnect/AppleConnect';
+import SyncCalendar from './SyncCalendar/SyncCalendar';
+import OutlookConnect from './OutlookConnect/OutlookConnect';
 
 function getDefaultPresets() {
     return [
@@ -148,6 +150,16 @@ export default class BookingsList extends React.Component {
                         <TableToolbar.Item>
                             <TableToolbar.Label>
                                 <AppleConnect/>
+                            </TableToolbar.Label>
+                        </TableToolbar.Item>
+                        <TableToolbar.Item>
+                            <TableToolbar.Label>
+                                <OutlookConnect/>
+                            </TableToolbar.Label>
+                        </TableToolbar.Item>
+                        <TableToolbar.Item>
+                            <TableToolbar.Label>
+                                <SyncCalendar/>
                             </TableToolbar.Label>
                         </TableToolbar.Item>
                     </TableToolbar.ItemGroup>
